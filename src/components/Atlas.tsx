@@ -367,10 +367,10 @@ export function Atlas({
     <section id="atlas" className="relative mx-auto w-full max-w-[1680px] px-4 pb-10 lg:px-8">
       <header className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="label-hud mb-2">02 / ATLAS · 一条时间轴贯通五层</div>
-          <h2 className="font-display text-2xl font-semibold tracking-wide text-snow lg:text-[28px]">
+          <div className="label-hud mb-2">ATLAS · 一条时间轴贯通五层</div>
+          <h1 className="font-display text-2xl font-semibold tracking-wide text-snow lg:text-[28px]">
             算力产业全景
-          </h2>
+          </h1>
           <p className="mt-1 max-w-2xl text-sm leading-relaxed text-fog">
             每一列是一个时间切片：上面是当年出货的芯片与整机，下面是同年开源的模型。
             点任意节点，看它在这一年所处的算力位置。

@@ -4,7 +4,7 @@ import { spawn } from 'node:child_process'
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { setTimeout as sleep } from 'node:timers/promises'
 
-const URL = process.argv[2] ?? 'http://localhost:5178/'
+const URL = process.argv[2] ?? 'http://localhost:5191/atlas'
 const OUT = process.env.OUT ?? 'C:/Users/weidows/.hermes/cache/scratch/atlas-shots'
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 const PORT = 9341

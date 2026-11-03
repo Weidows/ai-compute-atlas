@@ -94,10 +94,11 @@ const nav = (current) => `
 <header class="site">
   <a class="brand" href="${BASE}">◈ 算力全景 · AI Compute Atlas</a>
   <nav>
-    <a href="${BASE}">交互全景</a>
+    <a href="${BASE}atlas">时间轴</a>
+    <a href="${BASE}charts">读数</a>
     <a href="${BASE}data/">数据总表</a>
     <a href="${BASE}china/"${current === 'china' ? ' aria-current="page"' : ''}>中国特供</a>
-    <a href="${BASE}review/"${current === 'review' ? ' aria-current="page"' : ''}>复核台账</a>
+    <a href="${BASE}review/"${current === 'review' ? ' aria-current="page"' : ''}>复核清单</a>
   </nav>
 </header>`
 
@@ -496,6 +497,11 @@ ${atlas.servers
  * ------------------------------------------------------------------ */
 const urls = [
   { loc: abs(), priority: '1.0' },
+  { loc: abs('atlas/'), priority: '0.95' },
+  { loc: abs('charts/'), priority: '0.9' },
+  { loc: abs('export/'), priority: '0.85' },
+  { loc: abs('about/'), priority: '0.8' },
+  { loc: abs('ledger/'), priority: '0.7' },
   { loc: abs('data/'), priority: '0.9' },
   { loc: abs('china/'), priority: '0.8' },
   { loc: abs('review/'), priority: '0.7' },

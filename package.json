@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/seo.mjs",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/spa-routes.mjs",
     "preview": "vite preview",
     "data": "python scripts/build_data.py",
     "review": "node scripts/review.mjs",

@@ -1,8 +1,10 @@
 # 算力全景 · AI Compute Atlas
 
-把三份分散的资料接成一条时间轴：**架构世代 → 芯片 / SKU → 整机 · 超节点 → 开源模型 → 技术突破**，向下再拆成三张读数图（代际跃迁 / 单位算力价格 / 模型-显存共振）与一张中国特供表。
+把三份分散的资料接成一条时间轴：**架构世代 → 芯片 / SKU → 整机 · 超节点 → 开源模型 → 技术突破**，再拆成四条读数（代际跃迁 / 单位算力价格 / 模型-显存共振 / 中国特供）与一份人工复核台账。
 
-- 时间跨度：2010—2026
+站点是**多页结构**：封面、时间轴、读数、特供版、复核、口径各占一页，页间用轻量转场连接；同一份快照另有构建期生成的纯 HTML 文本页供检索。
+
+- 时间跨度：2010-2026
 - 芯片：NVIDIA 154 款（10 代架构，含附录 Maxwell / Kepler / Fermi）+ 其他厂商 20 款
 - 整机 / 超节点：15 台
 - 开源模型：DeepSeek / GLM / Kimi 共 84 个发布节点、68 项技术突破
@@ -18,8 +20,10 @@
 npm install
 npm run data     # 重新生成 src/data/atlas.json（需要三份原始资料，见下）
 npm run dev      # http://localhost:5173
-npm run build    # tsc --noEmit + vite build → dist/
+npm run build    # tsc --noEmit + vite build + 多页入口 → dist/
 ```
+
+`build` 末尾的 `scripts/spa-routes.mjs` 会为 `/atlas`、`/charts`、`/export`、`/ledger`、`/about` 各生成一份 `dist/<route>/index.html`（各自的 title / description / canonical），再写一份 `dist/404.html` 兜底未知路径。本地想验证成品：`npm run preview`。
 
 ## 数据从哪来
 
@@ -81,21 +85,48 @@ npm run data && npm run build                            # 重新生成快照与
 ```
 src/
   data/atlas.json        构建产物（唯一数据源）
-  lib/atlas.ts           类型、时间标度、派生序列（代际峰值 / 单位算力价格 / 年度共振）
+  lib/
+    atlas.ts             类型、时间标度、派生序列（代际峰值 / 单位算力价格 / 年度共振）
+    router.tsx           极简 pushState 路由（Link / useRoute / usePageMeta）
+  pages/
+    Cover.tsx            封面：五层结构、章节卡、复核进展
+    Timeline.tsx         全景时间轴 + 节点档案
+    Charts.tsx           三条读数：代际 / 单价 / 共振
+    Export.tsx           中国特供：8 款与削减点
+    Ledger.tsx           复核台账：覆盖率、筛选、逐条记录
+    About.tsx            三份来源、字段口径、文本版入口
   components/
+    Shell.tsx            站点外壳：导航 / 移动端菜单 / 转场扫描线 / 页脚
+    motion.tsx           Reveal / CountUp / SpotlightCard / 页面转场变体
     Atlas.tsx            主时间轴：7 条带、标签避让、缩放、全览条、筛选
     DetailPanel.tsx      节点档案（硬件 / 整机 / 模型 / 突破四种形态）+ 复核状态
-    Analytics.tsx        四块读数：代际 / 单价 / 共振 / 中国特供
-    Hero.tsx  Footer.tsx  Starfield.tsx
+    Analytics.tsx        三个图块 + SectionHead（被 Charts 页复用）
+    Starfield.tsx
 data/
   reviews.json           人工复核台账（次数 / 最近复核时间 / 备注），由构建合入快照
 scripts/
   build_data.py          数据构建（可重跑，合并复核台账）
   review.mjs             复核台账 CLI：stats / list / mark / undo / reset
-  verify.mjs             CDP 截图 + 控制台错误 + 溢出检测
+  seo.mjs                静态文本页 + sitemap/robots（prebuild 执行）
+  spa-routes.mjs         多页入口 / 404 兜底（build 末尾执行）
+  pages.mjs              六个章节的标题、h1、溢出、控制台错误 + 截图
+  mobile.mjs             390 / 768 / 1440 三档溢出与移动端菜单
+  verify.mjs             CDP 截图 + 控制台错误 + 时间轴几何检测
   probe.mjs              标签碰撞 / 分层节点计数 / 分区截图
-  mobile.mjs             390 / 768 / 1440 三档溢出与文案检查
 ```
+
+## 页面结构
+
+| 路径 | 章节 | 内容 |
+| --- | --- | --- |
+| `/` | 封面 | 一句话定位、五层结构、章节入口、复核进展 |
+| `/atlas` | 时间轴 | 五层内容一条横轴，点节点开档案（缩放 / 筛选 / 全览条） |
+| `/charts` | 读数 | 代际跃迁、单位算力价格、模型与显存共振 |
+| `/export` | 特供版 | 8 款中国特供与其削减点 |
+| `/ledger` | 复核 | 每条的核对次数、最近复核时间、备注与筛选 |
+| `/about` | 口径 | 三份来源、字段定义、可信度与文本版入口 |
+
+路由是手写的 pushState（`src/lib/router.tsx`），不引 router 依赖：`Link` 保留真实 href（新窗口 / 爬虫可用），左键单击走无刷新跳转；`build` 后每个路径都有实体 HTML，深链返回 200。转场由 `AnimatePresence` 统一进出场，只用 transform / opacity，且全部走 `useReducedMotion` 降级。
 
 ## 怎么读
 
@@ -110,16 +141,17 @@ scripts/
 
 | URL | 内容 |
 | --- | --- |
+| `/atlas` `/charts` `/export` `/ledger` `/about` | 交互章节，各自一份实体 HTML（独立 title / description / canonical，返回 200） |
 | `/data/` | 完整数据总表：154 款产品 / 84 个模型 / 15 台整机，可 Ctrl+F |
 | `/generations/<世代>/` | 10 个世代各一页（blackwell、hopper、ada-lovelace…） |
 | `/models/<实验室>/` | DeepSeek / GLM / Kimi 三页发布年表与突破 |
 | `/china/` | 8 款中国特供与被削规格 |
 | `/review/` | 复核台账：341 条逐条列复核次数、最近复核时间与备注，未复核的排最前 |
-| `/sitemap.xml` · `/robots.txt` | 17 条 URL + 抓取声明 |
+| `/sitemap.xml` · `/robots.txt` | 22 条 URL + 抓取声明 |
 | `/data/atlas.json` | 机器可读快照（供引用、对拍、AI 检索） |
 | `/og.png` | 1200×630 社交分享卡 |
 
-- 生成脚本 `scripts/seo.mjs`，由 `prebuild` 自动执行，产物不进版本库（`.gitignore`）。
+- 生成脚本 `scripts/seo.mjs`（prebuild）与 `scripts/spa-routes.mjs`（build 末尾），产物不进版本库（`.gitignore`）。
 - `index.html` 带 canonical、og/twitter、`WebSite + Dataset + TechArticle` JSON-LD；静态页各自带 `CollectionPage / ItemList / Dataset` 与 canonical。
 - 页面之间互链：页脚 → 数据总表 / 中国特供 / 分世代档案，数据页 → 三个实验室。
 
@@ -134,6 +166,8 @@ scripts/
 线上地址：<https://ai-compute-atlas.weidows.tech/>（GitHub Pages 项目站 + 独立子域）
 
 GitHub Pages：`.github/workflows/deploy.yml` 在 `main` 推送时以 `VITE_BASE=/` 构建（独立子域伺服在域名根），产物推到 `gh-pages` 之外的 Pages artifact。
+
+多页路由：`spa-routes.mjs` 为每个章节生成 `dist/<route>/index.html`，深链直接 200；`dist/404.html` 兜底未收录路径。新增章节时，路由表在 `src/lib/router.tsx`（`ROUTES`），静态入口在 `scripts/spa-routes.mjs`（`ROUTES`），两处同步加一行。
 
 自定义域：`ai-compute-atlas.weidows.tech`（Cloudflare CNAME → `weidows.github.io`，灰云不开代理）；换域时改 `index.html` 里的绝对 URL 与 `scripts/seo.mjs` 的 `SITE_URL` 默认值，再 `npm run build`。
 

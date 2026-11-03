@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ArrowRight, CircleDollarSign, GitBranch, Radio } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 import {
   archPeaks,
@@ -17,28 +17,27 @@ import {
 } from '../lib/atlas'
 import { cn } from '../lib/cn'
 
-function SectionHead({
-  id,
-  index,
+export function SectionHead({
+  label,
   title,
   note,
   icon,
 }: {
-  id: string
-  index: string
+  label: string
   title: string
   note: string
   icon: React.ReactNode
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-3" id={id}>
-      <div>
-        <div className="label-hud mb-1.5 flex items-center gap-1.5">
-          {icon} {index}
-        </div>
+    <div className="mb-6">
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1.5">
         <h2 className="font-display text-xl font-semibold tracking-wide text-snow lg:text-2xl">{title}</h2>
+        <span className="inline-flex items-center gap-1 border border-edge/60 px-1.5 py-0.5 font-mono text-[9px] tracking-[0.12em] text-fog/60">
+          {icon}
+          {label}
+        </span>
       </div>
-      <p className="max-w-md text-right text-[11px] leading-relaxed text-fog/80">{note}</p>
+      <p className="mt-2 max-w-[62ch] text-[11.5px] leading-relaxed text-fog/80">{note}</p>
     </div>
   )
 }
@@ -47,7 +46,7 @@ function SectionHead({
  *  01 · generation ladder
  * ------------------------------------------------------------------ */
 
-function GenerationLadder() {
+export function GenerationLadder() {
   const rows = useMemo(() => archPeaks(), [])
   const max = Math.max(...rows.map((r) => r.fp32 ?? 0), 1)
   const deltas = rows.map((r, i) => {
@@ -170,7 +169,7 @@ function GenerationLadder() {
  *  02 · price efficiency scatter
  * ------------------------------------------------------------------ */
 
-function PriceScatter() {
+export function PriceScatter() {
   const points = useMemo(() => priceEfficiency(), [])
   const W = 780
   const H = 380
@@ -304,7 +303,7 @@ function PriceScatter() {
  *  03 · models × hardware resonance
  * ------------------------------------------------------------------ */
 
-function Resonance() {
+export function Resonance() {
   const data = useMemo(() => yearlyResonance(2016, 2026), [])
   const W = 800
   const H = 330
@@ -436,7 +435,7 @@ function Resonance() {
  *  04 · China specials
  * ------------------------------------------------------------------ */
 
-function ChinaTable() {
+export function ChinaTable() {
   const rows = useMemo(() => chinaProducts(), [])
   return (
     <div className="hud-panel overflow-x-auto">
@@ -468,59 +467,6 @@ function ChinaTable() {
           ))}
         </tbody>
       </table>
-    </div>
-  )
-}
-
-/* ------------------------------------------------------------------ */
-
-export function Analytics() {
-  const gain = generationGain()
-  return (
-    <div className="relative mx-auto max-w-[1680px] space-y-20 px-4 pb-24 lg:px-8">
-      <section>
-        <SectionHead
-          id="generations"
-          index="03 / GENERATIONS"
-          title={`代际跃迁：算力 ${gain.fp ? gain.fp.toFixed(1) : '—'}×，显存 ${gain.vram ? gain.vram.toFixed(1) : '—'}×`}
-          note="同一世代按数据中心卡的最高规格取峰值；FP32 与显存不同量纲，柱长只表达相对量级。"
-          icon={<GitBranch size={11} />}
-        />
-        <GenerationLadder />
-      </section>
-
-      <section>
-        <SectionHead
-          id="unit"
-          index="04 / UNIT ECONOMICS"
-          title="一块 TFLOPS 要多少钱"
-          note="横轴 FP32、纵轴中国区参考价，均为对数刻度；琥珀虚线是等价比线，越靠右下单位算力越贵。"
-          icon={<CircleDollarSign size={11} />}
-        />
-        <PriceScatter />
-      </section>
-
-      <section>
-        <SectionHead
-          id="resonance"
-          index="05 / RESONANCE"
-          title="模型在追硬件，还是硬件在追模型"
-          note="按年对齐：左轴是当年最大单卡显存，右轴是当年最大开源模型参数量，底柱是当年发布数量。"
-          icon={<Radio size={11} />}
-        />
-        <Resonance />
-      </section>
-
-      <section>
-        <SectionHead
-          id="china"
-          index="06 / CHINA EDITION"
-          title="特供版：被削掉的那一刀"
-          note="出口管制下的中国特供型号，全部来自全览文档的「类别 / 备注」字段；削减点按原文表述。"
-          icon={<Radio size={11} />}
-        />
-        <ChinaTable />
-      </section>
     </div>
   )
 }
