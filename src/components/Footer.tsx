@@ -9,14 +9,14 @@ const SOURCES = [
     href: '',
   },
   {
-    name: 'gpu-server-compare',
+    name: 'gpu-server-compare（已并入）',
     note: '41 款卡 · 15 台整机/超节点 · 现货行情快照',
-    href: 'https://github.com/Weidows/gpu-server-compare',
+    href: 'https://github.com/Weidows/ai-compute-atlas/tree/main/vendor/gpu-server-compare',
   },
   {
-    name: 'model-chronicle',
+    name: 'model-chronicle（已并入）',
     note: 'Hugging Face 官方 API 快照 · DeepSeek / GLM / Kimi',
-    href: 'https://github.com/Weidows/model-chronicle',
+    href: 'https://github.com/Weidows/ai-compute-atlas/tree/main/vendor/model-chronicle',
   },
 ]
 

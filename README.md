@@ -28,10 +28,10 @@ npm run build    # tsc --noEmit + vite build → dist/
 | 来源 | 路径 | 取什么 |
 | --- | --- | --- |
 | NVIDIA 显卡历代产品全览 | `D:/Downloads/NVIDIA显卡历代产品全览.docx` | 10 张 Word 表 → 型号 / 类别 / CUDA / 显存 / FP32 / 首发时间 / 备注 |
-| gpu-server-compare | `../gpu-server-compare/data/*.json` | 41 卡行情与性能索引、15 台整机、现货报价、来源台账 |
-| model-chronicle | `../model-chronicle/src/data/*.ts` | 84 个发布节点、68 项突破（HF 官方 API 快照） |
+| gpu-server-compare（已并入） | `vendor/gpu-server-compare/*.json` | 41 卡行情与性能索引、15 台整机、现货报价、来源台账 |
+| model-chronicle（已并入） | `vendor/model-chronicle/*.ts` | 84 个发布节点、68 项突破（HF 官方 API 快照） |
 
-docx 路径可用环境变量覆盖：`ATLAS_DOCX=... python scripts/build_data.py`。gpu-server-compare 与 model-chronicle 按相对路径读取，需与本仓库同级。
+两份来源数据已快照进 `vendor/`（不再依赖同级仓库），可用 `ATLAS_GSC=` / `ATLAS_MC=` 覆盖；docx 路径用 `ATLAS_DOCX=` 覆盖。
 
 匹配规则（全部人工可复现，不做模糊猜测）：
 
