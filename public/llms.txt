@@ -1,0 +1,13 @@
+# AI Compute Atlas — llms.txt
+
+> 算力全景：2010—2026 年 AI 算力产业的一条时间轴，覆盖架构世代、芯片 SKU、整机/超节点、开源模型与技术突破。
+
+## 数据
+- 快照：src/data/atlas.json（由 scripts/build_data.py 生成）
+- 字段：products[]（name/arch/tier/vramGb/fp32/date/china/marketId）、servers[]、models[]、breakthroughs[]、archs[]
+- 覆盖：NVIDIA 154 款 · 其他厂商 20 款 · 整机 15 台 · 模型 84 个 · 突破 68 项
+
+## 口径
+- FP32 标「约」为按 CUDA 核心 × 2 × Boost 估算；张量算力按稀疏值记录。
+- 价格为中国区参考价与现货报价快照，非建议。
+- 模型数据来自 Hugging Face 官方 API 与模型卡。
