@@ -98,6 +98,31 @@ export function Footer() {
             <span>·</span>
             <span>{atlas.counts.breakthroughs} 突破</span>
           </div>
+
+          <div className="mt-5 border-t border-edge/40 pt-3">
+            <div className="label-hud mb-2">文本版 · 可检索</div>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px]">
+              <a href={`${import.meta.env.BASE_URL}data/`} className="text-fog hover:text-cyan">
+                完整数据总表 →
+              </a>
+              <a href={`${import.meta.env.BASE_URL}china/`} className="text-fog hover:text-cyan">
+                中国特供 GPU →
+              </a>
+              <a href={`${import.meta.env.BASE_URL}sitemap.xml`} className="text-fog hover:text-cyan">
+                sitemap
+              </a>
+              <a href={`${import.meta.env.BASE_URL}data/atlas.json`} className="text-fog hover:text-cyan">
+                atlas.json
+              </a>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[9.5px] text-fog/50">
+              {['blackwell', 'hopper', 'ada-lovelace', 'ampere', 'turing', 'volta', 'pascal'].map((s) => (
+                <a key={s} href={`${import.meta.env.BASE_URL}generations/${s}/`} className="hover:text-cyan">
+                  {s}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

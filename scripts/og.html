@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>og</title>
+    <style>
+      :root {
+        --void: #04060b;
+        --edge: #1c2a44;
+        --cyan: #38e2ff;
+        --snow: #e9f2ff;
+        --fog: #8b9dbd;
+        --amber: #ffb545;
+        --violet: #9270ff;
+        --mint: #2fe6a8;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1200px; height: 630px; }
+      body {
+        background:
+          radial-gradient(1000px 500px at 82% 12%, rgba(56, 226, 255, 0.14), transparent 62%),
+          radial-gradient(700px 420px at 8% 88%, rgba(146, 112, 255, 0.16), transparent 60%),
+          var(--void);
+        color: var(--snow);
+        font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+      .grid {
+        position: absolute; inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(56, 226, 255, 0.07) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(56, 226, 255, 0.07) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(90% 80% at 50% 0%, #000 20%, transparent 80%);
+      }
+      .wrap { position: relative; padding: 64px 72px; height: 100%; display: flex; flex-direction: column; }
+      .eyebrow {
+        font: 500 13px/1 "JetBrains Mono", ui-monospace, monospace;
+        letter-spacing: 0.28em; color: var(--cyan); opacity: 0.85;
+      }
+      h1 {
+        margin: 22px 0 0; font-size: 84px; line-height: 0.98; letter-spacing: -0.01em;
+        font-weight: 700;
+      }
+      h1 em { font-style: normal; color: var(--cyan); text-shadow: 0 0 40px rgba(56, 226, 255, 0.45); }
+      .sub { margin-top: 18px; font-size: 22px; line-height: 1.5; color: var(--fog); max-width: 760px; }
+      .kpis { margin-top: auto; display: flex; gap: 40px; }
+      .kpi b { display: block; font: 500 40px/1 "JetBrains Mono", ui-monospace, monospace; }
+      .kpi span { font-size: 12px; letter-spacing: 0.16em; color: var(--fog); text-transform: uppercase; }
+      .rail { position: absolute; left: 0; right: 0; bottom: 132px; height: 1px; background: linear-gradient(90deg, transparent, var(--edge) 10%, var(--cyan) 55%, var(--edge) 90%, transparent); opacity: 0.8; }
+      .dots { position: absolute; left: 72px; right: 72px; bottom: 116px; display: flex; gap: 26px; align-items: flex-end; }
+      .dot { border-radius: 50%; }
+      .foot { margin-top: 26px; display: flex; justify-content: space-between; font: 12px/1 "JetBrains Mono", monospace; color: var(--fog); letter-spacing: 0.12em; }
+      .flag { color: var(--amber); }
+    </style>
+  </head>
+  <body>
+    <div class="grid"></div>
+    <div class="wrap">
+      <div class="eyebrow">AI COMPUTE ATLAS · 2010 — 2026</div>
+      <h1>算力<em>全景</em></h1>
+      <div class="sub">架构世代 → 芯片 SKU → 整机 · 超节点 → 开源模型：同一条时间轴上，向上看供给，向下看产出。</div>
+      <div class="rail"></div>
+      <div class="dots">
+        <span class="dot" style="width:10px;height:10px;background:#38e2ff;opacity:.8"></span>
+        <span class="dot" style="width:14px;height:14px;background:#9270ff;opacity:.8"></span>
+        <span class="dot" style="width:20px;height:20px;background:#2fe6a8;opacity:.8"></span>
+        <span class="dot" style="width:28px;height:28px;background:#ffb545;opacity:.75"></span>
+        <span class="dot" style="width:36px;height:36px;background:#38e2ff;opacity:.35;border:1px solid #38e2ff"></span>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>10</b><span>代架构</span></div>
+        <div class="kpi"><b>154</b><span>NVIDIA SKU</span></div>
+        <div class="kpi"><b>15</b><span>整机 / 超节点</span></div>
+        <div class="kpi"><b>84</b><span>开源模型</span></div>
+        <div class="kpi"><b class="flag">8</b><span>中国特供</span></div>
+      </div>
+      <div class="foot">
+        <span>blog.weidows.tech/ai-compute-atlas</span>
+        <span>数据快照 2026-11-03</span>
+      </div>
+    </div>
+  </body>
+</html>

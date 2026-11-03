@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>月之暗面 Kimi 开源模型编年（2025-02—2026-06）｜16 个发布</title>
+<meta name="description" content="月之暗面 Kimi 在 Hugging Face 公开的 16 个模型发布与 12 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。">
+<link rel="canonical" href="https://blog.weidows.tech/ai-compute-atlas/models/kimi/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="算力全景 · AI Compute Atlas">
+<meta property="og:title" content="月之暗面 Kimi 开源模型编年（2025-02—2026-06）｜16 个发布">
+<meta property="og:description" content="月之暗面 Kimi 在 Hugging Face 公开的 16 个模型发布与 12 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。">
+<meta property="og:url" content="https://blog.weidows.tech/ai-compute-atlas/models/kimi/">
+<meta property="og:image" content="https://blog.weidows.tech/ai-compute-atlas/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/ai-compute-atlas/favicon.svg" type="image/svg+xml">
+<style>
+:root{--void:#04060b;--hull:#0b1322;--edge:#1c2a44;--cyan:#38e2ff;--fog:#8b9dbd;--snow:#e9f2ff;--amber:#ffb545;--violet:#9270ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--snow);font:14px/1.7 "Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+header.site{position:sticky;top:0;z-index:5;display:flex;gap:16px;align-items:center;justify-content:space-between;
+  padding:10px 20px;background:rgba(4,6,11,.9);border-bottom:1px solid var(--edge);backdrop-filter:blur(8px)}
+header.site .brand{font-weight:600;letter-spacing:.06em;color:var(--snow)}
+header.site nav{display:flex;gap:14px;font-size:12px;color:var(--fog)}
+main{max-width:1160px;margin:0 auto;padding:28px 20px 60px}
+.crumb{font-size:11px;color:var(--fog);margin-bottom:10px}
+.crumb a{color:var(--fog)}
+h1{font-size:26px;line-height:1.25;margin:0 0 10px;letter-spacing:.01em}
+h2{font-size:16px;margin:32px 0 10px;padding-left:8px;border-left:2px solid var(--cyan)}
+.lead{color:var(--fog);max-width:760px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px}
+.kpi{border:1px solid var(--edge);background:var(--hull);padding:8px 12px;min-width:120px}
+.kpi b{display:block;font-size:17px;color:var(--snow)}
+.kpi span{font-size:10px;color:var(--fog);letter-spacing:.12em;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:12px}
+th,td{padding:6px 8px;border-bottom:1px solid rgba(28,42,68,.7);text-align:left;vertical-align:top}
+th{color:var(--fog);font-weight:500;font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+tbody tr:hover{background:rgba(11,19,34,.7)}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:9px;padding:1px 5px;border:1px solid var(--edge);color:var(--fog);white-space:nowrap}
+.tag.cn{border-color:rgba(255,181,69,.6);color:var(--amber)}
+.pager{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.pager a{border:1px solid var(--edge);padding:3px 8px;font-size:11px;color:var(--fog)}
+.pager a[aria-current]{color:var(--cyan);border-color:rgba(56,226,255,.6)}
+.note{font-size:11px;color:var(--fog);border-left:2px solid var(--edge);padding-left:10px;margin:14px 0}
+footer.site{border-top:1px solid var(--edge);color:var(--fog);font-size:11px;padding:18px 20px;max-width:1160px;margin:0 auto}
+@media(max-width:640px){h1{font-size:21px}td,th{padding:5px 5px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"月之暗面 Kimi 开源模型编年（2025-02—2026-06）｜16 个发布","description":"月之暗面 Kimi 在 Hugging Face 公开的 16 个模型发布与 12 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。","url":"https://blog.weidows.tech/ai-compute-atlas/models/kimi/","mainEntity":{"@type":"ItemList","numberOfItems":16,"itemListElement":[{"@type":"ListItem","position":1,"name":"Kimi K3"},{"@type":"ListItem","position":2,"name":"Kimi K2.7 Code"},{"@type":"ListItem","position":3,"name":"Kimi K2.6"},{"@type":"ListItem","position":4,"name":"Kimi K2.5"},{"@type":"ListItem","position":5,"name":"Kimi-K2-Thinking"},{"@type":"ListItem","position":6,"name":"Kimi-Linear-48B-A3B-Instruct"},{"@type":"ListItem","position":7,"name":"Kimi-K2-Instruct-0905"},{"@type":"ListItem","position":8,"name":"Kimi-K2-Instruct"},{"@type":"ListItem","position":9,"name":"Kimi-K2-Base"},{"@type":"ListItem","position":10,"name":"Kimi-VL-A3B-Thinking-2506"},{"@type":"ListItem","position":11,"name":"Kimi-Dev-72B"},{"@type":"ListItem","position":12,"name":"Kimi-Audio-7B-Instruct"},{"@type":"ListItem","position":13,"name":"MoonViT-SO-400M"},{"@type":"ListItem","position":14,"name":"Kimi-VL-A3B-Instruct"},{"@type":"ListItem","position":15,"name":"Kimi-VL-A3B-Thinking"},{"@type":"ListItem","position":16,"name":"Moonlight-16B-A3B-Instruct"}]}}</script>
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="/ai-compute-atlas/">◈ 算力全景 · AI Compute Atlas</a>
+  <nav>
+    <a href="/ai-compute-atlas/">交互全景</a>
+    <a href="/ai-compute-atlas/data/">数据总表</a>
+    <a href="/ai-compute-atlas/china/">中国特供</a>
+  </nav>
+</header>
+<main>
+<nav class="crumb"><a href="/ai-compute-atlas/">算力全景</a> › <a href="/ai-compute-atlas/data/#models">开源模型</a> › Kimi</nav>
+<h1>月之暗面 Kimi：16 个开源发布</h1>
+
+<p class="lead">Kimi 系列：Muon 优化器与超稀疏 MoE 路线的开源权重</p>
+<div class="kpis">
+  <div class="kpi"><b>16</b><span>发布节点</span></div>
+  <div class="kpi"><b>12</b><span>技术突破</span></div>
+  <div class="kpi"><b>2800B</b><span>最大参数量</span></div>
+  <div class="kpi"><b>Kimi</b><span>实验室</span></div>
+</div>
+<h2>发布年表</h2>
+<table><thead><tr><th>日期</th><th>模型</th><th>参数</th><th>上下文</th><th>许可</th><th>测评</th><th>近 30 天下载</th></tr></thead><tbody>
+<tr>
+<td class="num">2026-06-13</td>
+<td>Kimi K3</td>
+<td class="num">2.8T</td>
+<td>1M</td>
+<td>kimi-k3</td>
+<td>GDPval-AA v2 1686</td>
+<td class="num">2,277,273</td>
+</tr>
+<tr>
+<td class="num">2026-06-11</td>
+<td>Kimi K2.7 Code</td>
+<td class="num">1T</td>
+<td>256K</td>
+<td>modified-mit</td>
+<td>MCP Mark Verified 81.1</td>
+<td class="num">182,708</td>
+</tr>
+<tr>
+<td class="num">2026-04-14</td>
+<td>Kimi K2.6</td>
+<td class="num">1T</td>
+<td>256K</td>
+<td>modified-mit</td>
+<td>V* 96.9</td>
+<td class="num">535,907</td>
+</tr>
+<tr>
+<td class="num">2026-01-01</td>
+<td>Kimi K2.5</td>
+<td class="num">1T</td>
+<td>256K</td>
+<td>modified-mit</td>
+<td>AIME 2025 96.1</td>
+<td class="num">380,587</td>
+</tr>
+<tr>
+<td class="num">2025-11-04</td>
+<td>Kimi-K2-Thinking</td>
+<td class="num">1T</td>
+<td>256K</td>
+<td>modified-mit</td>
+<td>AIME25 94.5</td>
+<td class="num">51,157</td>
+</tr>
+<tr>
+<td class="num">2025-10-30</td>
+<td>Kimi-Linear-48B-A3B-Instruct</td>
+<td class="num">48B</td>
+<td>1M</td>
+<td>mit</td>
+<td>RULER 84.3</td>
+<td class="num">173,293</td>
+</tr>
+<tr>
+<td class="num">2025-09-03</td>
+<td>Kimi-K2-Instruct-0905</td>
+<td class="num">1T</td>
+<td>256K</td>
+<td>modified-mit</td>
+<td>SWE-Bench verified 69.2</td>
+<td class="num">37,788</td>
+</tr>
+<tr>
+<td class="num">2025-07-11</td>
+<td>Kimi-K2-Instruct</td>
+<td class="num">1T</td>
+<td>128K</td>
+<td>modified-mit</td>
+<td>MATH-500 97.4</td>
+<td class="num">184,577</td>
+</tr>
+<tr>
+<td class="num">2025-07-03</td>
+<td>Kimi-K2-Base</td>
+<td class="num">1T</td>
+<td>128K</td>
+<td>modified-mit</td>
+<td>C-Eval 92.5</td>
+<td class="num">12,671</td>
+</tr>
+<tr>
+<td class="num">2025-06-21</td>
+<td>Kimi-VL-A3B-Thinking-2506</td>
+<td class="num">16B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>mit</td>
+<td>OCRBench 869</td>
+<td class="num">29,685</td>
+</tr>
+<tr>
+<td class="num">2025-06-16</td>
+<td>Kimi-Dev-72B</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>SWE-bench Verified 60.4</td>
+<td class="num">3,628</td>
+</tr>
+<tr>
+<td class="num">2025-04-25</td>
+<td>Kimi-Audio-7B-Instruct</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">12,991</td>
+</tr>
+<tr>
+<td class="num">2025-04-10</td>
+<td>MoonViT-SO-400M</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">2,784</td>
+</tr>
+<tr>
+<td class="num">2025-04-09</td>
+<td>Kimi-VL-A3B-Instruct</td>
+<td class="num">16B</td>
+<td>128K</td>
+<td>mit</td>
+<td>OCRBench 867</td>
+<td class="num">162,717</td>
+</tr>
+<tr>
+<td class="num">2025-04-09</td>
+<td>Kimi-VL-A3B-Thinking</td>
+<td class="num">16B</td>
+<td>128K</td>
+<td>mit</td>
+<td>MathVista 71.3</td>
+<td class="num">16,242</td>
+</tr>
+<tr>
+<td class="num">2025-02-22</td>
+<td>Moonlight-16B-A3B-Instruct</td>
+<td class="num">16B</td>
+<td>8K</td>
+<td>mit</td>
+<td>CMath 81.1</td>
+<td class="num">58,542</td>
+</tr>
+</tbody></table>
+<h2>技术突破</h2>
+<table><thead><tr><th>时间</th><th>缩写</th><th>名称</th><th>环节</th><th>幅度</th></tr></thead><tbody>
+<tr><td class="num">2025-02-22</td><td>RMS</td><td>首次证明 Muon 优化器可用于大规模 LL</td><td>训练</td><td>上下文 8K</td></tr>
+<tr><td class="num">2025-04-09</td><td>MLP</td><td>以 2.8B+0.4B 激活参数在 Scre</td><td>多模态</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-06-16</td><td>SWE</td><td>SWE-bench Verified 达 6</td><td>后训练</td><td>见模型卡</td></tr>
+<tr><td class="num">2025-06-21</td><td>think</td><td>多模态推理大幅提升并降低 20% 思维长度</td><td>多模态</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-07-03</td><td>MLA·K2-Base</td><td>MuonClip 优化器把 Muon 首次扩</td><td>训练</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-07-11</td><td>MLA·K2-Instruct</td><td>开源 1T 参数级 agentic 模型</td><td>训练</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-10-30</td><td>KDA·Linear</td><td>KDA 混合线性注意力</td><td>推理</td><td>上下文 1M</td></tr>
+<tr><td class="num">2025-11-04</td><td>QAT</td><td>QAT 原生 INT4 量化实现约 2x 生</td><td>推理</td><td>上下文 256K</td></tr>
+<tr><td class="num">2026-01-01</td><td>INT4·K2.5</td><td>原生多模态 + Agent Swarm</td><td>多模态</td><td>上下文 256K</td></tr>
+<tr><td class="num">2026-04-14</td><td>INT4·K2.6</td><td>Agent Swarm 横向扩展到 300 </td><td>后训练</td><td>上下文 256K</td></tr>
+<tr><td class="num">2026-06-11</td><td>K2</td><td>相比 K2.6 思考 token 用量减少约</td><td>训练</td><td>上下文 256K</td></tr>
+<tr><td class="num">2026-06-13</td><td>KDA·K3</td><td>以 KDA+Attention Residu</td><td>推理</td><td>上下文 1M</td></tr>
+</tbody></table>
+<p class="note">下载量为 Hugging Face 报告的滚动 30 天口径；模型卡未标注的字段一律留空，不做推测。</p>
+<div class="pager">
+  <a href="/ai-compute-atlas/models/deepseek/">DeepSeek</a>
+<a href="/ai-compute-atlas/models/glm/">GLM</a>
+<a href="/ai-compute-atlas/models/kimi/" aria-current="page">Kimi</a>
+  <a href="/ai-compute-atlas/">在时间轴上查看 →</a>
+</div>
+</main>
+<footer class="site">
+  数据快照 2026-11-03 · 产品规格来自《NVIDIA 显卡历代产品全览》，行情来自 gpu-server-compare，模型数据来自 Hugging Face 官方 API ·
+  <a href="/ai-compute-atlas/">返回交互版</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>智谱 GLM 开源模型编年（2023-03—2026-08）｜37 个发布</title>
+<meta name="description" content="智谱 GLM 在 Hugging Face 公开的 37 个模型发布与 32 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。">
+<link rel="canonical" href="https://blog.weidows.tech/ai-compute-atlas/models/glm/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="算力全景 · AI Compute Atlas">
+<meta property="og:title" content="智谱 GLM 开源模型编年（2023-03—2026-08）｜37 个发布">
+<meta property="og:description" content="智谱 GLM 在 Hugging Face 公开的 37 个模型发布与 32 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。">
+<meta property="og:url" content="https://blog.weidows.tech/ai-compute-atlas/models/glm/">
+<meta property="og:image" content="https://blog.weidows.tech/ai-compute-atlas/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/ai-compute-atlas/favicon.svg" type="image/svg+xml">
+<style>
+:root{--void:#04060b;--hull:#0b1322;--edge:#1c2a44;--cyan:#38e2ff;--fog:#8b9dbd;--snow:#e9f2ff;--amber:#ffb545;--violet:#9270ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--snow);font:14px/1.7 "Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+header.site{position:sticky;top:0;z-index:5;display:flex;gap:16px;align-items:center;justify-content:space-between;
+  padding:10px 20px;background:rgba(4,6,11,.9);border-bottom:1px solid var(--edge);backdrop-filter:blur(8px)}
+header.site .brand{font-weight:600;letter-spacing:.06em;color:var(--snow)}
+header.site nav{display:flex;gap:14px;font-size:12px;color:var(--fog)}
+main{max-width:1160px;margin:0 auto;padding:28px 20px 60px}
+.crumb{font-size:11px;color:var(--fog);margin-bottom:10px}
+.crumb a{color:var(--fog)}
+h1{font-size:26px;line-height:1.25;margin:0 0 10px;letter-spacing:.01em}
+h2{font-size:16px;margin:32px 0 10px;padding-left:8px;border-left:2px solid var(--cyan)}
+.lead{color:var(--fog);max-width:760px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px}
+.kpi{border:1px solid var(--edge);background:var(--hull);padding:8px 12px;min-width:120px}
+.kpi b{display:block;font-size:17px;color:var(--snow)}
+.kpi span{font-size:10px;color:var(--fog);letter-spacing:.12em;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:12px}
+th,td{padding:6px 8px;border-bottom:1px solid rgba(28,42,68,.7);text-align:left;vertical-align:top}
+th{color:var(--fog);font-weight:500;font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+tbody tr:hover{background:rgba(11,19,34,.7)}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:9px;padding:1px 5px;border:1px solid var(--edge);color:var(--fog);white-space:nowrap}
+.tag.cn{border-color:rgba(255,181,69,.6);color:var(--amber)}
+.pager{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.pager a{border:1px solid var(--edge);padding:3px 8px;font-size:11px;color:var(--fog)}
+.pager a[aria-current]{color:var(--cyan);border-color:rgba(56,226,255,.6)}
+.note{font-size:11px;color:var(--fog);border-left:2px solid var(--edge);padding-left:10px;margin:14px 0}
+footer.site{border-top:1px solid var(--edge);color:var(--fog);font-size:11px;padding:18px 20px;max-width:1160px;margin:0 auto}
+@media(max-width:640px){h1{font-size:21px}td,th{padding:5px 5px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"智谱 GLM 开源模型编年（2023-03—2026-08）｜37 个发布","description":"智谱 GLM 在 Hugging Face 公开的 37 个模型发布与 32 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。","url":"https://blog.weidows.tech/ai-compute-atlas/models/glm/","mainEntity":{"@type":"ItemList","numberOfItems":37,"itemListElement":[{"@type":"ListItem","position":1,"name":"GLM-5.3"},{"@type":"ListItem","position":2,"name":"GLM-5.3-Flash"},{"@type":"ListItem","position":3,"name":"GLM-5.2"},{"@type":"ListItem","position":4,"name":"SCAIL-2"},{"@type":"ListItem","position":5,"name":"GLM-5.1"},{"@type":"ListItem","position":6,"name":"GLM-5"},{"@type":"ListItem","position":7,"name":"GLM-OCR"},{"@type":"ListItem","position":8,"name":"GLM-4.7-Flash"},{"@type":"ListItem","position":9,"name":"GLM-Image"},{"@type":"ListItem","position":10,"name":"GLM-4.7"},{"@type":"ListItem","position":11,"name":"GLM-ASR-Nano-2512"},{"@type":"ListItem","position":12,"name":"AutoGLM-Phone-9B"},{"@type":"ListItem","position":13,"name":"GLM-4.6V-Flash"},{"@type":"ListItem","position":14,"name":"Glyph"},{"@type":"ListItem","position":15,"name":"GLM-4.6"},{"@type":"ListItem","position":16,"name":"GLM-4.5V"},{"@type":"ListItem","position":17,"name":"GLM-4.5"},{"@type":"ListItem","position":18,"name":"GLM-4.5-Air"},{"@type":"ListItem","position":19,"name":"GLM-4.1V-9B-Thinking"},{"@type":"ListItem","position":20,"name":"GLM-Z1-Rumination-32B-0414"},{"@type":"ListItem","position":21,"name":"GLM-Z1-32B-0414"},{"@type":"ListItem","position":22,"name":"GLM-4-9B-0414"},{"@type":"ListItem","position":23,"name":"GLM-4-32B-0414"},{"@type":"ListItem","position":24,"name":"CogView4-6B"},{"@type":"ListItem","position":25,"name":"CogVideoX1.5-5B"},{"@type":"ListItem","position":26,"name":"GLM-4-Voice-9B"},{"@type":"ListItem","position":27,"name":"CogVideoX-5B"},{"@type":"ListItem","position":28,"name":"CogVideoX-2B"},{"@type":"ListItem","position":29,"name":"GLM-4-9B-Chat"},{"@type":"ListItem","position":30,"name":"GLM-4V-9B"},{"@type":"ListItem","position":31,"name":"CogVLM2-LLaMA3-Chat-19B"},{"@type":"ListItem","position":32,"name":"CogAgent-18B"},{"@type":"ListItem","position":33,"name":"CogVLM-17B"},{"@type":"ListItem","position":34,"name":"ChatGLM3-6B"},{"@type":"ListItem","position":35,"name":"CodeGeeX2-6B"},{"@type":"ListItem","position":36,"name":"ChatGLM2-6B"},{"@type":"ListItem","position":37,"name":"ChatGLM-6B"}]}}</script>
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="/ai-compute-atlas/">◈ 算力全景 · AI Compute Atlas</a>
+  <nav>
+    <a href="/ai-compute-atlas/">交互全景</a>
+    <a href="/ai-compute-atlas/data/">数据总表</a>
+    <a href="/ai-compute-atlas/china/">中国特供</a>
+  </nav>
+</header>
+<main>
+<nav class="crumb"><a href="/ai-compute-atlas/">算力全景</a> › <a href="/ai-compute-atlas/data/#models">开源模型</a> › GLM</nav>
+<h1>智谱 GLM：37 个开源发布</h1>
+
+<p class="lead">GLM 系列：从 ChatGLM 到 GLM-5.3，全栈开源（语言 / 视觉 / 代码 / 视频 / 语音）</p>
+<div class="kpis">
+  <div class="kpi"><b>37</b><span>发布节点</span></div>
+  <div class="kpi"><b>32</b><span>技术突破</span></div>
+  <div class="kpi"><b>744B</b><span>最大参数量</span></div>
+  <div class="kpi"><b>GLM</b><span>实验室</span></div>
+</div>
+<h2>发布年表</h2>
+<table><thead><tr><th>日期</th><th>模型</th><th>参数</th><th>上下文</th><th>许可</th><th>测评</th><th>近 30 天下载</th></tr></thead><tbody>
+<tr>
+<td class="num">2026-08-25</td>
+<td>GLM-5.3</td>
+<td class="num">未公开</td>
+<td>1M</td>
+<td>other (glm-5.3)</td>
+<td>GDPval-AA v2 1769</td>
+<td class="num">635,504</td>
+</tr>
+<tr>
+<td class="num">2026-08-25</td>
+<td>GLM-5.3-Flash</td>
+<td class="num">320B</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">1,333,574</td>
+</tr>
+<tr>
+<td class="num">2026-06-16</td>
+<td>GLM-5.2</td>
+<td class="num">未公开</td>
+<td>1M</td>
+<td>mit</td>
+<td>AIME 2026 99.2</td>
+<td class="num">932,248</td>
+</tr>
+<tr>
+<td class="num">2026-06-09</td>
+<td>SCAIL-2</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">6,445</td>
+</tr>
+<tr>
+<td class="num">2026-04-03</td>
+<td>GLM-5.1</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>AIME 2026 95.3</td>
+<td class="num">82,309</td>
+</tr>
+<tr>
+<td class="num">2026-02-11</td>
+<td>GLM-5</td>
+<td class="num">744B</td>
+<td>200K</td>
+<td>mit</td>
+<td>HMMT Nov. 2025 96.9</td>
+<td class="num">58,754</td>
+</tr>
+<tr>
+<td class="num">2026-01-30</td>
+<td>GLM-OCR</td>
+<td class="num">0.9B</td>
+<td>—</td>
+<td>mit</td>
+<td>OmniDocBench V1.5 94.62</td>
+<td class="num">1,889,384</td>
+</tr>
+<tr>
+<td class="num">2026-01-19</td>
+<td>GLM-4.7-Flash</td>
+<td class="num">30B</td>
+<td>—</td>
+<td>mit</td>
+<td>AIME 25 91.6</td>
+<td class="num">1,882,455</td>
+</tr>
+<tr>
+<td class="num">2026-01-08</td>
+<td>GLM-Image</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">10,117</td>
+</tr>
+<tr>
+<td class="num">2025-12-22</td>
+<td>GLM-4.7</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>HMMT Feb. 2025 97.1</td>
+<td class="num">75,379</td>
+</tr>
+<tr>
+<td class="num">2025-12-09</td>
+<td>GLM-ASR-Nano-2512</td>
+<td class="num">1.5B</td>
+<td>—</td>
+<td>mit</td>
+<td>Average error rate 4.1</td>
+<td class="num">56,071</td>
+</tr>
+<tr>
+<td class="num">2025-12-08</td>
+<td>AutoGLM-Phone-9B</td>
+<td class="num">9B</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">2,563</td>
+</tr>
+<tr>
+<td class="num">2025-12-07</td>
+<td>GLM-4.6V-Flash</td>
+<td class="num">9B</td>
+<td>128K</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">78,394</td>
+</tr>
+<tr>
+<td class="num">2025-10-25</td>
+<td>Glyph</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">305</td>
+</tr>
+<tr>
+<td class="num">2025-09-29</td>
+<td>GLM-4.6</td>
+<td class="num">未公开</td>
+<td>200K</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">18,342</td>
+</tr>
+<tr>
+<td class="num">2025-08-10</td>
+<td>GLM-4.5V</td>
+<td class="num">106B</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">45,375</td>
+</tr>
+<tr>
+<td class="num">2025-07-20</td>
+<td>GLM-4.5</td>
+<td class="num">355B</td>
+<td>128K</td>
+<td>mit</td>
+<td>12 项行业标准基准综合平均分 63.2</td>
+<td class="num">80,489</td>
+</tr>
+<tr>
+<td class="num">2025-07-20</td>
+<td>GLM-4.5-Air</td>
+<td class="num">106B</td>
+<td>128K</td>
+<td>mit</td>
+<td>12 项行业标准基准综合平均分 59.8</td>
+<td class="num">101,674</td>
+</tr>
+<tr>
+<td class="num">2025-06-28</td>
+<td>GLM-4.1V-9B-Thinking</td>
+<td class="num">9B</td>
+<td>64K</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">177,072</td>
+</tr>
+<tr>
+<td class="num">2025-04-13</td>
+<td>GLM-Z1-Rumination-32B-0414</td>
+<td class="num">32B</td>
+<td>—</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">625</td>
+</tr>
+<tr>
+<td class="num">2025-04-08</td>
+<td>GLM-Z1-32B-0414</td>
+<td class="num">32B</td>
+<td>32K</td>
+<td>mit</td>
+<td>—</td>
+<td class="num">50,636</td>
+</tr>
+<tr>
+<td class="num">2025-04-07</td>
+<td>GLM-4-9B-0414</td>
+<td class="num">9B</td>
+<td>—</td>
+<td>MIT</td>
+<td>—</td>
+<td class="num">20,652</td>
+</tr>
+<tr>
+<td class="num">2025-04-07</td>
+<td>GLM-4-32B-0414</td>
+<td class="num">32B</td>
+<td>—</td>
+<td>MIT</td>
+<td>SimpleQA 88.1</td>
+<td class="num">4,342</td>
+</tr>
+<tr>
+<td class="num">2025-03-03</td>
+<td>CogView4-6B</td>
+<td class="num">6B</td>
+<td>—</td>
+<td>Apache-2.0</td>
+<td>DPG-Bench Attribute 91.17</td>
+<td class="num">6,190</td>
+</tr>
+<tr>
+<td class="num">2024-11-02</td>
+<td>CogVideoX1.5-5B</td>
+<td class="num">5B</td>
+<td>—</td>
+<td>CogVideoX LICENSE（other）</td>
+<td>—</td>
+<td class="num">2,986</td>
+</tr>
+<tr>
+<td class="num">2024-10-24</td>
+<td>GLM-4-Voice-9B</td>
+<td class="num">9B</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td class="num">8,548</td>
+</tr>
+<tr>
+<td class="num">2024-08-17</td>
+<td>CogVideoX-5B</td>
+<td class="num">5B</td>
+<td>—</td>
+<td>CogVideoX LICENSE（other）</td>
+<td>—</td>
+<td class="num">15,371</td>
+</tr>
+<tr>
+<td class="num">2024-08-05</td>
+<td>CogVideoX-2B</td>
+<td class="num">2B</td>
+<td>—</td>
+<td>Apache-2.0</td>
+<td>—</td>
+<td class="num">22,018</td>
+</tr>
+<tr>
+<td class="num">2024-06-04</td>
+<td>GLM-4-9B-Chat</td>
+<td class="num">9B</td>
+<td>128K</td>
+<td>GLM-4 License（other）</td>
+<td>XStoryCloze 90.7</td>
+<td class="num">87,488</td>
+</tr>
+<tr>
+<td class="num">2024-06-04</td>
+<td>GLM-4V-9B</td>
+<td class="num">9B</td>
+<td>8K</td>
+<td>GLM-4 License（other）</td>
+<td>MME 2163.8</td>
+<td class="num">20,715</td>
+</tr>
+<tr>
+<td class="num">2024-05-16</td>
+<td>CogVLM2-LLaMA3-Chat-19B</td>
+<td class="num">19B</td>
+<td>8K</td>
+<td>CogVLM2 LICENSE（other），基于 Meta Llama 3 需同时遵守 LLAMA3_LICENSE</td>
+<td>OCRBench 756</td>
+<td class="num">10,263</td>
+</tr>
+<tr>
+<td class="num">2023-12-15</td>
+<td>CogAgent-18B</td>
+<td class="num">18B</td>
+<td>—</td>
+<td>Apache-2.0（代码）/ Model License（模型权重）</td>
+<td>—</td>
+<td class="num">488</td>
+</tr>
+<tr>
+<td class="num">2023-11-16</td>
+<td>CogVLM-17B</td>
+<td class="num">17B</td>
+<td>—</td>
+<td>Apache-2.0（代码）/ Model License（模型权重）</td>
+<td>—</td>
+<td class="num">790</td>
+</tr>
+<tr>
+<td class="num">2023-10-25</td>
+<td>ChatGLM3-6B</td>
+<td class="num">6B</td>
+<td>—</td>
+<td>Apache-2.0（代码）/ Model License（模型权重）</td>
+<td>—</td>
+<td class="num">61,785</td>
+</tr>
+<tr>
+<td class="num">2023-07-19</td>
+<td>CodeGeeX2-6B</td>
+<td class="num">60 亿</td>
+<td>8K</td>
+<td>Apache-2.0（代码）/ Model License（模型权重）</td>
+<td>HumanEval-X Rust 321</td>
+<td class="num">322</td>
+</tr>
+<tr>
+<td class="num">2023-06-24</td>
+<td>ChatGLM2-6B</td>
+<td class="num">6B</td>
+<td>32K</td>
+<td>Apache-2.0（代码）/ Model License（模型权重）</td>
+<td>GSM8K 571</td>
+<td class="num">442,087</td>
+</tr>
+<tr>
+<td class="num">2023-03-13</td>
+<td>ChatGLM-6B</td>
+<td class="num">62 亿</td>
+<td>—</td>
+<td>Apache-2.0（代码）/ Model License（模型权重）</td>
+<td>—</td>
+<td class="num">3,070</td>
+</tr>
+</tbody></table>
+<h2>技术突破</h2>
+<table><thead><tr><th>时间</th><th>缩写</th><th>名称</th><th>环节</th><th>幅度</th></tr></thead><tbody>
+<tr><td class="num">2023-03-13</td><td>RLHF</td><td>以 62 亿参数配合 INT4 量化</td><td>推理</td><td>总参 62 亿</td></tr>
+<tr><td class="num">2023-06-24</td><td>GLM·2-6B</td><td>上下文长度由初代的 2K 扩展至 32K</td><td>训练</td><td>上下文 32K</td></tr>
+<tr><td class="num">2023-07-19</td><td>INT4</td><td>仅 60 亿参数即在 HumanEval-X</td><td>训练</td><td>上下文 8K</td></tr>
+<tr><td class="num">2023-10-25</td><td>Prompt</td><td>原生支持工具调用</td><td>后训练</td><td>总参 6B</td></tr>
+<tr><td class="num">2023-11-16</td><td>MLP</td><td>视觉专家模块</td><td>多模态</td><td>总参 17B</td></tr>
+<tr><td class="num">2023-12-15</td><td>GUI·CogAgent-18B</td><td>首个把 VLM 用作 GUI Agent</td><td>多模态</td><td>总参 18B</td></tr>
+<tr><td class="num">2024-05-16</td><td>GPT</td><td>图文文档理解大幅跃升</td><td>多模态</td><td>上下文 8K</td></tr>
+<tr><td class="num">2024-06-04</td><td>BFCL</td><td>把 128K 长上下文、26 种多语言与 F</td><td>推理</td><td>上下文 128K</td></tr>
+<tr><td class="num">2024-06-04</td><td>AI2D</td><td>高分辨率文字识别反超闭源旗舰</td><td>多模态</td><td>上下文 8K</td></tr>
+<tr><td class="num">2024-08-05</td><td>torchao</td><td>把文生视频门槛压到消费级</td><td>多模态</td><td>总参 2B</td></tr>
+<tr><td class="num">2024-08-17</td><td>BF16·CogVideoX-5B</td><td>用 3d_rope_pos_embed 替换</td><td>多模态</td><td>总参 5B</td></tr>
+<tr><td class="num">2024-10-24</td><td>GLM·4-Voice-9B</td><td>端到端语音对话并可按指令改变情感、语调、语速</td><td>多模态</td><td>总参 9B</td></tr>
+<tr><td class="num">2024-11-02</td><td>BF16·CogVideoX1.5</td><td>分辨率从 720×480 提升到 1360×</td><td>多模态</td><td>总参 5B</td></tr>
+<tr><td class="num">2025-04-07</td><td>SWE·4-32B-0414</td><td>32B 稠密模型在 IFEval</td><td>训练</td><td>总参 32B</td></tr>
+<tr><td class="num">2025-04-08</td><td>RL·Z1-32B-0414</td><td>在 32B 开源规模上做出对标 DeepSe</td><td>训练</td><td>上下文 32K</td></tr>
+<tr><td class="num">2025-06-28</td><td>RL·4.1V</td><td>首个以「思考范式 + 强化学习」训练的 GL</td><td>多模态</td><td>上下文 64K</td></tr>
+<tr><td class="num">2025-07-20</td><td>A32B</td><td>以 355B-A32B 规模在 12 项标准</td><td>推理</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-07-20</td><td>A12B</td><td>以 106B-A12B 的紧凑设计拿到 59</td><td>推理</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-08-10</td><td>GLM·4.5V</td><td>在 42 项公开视觉语言基准上取得同规模 S</td><td>多模态</td><td>激活 12B</td></tr>
+<tr><td class="num">2025-09-29</td><td>TIR</td><td>上下文从 128K 扩到 200K 以支撑更</td><td>推理</td><td>上下文 200K</td></tr>
+<tr><td class="num">2025-12-07</td><td>HTML</td><td>首次在 GLM-V 系列引入原生 Funct</td><td>多模态</td><td>上下文 128K</td></tr>
+<tr><td class="num">2025-12-08</td><td>GUI·AutoGLM</td><td>把视觉语言模型直接接进真实手机 GUI</td><td>多模态</td><td>总参 9B</td></tr>
+<tr><td class="num">2025-12-09</td><td>V3</td><td>以 1.5B 规模取得同类开源模型最低平均错</td><td>多模态</td><td>总参 1.5B</td></tr>
+<tr><td class="num">2025-12-22</td><td>SWE·4.7</td><td>SWE-bench Verified 73.</td><td>后训练</td><td>见模型卡</td></tr>
+<tr><td class="num">2026-01-08</td><td>GLM·Image</td><td>CVTG-2K 词准确率 0.9116 / </td><td>多模态</td><td>见模型卡</td></tr>
+<tr><td class="num">2026-01-19</td><td>A3B</td><td>以 30B-A3B 在 SWE-bench </td><td>架构</td><td>激活 3B</td></tr>
+<tr><td class="num">2026-01-30</td><td>MTP·OCR</td><td>以 0.9B 规模在 OmniDocBenc</td><td>多模态</td><td>总参 0.9B</td></tr>
+<tr><td class="num">2026-02-11</td><td>DSA</td><td>从 GLM-4.5 的 355B-A32B </td><td>训练</td><td>上下文 200K</td></tr>
+<tr><td class="num">2026-04-03</td><td>SWE·5.1</td><td>在长程任务上可维持数百轮优化、数千次工具调用</td><td>后训练</td><td>见模型卡</td></tr>
+<tr><td class="num">2026-06-16</td><td>MTP·5.2</td><td>solid 1M 上下文 + IndexSh</td><td>训练</td><td>上下文 1M</td></tr>
+<tr><td class="num">2026-08-25</td><td>GLM·5.3</td><td>编码能力较 GLM-5.2 提升 50%</td><td>训练</td><td>上下文 1M</td></tr>
+<tr><td class="num">2026-08-25</td><td>mHC</td><td>首次在 GLM 系列引入稀疏+线性混合注意力</td><td>多模态</td><td>激活 18B</td></tr>
+</tbody></table>
+<p class="note">下载量为 Hugging Face 报告的滚动 30 天口径；模型卡未标注的字段一律留空，不做推测。</p>
+<div class="pager">
+  <a href="/ai-compute-atlas/models/deepseek/">DeepSeek</a>
+<a href="/ai-compute-atlas/models/glm/" aria-current="page">GLM</a>
+<a href="/ai-compute-atlas/models/kimi/">Kimi</a>
+  <a href="/ai-compute-atlas/">在时间轴上查看 →</a>
+</div>
+</main>
+<footer class="site">
+  数据快照 2026-11-03 · 产品规格来自《NVIDIA 显卡历代产品全览》，行情来自 gpu-server-compare，模型数据来自 Hugging Face 官方 API ·
+  <a href="/ai-compute-atlas/">返回交互版</a>
+</footer>
+</body>
+</html>

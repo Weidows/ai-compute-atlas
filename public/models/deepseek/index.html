@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DeepSeek 开源模型编年（2023-10—2026-09）｜31 个发布</title>
+<meta name="description" content="DeepSeek 在 Hugging Face 公开的 31 个模型发布与 24 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。">
+<link rel="canonical" href="https://blog.weidows.tech/ai-compute-atlas/models/deepseek/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="算力全景 · AI Compute Atlas">
+<meta property="og:title" content="DeepSeek 开源模型编年（2023-10—2026-09）｜31 个发布">
+<meta property="og:description" content="DeepSeek 在 Hugging Face 公开的 31 个模型发布与 24 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。">
+<meta property="og:url" content="https://blog.weidows.tech/ai-compute-atlas/models/deepseek/">
+<meta property="og:image" content="https://blog.weidows.tech/ai-compute-atlas/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/ai-compute-atlas/favicon.svg" type="image/svg+xml">
+<style>
+:root{--void:#04060b;--hull:#0b1322;--edge:#1c2a44;--cyan:#38e2ff;--fog:#8b9dbd;--snow:#e9f2ff;--amber:#ffb545;--violet:#9270ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--snow);font:14px/1.7 "Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+header.site{position:sticky;top:0;z-index:5;display:flex;gap:16px;align-items:center;justify-content:space-between;
+  padding:10px 20px;background:rgba(4,6,11,.9);border-bottom:1px solid var(--edge);backdrop-filter:blur(8px)}
+header.site .brand{font-weight:600;letter-spacing:.06em;color:var(--snow)}
+header.site nav{display:flex;gap:14px;font-size:12px;color:var(--fog)}
+main{max-width:1160px;margin:0 auto;padding:28px 20px 60px}
+.crumb{font-size:11px;color:var(--fog);margin-bottom:10px}
+.crumb a{color:var(--fog)}
+h1{font-size:26px;line-height:1.25;margin:0 0 10px;letter-spacing:.01em}
+h2{font-size:16px;margin:32px 0 10px;padding-left:8px;border-left:2px solid var(--cyan)}
+.lead{color:var(--fog);max-width:760px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px}
+.kpi{border:1px solid var(--edge);background:var(--hull);padding:8px 12px;min-width:120px}
+.kpi b{display:block;font-size:17px;color:var(--snow)}
+.kpi span{font-size:10px;color:var(--fog);letter-spacing:.12em;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:12px}
+th,td{padding:6px 8px;border-bottom:1px solid rgba(28,42,68,.7);text-align:left;vertical-align:top}
+th{color:var(--fog);font-weight:500;font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+tbody tr:hover{background:rgba(11,19,34,.7)}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:9px;padding:1px 5px;border:1px solid var(--edge);color:var(--fog);white-space:nowrap}
+.tag.cn{border-color:rgba(255,181,69,.6);color:var(--amber)}
+.pager{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.pager a{border:1px solid var(--edge);padding:3px 8px;font-size:11px;color:var(--fog)}
+.pager a[aria-current]{color:var(--cyan);border-color:rgba(56,226,255,.6)}
+.note{font-size:11px;color:var(--fog);border-left:2px solid var(--edge);padding-left:10px;margin:14px 0}
+footer.site{border-top:1px solid var(--edge);color:var(--fog);font-size:11px;padding:18px 20px;max-width:1160px;margin:0 auto}
+@media(max-width:640px){h1{font-size:21px}td,th{padding:5px 5px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"DeepSeek 开源模型编年（2023-10—2026-09）｜31 个发布","description":"DeepSeek 在 Hugging Face 公开的 31 个模型发布与 24 项技术突破：参数量、上下文、许可、官方测评与下载量，按时间倒序，数据来自 HF 官方 API 快照。","url":"https://blog.weidows.tech/ai-compute-atlas/models/deepseek/","mainEntity":{"@type":"ItemList","numberOfItems":31,"itemListElement":[{"@type":"ListItem","position":1,"name":"DeepSeek-V4.1-Flash"},{"@type":"ListItem","position":2,"name":"DeepSeek-V4-Flash-Vision-Exp"},{"@type":"ListItem","position":3,"name":"DeepSeek-V4-Pro-0813"},{"@type":"ListItem","position":4,"name":"DeepSeek-V4-Flash-0731"},{"@type":"ListItem","position":5,"name":"DeepSeek-V4-Flash-DSpark"},{"@type":"ListItem","position":6,"name":"DeepSeek-V4-Flash"},{"@type":"ListItem","position":7,"name":"DeepSeek-V4-Pro"},{"@type":"ListItem","position":8,"name":"DeepSeek-OCR 2"},{"@type":"ListItem","position":9,"name":"DeepSeek-V3.2"},{"@type":"ListItem","position":10,"name":"DeepSeek-Math-V2"},{"@type":"ListItem","position":11,"name":"DeepSeek-OCR"},{"@type":"ListItem","position":12,"name":"DeepSeek-V3.2-Exp"},{"@type":"ListItem","position":13,"name":"DeepSeek-V3.1-Terminus"},{"@type":"ListItem","position":14,"name":"DeepSeek-V3.1"},{"@type":"ListItem","position":15,"name":"DeepSeek-R1-0528"},{"@type":"ListItem","position":16,"name":"DeepSeek-Prover-V2"},{"@type":"ListItem","position":17,"name":"DeepSeek-V3-0324"},{"@type":"ListItem","position":18,"name":"Janus-Pro"},{"@type":"ListItem","position":19,"name":"DeepSeek-R1"},{"@type":"ListItem","position":20,"name":"DeepSeek-V3"},{"@type":"ListItem","position":21,"name":"DeepSeek-VL2"},{"@type":"ListItem","position":22,"name":"DeepSeek-V2.5"},{"@type":"ListItem","position":23,"name":"DeepSeek-Coder-V2"},{"@type":"ListItem","position":24,"name":"DeepSeek-V2-Lite"},{"@type":"ListItem","position":25,"name":"DeepSeek-V2"},{"@type":"ListItem","position":26,"name":"DeepSeek-VL"},{"@type":"ListItem","position":27,"name":"DeepSeekMath"},{"@type":"ListItem","position":28,"name":"DeepSeek Coder v1.5"},{"@type":"ListItem","position":29,"name":"DeepSeekMoE 16B"},{"@type":"ListItem","position":30,"name":"DeepSeek LLM"},{"@type":"ListItem","position":31,"name":"DeepSeek Coder"}]}}</script>
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="/ai-compute-atlas/">◈ 算力全景 · AI Compute Atlas</a>
+  <nav>
+    <a href="/ai-compute-atlas/">交互全景</a>
+    <a href="/ai-compute-atlas/data/">数据总表</a>
+    <a href="/ai-compute-atlas/china/">中国特供</a>
+  </nav>
+</header>
+<main>
+<nav class="crumb"><a href="/ai-compute-atlas/">算力全景</a> › <a href="/ai-compute-atlas/data/#models">开源模型</a> › DeepSeek</nav>
+<h1>DeepSeek：31 个开源发布</h1>
+
+<p class="lead">从 7B 稠密模型到 671B 稀疏专家，MLA / GRPO / V4 系列的开源路线</p>
+<div class="kpis">
+  <div class="kpi"><b>31</b><span>发布节点</span></div>
+  <div class="kpi"><b>24</b><span>技术突破</span></div>
+  <div class="kpi"><b>1600B</b><span>最大参数量</span></div>
+  <div class="kpi"><b>DeepSeek</b><span>实验室</span></div>
+</div>
+<h2>发布年表</h2>
+<table><thead><tr><th>日期</th><th>模型</th><th>参数</th><th>上下文</th><th>许可</th><th>测评</th><th>近 30 天下载</th></tr></thead><tbody>
+<tr>
+<td class="num">2026-09-10</td>
+<td>DeepSeek-V4.1-Flash</td>
+<td class="num">552B + 196B Engram</td>
+<td>1M</td>
+<td>MIT</td>
+<td>GPQA-Diamond 90.9</td>
+<td class="num">6</td>
+</tr>
+<tr>
+<td class="num">2026-08-31</td>
+<td>DeepSeek-V4-Flash-Vision-Exp</td>
+<td class="num">284B</td>
+<td>1M</td>
+<td>MIT</td>
+<td>Terminal Bench 2.1 83.9</td>
+<td class="num">400,892</td>
+</tr>
+<tr>
+<td class="num">2026-08-13</td>
+<td>DeepSeek-V4-Pro-0813</td>
+<td class="num">1.6T</td>
+<td>1M</td>
+<td>MIT</td>
+<td>Terminal Bench 2.1 87.9</td>
+<td class="num">171,782</td>
+</tr>
+<tr>
+<td class="num">2026-07-31</td>
+<td>DeepSeek-V4-Flash-0731</td>
+<td class="num">284B</td>
+<td>1M</td>
+<td>MIT</td>
+<td>Terminal Bench 2.1 82.7</td>
+<td class="num">4,393,881</td>
+</tr>
+<tr>
+<td class="num">2026-06-27</td>
+<td>DeepSeek-V4-Flash-DSpark</td>
+<td class="num">284B</td>
+<td>1M</td>
+<td>MIT</td>
+<td>GPQA-Diamond 88.1</td>
+<td class="num">697,663</td>
+</tr>
+<tr>
+<td class="num">2026-04-22</td>
+<td>DeepSeek-V4-Flash</td>
+<td class="num">284B</td>
+<td>1M</td>
+<td>MIT</td>
+<td>GPQA-Diamond 88.1</td>
+<td class="num">1,776,693</td>
+</tr>
+<tr>
+<td class="num">2026-04-22</td>
+<td>DeepSeek-V4-Pro</td>
+<td class="num">1.6T</td>
+<td>1M</td>
+<td>MIT</td>
+<td>GPQA-Diamond 90.1</td>
+<td class="num">612,515</td>
+</tr>
+<tr>
+<td class="num">2026-01-27</td>
+<td>DeepSeek-OCR 2</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>Apache-2.0</td>
+<td>—</td>
+<td class="num">942,892</td>
+</tr>
+<tr>
+<td class="num">2025-12-01</td>
+<td>DeepSeek-V3.2</td>
+<td class="num">671B</td>
+<td>1M</td>
+<td>MIT</td>
+<td>—</td>
+<td class="num">1,664,551</td>
+</tr>
+<tr>
+<td class="num">2025-11-27</td>
+<td>DeepSeek-Math-V2</td>
+<td class="num">671B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>Apache-2.0</td>
+<td>—</td>
+<td class="num">682</td>
+</tr>
+<tr>
+<td class="num">2025-10-17</td>
+<td>DeepSeek-OCR</td>
+<td class="num">未公开</td>
+<td>—</td>
+<td>MIT</td>
+<td>—</td>
+<td class="num">2,394,300</td>
+</tr>
+<tr>
+<td class="num">2025-09-29</td>
+<td>DeepSeek-V3.2-Exp</td>
+<td class="num">671B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 79.9</td>
+<td class="num">60,359</td>
+</tr>
+<tr>
+<td class="num">2025-09-22</td>
+<td>DeepSeek-V3.1-Terminus</td>
+<td class="num">671B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 80.7</td>
+<td class="num">19,156</td>
+</tr>
+<tr>
+<td class="num">2025-08-21</td>
+<td>DeepSeek-V3.1</td>
+<td class="num">671B</td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 80.1</td>
+<td class="num">233,589</td>
+</tr>
+<tr>
+<td class="num">2025-05-28</td>
+<td>DeepSeek-R1-0528</td>
+<td class="num">671B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 81</td>
+<td class="num">225,134</td>
+</tr>
+<tr>
+<td class="num">2025-04-30</td>
+<td>DeepSeek-Prover-V2</td>
+<td class="num">671B</td>
+<td>—</td>
+<td>DeepSeek License</td>
+<td>MiniF2F-test (pass ratio) 88.9</td>
+<td class="num">746</td>
+</tr>
+<tr>
+<td class="num">2025-03-24</td>
+<td>DeepSeek-V3-0324</td>
+<td class="num">671B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 68.4</td>
+<td class="num">934,873</td>
+</tr>
+<tr>
+<td class="num">2025-01-26</td>
+<td>Janus-Pro</td>
+<td class="num">7B <span class="tag">推定</span></td>
+<td>—</td>
+<td>MIT (code) / Model License</td>
+<td>—</td>
+<td class="num">10,897</td>
+</tr>
+<tr>
+<td class="num">2025-01-20</td>
+<td>DeepSeek-R1</td>
+<td class="num">671B</td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 71.5</td>
+<td class="num">1,241,957</td>
+</tr>
+<tr>
+<td class="num">2024-12-25</td>
+<td>DeepSeek-V3</td>
+<td class="num">671B</td>
+<td>128K</td>
+<td>MIT</td>
+<td>GPQA-Diamond 59.1</td>
+<td class="num">1,067,540</td>
+</tr>
+<tr>
+<td class="num">2024-12-13</td>
+<td>DeepSeek-VL2</td>
+<td class="num">27B MoE <span class="tag">推定</span></td>
+<td>—</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">4,874</td>
+</tr>
+<tr>
+<td class="num">2024-09-05</td>
+<td>DeepSeek-V2.5</td>
+<td class="num">236B <span class="tag">推定</span></td>
+<td>128K</td>
+<td>DeepSeek License</td>
+<td>HumanEval python 89</td>
+<td class="num">5,831</td>
+</tr>
+<tr>
+<td class="num">2024-06-14</td>
+<td>DeepSeek-Coder-V2</td>
+<td class="num">236B</td>
+<td>128K</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">10,491</td>
+</tr>
+<tr>
+<td class="num">2024-05-15</td>
+<td>DeepSeek-V2-Lite</td>
+<td class="num">16B</td>
+<td>32K</td>
+<td>DeepSeek License</td>
+<td>CMMLU 64.3</td>
+<td class="num">342,882</td>
+</tr>
+<tr>
+<td class="num">2024-04-22</td>
+<td>DeepSeek-V2</td>
+<td class="num">236B</td>
+<td>128K</td>
+<td>DeepSeek License</td>
+<td>CMMLU 84</td>
+<td class="num">63,813</td>
+</tr>
+<tr>
+<td class="num">2024-03-07</td>
+<td>DeepSeek-VL</td>
+<td class="num">7B</td>
+<td>—</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">8,461</td>
+</tr>
+<tr>
+<td class="num">2024-02-05</td>
+<td>DeepSeekMath</td>
+<td class="num">7B</td>
+<td>—</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">5,591</td>
+</tr>
+<tr>
+<td class="num">2024-01-25</td>
+<td>DeepSeek Coder v1.5</td>
+<td class="num">7B</td>
+<td>4K</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">739,009</td>
+</tr>
+<tr>
+<td class="num">2024-01-08</td>
+<td>DeepSeekMoE 16B</td>
+<td class="num">16B</td>
+<td>—</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">11,096</td>
+</tr>
+<tr>
+<td class="num">2023-11-29</td>
+<td>DeepSeek LLM</td>
+<td class="num">7B</td>
+<td>—</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">28,536</td>
+</tr>
+<tr>
+<td class="num">2023-10-23</td>
+<td>DeepSeek Coder</td>
+<td class="num">6.7B</td>
+<td>16K</td>
+<td>DeepSeek License</td>
+<td>—</td>
+<td class="num">72,481</td>
+</tr>
+</tbody></table>
+<h2>技术突破</h2>
+<table><thead><tr><th>时间</th><th>缩写</th><th>名称</th><th>环节</th><th>幅度</th></tr></thead><tbody>
+<tr><td class="num">2024-01-08</td><td>DeepSeekMoE</td><td>细粒度专家 + 共享专家</td><td>架构</td><td>16B 总参数 / 2.8B 激活</td></tr>
+<tr><td class="num">2024-02-05</td><td>GRPO</td><td>组相对策略优化</td><td>训练</td><td>去掉 critic 网络，RL 成本约减半</td></tr>
+<tr><td class="num">2024-04-22</td><td>MLA</td><td>多头潜在注意力</td><td>架构</td><td>KV cache ↓93.3%，吞吐 ×5.76</td></tr>
+<tr><td class="num">2024-12-25</td><td>Aux-loss-free</td><td>无辅助损失负载均衡</td><td>训练</td><td>均衡与性能不再互斥</td></tr>
+<tr><td class="num">2024-12-25</td><td>FP8</td><td>超大规模 FP8 混合精度训练</td><td>训练</td><td>14.8T token / 2.788M H800 小时</td></tr>
+<tr><td class="num">2024-12-25</td><td>MTP</td><td>多 token 预测</td><td>推理</td><td>V3 论文报告解码吞吐约 ×1.8</td></tr>
+<tr><td class="num">2025-01-20</td><td>RL w/o SFT</td><td>纯强化学习激发推理</td><td>后训练</td><td>推理能力由 RL 自发涌现</td></tr>
+<tr><td class="num">2025-01-20</td><td>Distill</td><td>推理能力蒸馏到稠密模型</td><td>后训练</td><td>32B 蒸馏模型 AIME 2024 pass@1 72.6%</td></tr>
+<tr><td class="num">2025-08-21</td><td>Hybrid Think</td><td>混合推理双模式</td><td>推理</td><td>一份权重两档模式</td></tr>
+<tr><td class="num">2025-09-29</td><td>DSA</td><td>细粒度稀疏注意力</td><td>架构</td><td>长文本效率跃升，基准与 V3.1 持平</td></tr>
+<tr><td class="num">2025-10-17</td><td>OCR Context</td><td>上下文光学压缩</td><td>多模态</td><td>等量文本用更少的视觉 token</td></tr>
+<tr><td class="num">2025-11-27</td><td>Verifier</td><td>可自验证数学推理</td><td>后训练</td><td>IMO 2025 金牌，Putnam 2024 118/120</td></tr>
+<tr><td class="num">2025-12-01</td><td>Agentic RL</td><td>大规模 Agentic 任务合成</td><td>后训练</td><td>IMO / IOI 2025 金牌表现（Speciale）</td></tr>
+<tr><td class="num">2026-01-27</td><td>VCF</td><td>Visual Causal Flow</td><td>多模态</td><td>动态分辨率 + 光学压缩</td></tr>
+<tr><td class="num">2026-04-22</td><td>CSA + HCA</td><td>混合压缩注意力 + mHC</td><td>架构</td><td>1M 上下文：27% FLOPs、10% KV</td></tr>
+<tr><td class="num">2026-06-27</td><td>DSpark</td><td>模块化投机解码</td><td>推理</td><td>vLLM / SGLang 单参数开启</td></tr>
+<tr><td class="num">2026-09-10</td><td>CED</td><td>因果编码器-解码器架构</td><td>架构</td><td>prefill 8B / decode 16B 激活</td></tr>
+<tr><td class="num">2026-09-10</td><td>CSA2</td><td>跨层共享 KV 与索引</td><td>架构</td><td>indexer 成本线性 → 常数</td></tr>
+<tr><td class="num">2026-09-10</td><td>FP4 KV</td><td>FP4 主 KV 缓存</td><td>推理</td><td>main KV 存储近减半</td></tr>
+<tr><td class="num">2026-09-10</td><td>SWB Replay</td><td>有界回放的滑窗 KV</td><td>推理</td><td>全局 KV 890 bytes/token，约 V4-Flash 的 1/4</td></tr>
+<tr><td class="num">2026-09-10</td><td>Engram</td><td>条件记忆模块</td><td>架构</td><td>196B 参数的条件记忆</td></tr>
+<tr><td class="num">2026-09-10</td><td>mHC</td><td>单遍残差混流</td><td>训练</td><td>残差读写 (3n+2)d → (2n+2)d</td></tr>
+<tr><td class="num">2026-09-10</td><td>Effort 1-100</td><td>可控推理强度</td><td>推理</td><td>effort 25→100：67.1% → 76.3%</td></tr>
+<tr><td class="num">2026-09-10</td><td>DSec</td><td>百万级并发沙箱</td><td>后训练</td><td>单机密度 1k → 2,500+</td></tr>
+</tbody></table>
+<p class="note">下载量为 Hugging Face 报告的滚动 30 天口径；模型卡未标注的字段一律留空，不做推测。</p>
+<div class="pager">
+  <a href="/ai-compute-atlas/models/deepseek/" aria-current="page">DeepSeek</a>
+<a href="/ai-compute-atlas/models/glm/">GLM</a>
+<a href="/ai-compute-atlas/models/kimi/">Kimi</a>
+  <a href="/ai-compute-atlas/">在时间轴上查看 →</a>
+</div>
+</main>
+<footer class="site">
+  数据快照 2026-11-03 · 产品规格来自《NVIDIA 显卡历代产品全览》，行情来自 gpu-server-compare，模型数据来自 Hugging Face 官方 API ·
+  <a href="/ai-compute-atlas/">返回交互版</a>
+</footer>
+</body>
+</html>
