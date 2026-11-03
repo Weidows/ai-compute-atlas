@@ -153,6 +153,16 @@ PREFIX_ALIASES = [
 
 
 def build_products() -> list[dict]:
+    # The source .docx is not in the repo (and can move between machines), so the
+    # parsed rows are also kept as a snapshot. Same rows -> same atlas.json.
+    if not DOCX.exists():
+        snap = ROOT / "vendor" / "docx-products.json"
+        if not snap.exists():
+            raise SystemExit(
+                f"docx 不存在（{DOCX}）且没有 vendor/docx-products.json 快照，无法重建数据。"
+            )
+        return json.loads(snap.read_text(encoding="utf-8"))
+
     tables = read_tables()
     products = []
     seen: dict[str, int] = {}
