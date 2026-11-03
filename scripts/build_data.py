@@ -3,8 +3,8 @@
 
 Inputs (all read-only, pointed at by absolute paths below):
   1. D:/Downloads/NVIDIA显卡历代产品全览.docx   — 10 Word tables, 7 generations + appendix
-  2. ../gpu-server-compare/data/{gpus,servers,market,sources}.json
-  3. ../model-chronicle/src/data/{deepseek,zai,kimi,index}.ts
+  2. vendor/gpu-server-compare/{gpus,servers,market,sources}.json   (snapshot of the old repo)
+  3. vendor/model-chronicle/{deepseek,zai,kimi,index}.ts            (snapshot of the old repo)
 
 Every number keeps the source it came from: a docx row is `docx`, a matched
 gpu-server-compare row adds `market` facts, model facts come from the HF
@@ -22,8 +22,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT.parent
 DOCX = Path(os.environ.get("ATLAS_DOCX", "D:/Downloads/NVIDIA显卡历代产品全览.docx"))
-GSC = WEB / "gpu-server-compare" / "data"
-MC = WEB / "model-chronicle" / "src" / "data"
+# Sources are vendored into ./vendor so the build no longer depends on the
+# sibling repos existing. Override with ATLAS_GSC / ATLAS_MC if you re-sync.
+GSC = Path(os.environ.get("ATLAS_GSC", ROOT / "vendor" / "gpu-server-compare"))
+MC = Path(os.environ.get("ATLAS_MC", ROOT / "vendor" / "model-chronicle"))
 
 NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 

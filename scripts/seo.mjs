@@ -21,8 +21,10 @@ const atlas = JSON.parse(
   (await import('node:fs')).readFileSync(resolve(ROOT, 'src/data/atlas.json'), 'utf8'),
 )
 
-const SITE = (process.env.SITE_URL || 'https://blog.weidows.tech').replace(/\/$/, '')
-const BASE = `/${(process.env.SITE_BASE || '/ai-compute-atlas/').replace(/^\/|\/$/g, '')}/`
+const SITE_URL_RAW = process.env.SITE_URL || 'https://ai-compute-atlas.weidows.tech'
+const SITE = SITE_URL_RAW.endsWith('/') ? SITE_URL_RAW.slice(0, -1) : SITE_URL_RAW
+const RAW_BASE = (process.env.SITE_BASE || '/').split('/').join('')
+const BASE = RAW_BASE ? '/' + RAW_BASE + '/' : '/'
 const SNAPSHOT = atlas.generatedAt
 
 const abs = (p = '') => `${SITE}${BASE}${p}`

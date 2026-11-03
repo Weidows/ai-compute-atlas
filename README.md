@@ -87,15 +87,17 @@ scripts/
 
 站长后台还需手动做一次（不在代码里）：
 
-1. Google Search Console / Bing Webmaster 添加 `blog.weidows.tech`，提交 `https://blog.weidows.tech/ai-compute-atlas/sitemap.xml`；
-2. 根域 `robots.txt` 归博客仓（`Blog-private/source/robots.txt`），加一行 `Sitemap: https://blog.weidows.tech/ai-compute-atlas/sitemap.xml`；
+1. Google Search Console / Bing Webmaster 添加 `blog.weidows.tech`，提交 `https://ai-compute-atlas.weidows.tech/sitemap.xml`；
+2. 根域 `robots.txt` 归博客仓（`Blog-private/source/robots.txt`），加一行 `Sitemap: https://ai-compute-atlas.weidows.tech/sitemap.xml`；
 3. 百度搜索资源平台对 GitHub Pages 的抓取不稳定，若重视百度，需要镜像到国内可访问的域名。
 
 ## 部署
 
-GitHub Pages：`.github/workflows/deploy.yml` 在 `main` 推送时以 `VITE_BASE=/ai-compute-atlas/` 构建。
+线上地址：<https://ai-compute-atlas.weidows.tech/>（GitHub Pages 项目站 + 独立子域）
 
-自定义域（可选）：在仓库 Settings → Pages 写入域名，并把 `public/CNAME` 指向它，同时把 `VITE_BASE` 改成 `/`。
+GitHub Pages：`.github/workflows/deploy.yml` 在 `main` 推送时以 `VITE_BASE=/` 构建（独立子域伺服在域名根），产物推到 `gh-pages` 之外的 Pages artifact。
+
+自定义域：`ai-compute-atlas.weidows.tech`（Cloudflare CNAME → `weidows.github.io`，灰云不开代理）；换域时改 `index.html` 里的绝对 URL 与 `scripts/seo.mjs` 的 `SITE_URL` 默认值，再 `npm run build`。
 
 ## 口径与边界
 

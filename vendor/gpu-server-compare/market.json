@@ -1,0 +1,172 @@
+{
+  "updated_at": "2026-09-29",
+  "currency": "CNY",
+  "source_id": "src-market-20260929",
+  "note": "手动更新的现货行情快照; 每次更新追加一条 source 并在 quotes 中记录价格, 单位与原文口径一致 (万元/亿元已折算为 CNY)。",
+  "quotes": [
+    {
+      "device_id": "gb300_nvl72",
+      "variant_id": "smc_gb300_nvl72",
+      "vendor": "Supermicro",
+      "price_cny": 127000000,
+      "unit": "套",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "超微GB3001.27亿/套",
+      "op": "gte"
+    },
+    {
+      "device_id": "b300_hgx_server",
+      "variant_id": "smc_b300_4t",
+      "vendor": "Supermicro",
+      "price_cny": 16800000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "超微B300/4T 1680万/台"
+    },
+    {
+      "device_id": "b300_hgx_server",
+      "variant_id": "smc_b300_3t",
+      "vendor": "Supermicro",
+      "price_cny": 16200000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "超微B3003T 1620万/台"
+    },
+    {
+      "device_id": "b300_hgx_server",
+      "variant_id": "asus_b300_3t",
+      "vendor": "ASUS",
+      "price_cny": 16100000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "华硕B300/3T 1610万/台"
+    },
+    {
+      "device_id": "b300_hgx_server",
+      "variant_id": "dell_b300_4t",
+      "vendor": "Dell",
+      "price_cny": 16600000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "戴尔B300/4T 1660万/台"
+    },
+    {
+      "device_id": "b300_hgx_server",
+      "variant_id": "gigabyte_b300_3t",
+      "vendor": "GIGABYTE",
+      "price_cny": 16100000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "技嘉B300/3T 1610万/台"
+    },
+    {
+      "device_id": "h200_hgx_server",
+      "variant_id": "smc_h200",
+      "vendor": "Supermicro",
+      "price_cny": 6150000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "超微H200 615万/台"
+    },
+    {
+      "device_id": "h200_hgx_server",
+      "variant_id": "dell_h200",
+      "vendor": "Dell",
+      "price_cny": 6100000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "戴尔H200 610万/台"
+    },
+    {
+      "device_id": "h200_hgx_server",
+      "variant_id": "gigabyte_h200",
+      "vendor": "GIGABYTE",
+      "price_cny": 6000000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "技嘉H200 600万/台"
+    },
+    {
+      "device_id": "h200_hgx_server",
+      "variant_id": "asus_h200",
+      "vendor": "ASUS",
+      "price_cny": 6000000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "华硕H200 600万/台"
+    },
+    {
+      "device_id": "h200_hgx_server",
+      "variant_id": "h200_module_8gpu",
+      "vendor": "NVIDIA",
+      "price_cny": 5100000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "H200模组 510万/台"
+    },
+    {
+      "device_id": "h100_hgx_server",
+      "variant_id": "smc_h100",
+      "vendor": "Supermicro",
+      "price_cny": 3800000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "超微H100 380万/台"
+    },
+    {
+      "device_id": "h100_hgx_server",
+      "variant_id": "gigabyte_h100",
+      "vendor": "GIGABYTE",
+      "price_cny": 3700000,
+      "unit": "台",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "技嘉H100 370万/台"
+    },
+    {
+      "device_id": "rtx5090",
+      "variant_id": "rtx5090_axial",
+      "vendor": null,
+      "price_cny": 40000,
+      "unit": "张",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "5090风扇卡4万+/张",
+      "op": "gte"
+    },
+    {
+      "device_id": "rtx5090",
+      "variant_id": "rtx5090_blower",
+      "vendor": null,
+      "price_cny": 50000,
+      "unit": "张",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "5090涡轮卡 5万+/张",
+      "op": "gte"
+    },
+    {
+      "device_id": "rtx_pro6000_bw",
+      "variant_id": "rtx_pro6000_bw_server",
+      "vendor": null,
+      "price_cny": 180000,
+      "unit": "张",
+      "date": "2026-09-29",
+      "source_id": "src-market-20260929",
+      "raw": "Pro6000服务器版 18万+/张",
+      "op": "gte"
+    }
+  ]
+}

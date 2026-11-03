@@ -1,0 +1,34 @@
+{
+  "site": "https://server-mark.weidows.tech/",
+  "repo": "https://github.com/Weidows/gpu-server-compare",
+  "updated_at": "2026-09-29T00:00:00+08:00",
+  "data_coverage_until": "2026-09-29",
+  "counts": {
+    "gpus": 41,
+    "servers": 15,
+    "sources": 1,
+    "quotes": 16
+  },
+  "endpoints": {
+    "gpus": "/data/gpus.json",
+    "servers": "/data/servers.json",
+    "timeline": "/data/timeline.json",
+    "price_history": "/data/price_history.json",
+    "sources": "/data/sources.json",
+    "market": "/data/market.json",
+    "meta": "/data/meta.json",
+    "openapi": "/api/openapi.json"
+  },
+  "notes": "规格为公开资料整理; 价格为 MSRP/渠道参考价快照 + 手动更新的现货行情 (见 data/market.json 与 data/sources.json)。受限型号经 region_avail 标注。静态站点, CORS *, 无鉴权。",
+  "built_at": "2026-09-30T10:42:44.426866+00:00",
+  "device_classes": {
+    "consumer_gpu": "民用 GPU",
+    "workstation_gpu": "工作站显卡",
+    "enterprise_gpu": "企业显卡",
+    "datacenter_gpu": "数据中心加速卡",
+    "module": "模组/基板",
+    "server": "整机服务器",
+    "supernode": "超节点/机架级",
+    "rack": "机架"
+  }
+}
