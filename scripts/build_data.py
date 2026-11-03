@@ -13,6 +13,7 @@ snapshot. Nothing is invented; missing stays null.
 from __future__ import annotations
 
 import json
+import os
 import re
 import zipfile
 import xml.etree.ElementTree as ET
@@ -20,7 +21,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT.parent
-DOCX = Path("D:/Downloads/NVIDIA显卡历代产品全览.docx")
+DOCX = Path(os.environ.get("ATLAS_DOCX", "D:/Downloads/NVIDIA显卡历代产品全览.docx"))
 GSC = WEB / "gpu-server-compare" / "data"
 MC = WEB / "model-chronicle" / "src" / "data"
 
