@@ -2,6 +2,17 @@ import raw from '../data/atlas.json'
 
 export type Tier = 'datacenter' | 'workstation' | 'consumer' | 'semi' | 'other'
 
+/**
+ * 人工复核记录。数据全部由人工抓取整理，没有自动校验，
+ * 所以每条都带「核对过几次 / 最近一次是哪天」，0 次即「未复核」。
+ */
+export interface Review {
+  count: number
+  lastReviewedAt: string | null
+  by?: string | null
+  note?: string | null
+}
+
 export interface Product {
   id: string
   name: string
@@ -36,6 +47,7 @@ export interface Product {
   nvlink?: boolean
   multiMax?: number | null
   fp16Note?: number
+  review?: Review
 }
 
 export interface Server {
@@ -55,6 +67,7 @@ export interface Server {
   date: string
   datePrecision: string
   dateNote: string
+  review?: Review
 }
 
 export interface Model {
@@ -78,6 +91,7 @@ export interface Model {
   headline: { metric: string; score: number } | null
   paramsSource: string | null
   repo?: string
+  review?: Review
 }
 
 export interface Breakthrough {
@@ -92,6 +106,7 @@ export interface Breakthrough {
   impact: string | null
   magnitude: string | null
   mechanism: string | null
+  review?: Review
 }
 
 export interface Arch {
@@ -112,6 +127,25 @@ export interface Org {
   hue: number
 }
 
+export interface ReviewBreakdown {
+  total: number
+  reviewed: number
+  unreviewed: number
+}
+
+export interface AtlasReviews {
+  updatedAt: string | null
+  reviewer: string | null
+  note: string | null
+  stats: {
+    total: number
+    reviewed: number
+    unreviewed: number
+    lastReviewedAt: string | null
+    byKind: Record<string, ReviewBreakdown>
+  }
+}
+
 export interface AtlasData {
   generatedAt: string
   archs: Arch[]
@@ -122,10 +156,43 @@ export interface AtlasData {
   breakthroughs: Breakthrough[]
   orgs: Org[]
   market: { updatedAt: string; quotes: Record<string, unknown>[] }
+  reviews: AtlasReviews
   counts: Record<string, number>
 }
 
 export const atlas = raw as unknown as AtlasData
+
+/** 复核状态：缺失即 0 次（历史快照或旧数据）。 */
+export function reviewOf(item: { review?: Review } | null | undefined): Review {
+  return item?.review ?? { count: 0, lastReviewedAt: null, by: null, note: null }
+}
+
+export function isReviewed(item: { review?: Review } | null | undefined): boolean {
+  return reviewOf(item).count > 0
+}
+
+/** `已复核 2 次 · 最近 2026-10-12` / `未复核` —— 档案卡与表格共用。 */
+export function reviewText(item: { review?: Review } | null | undefined): string {
+  const r = reviewOf(item)
+  if (!r.count) return '未复核'
+  const when = r.lastReviewedAt ? ` · 最近 ${r.lastReviewedAt}` : ''
+  return `已复核 ${r.count} 次${when}`
+}
+
+export const REVIEW_TONE = { reviewed: '#2fe6a8', pending: '#ffb545' }
+
+/** 全站复核覆盖率（含尚未生成 reviews 字段的旧快照兜底）。 */
+export function reviewCoverage(): AtlasReviews['stats'] {
+  return (
+    atlas.reviews?.stats ?? {
+      total: 0,
+      reviewed: 0,
+      unreviewed: 0,
+      lastReviewedAt: null,
+      byKind: {},
+    }
+  )
+}
 
 /* ------------------------------------------------------------------ *
  *  Time + numbers

@@ -80,6 +80,8 @@ tbody tr:hover{background:rgba(11,19,34,.7)}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .tag{display:inline-block;font-size:9px;padding:1px 5px;border:1px solid var(--edge);color:var(--fog);white-space:nowrap}
 .tag.cn{border-color:rgba(255,181,69,.6);color:var(--amber)}
+.tag.rv{border-color:rgba(47,230,168,.55);color:#2fe6a8}
+.tag.pending{border-color:rgba(255,181,69,.5);color:var(--amber)}
 .pager{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .pager a{border:1px solid var(--edge);padding:3px 8px;font-size:11px;color:var(--fog)}
 .pager a[aria-current]{color:var(--cyan);border-color:rgba(56,226,255,.6)}
@@ -95,6 +97,7 @@ const nav = (current) => `
     <a href="${BASE}">交互全景</a>
     <a href="${BASE}data/">数据总表</a>
     <a href="${BASE}china/"${current === 'china' ? ' aria-current="page"' : ''}>中国特供</a>
+    <a href="${BASE}review/"${current === 'review' ? ' aria-current="page"' : ''}>复核台账</a>
   </nav>
 </header>`
 
@@ -129,7 +132,8 @@ ${nav()}
 ${body}
 </main>
 <footer class="site">
-  数据快照 ${SNAPSHOT} · 产品规格来自《NVIDIA 显卡历代产品全览》，行情来自 gpu-server-compare，模型数据来自 Hugging Face 官方 API ·
+  数据快照 ${SNAPSHOT} · 人工抓取整理 · 已复核 ${reviewStats.reviewed}/${reviewStats.total} 项（<a href="${BASE}review/">复核台账</a>）·
+  产品规格来自《NVIDIA 显卡历代产品全览》，行情来自 gpu-server-compare，模型数据来自 Hugging Face 官方 API ·
   <a href="${BASE}">返回交互版</a>
 </footer>
 </body>
@@ -139,11 +143,20 @@ ${body}
 const products = atlas.products
 const extras = atlas.extras
 const models = atlas.models
+const reviewStats = atlas.reviews?.stats ?? { total: 0, reviewed: 0, unreviewed: 0, lastReviewedAt: null }
+
+/** 表格里的复核标记：有人核对过就写次数 + 最近日期，否则明写「未复核」。 */
+const reviewCell = (r) => {
+  const rv = r.review ?? { count: 0, lastReviewedAt: null }
+  if (!rv.count) return '<span class="tag pending">未复核</span>'
+  const when = rv.lastReviewedAt ? ` · ${esc(rv.lastReviewedAt.slice(5))}` : ''
+  return `<span class="tag rv">${rv.count} 次${when}</span>`
+}
 
 function productTable(rows) {
   if (!rows.length) return '<p class="note">该分组没有收录型号。</p>'
   return `<table>
-<thead><tr><th>型号</th><th>层级</th><th>CUDA</th><th>显存</th><th>FP32</th><th>首发</th><th>备注</th></tr></thead>
+<thead><tr><th>型号</th><th>层级</th><th>CUDA</th><th>显存</th><th>FP32</th><th>首发</th><th>复核</th><th>备注</th></tr></thead>
 <tbody>
 ${rows
   .map(
@@ -154,6 +167,7 @@ ${rows
 <td>${esc(p.vramLabel ?? '—')}</td>
 <td class="num">${p.fp32 ? `${n(p.fp32, 1)} TF` : '—'}</td>
 <td class="num">${esc(p.dateText || p.date.slice(0, 7))}</td>
+<td class="num">${reviewCell(p)}</td>
 <td>${esc((p.note || '').slice(0, 120))}</td>
 </tr>`,
   )
@@ -253,7 +267,7 @@ for (const org of orgs) {
   <div class="kpi"><b>${esc(org.short)}</b><span>实验室</span></div>
 </div>
 <h2>发布年表</h2>
-<table><thead><tr><th>日期</th><th>模型</th><th>参数</th><th>上下文</th><th>许可</th><th>测评</th><th>近 30 天下载</th></tr></thead><tbody>
+<table><thead><tr><th>日期</th><th>模型</th><th>参数</th><th>上下文</th><th>许可</th><th>测评</th><th>复核</th><th>近 30 天下载</th></tr></thead><tbody>
 ${rows
   .map(
     (m) => `<tr>
@@ -263,16 +277,17 @@ ${rows
 <td>${esc(m.contextLength ?? '—')}</td>
 <td>${esc(m.license ?? '—')}</td>
 <td>${m.headline ? `${esc(m.headline.metric)} ${m.headline.score}` : '—'}</td>
+<td class="num">${reviewCell(m)}</td>
 <td class="num">${m.downloads ? m.downloads.toLocaleString('en-US') : '—'}</td>
 </tr>`,
   )
   .join('\n')}
 </tbody></table>
 ${bts.length ? `<h2>技术突破</h2>
-<table><thead><tr><th>时间</th><th>缩写</th><th>名称</th><th>环节</th><th>幅度</th></tr></thead><tbody>
+<table><thead><tr><th>时间</th><th>缩写</th><th>名称</th><th>环节</th><th>幅度</th><th>复核</th></tr></thead><tbody>
 ${bts
   .map(
-    (b) => `<tr><td class="num">${esc(b.date)}</td><td>${esc(b.label)}</td><td>${esc(b.name)}</td><td>${esc(b.lane)}</td><td>${esc(b.magnitude ?? '—')}</td></tr>`,
+    (b) => `<tr><td class="num">${esc(b.date)}</td><td>${esc(b.label)}</td><td>${esc(b.name)}</td><td>${esc(b.lane)}</td><td>${esc(b.magnitude ?? '—')}</td><td class="num">${reviewCell(b)}</td></tr>`,
   )
   .join('\n')}
 </tbody></table>` : ''}
@@ -312,10 +327,10 @@ ${bts
   const description = `出口管制下的 ${rows.length} 款 NVIDIA 中国特供型号：A800、H800、H20、L20、RTX 4090D、RTX 5090D、RTX 5090D V2、RTX 6000D 的规格、首发时间与原版差异。`
   const body = `
 <p class="lead">受出口管制影响，NVIDIA 面向中国大陆推出多款削减规格的特供产品。下表 ${rows.length} 款的削减点全部来自《NVIDIA 显卡历代产品全览》原文的「类别 / 备注」字段，未做补充推断。</p>
-<table><thead><tr><th>型号</th><th>层级</th><th>首发</th><th>显存</th><th>FP32</th><th>相对原版</th></tr></thead><tbody>
+<table><thead><tr><th>型号</th><th>层级</th><th>首发</th><th>显存</th><th>FP32</th><th>复核</th><th>相对原版</th></tr></thead><tbody>
 ${rows
   .map(
-    (p) => `<tr><td>${esc(p.name)}</td><td>${esc(TIER_LABEL[p.tier])}</td><td class="num">${esc(p.dateText || p.date)}</td><td>${esc(p.vramLabel ?? '—')}</td><td class="num">${p.fp32 ? `${n(p.fp32, 1)} TF` : '—'}</td><td>${esc(p.note || '—')}</td></tr>`,
+    (p) => `<tr><td>${esc(p.name)}</td><td>${esc(TIER_LABEL[p.tier])}</td><td class="num">${esc(p.dateText || p.date)}</td><td>${esc(p.vramLabel ?? '—')}</td><td class="num">${p.fp32 ? `${n(p.fp32, 1)} TF` : '—'}</td><td class="num">${reviewCell(p)}</td><td>${esc(p.note || '—')}</td></tr>`,
   )
   .join('\n')}
 </tbody></table>
@@ -339,6 +354,69 @@ ${rows
 }
 
 /* ------------------------------------------------------------------ *
+ *  /review/ —— 复核台账：每条数据的核对次数与最近复核时间
+ * ------------------------------------------------------------------ */
+{
+  const groups = [
+    ['hardware', 'GPU 产品（NVIDIA + 其他厂商）', [...products, ...extras]],
+    ['server', '整机 · 超节点', atlas.servers],
+    ['model', '开源模型', models],
+    ['breakthrough', '技术突破', atlas.breakthroughs],
+  ]
+  const ratio = reviewStats.total ? (reviewStats.reviewed / reviewStats.total) * 100 : 0
+  const pct = ratio > 0 && ratio < 1 ? `${ratio.toFixed(1)}%` : `${Math.round(ratio)}%`
+  const title = `复核台账：${reviewStats.reviewed}/${reviewStats.total} 项已复核｜算力全景`
+  const description = `算力全景的数据由人工抓取整理，没有自动校验。台账逐条列出 ${reviewStats.total} 项的复核次数与最近复核时间，未复核的条目明确标注。`
+  const body = `
+<p class="lead">这个站的数据全部由人工抓取、人工整理，<b>没有自动校验，准确率无法完全保证</b>。所以每条记录都单独记账：被人工核对过几次、最近一次是哪天。0 次 = 只抓过，还没做二次核对。</p>
+<div class="kpis">
+  <div class="kpi"><b>${reviewStats.reviewed}/${reviewStats.total}</b><span>已复核条目</span></div>
+  <div class="kpi"><b>${pct}%</b><span>覆盖率</span></div>
+  <div class="kpi"><b>${reviewStats.unreviewed}</b><span>待复核</span></div>
+  <div class="kpi"><b>${esc(reviewStats.lastReviewedAt ?? '—')}</b><span>最近复核</span></div>
+</div>
+<p class="note">台账由维护者手工维护：每核对一条数据，就给它记一次「复核次数 +1、日期改成当天」，再重新生成快照。所以这一页既是对外声明的可信度，也是留给自己的待办清单——排在前面的都是复核次数最少的条目。
+机器可读字段：<a href="${BASE}data/atlas.json">atlas.json</a> 的每条记录带 <code>review.count</code> / <code>review.lastReviewedAt</code>，汇总在 <code>reviews.stats</code>。</p>
+${groups
+  .map(([kind, label, rows]) => {
+    const reviewed = rows.filter((r) => (r.review?.count ?? 0) > 0).length
+    const sorted = [...rows].sort((a, b) => {
+      const ca = a.review?.count ?? 0
+      const cb = b.review?.count ?? 0
+      return ca - cb || String(b.date ?? '').localeCompare(String(a.date ?? ''))
+    })
+    return `<h2 id="${kind}">${esc(label)}（${reviewed}/${rows.length} 已复核）</h2>
+<table><thead><tr><th>条目</th><th>id</th><th>复核次数</th><th>最近复核</th><th>备注</th></tr></thead><tbody>
+${sorted
+  .map(
+    (r) => `<tr><td>${esc(r.name ?? r.label ?? '')}${r.china ? ' <span class="tag cn">中国特供</span>' : ''}</td><td class="num"><code>${esc(r.id)}</code></td><td class="num">${reviewCell(r)}</td><td class="num">${esc(r.review?.lastReviewedAt ?? '—')}</td><td>${esc(r.review?.note ?? '—')}</td></tr>`,
+  )
+  .join('\n')}
+</tbody></table>`
+  })
+  .join('\n')}
+<p class="note">复核不等于保真：不同来源对同一张卡的 FP32 / 显存口径可能不同（估算、稀疏值、板卡总量），复核只记录「有人按来源重新核对过」，具体口径见 <a href="${BASE}data/">数据总表</a> 与页脚「口径与边界」。</p>
+<div class="pager"><a href="${BASE}">在时间轴上查看 →</a><a href="${BASE}data/">数据总表 →</a></div>`
+  write('review/index.html', page({
+    path: 'review/',
+    title,
+    description,
+    h1: '复核台账',
+    crumb: [['算力全景', BASE], ['复核台账', '']],
+    body,
+    jsonld: {
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      name: 'AI 算力全景 · 复核台账',
+      description,
+      url: abs('review/'),
+      dateModified: SNAPSHOT,
+      isPartOf: { '@type': 'WebSite', name: '算力全景 · AI Compute Atlas', url: abs() },
+    },
+  }))
+}
+
+/* ------------------------------------------------------------------ *
  *  /data/
  * ------------------------------------------------------------------ */
 {
@@ -353,8 +431,9 @@ ${rows
   <div class="kpi"><b>${atlas.servers.length}</b><span>整机 / 超节点</span></div>
   <div class="kpi"><b>${models.length}</b><span>开源模型</span></div>
   <div class="kpi"><b>${atlas.breakthroughs.length}</b><span>技术突破</span></div>
+  <div class="kpi"><b>${reviewStats.reviewed}/${reviewStats.total}</b><span>已复核条目</span></div>
 </div>
-<p class="note">机器可读版本：<a href="${BASE}data/atlas.json">/data/atlas.json</a>（字段与页面同源，UTF-8，可直接 fetch）。</p>
+<p class="note">机器可读版本：<a href="${BASE}data/atlas.json">/data/atlas.json</a>（字段与页面同源，UTF-8，可直接 fetch）。每条记录带 <code>review.count</code> / <code>review.lastReviewedAt</code>，0 次即「未复核」，覆盖情况见 <a href="${BASE}review/">复核台账</a>。</p>
 <h2 id="arch">按架构世代</h2>
 ${byArch
   .map(
@@ -363,11 +442,11 @@ ${productTable(rows)}`,
   )
   .join('\n')}
 <h2 id="models">开源模型发布</h2>
-<table><thead><tr><th>日期</th><th>模型</th><th>实验室</th><th>参数</th><th>上下文</th><th>许可</th><th>下载（30 天）</th></tr></thead><tbody>
+<table><thead><tr><th>日期</th><th>模型</th><th>实验室</th><th>参数</th><th>上下文</th><th>许可</th><th>复核</th><th>下载（30 天）</th></tr></thead><tbody>
 ${[...models]
   .sort((a, b) => b.date.localeCompare(a.date))
   .map(
-    (m) => `<tr><td class="num">${esc(m.date)}</td><td>${esc(m.name)}</td><td>${esc(m.orgName)}</td><td class="num">${esc(m.totalParams ?? '未公开')}</td><td>${esc(m.contextLength ?? '—')}</td><td>${esc(m.license ?? '—')}</td><td class="num">${m.downloads ? m.downloads.toLocaleString('en-US') : '—'}</td></tr>`,
+    (m) => `<tr><td class="num">${esc(m.date)}</td><td>${esc(m.name)}</td><td>${esc(m.orgName)}</td><td class="num">${esc(m.totalParams ?? '未公开')}</td><td>${esc(m.contextLength ?? '—')}</td><td>${esc(m.license ?? '—')}</td><td class="num">${reviewCell(m)}</td><td class="num">${m.downloads ? m.downloads.toLocaleString('en-US') : '—'}</td></tr>`,
   )
   .join('\n')}
 </tbody></table>
@@ -376,10 +455,10 @@ ${[...models]
 ${orgs.map((o) => `<a href="${BASE}models/${ORG_SLUG[o.id]}/">${esc(o.name)}（${models.filter((m) => m.org === o.id).length} 个发布）</a>`).join(String.fromCharCode(10))}
 </div>
 <h2>整机与超节点</h2>
-<table><thead><tr><th>名称</th><th>形态</th><th>GPU</th><th>功耗</th><th>报价</th><th>上市口径</th></tr></thead><tbody>
+<table><thead><tr><th>名称</th><th>形态</th><th>GPU</th><th>功耗</th><th>报价</th><th>复核</th><th>上市口径</th></tr></thead><tbody>
 ${atlas.servers
   .map(
-    (s) => `<tr><td>${esc(s.name)}</td><td>${esc(s.kind === 'supernode' ? '超节点' : '整机')}</td><td class="num">${s.gpuCount}× ${esc(s.gpu)}</td><td class="num">${s.powerKw ? `${s.powerKw} kW` : '—'}</td><td class="num">${s.priceCny ? cny(s.priceCny) : s.priceUsd ? `$${s.priceUsd.toLocaleString('en-US')}` : '—'}</td><td>${esc(s.dateNote)}</td></tr>`,
+    (s) => `<tr><td>${esc(s.name)}</td><td>${esc(s.kind === 'supernode' ? '超节点' : '整机')}</td><td class="num">${s.gpuCount}× ${esc(s.gpu)}</td><td class="num">${s.powerKw ? `${s.powerKw} kW` : '—'}</td><td class="num">${s.priceCny ? cny(s.priceCny) : s.priceUsd ? `$${s.priceUsd.toLocaleString('en-US')}` : '—'}</td><td class="num">${reviewCell(s)}</td><td>${esc(s.dateNote)}</td></tr>`,
   )
   .join('\n')}
 </tbody></table>
@@ -419,6 +498,7 @@ const urls = [
   { loc: abs(), priority: '1.0' },
   { loc: abs('data/'), priority: '0.9' },
   { loc: abs('china/'), priority: '0.8' },
+  { loc: abs('review/'), priority: '0.7' },
   ...archOrder.map((a) => ({ loc: abs(`generations/${ARCH_SLUG[a.name]}/`), priority: '0.8' })),
   ...orgs.map((o) => ({ loc: abs(`models/${ORG_SLUG[o.id]}/`), priority: '0.7' })),
 ]

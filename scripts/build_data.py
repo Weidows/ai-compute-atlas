@@ -26,6 +26,9 @@ DOCX = Path(os.environ.get("ATLAS_DOCX", "D:/Downloads/NVIDIA显卡历代产品�
 # sibling repos existing. Override with ATLAS_GSC / ATLAS_MC if you re-sync.
 GSC = Path(os.environ.get("ATLAS_GSC", ROOT / "vendor" / "gpu-server-compare"))
 MC = Path(os.environ.get("ATLAS_MC", ROOT / "vendor" / "model-chronicle"))
+# 人工复核台账（每条数据的核对次数与最近复核时间），与数据分仓管理，
+# 这样重跑 build 不会冲掉人工记录。没有台账时全部按「未复核」处理。
+REVIEWS = Path(os.environ.get("ATLAS_REVIEWS", ROOT / "data" / "reviews.json"))
 
 NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
@@ -418,6 +421,66 @@ def load_models() -> tuple[list[dict], list[dict], list[dict]]:
     return releases, breakthroughs, orgs
 
 
+def load_reviews() -> tuple[dict, dict]:
+    """人工复核台账：id -> {count, lastReviewedAt, by, note}。
+
+    数据是人工抓取整理的，准确率无法自动保证，所以每一条都单独记录
+    「被人工核对过几次 / 最近一次是哪天」。台账与 atlas.json 分离，
+    重跑构建不会把人工记录冲掉；台账缺失时一律按 0 次处理。
+    """
+    if not REVIEWS.exists():
+        return {}, {}
+    try:
+        doc = json.loads(REVIEWS.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"复核台账 {REVIEWS} 不是合法 JSON：{exc}") from exc
+    items = doc.get("items")
+    return (items if isinstance(items, dict) else {}), doc
+
+
+def attach_reviews(rows: list[dict], ledger: dict) -> None:
+    for r in rows:
+        entry = ledger.get(r["id"]) or {}
+        count = entry.get("count")
+        r["review"] = {
+            "count": int(count) if isinstance(count, (int, float)) else 0,
+            "lastReviewedAt": entry.get("lastReviewedAt"),
+            "by": entry.get("by"),
+            "note": entry.get("note"),
+        }
+
+
+def review_summary(groups: dict[str, list[dict]], doc: dict) -> dict:
+    by_kind: dict[str, dict] = {}
+    total = reviewed = 0
+    last: str | None = None
+    for kind, rows in groups.items():
+        ok = [r for r in rows if r["review"]["count"] > 0]
+        total += len(rows)
+        reviewed += len(ok)
+        for r in ok:
+            d = r["review"]["lastReviewedAt"]
+            if d and (last is None or d > last):
+                last = d
+        by_kind[kind] = {
+            "total": len(rows),
+            "reviewed": len(ok),
+            "unreviewed": len(rows) - len(ok),
+        }
+    return {
+        "updatedAt": doc.get("updatedAt"),
+        "reviewer": doc.get("reviewer"),
+        "note": doc.get("note"),
+        "stats": {
+            "total": total,
+            "reviewed": reviewed,
+            "unreviewed": total - reviewed,
+            "lastReviewedAt": last,
+            "byKind": by_kind,
+        },
+    }
+
+
 def main() -> None:
     gpus = load_gpus()
     market = json.loads((GSC / "market.json").read_text(encoding="utf-8"))
@@ -430,6 +493,20 @@ def main() -> None:
     products = [p for p in products if p["date"]]
     extras = [x for x in extras if x["date"]]
     servers = [s for s in servers if s["date"]]
+
+    ledger, ledger_doc = load_reviews()
+    groups = {
+        "hardware": products + extras,
+        "server": servers,
+        "model": releases,
+        "breakthrough": breakthroughs,
+    }
+    for rows in groups.values():
+        attach_reviews(rows, ledger)
+    reviews = review_summary(groups, ledger_doc)
+    orphans = sorted(set(ledger) - {r["id"] for rows in groups.values() for r in rows})
+    if orphans:
+        print(f"⚠ 台账里有 {len(orphans)} 个 id 在本次快照中不存在：{', '.join(orphans[:8])}")
 
     atlas = {
         "generatedAt": "2026-11-03",
@@ -459,6 +536,7 @@ def main() -> None:
             "updatedAt": market.get("updated_at"),
             "quotes": market.get("quotes", []),
         },
+        "reviews": reviews,
         "counts": {
             "docxProducts": len(products),
             "extraProducts": len(extras),
@@ -473,6 +551,8 @@ def main() -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(atlas, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(atlas["counts"], ensure_ascii=False))
+    st = reviews["stats"]
+    print(f"复核 {st['reviewed']}/{st['total']} 项（最近 {st['lastReviewedAt'] or '—'}）")
     print("wrote", dest, dest.stat().st_size, "bytes")
 
 

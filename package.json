@@ -9,6 +9,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "data": "python scripts/build_data.py",
+    "review": "node scripts/review.mjs",
     "seo": "node scripts/seo.mjs"
   },
   "dependencies": {

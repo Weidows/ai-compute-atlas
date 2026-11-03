@@ -1,6 +1,6 @@
 import { ArrowUpRight, Database, ExternalLink } from 'lucide-react'
 
-import { atlas, chinaProducts } from '../lib/atlas'
+import { atlas, chinaProducts, reviewCoverage } from '../lib/atlas'
 
 const SOURCES = [
   {
@@ -21,6 +21,7 @@ const SOURCES = [
 ]
 
 export function Footer() {
+  const rev = reviewCoverage()
   return (
     <footer className="relative mx-auto max-w-[1680px] border-t border-edge/50 px-4 py-10 lg:px-8">
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
@@ -51,6 +52,16 @@ export function Footer() {
               <span className="text-cyan">·</span>
               <span>
                 模型侧全部来自 Hugging Face 官方 API 与模型卡；下载量是滚动 30 天口径。{chinaProducts().length} 款中国特供按文档「中国特供」字段标注。
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-amber">·</span>
+              <span>
+                本页所有条目都是人工抓取整理，没有自动校验：目前 {rev.reviewed}/{rev.total} 项做过二次核对
+                {rev.lastReviewedAt ? `（最近 ${rev.lastReviewedAt}）` : ''}。每条在节点档案里标出复核次数与最近复核时间，
+                <a href={`${import.meta.env.BASE_URL}review/`} className="text-cyan hover:underline">
+                  查看复核清单 →
+                </a>
               </span>
             </li>
             <li className="flex gap-2">
@@ -127,7 +138,9 @@ export function Footer() {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-edge/40 pt-4 font-mono text-[9px] text-fog/40">
-        <span>AI COMPUTE ATLAS · 静态站点 · 数据快照 {atlas.generatedAt}</span>
+        <span>
+          AI COMPUTE ATLAS · 静态站点 · 数据快照 {atlas.generatedAt} · 已复核 {rev.reviewed}/{rev.total}
+        </span>
         <a href="#top" className="flex items-center gap-1 hover:text-cyan">
           回到顶部 <ArrowUpRight size={10} />
         </a>

@@ -1,0 +1,6 @@
+{
+  "updatedAt": "2026-11-03",
+  "reviewer": "weidows",
+  "note": "人工复核台账。本项目的数据由人工抓取整理，没有自动校验；每核对一条记录的字段来源就 +1，构建时由 scripts/build_data.py 合入 atlas.json 的 review 字段。count=0 表示这条只抓过、没做过二次核对。",
+  "items": {}
+}

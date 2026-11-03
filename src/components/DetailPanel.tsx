@@ -1,21 +1,24 @@
 import { useMemo } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { ArrowUpRight, X } from 'lucide-react'
+import { ArrowUpRight, ShieldAlert, ShieldCheck, X } from 'lucide-react'
 
 import {
   atlas,
-  chinaProducts,
   fmtCompact,
   fmtCny,
   fmtDate,
   fmtNum,
   fmtUsd,
   ORG_COLOR,
+  REVIEW_TONE,
+  reviewCoverage,
+  reviewOf,
   SYSTEM_COLOR,
   TIER_META,
   yearFraction,
   type Model,
   type Product,
+  type Review,
   type Server,
 } from '../lib/atlas'
 import { cn } from '../lib/cn'
@@ -38,6 +41,34 @@ function Chip({ children, tone = '#38e2ff' }: { children: React.ReactNode; tone?
     >
       {children}
     </span>
+  )
+}
+
+/**
+ * 每一条记录的复核状态。数据是人工抓取整理的，这个条子明确告诉读者
+ * 「这条被人工核对过几次、最近一次是哪天」，0 次就是没做过二次核对。
+ */
+function ReviewStrip({ review }: { review?: Review }) {
+  const r = reviewOf({ review })
+  const ok = r.count > 0
+  const tone = ok ? REVIEW_TONE.reviewed : REVIEW_TONE.pending
+  const Icon = ok ? ShieldCheck : ShieldAlert
+  return (
+    <div
+      className="mb-3 border px-2 py-1.5"
+      style={{ borderColor: `${tone}40`, background: `${tone}0c` }}
+    >
+      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 font-mono text-[10px] leading-tight">
+        <Icon size={11} style={{ color: tone }} className="shrink-0" />
+        <span style={{ color: tone }}>{ok ? `已复核 ${r.count} 次` : '未复核'}</span>
+        <span className="text-fog/60">·</span>
+        <span className="text-fog">
+          {ok ? `最近 ${r.lastReviewedAt ?? '日期缺失'}` : '单次抓取，尚未二次核对'}
+        </span>
+        {ok && r.by && <span className="text-fog/50">· {r.by}</span>}
+      </div>
+      {r.note && <p className="mt-1 text-[10px] leading-relaxed text-fog/80">{r.note}</p>}
+    </div>
   )
 }
 
@@ -105,6 +136,16 @@ export function DetailPanel({
 
   if (!selection || !data) return null
 
+  const current =
+    data.kind === 'product'
+      ? data.p
+      : data.kind === 'server'
+        ? data.s
+        : data.kind === 'model'
+          ? data.m
+          : data.b
+  const coverage = reviewCoverage()
+
   return (
     <motion.aside
       initial={reduce ? false : { x: 24, opacity: 0 }}
@@ -131,6 +172,7 @@ export function DetailPanel({
       </div>
 
       <div className="no-bar flex-1 overflow-y-auto px-3.5 py-3">
+        <ReviewStrip review={current.review} />
         {data.kind === 'product' && (
           <>
             <div className="flex items-start justify-between gap-2">
@@ -368,7 +410,9 @@ export function DetailPanel({
       </div>
 
       <div className="flex items-center justify-between border-t border-edge/60 px-3.5 py-2 font-mono text-[9px] text-fog/50">
-        <span>{chinaProducts().length} 款中国特供 · 快照 {atlas.generatedAt}</span>
+        <span>
+          复核 {coverage.reviewed}/{coverage.total} 项 · 快照 {atlas.generatedAt}
+        </span>
         <button onClick={onClose} className="hover:text-snow">
           ESC
         </button>

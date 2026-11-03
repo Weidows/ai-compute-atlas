@@ -42,6 +42,40 @@ npm run build    # tsc --noEmit + vite build → dist/
 
 没有一条编造或补值：模型卡/文档没写的字段是 `null`，页面显示「未公开 / —」。
 
+## 复核台账
+
+数据全部是手工抓取整理的，没有自动校验，准确率无法完全保证。所以另有一份独立的复核台账 `data/reviews.json`：每条记录记「被人工核对过几次、最近一次是哪天」。构建时由 `scripts/build_data.py` 合入 `atlas.json` 的 `review` 字段；**台账里没有的条目就是 `count = 0`，页面明写「未复核」**，不糊弄成「已验证」。
+
+```json
+{
+  "items": {
+    "blk-rtx5090": {
+      "count": 2,
+      "lastReviewedAt": "2026-11-02",
+      "by": "weidows",
+      "note": "对照规格页核对显存 32GB GDDR7 与 575W 功耗"
+    }
+  }
+}
+```
+
+- 台账与快照分离，重跑 `npm run data` 不会冲掉人工记录；台账里的 id 在快照中消失时构建会告警。
+- 记账走 CLI（id 必须在 `atlas.json` 里存在，避免手滑写出幽灵条目）：
+
+```bash
+npm run review -- stats                                  # 覆盖率汇总（按类型）
+npm run review -- list --unreviewed                      # 还没复核的条目
+npm run review -- mark blk-rtx5090 --note "对照规格页核对显存/功耗"
+npm run review -- mark --arch Blackwell --tier datacenter --force   # 整批记一次
+npm run review -- undo blk-rtx5090                       # 撤销一次（记错了）
+npm run data && npm run build                            # 重新生成快照与静态页
+```
+
+- 展示：节点档案顶部一条 `已复核 2 次 · 最近 2026-11-02`（0 次是橙色的「未复核 · 单次抓取，尚未二次核对」）；页脚与面板底栏显示全站覆盖率；静态站的 `/review/` 逐条列出次数、日期、备注，未复核的排最前，可以直接当核对清单用。
+- `atlas.json` 每条记录带 `review.count` / `review.lastReviewedAt` / `review.by` / `review.note`，汇总在 `reviews.stats`（含 `byKind` 分项），外部对拍时同样能看到可信度。
+
+复核只记录「有人按来源重新核对过」，不等于所有字段都被独立验证过——来源口径本身（估算值、稀疏值、板卡总量）仍需按项目页脚的口径说明理解。
+
 ## 结构
 
 ```
@@ -50,11 +84,14 @@ src/
   lib/atlas.ts           类型、时间标度、派生序列（代际峰值 / 单位算力价格 / 年度共振）
   components/
     Atlas.tsx            主时间轴：7 条带、标签避让、缩放、全览条、筛选
-    DetailPanel.tsx      节点档案（硬件 / 整机 / 模型 / 突破四种形态）
+    DetailPanel.tsx      节点档案（硬件 / 整机 / 模型 / 突破四种形态）+ 复核状态
     Analytics.tsx        四块读数：代际 / 单价 / 共振 / 中国特供
     Hero.tsx  Footer.tsx  Starfield.tsx
+data/
+  reviews.json           人工复核台账（次数 / 最近复核时间 / 备注），由构建合入快照
 scripts/
-  build_data.py          数据构建（可重跑）
+  build_data.py          数据构建（可重跑，合并复核台账）
+  review.mjs             复核台账 CLI：stats / list / mark / undo / reset
   verify.mjs             CDP 截图 + 控制台错误 + 溢出检测
   probe.mjs              标签碰撞 / 分层节点计数 / 分区截图
   mobile.mjs             390 / 768 / 1440 三档溢出与文案检查
@@ -64,7 +101,7 @@ scripts/
 
 - 每一列是一个时间切片：上面是当年出货的芯片与整机，下面是同年开源的模型；
 - 圆点大小 = 单卡显存，实心 = 有行情/性能数据，空心虚线 = 仅文档收录，⚑ = 中国特供；
-- 点任意节点 → 右侧档案，附「同期开源模型 / 发布时可用算力」跨层链接；
+- 点任意节点 → 右侧档案，附「同期开源模型 / 发布时可用算力」跨层链接；档案顶部标出这条的复核次数与最近复核时间，未复核的会明说；
 - 底部全览条：青柱是芯片密度、紫柱是模型密度，点击跳转年份。
 
 ## SEO / 可检索性
@@ -77,7 +114,8 @@ scripts/
 | `/generations/<世代>/` | 10 个世代各一页（blackwell、hopper、ada-lovelace…） |
 | `/models/<实验室>/` | DeepSeek / GLM / Kimi 三页发布年表与突破 |
 | `/china/` | 8 款中国特供与被削规格 |
-| `/sitemap.xml` · `/robots.txt` | 16 条 URL + 抓取声明 |
+| `/review/` | 复核台账：341 条逐条列复核次数、最近复核时间与备注，未复核的排最前 |
+| `/sitemap.xml` · `/robots.txt` | 17 条 URL + 抓取声明 |
 | `/data/atlas.json` | 机器可读快照（供引用、对拍、AI 检索） |
 | `/og.png` | 1200×630 社交分享卡 |
 
