@@ -4,8 +4,16 @@
 
 ## 数据
 - 快照：src/data/atlas.json（由 scripts/build_data.py 生成）
+- 在线接口：/ai-compute-atlas/data/atlas.json（同源，UTF-8，可直接 fetch）
 - 字段：products[]（name/arch/tier/vramGb/fp32/date/china/marketId）、servers[]、models[]、breakthroughs[]、archs[]
 - 覆盖：NVIDIA 154 款 · 其他厂商 20 款 · 整机 15 台 · 模型 84 个 · 突破 68 项
+
+## 静态页（无 JS 也可读）
+- /ai-compute-atlas/data/ — 完整数据总表
+- /ai-compute-atlas/generations/{blackwell,hopper,ada-lovelace,ampere,turing,volta,pascal,maxwell,kepler,fermi}/
+- /ai-compute-atlas/models/{deepseek,glm,kimi}/
+- /ai-compute-atlas/china/ — 中国特供型号
+- /ai-compute-atlas/sitemap.xml
 
 ## 口径
 - FP32 标「约」为按 CUDA 核心 × 2 × Boost 估算；张量算力按稀疏值记录。

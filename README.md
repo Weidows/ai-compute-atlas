@@ -67,6 +67,30 @@ scripts/
 - 点任意节点 → 右侧档案，附「同期开源模型 / 发布时可用算力」跨层链接；
 - 底部全览条：青柱是芯片密度、紫柱是模型密度，点击跳转年份。
 
+## SEO / 可检索性
+
+主页面是 CSR（React 渲染），所以另做了一层**构建期生成的静态内容页**，让不跑 JS 的爬虫与检索都能拿到正文：
+
+| URL | 内容 |
+| --- | --- |
+| `/data/` | 完整数据总表：154 款产品 / 84 个模型 / 15 台整机，可 Ctrl+F |
+| `/generations/<世代>/` | 10 个世代各一页（blackwell、hopper、ada-lovelace…） |
+| `/models/<实验室>/` | DeepSeek / GLM / Kimi 三页发布年表与突破 |
+| `/china/` | 8 款中国特供与被削规格 |
+| `/sitemap.xml` · `/robots.txt` | 16 条 URL + 抓取声明 |
+| `/data/atlas.json` | 机器可读快照（供引用、对拍、AI 检索） |
+| `/og.png` | 1200×630 社交分享卡 |
+
+- 生成脚本 `scripts/seo.mjs`，由 `prebuild` 自动执行，产物不进版本库（`.gitignore`）。
+- `index.html` 带 canonical、og/twitter、`WebSite + Dataset + TechArticle` JSON-LD；静态页各自带 `CollectionPage / ItemList / Dataset` 与 canonical。
+- 页面之间互链：页脚 → 数据总表 / 中国特供 / 分世代档案，数据页 → 三个实验室。
+
+站长后台还需手动做一次（不在代码里）：
+
+1. Google Search Console / Bing Webmaster 添加 `blog.weidows.tech`，提交 `https://blog.weidows.tech/ai-compute-atlas/sitemap.xml`；
+2. 根域 `robots.txt` 归博客仓（`Blog-private/source/robots.txt`），加一行 `Sitemap: https://blog.weidows.tech/ai-compute-atlas/sitemap.xml`；
+3. 百度搜索资源平台对 GitHub Pages 的抓取不稳定，若重视百度，需要镜像到国内可访问的域名。
+
 ## 部署
 
 GitHub Pages：`.github/workflows/deploy.yml` 在 `main` 推送时以 `VITE_BASE=/ai-compute-atlas/` 构建。

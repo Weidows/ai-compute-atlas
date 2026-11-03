@@ -369,6 +369,10 @@ ${[...models]
   )
   .join('\n')}
 </tbody></table>
+<h2>按实验室</h2>
+<div class="pager">
+${orgs.map((o) => `<a href="${BASE}models/${ORG_SLUG[o.id]}/">${esc(o.name)}（${models.filter((m) => m.org === o.id).length} 个发布）</a>`).join(String.fromCharCode(10))}
+</div>
 <h2>整机与超节点</h2>
 <table><thead><tr><th>名称</th><th>形态</th><th>GPU</th><th>功耗</th><th>报价</th><th>上市口径</th></tr></thead><tbody>
 ${atlas.servers
