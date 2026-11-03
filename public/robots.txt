@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://blog.weidows.tech/ai-compute-atlas/sitemap.xml
