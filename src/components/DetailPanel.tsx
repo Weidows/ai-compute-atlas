@@ -46,6 +46,8 @@ function relatedModels(date: string, limit = 4): Model[] {
   const t = yearFraction(date)
   return [...atlas.models]
     .map((m) => ({ m, d: Math.abs(yearFraction(m.date) - t) + (m.tier === 'flagship' ? 0 : 0.12) }))
+    // anything further than ~18 months is not "同期" and would mislead on old cards
+    .filter((x) => x.d <= 1.6)
     .sort((a, b) => a.d - b.d)
     .slice(0, limit)
     .map((x) => x.m)
@@ -184,6 +186,9 @@ export function DetailPanel({
             <div className="mt-4">
               <div className="label-hud mb-1.5">同期开源模型</div>
               <div className="space-y-1">
+                {relatedModels(data.p.date).length === 0 && (
+                  <p className="text-[10px] text-fog/60">该时期没有收录开源模型（收录自 2023 年起）</p>
+                )}
                 {relatedModels(data.p.date).map((m) => (
                   <button
                     key={m.id}
