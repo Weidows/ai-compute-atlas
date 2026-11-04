@@ -13,7 +13,7 @@ import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from 'react'
 const NAV_EVENT = 'atlas:route'
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
 
-export type RoutePath = '/' | '/atlas' | '/charts' | '/export' | '/ledger' | '/about'
+export type RoutePath = '/' | '/atlas' | '/charts' | '/stack' | '/export' | '/ledger' | '/about'
 
 export interface RouteMeta {
   path: RoutePath
@@ -40,6 +40,12 @@ export const ROUTES: RouteMeta[] = [
     label: '读数',
     title: '读数：算力怎么变便宜 · 算力全景',
     blurb: '代际跃迁、单位算力价格、模型与显存的年度共振。',
+  },
+  {
+    path: '/stack',
+    label: '产业链',
+    title: '产业链五层配套 · 算力全景',
+    blurb: '存储、互联、供电散热、制程、集群：算力之外的配套能力。',
   },
   {
     path: '/export',

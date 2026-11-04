@@ -5,7 +5,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { setTimeout as sleep } from 'node:timers/promises'
 
 const BASE = (process.argv[2] ?? 'http://localhost:5191').replace(/\/$/, '')
-const ROUTES = ['/', '/atlas', '/charts', '/export', '/ledger', '/about']
+const ROUTES = ['/', '/atlas', '/charts', '/stack', '/export', '/ledger', '/about']
 const OUT = 'C:/Users/weidows/.hermes/cache/scratch/atlas-mobile'
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 const PORT = 9351

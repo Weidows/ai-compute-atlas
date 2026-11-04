@@ -2,18 +2,19 @@ import { useEffect, useMemo, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Search, ShieldAlert, ShieldCheck } from 'lucide-react'
 
-import { atlas, REVIEW_TONE, reviewCoverage, reviewOf } from '../lib/atlas'
+import { atlas, industryOf, REVIEW_TONE, reviewCoverage, reviewOf } from '../lib/atlas'
 import { hrefOf } from '../lib/router'
 import { cn } from '../lib/cn'
 import { CountUp, EASE_OUT, Reveal } from '../components/motion'
 
-type Kind = 'hardware' | 'server' | 'model' | 'breakthrough'
+type Kind = 'hardware' | 'server' | 'model' | 'breakthrough' | 'industry'
 
 const KIND_LABEL: Record<Kind, string> = {
   hardware: '硬件',
   server: '整机',
   model: '模型',
   breakthrough: '突破',
+  industry: '产业链',
 }
 
 interface Row {
@@ -42,12 +43,33 @@ function allRows(): Row[] {
         note: rv.note ?? null,
       }
     })
+  const industry = industryOf()
+  const industryRows = [
+    ...industry.hbm,
+    ...industry.interconnect,
+    ...industry.power,
+    ...industry.process,
+    ...industry.clusters,
+  ].map((r) => {
+    const rv = reviewOf(r)
+    return {
+      id: r.id,
+      name: r.name,
+      kind: 'industry' as const,
+      date: String(r.year),
+      count: rv.count,
+      last: rv.lastReviewedAt,
+      by: rv.by ?? null,
+      note: rv.note ?? null,
+    }
+  })
   return [
     ...pick(atlas.products, 'hardware'),
     ...pick(atlas.extras, 'hardware'),
     ...pick(atlas.servers, 'server'),
     ...pick(atlas.models, 'model'),
     ...pick(atlas.breakthroughs, 'breakthrough'),
+    ...industryRows,
   ]
 }
 
@@ -166,7 +188,7 @@ export function LedgerPage() {
         </div>
 
         <div className="flex items-center gap-1">
-          {(['all', 'hardware', 'server', 'model', 'breakthrough'] as const).map((k) => (
+          {(['all', 'hardware', 'server', 'model', 'breakthrough', 'industry'] as const).map((k) => (
             <button
               key={k}
               type="button"

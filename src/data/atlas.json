@@ -10385,9 +10385,9 @@
   "reviewer": "weidows",
   "note": "人工复核台账。本项目的数据由人工抓取整理，没有自动校验；每核对一条记录的字段来源就 +1，构建时由 scripts/build_data.py 合入 atlas.json 的 review 字段。count=0 表示这条只抓过、没做过二次核对。",
   "stats": {
-   "total": 341,
+   "total": 380,
    "reviewed": 0,
-   "unreviewed": 341,
+   "unreviewed": 380,
    "lastReviewedAt": null,
    "byKind": {
     "hardware": {
@@ -10409,9 +10409,749 @@
      "total": 68,
      "reviewed": 0,
      "unreviewed": 68
+    },
+    "industry": {
+     "total": 39,
+     "reviewed": 0,
+     "unreviewed": 39
     }
    }
   }
+ },
+ "industry": {
+  "asOf": "2026-11-03",
+  "note": "产业链五个维度的公开口径整理：每条带来源链接与取数时间，未标注官方规格书的一律按「外部口径」对待；规格书没写的字段留空，不补推。",
+  "hbm": [
+   {
+    "id": "hbm1",
+    "name": "HBM1",
+    "year": 2015,
+    "stackGb": 4,
+    "maxStackGb": 4,
+    "bandwidthGbs": 128,
+    "busBits": 1024,
+    "firstUse": "AMD Fiji；NVIDIA 未采用",
+    "suppliers": [
+     "SK hynix",
+     "Samsung"
+    ],
+    "note": "JEDEC 2013 定标准，2015 年随 AMD Fiji 首次商用。1024-bit 接口、4 层堆叠。",
+    "source": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "hbm2",
+    "name": "HBM2",
+    "year": 2016,
+    "stackGb": 8,
+    "maxStackGb": 8,
+    "bandwidthGbs": 307,
+    "busBits": 1024,
+    "firstUse": "Tesla P100（16GB，732 GB/s）",
+    "suppliers": [
+     "SK hynix",
+     "Samsung",
+     "Micron"
+    ],
+    "note": "8 层堆叠，单堆最高 8GB；2018 年 JEDEC 更新把单堆带宽拉到 307 GB/s。",
+    "source": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "hbm2e",
+    "name": "HBM2E",
+    "year": 2019,
+    "stackGb": 16,
+    "maxStackGb": 24,
+    "bandwidthGbs": 461,
+    "busBits": 1024,
+    "firstUse": "A100（40GB / 80GB）",
+    "suppliers": [
+     "SK hynix",
+     "Samsung",
+     "Micron"
+    ],
+    "note": "3.6 Gbps 引脚速率，8 层 16GB 起步；A100 80GB 用 5 个堆叠做到 2 TB/s 总带宽。",
+    "source": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "hbm3",
+    "name": "HBM3",
+    "year": 2022,
+    "stackGb": 16,
+    "maxStackGb": 24,
+    "bandwidthGbs": 819,
+    "busBits": 1024,
+    "firstUse": "H100 SXM（80GB，3.35 TB/s）",
+    "suppliers": [
+     "SK hynix",
+     "Samsung",
+     "Micron"
+    ],
+    "note": "6.4 Gbps 引脚速率，16 通道；H100 用 5 个有效堆叠做到 80GB。",
+    "source": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "hbm3e",
+    "name": "HBM3E",
+    "year": 2024,
+    "stackGb": 24,
+    "maxStackGb": 36,
+    "bandwidthGbs": 1200,
+    "busBits": 1024,
+    "firstUse": "H200（141GB，4.8 TB/s）",
+    "suppliers": [
+     "SK hynix",
+     "Samsung",
+     "Micron"
+    ],
+    "note": "9.6 Gbps 引脚速率，12 层 36GB 为当前主流大容量；B200/B300 用 8 堆叠做到 8 TB/s 级别。",
+    "source": "https://blogs.sw.siemens.com/semiconductor-packaging/2026/04/24/hbm3e-hbm4-ic-design-guide",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "hbm4",
+    "name": "HBM4",
+    "year": 2026,
+    "stackGb": 36,
+    "maxStackGb": 48,
+    "bandwidthGbs": 2800,
+    "busBits": 2048,
+    "firstUse": "Vera Rubin（288GB/封装，约 22 TB/s）",
+    "suppliers": [
+     "SK hynix",
+     "Samsung",
+     "Micron"
+    ],
+    "note": "接口翻倍到 2048-bit，12 层 36GB 先量产、16 层 48GB 跟进；单堆带宽 2.0 到 3.3 TB/s 视引脚速率。",
+    "source": "https://www.utmel.com/blog/news/semiconductor/hbm4-and-the-shift-to-customized-ai-memory-the-advanced-packaging-bottleneck",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   }
+  ],
+  "interconnect": [
+   {
+    "id": "nvlink1",
+    "name": "NVLink 1",
+    "year": 2016,
+    "scope": "scale-up",
+    "gbs": 160,
+    "firstUse": "Pascal P100",
+    "note": "4 条链路 × 20 GB/s，双向 160 GB/s。",
+    "source": "https://en.wikipedia.org/wiki/NVLink",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "nvlink2",
+    "name": "NVLink 2",
+    "year": 2017,
+    "scope": "scale-up",
+    "gbs": 300,
+    "firstUse": "Volta V100",
+    "note": "6 条链路 × 25 GB/s；DGX-1 起 8 卡可全互联。",
+    "source": "https://en.wikipedia.org/wiki/NVLink",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "nvlink3",
+    "name": "NVLink 3",
+    "year": 2020,
+    "scope": "scale-up",
+    "gbs": 600,
+    "firstUse": "Ampere A100",
+    "note": "12 条链路 × 25 GB/s，双向 600 GB/s。",
+    "source": "https://en.wikipedia.org/wiki/NVLink",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "nvlink4",
+    "name": "NVLink 4",
+    "year": 2022,
+    "scope": "scale-up",
+    "gbs": 900,
+    "firstUse": "Hopper H100",
+    "note": "18 条链路，双向 900 GB/s；配 NVSwitch 组成 8 卡机内域。",
+    "source": "https://en.wikipedia.org/wiki/NVLink",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "nvlink5",
+    "name": "NVLink 5",
+    "year": 2024,
+    "scope": "scale-up",
+    "gbs": 1800,
+    "firstUse": "Blackwell B200",
+    "note": "单卡双向 1.8 TB/s；NVL72 域内聚合 130 TB/s。",
+    "source": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "nvlink6",
+    "name": "NVLink 6",
+    "year": 2026,
+    "scope": "scale-up",
+    "gbs": 3600,
+    "firstUse": "Vera Rubin NVL72",
+    "note": "单卡双向 3.6 TB/s，NVL72 域内聚合 260 TB/s；支持 1152 卡 scale-up 域。",
+    "source": "https://developer.nvidia.com/blog/nvidia-nvlink-the-scale-up-network-for-ai-factories",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "ib-hdr",
+    "name": "InfiniBand HDR",
+    "year": 2016,
+    "scope": "scale-out",
+    "gbs": 200,
+    "firstUse": "Quantum HDR",
+    "note": "200 Gb/s 每端口，50G PAM4 单通道起步。",
+    "source": "https://ascentoptics.com/blog/nvidia-infiniband-switch",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "ib-ndr",
+    "name": "InfiniBand NDR",
+    "year": 2020,
+    "scope": "scale-out",
+    "gbs": 400,
+    "firstUse": "Quantum-2",
+    "note": "400 Gb/s 每端口，成为 A100/H100 集群主流。",
+    "source": "https://ascentoptics.com/blog/nvidia-infiniband-switch",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "ib-xdr",
+    "name": "InfiniBand XDR",
+    "year": 2024,
+    "scope": "scale-out",
+    "gbs": 800,
+    "firstUse": "Quantum-X800",
+    "note": "800 Gb/s 每端口，配 ConnectX-8 网卡；2026 仍是主力部署口径。",
+    "source": "https://www.vitextech.com/blogs/blog/1-6t-optical-for-ai-data-centers-the-complete-technical-guide",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "eth-16t",
+    "name": "以太网 1.6T",
+    "year": 2025,
+    "scope": "scale-out",
+    "gbs": 1600,
+    "firstUse": "Tomahawk 6 交换平台",
+    "note": "单口 1.6 Tb/s，AI 集群的以太网路线开始与 InfiniBand 同代对标。",
+    "source": "https://www.vitextech.com/blogs/blog/1-6t-optical-for-ai-data-centers-the-complete-technical-guide",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "cpo-2025",
+    "name": "CPO 硅光交换",
+    "year": 2025,
+    "scope": "optics",
+    "gbs": 115200,
+    "firstUse": "Quantum-X800 Q3450",
+    "note": "共封装光学交换机，单台聚合 115.2 Tb/s；144 个 800G 或 72 个 1.6T 端口。",
+    "source": "https://www.insidedeeptech.com/co-packaged-optics-cpo-full-guide",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   }
+  ],
+  "power": [
+   {
+    "id": "rack-dgx1",
+    "name": "DGX-1",
+    "year": 2016,
+    "rackKw": 3.2,
+    "gpus": 8,
+    "gpuType": "P100",
+    "cooling": "风冷",
+    "status": "已停产",
+    "note": "8 卡 P100，整机 3.2 kW。",
+    "source": "https://www.nvidia.com/en-us/data-center/dgx-1/",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-dgx2",
+    "name": "DGX-2",
+    "year": 2018,
+    "rackKw": 10,
+    "gpus": 16,
+    "gpuType": "V100",
+    "cooling": "风冷",
+    "status": "已停产",
+    "note": "16 卡 V100 加 NVSwitch，功耗第一次上到 10 kW。",
+    "source": "https://www.nvidia.com/en-us/data-center/dgx-2/",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-dgx-a100",
+    "name": "DGX A100",
+    "year": 2020,
+    "rackKw": 6.5,
+    "gpus": 8,
+    "gpuType": "A100",
+    "cooling": "风冷",
+    "status": "已停产",
+    "note": "8 卡 A100，6.5 kW；同期 8 卡风冷整机的典型值。",
+    "source": "https://www.nvidia.com/en-us/data-center/dgx-a100/",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-dgx-h100",
+    "name": "DGX H100",
+    "year": 2022,
+    "rackKw": 10.2,
+    "gpus": 8,
+    "gpuType": "H100",
+    "cooling": "风冷 / 液冷可选",
+    "status": "已量产",
+    "note": "8 卡 H100，10.2 kW；空冷仍可部署，接近风冷机柜上限。",
+    "source": "https://www.nvidia.com/en-us/data-center/dgx-h100/",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-gb200-nvl72",
+    "name": "GB200 NVL72",
+    "year": 2024,
+    "rackKw": 120,
+    "gpus": 72,
+    "gpuType": "B200",
+    "cooling": "直接液冷",
+    "status": "已量产",
+    "note": "72 卡一个 NVLink 域，整柜 120 kW，必须液冷。",
+    "source": "https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-gb300-nvl72",
+    "name": "GB300 NVL72",
+    "year": 2025,
+    "rackKw": 140,
+    "gpus": 72,
+    "gpuType": "B300",
+    "cooling": "直接液冷",
+    "status": "已量产",
+    "note": "标称 132 到 142 kW，峰值接近 155 kW；20 TB HBM3E 一个域。",
+    "source": "https://www.moduledge.com/blog/gb300-nvl72",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-rubin-nvl144",
+    "name": "Vera Rubin NVL144",
+    "year": 2026,
+    "rackKw": 125,
+    "gpus": 144,
+    "gpuType": "Rubin",
+    "cooling": "直接液冷",
+    "status": "已量产",
+    "note": "144 个 GPU die（72 封装），公开口径约 120 到 130 kW，能效提升抵消了算力增长。",
+    "source": "https://introl.com/blog/nvidia-vera-rubin-gpu-600kw-racks-2027",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "rack-kyber",
+    "name": "Rubin Ultra Kyber",
+    "year": 2027,
+    "rackKw": 600,
+    "gpus": 576,
+    "gpuType": "Rubin Ultra",
+    "cooling": "液冷 + 800V 直流",
+    "status": "路线图",
+    "note": "NVIDIA 公布的 2027 路线：单柜 600 kW，配 800V 直流供电。",
+    "source": "https://introl.com/blog/nvidia-vera-rubin-gpu-600kw-racks-2027",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   }
+  ],
+  "process": [
+   {
+    "id": "node-40",
+    "name": "40nm",
+    "vendor": "TSMC",
+    "year": 2010,
+    "nm": 40,
+    "archs": [
+     "Fermi"
+    ],
+    "transistorsB": 3.0,
+    "note": "GF100，30 亿晶体管；第一代完整 GPGPU。",
+    "source": "https://en.wikipedia.org/wiki/Fermi_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-28",
+    "name": "28nm",
+    "vendor": "TSMC",
+    "year": 2012,
+    "nm": 28,
+    "archs": [
+     "Kepler",
+     "Maxwell"
+    ],
+    "transistorsB": 7.1,
+    "note": "GK110 71 亿晶体管；Maxwell 继续用 28nm 打磨能效。",
+    "source": "https://en.wikipedia.org/wiki/Kepler_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-16",
+    "name": "16nm",
+    "vendor": "TSMC",
+    "year": 2016,
+    "nm": 16,
+    "archs": [
+     "Pascal"
+    ],
+    "transistorsB": 15.3,
+    "note": "GP100 153 亿晶体管，首次把 HBM2 与 NVLink 装进同一颗 GPU。",
+    "source": "https://en.wikipedia.org/wiki/Pascal_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-12",
+    "name": "12nm",
+    "vendor": "TSMC",
+    "year": 2017,
+    "nm": 12,
+    "archs": [
+     "Volta",
+     "Turing"
+    ],
+    "transistorsB": 21.1,
+    "note": "GV100 211 亿晶体管，首代 Tensor Core；Turing 加 RT Core。",
+    "source": "https://en.wikipedia.org/wiki/Volta_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-7",
+    "name": "7nm",
+    "vendor": "TSMC",
+    "year": 2020,
+    "nm": 7,
+    "archs": [
+     "Ampere（A100）"
+    ],
+    "transistorsB": 54.2,
+    "note": "GA100 542 亿晶体管；同代消费卡 GA102 走三星 8nm。",
+    "source": "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-8",
+    "name": "8nm",
+    "vendor": "Samsung",
+    "year": 2020,
+    "nm": 8,
+    "archs": [
+     "Ampere（GA102）"
+    ],
+    "transistorsB": 28.3,
+    "note": "消费级 Ampere 用三星 8N，成本优先。",
+    "source": "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-4n",
+    "name": "4N",
+    "vendor": "TSMC",
+    "year": 2022,
+    "nm": 5,
+    "archs": [
+     "Hopper",
+     "Ada Lovelace"
+    ],
+    "transistorsB": 80,
+    "note": "5nm 级定制工艺；GH100 800 亿晶体管，AD102 763 亿。",
+    "source": "https://en.wikipedia.org/wiki/Hopper_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-4np",
+    "name": "4NP",
+    "vendor": "TSMC",
+    "year": 2024,
+    "nm": 5,
+    "archs": [
+     "Blackwell"
+    ],
+    "transistorsB": 208,
+    "note": "双 die 封装（B200 合计 2080 亿晶体管），靠 CoWoS 把两颗 die 接成一颗。",
+    "source": "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "node-3np",
+    "name": "N3P",
+    "vendor": "TSMC",
+    "year": 2026,
+    "nm": 3,
+    "archs": [
+     "Rubin"
+    ],
+    "transistorsB": 336,
+    "note": "2 个 3nm 光罩级 die，合计 3360 亿晶体管；AI 在 2026 年吃掉约 36% 的 3nm 产能。",
+    "source": "https://tech-insider.org/nvidia-gtc-2026-rubin-gpu-analysis",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   }
+  ],
+  "clusters": [
+   {
+    "id": "cluster-rsc",
+    "name": "Meta RSC",
+    "operator": "Meta",
+    "year": 2022,
+    "gpus": 16000,
+    "gpuType": "A100",
+    "powerMw": null,
+    "status": "已投运",
+    "note": "16,000 张 A100 的 AI 研究集群，当年的公开标杆。",
+    "source": "https://ai.meta.com/blog/ai-rsc/",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "cluster-tpuv5p",
+    "name": "Cloud TPU v5p pod",
+    "operator": "Google",
+    "year": 2024,
+    "gpus": 8960,
+    "gpuType": "TPU v5p",
+    "powerMw": null,
+    "status": "已投运",
+    "note": "单 pod 8,960 颗 TPU v5p，非 NVIDIA 路线的规模参照。",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "cluster-colossus-1",
+    "name": "Colossus 1",
+    "operator": "xAI",
+    "year": 2024,
+    "gpus": 100000,
+    "gpuType": "H100",
+    "powerMw": 150,
+    "status": "已投运",
+    "note": "122 天建成，10 万张 H100；公开口径约 150 MW。",
+    "source": "https://en.wikipedia.org/wiki/Colossus_(data_center)",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "cluster-colossus-2",
+    "name": "Colossus 2",
+    "operator": "xAI",
+    "year": 2026,
+    "gpus": 555000,
+    "gpuType": "GB200 / H100 混合",
+    "powerMw": 2000,
+    "status": "自述 / 扩建中",
+    "note": "官方自述 55.5 万张 GPU、2 GW 总容量；属于运营方口径，未第三方审计。",
+    "source": "https://introl.com/blog/xai-colossus-2-gigawatt-expansion-555k-gpus-january-2026",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   },
+   {
+    "id": "cluster-stargate",
+    "name": "Stargate（Abilene）",
+    "operator": "OpenAI / Oracle",
+    "year": 2026,
+    "gpus": null,
+    "gpuType": "GB200 / GB300",
+    "powerMw": 1200,
+    "status": "规划 / 分期投运",
+    "note": "首期 1.2 GW 规划容量，GPU 数量未公开。",
+    "source": "https://openai.com/index/announcing-the-stargate-project/",
+    "review": {
+     "count": 0,
+     "lastReviewedAt": null,
+     "by": null,
+     "note": null
+    }
+   }
+  ]
  },
  "counts": {
   "docxProducts": 154,
@@ -10420,6 +11160,7 @@
   "models": 84,
   "breakthroughs": 68,
   "china": 8,
-  "matched": 21
+  "matched": 21,
+  "industry": 39
  }
 }

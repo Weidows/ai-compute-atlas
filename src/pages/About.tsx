@@ -48,6 +48,7 @@ const TEXT_PAGES = [
 
 export function AboutPage() {
   const rev = reviewCoverage()
+  const industryCount = atlas.counts.industry ?? 0
   return (
     <div className="mx-auto max-w-[1680px] px-4 pb-10 lg:px-8">
       <header className="pt-8">
@@ -90,6 +91,10 @@ export function AboutPage() {
             )
           })}
         </div>
+        <p className="mt-3 max-w-[70ch] text-[11px] leading-relaxed text-fog/60">
+          产业链章节（HBM、互联、供电散热、制程、集群）不在上面三份文档里：那 {industryCount} 条是人工整理的公开口径，
+          逐条附来源链接，存于 data/industry.json，页面标注为「外部口径」。
+        </p>
       </section>
 
       <section className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">

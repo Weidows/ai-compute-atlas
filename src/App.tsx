@@ -9,12 +9,14 @@ import { ChartsPage } from './pages/Charts'
 import { CoverPage } from './pages/Cover'
 import { ExportPage } from './pages/Export'
 import { LedgerPage } from './pages/Ledger'
+import { StackPage } from './pages/Stack'
 import { TimelinePage } from './pages/Timeline'
 
 const PAGES: Record<RoutePath, () => React.JSX.Element> = {
   '/': CoverPage,
   '/atlas': TimelinePage,
   '/charts': ChartsPage,
+  '/stack': StackPage,
   '/export': ExportPage,
   '/ledger': LedgerPage,
   '/about': AboutPage,

@@ -29,6 +29,8 @@ MC = Path(os.environ.get("ATLAS_MC", ROOT / "vendor" / "model-chronicle"))
 # 人工复核台账（每条数据的核对次数与最近复核时间），与数据分仓管理，
 # 这样重跑 build 不会冲掉人工记录。没有台账时全部按「未复核」处理。
 REVIEWS = Path(os.environ.get("ATLAS_REVIEWS", ROOT / "data" / "reviews.json"))
+# 产业链维度（HBM / 互联 / 供电散热 / 制程 / 集群），人工整理，每条带来源。
+INDUSTRY = Path(os.environ.get("ATLAS_INDUSTRY", ROOT / "data" / "industry.json"))
 
 NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
@@ -481,6 +483,23 @@ def review_summary(groups: dict[str, list[dict]], doc: dict) -> dict:
     }
 
 
+def load_industry() -> dict:
+    """产业链五类维度：hbm / interconnect / power / process / clusters。
+
+    和产品表不同，这些数字来自公开报道与规范页，不是同一份文档的原文，
+    所以每条都带 source 与统一的 asOf，页面上标注为「外部口径」。
+    """
+    if not INDUSTRY.exists():
+        return {}
+    doc = json.loads(INDUSTRY.read_text(encoding="utf-8"))
+    for key in INDUSTRY_KEYS:
+        doc[key] = doc.get(key) or []
+    return doc
+
+
+INDUSTRY_KEYS = ("hbm", "interconnect", "power", "process", "clusters")
+
+
 def main() -> None:
     gpus = load_gpus()
     market = json.loads((GSC / "market.json").read_text(encoding="utf-8"))
@@ -503,6 +522,13 @@ def main() -> None:
     }
     for rows in groups.values():
         attach_reviews(rows, ledger)
+
+    industry = load_industry()
+    industry_rows = [r for k in INDUSTRY_KEYS for r in industry.get(k, [])]
+    if industry_rows:
+        attach_reviews(industry_rows, ledger)
+        groups["industry"] = industry_rows
+
     reviews = review_summary(groups, ledger_doc)
     orphans = sorted(set(ledger) - {r["id"] for rows in groups.values() for r in rows})
     if orphans:
@@ -537,6 +563,7 @@ def main() -> None:
             "quotes": market.get("quotes", []),
         },
         "reviews": reviews,
+        "industry": industry,
         "counts": {
             "docxProducts": len(products),
             "extraProducts": len(extras),
@@ -545,6 +572,7 @@ def main() -> None:
             "breakthroughs": len(breakthroughs),
             "china": sum(1 for p in products if p["china"]),
             "matched": sum(1 for p in products if p.get("marketId")),
+            "industry": len(industry_rows),
         },
     }
     dest = ROOT / "src" / "data" / "atlas.json"

@@ -26,6 +26,7 @@ const KINDS = {
   server: '整机 / 超节点',
   model: '开源模型',
   breakthrough: '技术突破',
+  industry: '产业链',
 }
 
 const atlas = JSON.parse(readFileSync(ATLAS, 'utf8'))
@@ -35,6 +36,9 @@ const rows = [
   ...atlas.servers.map((r) => ({ ...r, kind: 'server' })),
   ...atlas.models.map((r) => ({ ...r, kind: 'model' })),
   ...atlas.breakthroughs.map((r) => ({ ...r, kind: 'breakthrough' })),
+  ...['hbm', 'interconnect', 'power', 'process', 'clusters'].flatMap((k) =>
+    (atlas.industry?.[k] ?? []).map((r) => ({ ...r, kind: 'industry', date: String(r.year) })),
+  ),
 ]
 const byId = new Map(rows.map((r) => [r.id, r]))
 
@@ -196,7 +200,7 @@ if (cmd === 'stats') {
 } else {
   console.log(`用法：
   npm run review -- stats
-  npm run review -- list [--unreviewed] [--kind product|extra|server|model|breakthrough] [--arch Blackwell] [--tier datacenter] [--stale 90] [--limit 100] [--verbose]
+  npm run review -- list [--unreviewed] [--kind product|extra|server|model|breakthrough|industry] [--arch Blackwell] [--tier datacenter] [--stale 90] [--limit 100] [--verbose]
   npm run review -- mark <id...> [--note "…"] [--by 名字] [--date YYYY-MM-DD]
   npm run review -- mark --arch Blackwell --tier datacenter [--force]
   npm run review -- undo <id...>

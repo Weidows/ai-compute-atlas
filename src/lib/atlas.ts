@@ -133,6 +133,63 @@ export interface ReviewBreakdown {
   unreviewed: number
 }
 
+export interface IndustryRow {
+  id: string
+  name: string
+  year: number
+  note?: string
+  source?: string
+  status?: string
+  review?: Review
+}
+
+export interface HbmRow extends IndustryRow {
+  stackGb: number
+  maxStackGb: number
+  bandwidthGbs: number
+  busBits: number
+  firstUse: string
+  suppliers: string[]
+}
+
+export interface InterconnectRow extends IndustryRow {
+  scope: 'scale-up' | 'scale-out' | 'optics'
+  gbs: number
+  firstUse: string
+}
+
+export interface PowerRow extends IndustryRow {
+  rackKw: number
+  gpus: number | null
+  gpuType: string
+  cooling: string
+}
+
+export interface ProcessRow extends IndustryRow {
+  vendor: string
+  nm: number
+  archs: string[]
+  transistorsB: number
+}
+
+export interface ClusterRow extends IndustryRow {
+  operator: string
+  gpus: number | null
+  gpuType: string
+  powerMw: number | null
+}
+
+/** 产业链五类维度：算力之外配套能力的公开口径。 */
+export interface Industry {
+  asOf: string | null
+  note: string | null
+  hbm: HbmRow[]
+  interconnect: InterconnectRow[]
+  power: PowerRow[]
+  process: ProcessRow[]
+  clusters: ClusterRow[]
+}
+
 export interface AtlasReviews {
   updatedAt: string | null
   reviewer: string | null
@@ -157,6 +214,7 @@ export interface AtlasData {
   orgs: Org[]
   market: { updatedAt: string; quotes: Record<string, unknown>[] }
   reviews: AtlasReviews
+  industry?: Industry
   counts: Record<string, number>
 }
 
@@ -192,6 +250,28 @@ export function reviewCoverage(): AtlasReviews['stats'] {
       byKind: {},
     }
   )
+}
+
+/** 产业链数据缺失时的空壳，保证页面不炸。 */
+export function industryOf(): Industry {
+  return (
+    atlas.industry ?? {
+      asOf: null,
+      note: null,
+      hbm: [],
+      interconnect: [],
+      power: [],
+      process: [],
+      clusters: [],
+    }
+  )
+}
+
+/** 首尾倍数，用来把「涨了多少」写成一句话而不是堆数字。 */
+export function timesBetween(rows: { value: number }[]): number | null {
+  const nums = rows.map((r) => r.value).filter((v) => v > 0)
+  if (nums.length < 2) return null
+  return nums[nums.length - 1] / nums[0]
 }
 
 /* ------------------------------------------------------------------ *

@@ -1,8 +1,8 @@
 # 算力全景 · AI Compute Atlas
 
-把三份分散的资料接成一条时间轴：**架构世代 → 芯片 / SKU → 整机 · 超节点 → 开源模型 → 技术突破**，再拆成四条读数（代际跃迁 / 单位算力价格 / 模型-显存共振 / 中国特供）与一份人工复核台账。
+把三份分散的资料接成一条时间轴：**架构世代 → 芯片 / SKU → 整机 · 超节点 → 开源模型 → 技术突破**，再拆成四条读数（代际跃迁 / 单位算力价格 / 模型-显存共振 / 中国特供）、一份人工复核台账，外加一组**产业链配套维度**（HBM / 互联 / 供电散热 / 制程 / 集群）。
 
-站点是**多页结构**：封面、时间轴、读数、特供版、复核、口径各占一页，页间用轻量转场连接；同一份快照另有构建期生成的纯 HTML 文本页供检索。
+站点是**多页结构**：封面、时间轴、读数、产业链、特供版、复核、口径各占一页，页间用轻量转场连接；同一份快照另有构建期生成的纯 HTML 文本页供检索。
 
 - 时间跨度：2010-2026
 - 芯片：NVIDIA 154 款（10 代架构，含附录 Maxwell / Kepler / Fermi）+ 其他厂商 20 款
@@ -13,6 +13,7 @@
 ![首屏](docs/screenshots/hero.png)
 ![时间轴](docs/screenshots/atlas.png)
 ![节点档案](docs/screenshots/detail.png)
+![产业链](docs/screenshots/stack.png)
 
 ## 本地运行
 
@@ -34,6 +35,9 @@ npm run build    # tsc --noEmit + vite build + 多页入口 → dist/
 | NVIDIA 显卡历代产品全览 | `ATLAS_DOCX`（默认 `D:/Downloads/…docx`，**原件已不在本机**） | 10 张 Word 表 → 型号 / 类别 / CUDA / 显存 / FP32 / 首发时间 / 备注；解析结果快照在 `vendor/docx-products.json` |
 | gpu-server-compare（已并入） | `vendor/gpu-server-compare/*.json` | 41 卡行情与性能索引、15 台整机、现货报价、来源台账 |
 | model-chronicle（已并入） | `vendor/model-chronicle/*.ts` | 84 个发布节点、68 项突破（HF 官方 API 快照） |
+| 产业链维度 | `data/industry.json` | HBM 代际、NVLink / InfiniBand / 以太网 / CPO、整柜功率、制程节点、集群规模；每条带 `source` 与取数时间 |
+
+前三份是「原件 / 快照」，第四份 `data/industry.json` 是人工整理的公开口径，逐条附来源链接，和芯片表不是同一份文档，页面标注为「外部口径」。
 
 三份来源都已快照进 `vendor/`：两个旧仓库的数据、以及 docx 解析后的产品行（`vendor/docx-products.json`）。docx 缺失时构建自动用快照，产物 md5 与原件解析一致；若哪天找回了 docx，用 `ATLAS_DOCX=` 指过去即可重新解析。
 
@@ -92,6 +96,7 @@ src/
     Cover.tsx            封面：五层结构、章节卡、复核进展
     Timeline.tsx         全景时间轴 + 节点档案
     Charts.tsx           三条读数：代际 / 单价 / 共振
+    Stack.tsx            产业链：HBM / 互联 / 供电散热 / 制程 / 集群
     Export.tsx           中国特供：8 款与削减点
     Ledger.tsx           复核台账：覆盖率、筛选、逐条记录
     About.tsx            三份来源、字段口径、文本版入口
@@ -104,6 +109,7 @@ src/
     Starfield.tsx
 data/
   reviews.json           人工复核台账（次数 / 最近复核时间 / 备注），由构建合入快照
+  industry.json          产业链五维度的公开口径（每条带来源），构建时合入 atlas.json
 scripts/
   build_data.py          数据构建（可重跑，合并复核台账）
   review.mjs             复核台账 CLI：stats / list / mark / undo / reset
@@ -122,6 +128,7 @@ scripts/
 | `/` | 封面 | 一句话定位、五层结构、章节入口、复核进展 |
 | `/atlas` | 时间轴 | 五层内容一条横轴，点节点开档案（缩放 / 筛选 / 全览条） |
 | `/charts` | 读数 | 代际跃迁、单位算力价格、模型与显存共振 |
+| `/stack` | 产业链 | 存储 / 互联 / 供电散热 / 制程 / 集群五个维度，每条带来源 |
 | `/export` | 特供版 | 8 款中国特供与其削减点 |
 | `/ledger` | 复核 | 每条的核对次数、最近复核时间、备注与筛选 |
 | `/about` | 口径 | 三份来源、字段定义、可信度与文本版入口 |
@@ -141,13 +148,14 @@ scripts/
 
 | URL | 内容 |
 | --- | --- |
-| `/atlas` `/charts` `/export` `/ledger` `/about` | 交互章节，各自一份实体 HTML（独立 title / description / canonical，返回 200） |
+| `/atlas` `/charts` `/stack` `/export` `/ledger` `/about` | 交互章节，各自一份实体 HTML（独立 title / description / canonical，返回 200） |
+| `/stack/` | 产业链五维度的文本表：HBM 代际、互联规格、整柜功率、制程节点、集群规模 |
 | `/data/` | 完整数据总表：154 款产品 / 84 个模型 / 15 台整机，可 Ctrl+F |
 | `/generations/<世代>/` | 10 个世代各一页（blackwell、hopper、ada-lovelace…） |
 | `/models/<实验室>/` | DeepSeek / GLM / Kimi 三页发布年表与突破 |
 | `/china/` | 8 款中国特供与被削规格 |
-| `/review/` | 复核台账：341 条逐条列复核次数、最近复核时间与备注，未复核的排最前 |
-| `/sitemap.xml` · `/robots.txt` | 22 条 URL + 抓取声明 |
+| `/review/` | 复核台账：380 条逐条列复核次数、最近复核时间与备注，未复核的排最前 |
+| `/sitemap.xml` · `/robots.txt` | 23 条 URL + 抓取声明 |
 | `/data/atlas.json` | 机器可读快照（供引用、对拍、AI 检索） |
 | `/og.png` | 1200×630 社交分享卡 |
 

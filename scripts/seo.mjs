@@ -96,6 +96,7 @@ const nav = (current) => `
   <nav>
     <a href="${BASE}atlas">时间轴</a>
     <a href="${BASE}charts">读数</a>
+    <a href="${BASE}stack">产业链</a>
     <a href="${BASE}data/">数据总表</a>
     <a href="${BASE}china/"${current === 'china' ? ' aria-current="page"' : ''}>中国特供</a>
     <a href="${BASE}review/"${current === 'review' ? ' aria-current="page"' : ''}>复核清单</a>
@@ -418,6 +419,96 @@ ${sorted
 }
 
 /* ------------------------------------------------------------------ *
+ *  /stack/ —— 产业链五类维度的文本版
+ * ------------------------------------------------------------------ */
+{
+  const ind = atlas.industry ?? { hbm: [], interconnect: [], power: [], process: [], clusters: [] }
+  const total =
+    ind.hbm.length + ind.interconnect.length + ind.power.length + ind.process.length + ind.clusters.length
+  const src = (r) =>
+    r.source
+      ? `<a href="${esc(r.source)}" target="_blank" rel="noreferrer">来源</a>`
+      : '<span class="tag pending">无源</span>'
+  const title = `产业链五层配套：HBM、互联、供电散热、制程与集群（${total} 条）`
+  const description = `算力之外的配套维度：HBM1 到 HBM4 的单堆容量与带宽、NVLink 1 到 6 与 InfiniBand / 以太网 / CPO、单柜功率 3.2kW 到 600kW、40nm 到 3nm 的晶体管密度，以及从 1.6 万卡到 55 万卡的集群规模。每条带来源。`
+  const body = `
+<p class="lead">这一页是「产业链」章节的文本版：同样的 ${total} 条记录，每条带来源链接。数字来自公开报道与厂商规范页，和芯片表不是同一份文档，引用前请回到来源核对。</p>
+<div class="kpis">
+  <div class="kpi"><b>${ind.hbm.length}</b><span>HBM 代际</span></div>
+  <div class="kpi"><b>${ind.interconnect.length}</b><span>互联规格</span></div>
+  <div class="kpi"><b>${ind.power.length}</b><span>整柜功率</span></div>
+  <div class="kpi"><b>${ind.process.length}</b><span>制程节点</span></div>
+  <div class="kpi"><b>${ind.clusters.length}</b><span>集群样本</span></div>
+</div>
+
+<h2>存储：HBM 代际</h2>
+<table><thead><tr><th>代际</th><th>年份</th><th>单堆 / 最高</th><th>单堆带宽</th><th>首次使用</th><th>来源</th></tr></thead><tbody>
+${ind.hbm
+  .map(
+    (r) => `<tr><td>${esc(r.name)}</td><td class="num">${r.year}</td><td class="num">${r.stackGb} / ${r.maxStackGb} GB</td><td class="num">${n(r.bandwidthGbs)} GB/s</td><td>${esc(r.firstUse)}</td><td>${src(r)}</td></tr>`,
+  )
+  .join('\n')}
+</tbody></table>
+
+<h2>互联：scale-up 与 scale-out</h2>
+<table><thead><tr><th>规格</th><th>年份</th><th>方向</th><th>带宽</th><th>首次使用</th><th>说明</th><th>来源</th></tr></thead><tbody>
+${ind.interconnect
+  .map(
+    (r) => `<tr><td>${esc(r.name)}</td><td class="num">${r.year}</td><td><span class="tag">${esc(r.scope)}</span></td><td class="num">${r.gbs >= 1000 ? `${n(r.gbs / 1000, 1)} Tb/s` : `${n(r.gbs)} Gb/s`}</td><td>${esc(r.firstUse)}</td><td>${esc(r.note)}</td><td>${src(r)}</td></tr>`,
+  )
+  .join('\n')}
+</tbody></table>
+
+<h2>供电与散热：单柜功率</h2>
+<table><thead><tr><th>平台</th><th>年份</th><th>功率</th><th>GPU</th><th>散热</th><th>状态</th><th>来源</th></tr></thead><tbody>
+${ind.power
+  .map(
+    (r) => `<tr><td>${esc(r.name)}</td><td class="num">${r.year}</td><td class="num">${n(r.rackKw)} kW</td><td class="num">${r.gpus ?? '—'}× ${esc(r.gpuType)}</td><td>${esc(r.cooling)}</td><td>${esc(r.status ?? '—')}</td><td>${src(r)}</td></tr>`,
+  )
+  .join('\n')}
+</tbody></table>
+
+<h2>制程：晶体管数量</h2>
+<table><thead><tr><th>节点</th><th>代工厂</th><th>年份</th><th>架构</th><th>晶体管</th><th>来源</th></tr></thead><tbody>
+${ind.process
+  .map(
+    (r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.vendor)}</td><td class="num">${r.year}</td><td>${esc(r.archs.join(' / '))}</td><td class="num">${n(r.transistorsB, 1)}B</td><td>${src(r)}</td></tr>`,
+  )
+  .join('\n')}
+</tbody></table>
+
+<h2>集群：需求端规模</h2>
+<table><thead><tr><th>集群</th><th>运营方</th><th>年份</th><th>GPU</th><th>功率</th><th>状态</th><th>来源</th></tr></thead><tbody>
+${ind.clusters
+  .map(
+    (r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.operator)}</td><td class="num">${r.year}</td><td class="num">${r.gpus ? r.gpus.toLocaleString('en-US') : '未公开'} ${esc(r.gpuType)}</td><td class="num">${r.powerMw ? `${n(r.powerMw)} MW` : '未公开'}</td><td>${esc(r.status ?? '—')}</td><td>${src(r)}</td></tr>`,
+  )
+  .join('\n')}
+</tbody></table>
+
+<p class="note">口径：${esc(ind.note ?? '')} 取数时间 ${esc(ind.asOf ?? '—')}。集群规模属于运营方自述，未第三方审计。</p>
+<div class="pager"><a href="${BASE}stack">交互版 →</a><a href="${BASE}review/">复核清单 →</a><a href="${BASE}data/">数据总表 →</a></div>`
+  write('stack/index.html', page({
+    path: 'stack/',
+    title,
+    description,
+    h1: '产业链五层配套',
+    crumb: [['算力全景', BASE], ['产业链', '']],
+    body,
+    jsonld: {
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      name: 'AI 算力产业链配套维度快照',
+      description,
+      url: abs('stack/'),
+      temporalCoverage: '2013/2027',
+      dateModified: SNAPSHOT,
+      creator: { '@type': 'Organization', name: 'Weidows', url: 'https://github.com/Weidows' },
+    },
+  }))
+}
+
+/* ------------------------------------------------------------------ *
  *  /data/
  * ------------------------------------------------------------------ */
 {
@@ -499,6 +590,7 @@ const urls = [
   { loc: abs(), priority: '1.0' },
   { loc: abs('atlas/'), priority: '0.95' },
   { loc: abs('charts/'), priority: '0.9' },
+  { loc: abs('stack/'), priority: '0.9' },
   { loc: abs('export/'), priority: '0.85' },
   { loc: abs('about/'), priority: '0.8' },
   { loc: abs('ledger/'), priority: '0.7' },

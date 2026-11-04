@@ -13,7 +13,16 @@ const LAYERS = [
   { name: '技术突破', hint: '架构 / 训练 / 推理 / 多模态', value: `${atlas.breakthroughs.length} 项`, tone: '#ffb545' },
 ]
 
-const CHAPTERS = [
+const CHAPTERS: {
+  to: string
+  kind: string
+  title: string
+  blurb: string
+  metric: string
+  span: string
+  big?: boolean
+  wide?: boolean
+}[] = [
   {
     to: '/atlas',
     kind: '一条时间轴',
@@ -31,6 +40,14 @@ const CHAPTERS = [
     metric: '3 张图',
     span: 'md:col-span-3',
     big: true,
+  },
+  {
+    to: '/stack',
+    kind: '配套能力',
+    title: '产业链',
+    blurb: '存储、互联、供电散热、制程、集群。',
+    metric: '5 个维度',
+    span: 'md:col-span-2',
   },
   {
     to: '/export',
@@ -54,7 +71,8 @@ const CHAPTERS = [
     title: '口径',
     blurb: '三份来源、字段含义、能写到什么程度。',
     metric: '3 份来源',
-    span: 'md:col-span-2',
+    span: 'md:col-span-6',
+    wide: true,
   },
 ]
 
@@ -185,35 +203,58 @@ export function CoverPage() {
       <section className="pb-6">
         <div className="mb-5 flex flex-wrap items-baseline justify-between gap-3 border-b border-edge/40 pb-3">
           <h2 className="font-display text-lg tracking-wide text-snow">目录</h2>
-          <span className="font-mono text-[10px] text-fog/50">5 个章节，各自一页</span>
+          <span className="font-mono text-[10px] text-fog/50">{CHAPTERS.length} 个章节，各自一页</span>
         </div>
         <div className="grid gap-3 md:grid-cols-6">
           {CHAPTERS.map((c, i) => (
             <Reveal key={c.to} delay={i * 0.05} className={c.span}>
               <Link to={c.to} className="block h-full">
                 <SpotlightCard className="h-full border border-edge/50 bg-hull/30 hover:border-cyan/40">
-                  <div className={c.big ? 'flex h-full min-h-[168px] flex-col p-5' : 'flex h-full min-h-[136px] flex-col p-4'}>
-                    <div className="flex items-start justify-between gap-3">
-                      <span className="label-hud">{c.kind}</span>
-                      <ArrowRight
-                        size={13}
-                        className="mt-0.5 shrink-0 text-fog/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-cyan"
-                      />
+                  {c.wide ? (
+                    <div className="flex h-full flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-6">
+                      <div className="flex items-center gap-3 sm:w-64 sm:shrink-0">
+                        <span className="label-hud">{c.kind}</span>
+                        <h3 className="text-[16px] text-snow">{c.title}</h3>
+                      </div>
+                      <p className="flex-1 text-[11.5px] leading-relaxed text-fog/75">{c.blurb}</p>
+                      <div className="flex items-center gap-4 font-mono text-[10px] text-cyan/80">
+                        {c.metric}
+                        <ArrowRight
+                          size={13}
+                          className="text-fog/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-cyan"
+                        />
+                      </div>
                     </div>
-                    <h3
+                  ) : (
+                    <div
                       className={
                         c.big
-                          ? 'mt-3 font-display text-[26px] tracking-wide text-snow'
-                          : 'mt-2 text-[16px] text-snow'
+                          ? 'flex h-full min-h-[168px] flex-col p-5'
+                          : 'flex h-full min-h-[136px] flex-col p-4'
                       }
                     >
-                      {c.title}
-                    </h3>
-                    <p className="mt-2 max-w-[38ch] flex-1 text-[11.5px] leading-relaxed text-fog/75">
-                      {c.blurb}
-                    </p>
-                    <div className="mt-4 font-mono text-[10px] text-cyan/80">{c.metric}</div>
-                  </div>
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="label-hud">{c.kind}</span>
+                        <ArrowRight
+                          size={13}
+                          className="mt-0.5 shrink-0 text-fog/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-cyan"
+                        />
+                      </div>
+                      <h3
+                        className={
+                          c.big
+                            ? 'mt-3 font-display text-[26px] tracking-wide text-snow'
+                            : 'mt-2 text-[16px] text-snow'
+                        }
+                      >
+                        {c.title}
+                      </h3>
+                      <p className="mt-2 max-w-[38ch] flex-1 text-[11.5px] leading-relaxed text-fog/75">
+                        {c.blurb}
+                      </p>
+                      <div className="mt-4 font-mono text-[10px] text-cyan/80">{c.metric}</div>
+                    </div>
+                  )}
                 </SpotlightCard>
               </Link>
             </Reveal>

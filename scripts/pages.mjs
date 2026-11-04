@@ -8,7 +8,7 @@ const BASE = (process.argv[2] ?? 'http://localhost:5191').replace(/\/$/, '')
 const OUT = process.env.OUT ?? 'C:/Users/weidows/.hermes/cache/scratch/atlas-pages'
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 const PORT = 9343
-const ROUTES = ['/', '/atlas', '/charts', '/export', '/ledger', '/about']
+const ROUTES = ['/', '/atlas', '/charts', '/stack', '/export', '/ledger', '/about']
 mkdirSync(OUT, { recursive: true })
 
 const edge = spawn(
