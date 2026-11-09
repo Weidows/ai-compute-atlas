@@ -18,8 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -28,8 +28,8 @@ jobs:
         env:
           VITE_BASE: /
         run: npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -38,7 +38,32 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_retry.outputs.page_url || steps.deploy.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      # Pages 部署服务偶发卡在状态轮询（status 一直为空）直到 10 分钟超时。
+      # 第一次只给 5 分钟，超时后由下一步重试，避免一次耗尽全部额度。
+      - id: deploy
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+        with:
+          timeout: 300000
+      - id: deploy_retry
+        if: steps.deploy.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 600000
+      - name: 部署后自检（site 必须返回 200）
+        env:
+          PAGE_URL: ${{ steps.deploy_retry.outputs.page_url || steps.deploy.outputs.page_url }}
+        run: |
+          set -eu
+          if [ -z "${PAGE_URL:-}" ]; then echo "no page_url output"; exit 1; fi
+          echo "checking $PAGE_URL"
+          for i in 1 2 3 4 5; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$PAGE_URL" || true)
+            echo "attempt $i -> ${code:-000}"
+            if [ "${code:-000}" = "200" ]; then exit 0; fi
+            sleep 10
+          done
+          echo "site did not return 200 after deploy"
+          exit 1
