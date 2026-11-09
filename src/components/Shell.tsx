@@ -248,7 +248,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <SiteHeader path={path} />
 
       <main className="relative z-10 pt-14">{children}</main>
-      <SiteFooter />
+      {path === '/' ? <SiteFooter /> : <div className="h-2" />}
     </div>
   )
 }

@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 
 import { Atlas, type Filters, type Selection } from '../components/Atlas'
 import { DetailPanel } from '../components/DetailPanel'
-import { Reveal } from '../components/motion'
 import { atlas, type Tier } from '../lib/atlas'
-import { Link } from '../lib/router'
 
+/**
+ * 时间轴章节：整页控制在一屏内（1440x900 不需要竖向滚动），
+ * 横向平移交给 Shift+滚轮 / 拖拽 / 触控板横划；子页面不设页脚。
+ */
 export function TimelinePage() {
   const [selection, setSelection] = useState<Selection>(null)
   const [filters, setFilters] = useState<Filters>({
@@ -24,25 +26,9 @@ export function TimelinePage() {
   }, [])
 
   return (
-    <div className="pt-6">
+    <div className="pt-2">
       <Atlas selection={selection} onSelect={setSelection} filters={filters} setFilters={setFilters} />
       <DetailPanel selection={selection} onSelect={setSelection} onClose={() => setSelection(null)} />
-
-      <Reveal className="mx-auto mt-4 max-w-[1680px] px-4 lg:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-edge/40 pt-5">
-          <p className="max-w-lg font-mono text-[10px] leading-relaxed text-fog/50">
-            圆点大小 = 单卡显存；实心 = 有行情/性能数据；空心虚线 = 仅文档收录。缩放滑杆控制每年占宽，
-            「全部标注」强制显示所有标签。
-          </p>
-          <Link
-            to="/charts"
-            className="group flex items-center gap-2 border border-edge px-3 py-2 font-mono text-[10px] tracking-[0.14em] text-fog transition-colors hover:border-cyan/40 hover:text-cyan active:scale-[0.98]"
-          >
-            下一章：四条读数
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
-          </Link>
-        </div>
-      </Reveal>
     </div>
   )
 }

@@ -36,17 +36,17 @@ export interface Filters {
 }
 
 const BAND = {
-  era: { top: 0, h: 20 },
-  arch: { top: 24, h: 58 },
-  dc: { top: 88, h: 180 },
-  ws: { top: 276, h: 130 },
-  gc: { top: 416, h: 170 },
-  sys: { top: 596, h: 118 },
-  models: { top: 724, h: 124 },
-  bt: { top: 856, h: 50 },
-  ruler: { top: 914, h: 46 },
+  era: { top: 0, h: 18 },
+  arch: { top: 22, h: 44 },
+  dc: { top: 68, h: 144 },
+  ws: { top: 216, h: 92 },
+  gc: { top: 312, h: 110 },
+  sys: { top: 426, h: 80 },
+  models: { top: 510, h: 100 },
+  bt: { top: 614, h: 30 },
+  ruler: { top: 648, h: 32 },
 }
-const H = 966
+const H = 680
 const MAXR = 15
 
 const ERAS = [
@@ -127,6 +127,9 @@ export function Atlas({
   const [preset, setPreset] = useState<string>('ai')
   const [hover, setHover] = useState<{ x: number; y: number; label: string; sub: string; tone: string } | null>(null)
   const [win, setWin] = useState({ left: 0, width: 1 })
+  const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null)
+  const suppressClick = useRef(false)
+  const [dragging, setDragging] = useState(false)
 
   const plotW = Math.round((DOMAIN[1] - DOMAIN[0]) * ppyear) + 40
 
@@ -163,6 +166,65 @@ export function Atlas({
   useEffect(() => {
     applyPreset('ai')
   }, [applyPreset])
+
+  /**
+   * 横向平移：Shift + 滚轮、触控板横划、以及页面本身不可竖滚时的普通滚轮。
+   * 用非 passive 监听才能 preventDefault，避免同时触发页面滚动。
+   */
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const onWheel = (e: WheelEvent) => {
+      const max = el.scrollWidth - el.clientWidth
+      if (max <= 0) return
+      const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY)
+      const pageScrolls = document.documentElement.scrollHeight > window.innerHeight + 4
+      const wantPan = horizontal || e.shiftKey || !pageScrolls
+      if (!wantPan) return
+      const delta = horizontal ? e.deltaX : e.deltaY
+      if (!delta) return
+      e.preventDefault()
+      el.scrollLeft = clamp(el.scrollLeft + delta, 0, max)
+    }
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
+
+  /** 按住拖动平移；位移超过 4px 才算拖拽，松手后吞掉这次 click，避免误开档案。 */
+  useEffect(() => {
+    const move = (e: PointerEvent) => {
+      const d = drag.current
+      const el = scrollRef.current
+      if (!d || !el) return
+      const dx = e.clientX - d.x
+      if (!d.moved && Math.abs(dx) > 4) {
+        d.moved = true
+        setDragging(true)
+        setHover(null)
+      }
+      if (!d.moved) return
+      e.preventDefault()
+      el.scrollLeft = clamp(d.left - dx, 0, el.scrollWidth - el.clientWidth)
+    }
+    const end = () => {
+      if (drag.current?.moved) {
+        suppressClick.current = true
+        window.setTimeout(() => {
+          suppressClick.current = false
+        }, 0)
+      }
+      drag.current = null
+      setDragging(false)
+    }
+    window.addEventListener('pointermove', move, { passive: false })
+    window.addEventListener('pointerup', end)
+    window.addEventListener('pointercancel', end)
+    return () => {
+      window.removeEventListener('pointermove', move)
+      window.removeEventListener('pointerup', end)
+      window.removeEventListener('pointercancel', end)
+    }
+  }, [])
 
   /** Overview strip: current window as a fraction of the full 2010—2027 span. */
   const syncWindow = () => {
@@ -218,7 +280,7 @@ export function Atlas({
         BAND.models,
         ppyear,
         (m: Model) => clamp(2.6 + Math.log10((m.paramsB ?? 1) + 1) * 3.1, 3, 11) + (m.tier === 'flagship' ? 1.4 : 0),
-        { maxRows: 5, gap: 3, padTop: 12 },
+        { maxRows: 4, gap: 3, padTop: 10 },
       ),
     [ppyear],
   )
@@ -364,26 +426,24 @@ export function Atlas({
     selectedDate === null ? null : (yearFraction(selectedDate) - DOMAIN[0]) * ppyear
 
   return (
-    <section id="atlas" className="relative mx-auto w-full max-w-[1680px] px-4 pb-10 lg:px-8">
-      <header className="mb-5 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <div className="label-hud mb-2">ATLAS · 一条时间轴贯通五层</div>
-          <h1 className="font-display text-2xl font-semibold tracking-wide text-snow lg:text-[28px]">
+    <section id="atlas" className="relative mx-auto w-full max-w-[1680px] px-4 pb-2 lg:px-8">
+      <header className="mb-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h1 className="font-display text-lg font-semibold tracking-wide text-snow lg:text-xl">
             算力产业全景
           </h1>
-          <p className="mt-1 max-w-2xl text-sm leading-relaxed text-fog">
-            每一列是一个时间切片：上面是当年出货的芯片与整机，下面是同年开源的模型。
-            点任意节点，看它在这一年所处的算力位置。
-          </p>
+          <span className="hidden font-mono text-[10px] text-fog/55 md:inline">
+            拖拽平移 · Shift + 滚轮横向 · 滚轮直接横拉
+          </span>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5">
           <div className="flex rounded-sm border border-edge/80 bg-hull/60 p-0.5">
             {PRESETS.map((p) => (
               <button
                 key={p.id}
                 onClick={() => applyPreset(p.id)}
                 className={cn(
-                  'px-2.5 py-1 font-mono text-[10px] tracking-widest transition-colors',
+                  'px-2 py-0.5 font-mono text-[10px] tracking-widest transition-colors',
                   preset === p.id ? 'bg-cyan/15 text-cyan' : 'text-fog hover:text-snow',
                 )}
               >
@@ -391,7 +451,7 @@ export function Atlas({
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-1 rounded-sm border border-edge/80 bg-hull/60 px-1.5 py-1">
+          <div className="flex items-center gap-1 rounded-sm border border-edge/80 bg-hull/60 px-1.5 py-0.5">
             <button
               aria-label="缩小时间轴"
               onClick={() => zoomTo(ppyear / 1.35)}
@@ -406,7 +466,7 @@ export function Atlas({
               max={460}
               value={Math.round(ppyear)}
               onChange={(e) => zoomTo(Number(e.target.value))}
-              className="h-1 w-24 accent-cyan"
+              className="h-1 w-20 accent-cyan"
             />
             <button
               aria-label="放大时间轴"
@@ -415,12 +475,12 @@ export function Atlas({
             >
               <Plus size={12} />
             </button>
-            <span className="num w-12 text-right text-[10px] text-fog">{Math.round(ppyear)}px/年</span>
+            <span className="num w-11 text-right text-[9.5px] text-fog">{Math.round(ppyear)}px/年</span>
           </div>
           <button
             onClick={() => setFilters({ ...filters, labels: !filters.labels })}
             className={cn(
-              'flex items-center gap-1.5 rounded-sm border px-2 py-1 font-mono text-[10px] tracking-wider transition-colors',
+              'flex items-center gap-1 rounded-sm border px-1.5 py-0.5 font-mono text-[10px] tracking-wider transition-colors',
               filters.labels
                 ? 'border-cyan/60 bg-cyan/10 text-cyan'
                 : 'border-edge/80 bg-hull/60 text-fog hover:text-snow',
@@ -432,7 +492,7 @@ export function Atlas({
       </header>
 
       {/* filter bar */}
-      <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-edge/50 py-2">
+      <div className="mb-1.5 flex flex-wrap items-center gap-x-4 gap-y-1.5 border-y border-edge/50 py-1.5">
         <div className="flex items-center gap-1.5">
           <span className="label-hud">芯片</span>
           {(Object.keys(TIER_META) as Tier[]).filter((t) => t !== 'other').map((t) => {
@@ -547,7 +607,22 @@ export function Atlas({
         {/* scrollable plot */}
         <div
           ref={scrollRef}
-          className="no-bar relative flex-1 overflow-x-auto overflow-y-hidden"
+          className={cn(
+            'no-bar relative flex-1 overflow-x-auto overflow-y-hidden',
+            dragging ? 'cursor-grabbing select-none' : 'cursor-grab',
+          )}
+          onPointerDown={(e) => {
+            const el = scrollRef.current
+            if (!el || e.pointerType !== 'mouse' || e.button !== 0) return
+            if (el.scrollWidth <= el.clientWidth + 2) return
+            drag.current = { x: e.clientX, left: el.scrollLeft, moved: false }
+          }}
+          onClickCapture={(e) => {
+            if (!suppressClick.current) return
+            suppressClick.current = false
+            e.preventDefault()
+            e.stopPropagation()
+          }}
           onMouseLeave={() => setHover(null)}
           onScroll={syncWindow}
         >
@@ -878,10 +953,10 @@ export function Atlas({
         </div>
       </div>
 
-      <div className="mt-2 flex items-center gap-3">
+      <div className="mt-1.5 flex items-center gap-3">
         <span className="label-hud hidden shrink-0 sm:block">全览条</span>
         <div
-          className="group relative h-7 flex-1 cursor-crosshair overflow-hidden border border-edge/50 bg-abyss/60"
+          className="group relative h-6 flex-1 cursor-crosshair overflow-hidden border border-edge/50 bg-abyss/60"
           onClick={jumpTo}
           role="presentation"
           title="点击跳到对应年份"
@@ -925,13 +1000,13 @@ export function Atlas({
         </span>
       </div>
 
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-fog/70">
+      <div className="mt-1 flex flex-wrap items-center justify-between gap-2 font-mono text-[9.5px] text-fog/60">
         <span className="flex items-center gap-1.5">
-          <Crosshair size={11} /> 时间轴横向滚动；节点可点击，右侧看档案
+          <Crosshair size={10} /> Shift + 滚轮或直接拖拽横向平移；点节点看档案
         </span>
         <span className="flex items-center gap-1.5">
-          <Maximize2 size={11} /> 共 {atlas.products.length + atlas.extras.length} 款芯片 · {atlas.servers.length} 台整机 ·{' '}
-          {atlas.models.length} 个模型
+          <Maximize2 size={10} /> {atlas.products.length + atlas.extras.length} 款芯片 ·{' '}
+          {atlas.servers.length} 台整机 · {atlas.models.length} 个模型
         </span>
       </div>
 
