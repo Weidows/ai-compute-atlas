@@ -85,7 +85,8 @@ data/supplements/<来源 id>.json     一篇来源一个文件，字段级记 va
 - **只填空**：本地是 `null` / 空字符串才补；
 - **日期只精细化**：`2022年` → `2022-03-22` 可以，换月换年不行（要换必须显式 `override: true` 并写 `reason`）；
 - **冲突不覆盖**：文章和本地不一致时保留本地值，冲突进 `conflicts`，页面上不显示文章值；
-- 每个补过的字段在 `atlas.json` 里留 `provenance[字段] = {src, conf, quote}`，档案卡里那个字段带紫色「补」角标，底部列出补录来源。
+- 每个补过的字段在 `atlas.json` 里留 `provenance[字段] = {src, conf, quote}`，档案卡里标角标：**青色「官」= 厂商 datasheet 一手规格，紫色「补」= 二手来源**，底部列出全部来源。
+- 来源带 `level`（`primary` / `secondary`）与 `priority`（数字小的先合并）。厂商资料优先：同一字段厂商发布过，就不要用二级来源。
 
 ```bash
 npm run supplement -- list        # 所有来源：生效字段数 / 冲突数

@@ -34,20 +34,23 @@ function Row({
 }: {
   label: string
   value: React.ReactNode
-  /** 二手来源补录的字段：带一个「补」角标，hover 显示来源 */
-  filled?: boolean
+  /** 补录来源等级：official=厂商一手规格，secondary=二手车/汇总文章 */
+  filled?: 'primary' | 'secondary' | null
   title?: string
 }) {
+  const badge =
+    filled === 'primary'
+      ? { text: '官', cls: 'border-cyan/40 bg-cyan/10 text-cyan/90' }
+      : filled === 'secondary'
+        ? { text: '补', cls: 'border-violet/40 bg-violet/10 text-violet/90' }
+        : null
   return (
     <div className="flex items-baseline justify-between gap-3 border-b border-edge/30 py-1.5 last:border-0">
       <span className="shrink-0 font-mono text-[10px] tracking-wider text-fog/70">
         {label}
-        {filled && (
-          <span
-            title={title}
-            className="ml-1 rounded-sm border border-violet/40 bg-violet/10 px-1 text-[8px] leading-[12px] text-violet/90"
-          >
-            补
+        {badge && (
+          <span title={title} className={cn('ml-1 rounded-sm border px-1 text-[8px] leading-[12px]', badge.cls)}>
+            {badge.text}
           </span>
         )}
       </span>
@@ -232,32 +235,42 @@ export function DetailPanel({
               {prov.date && (
                 <span
                   title={`补录自 ${prov.date.source?.title ?? prov.date.src}`}
-                  className="ml-1 rounded-sm border border-violet/40 bg-violet/10 px-1 text-[8px] leading-[12px] text-violet/90"
+                  className={cn(
+                    'ml-1 rounded-sm border px-1 text-[8px] leading-[12px]',
+                    prov.date.source?.level === 'primary'
+                      ? 'border-cyan/40 bg-cyan/10 text-cyan/90'
+                      : 'border-violet/40 bg-violet/10 text-violet/90',
+                  )}
                 >
-                  补
+                  {prov.date.source?.level === 'primary' ? '官' : '补'}
                 </span>
               )}
             </p>
 
             <div className="mt-3">
-              <Row label="CUDA 核心" value={data.p.cuda ? fmtNum(data.p.cuda) : '—'} />
+              <Row
+                label="CUDA 核心"
+                value={data.p.cuda ? fmtNum(data.p.cuda) : '—'}
+                filled={prov.cuda ? (prov.cuda.source?.level === 'primary' ? 'primary' : 'secondary') : null}
+                title={prov.cuda?.source?.title ?? undefined}
+              />
               <Row label="显存" value={data.p.vramLabel ?? '—'} />
               <Row
                 label="FP32 算力"
                 value={data.p.fp32 ? `${fmtNum(data.p.fp32, 1)} TFLOPS` : '未公开'}
-                filled={!!prov.fp32}
+                filled={prov.fp32 ? (prov.fp32.source?.level === 'primary' ? 'primary' : 'secondary') : null}
                 title={prov.fp32?.source?.title ?? undefined}
               />
               <Row
                 label="带宽"
                 value={data.p.bandwidthGbps ? `${fmtNum(data.p.bandwidthGbps)} GB/s` : '—'}
-                filled={!!prov.bandwidthGbps}
+                filled={prov.bandwidthGbps ? (prov.bandwidthGbps.source?.level === 'primary' ? 'primary' : 'secondary') : null}
                 title={prov.bandwidthGbps?.source?.title ?? undefined}
               />
               <Row
                 label="功耗"
                 value={data.p.tdpW ? `${fmtNum(data.p.tdpW)} W` : '—'}
-                filled={!!prov.tdpW}
+                filled={prov.tdpW ? (prov.tdpW.source?.level === 'primary' ? 'primary' : 'secondary') : null}
                 title={prov.tdpW?.source?.title ?? undefined}
               />
               <Row
@@ -316,7 +329,9 @@ export function DetailPanel({
                   </div>
                 ))}
                 <div className="mt-1 font-mono text-[8.5px] text-fog/50">
-                  二手资料补录，未经官方确认；与官方冲突处以本地口径为准
+                  {suppl.some((x) => x.source?.level === 'primary')
+                    ? '「官」为厂商 datasheet 口径，「补」为二手来源，冲突处以本地口径为准'
+                    : '二手资料补录，未经官方确认；与官方冲突处以本地口径为准'}
                 </div>
               </div>
             )}

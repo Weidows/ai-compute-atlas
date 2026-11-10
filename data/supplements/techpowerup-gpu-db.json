@@ -7,7 +7,7 @@
   "publishedAt": "2026-11",
   "retrievedAt": "2026-11-03",
   "level": "secondary",
-  "note": "厂商规格表之外的社区维护数据库，FP32 取自页面「理论性能」区块（着色器数 × 频率 × 2）。多 GPU 整卡（K10/K80/M10/A16）只收 TDP，FP32 与带宽按单颗 GPU 计，口径和整卡不一致，不补。",
+  "note": "厂商规格表之外的社区维护数据库，FP32 取自页面「理论性能」区块（着色器数 × 频率 × 2）。多 GPU 整卡（K10/K80/M10/A16）只收 TDP，FP32 与带宽按单颗 GPU 计，口径和整卡不一致，不补。 RTX PRO Blackwell 系列的 CUDA 核心/功耗/带宽改由 NVIDIA 官方 datasheet 提供（nvidia-official-rtx-pro），这里只保留官方不公开的 FP32。",
   "items": [
     {
       "id": "ada-l20",
@@ -186,16 +186,6 @@
           "value": 66.94,
           "confidence": "high",
           "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 理论性能：FP32 66.94 TFLOPS"
-        },
-        "bandwidthGbps": {
-          "value": 1340.0,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 显存：Bandwidth 1.34 TB/s"
-        },
-        "tdpW": {
-          "value": 300,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 板卡设计：TDP 300 W"
         }
       }
     },
@@ -206,16 +196,6 @@
           "value": 50.53,
           "confidence": "high",
           "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 理论性能：FP32 50.53 TFLOPS"
-        },
-        "bandwidthGbps": {
-          "value": 896,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 显存：Bandwidth 896 GB/s"
-        },
-        "tdpW": {
-          "value": 200,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 板卡设计：TDP 200 W"
         }
       }
     },
@@ -226,36 +206,6 @@
           "value": 24.05,
           "confidence": "high",
           "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 理论性能：FP32 24.05 TFLOPS"
-        },
-        "bandwidthGbps": {
-          "value": 432,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 显存：Bandwidth 432 GB/s"
-        },
-        "tdpW": {
-          "value": 70,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 板卡设计：TDP 70 W"
-        }
-      }
-    },
-    {
-      "id": "blk-rtxpro2000blackwell",
-      "fields": {
-        "fp32": {
-          "value": 17.03,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 理论性能：FP32 17.03 TFLOPS"
-        },
-        "bandwidthGbps": {
-          "value": 288,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 显存：Bandwidth 288 GB/s"
-        },
-        "tdpW": {
-          "value": 70,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 板卡设计：TDP 70 W"
         }
       }
     },
@@ -266,16 +216,6 @@
           "value": 36.83,
           "confidence": "high",
           "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 理论性能：FP32 36.83 TFLOPS"
-        },
-        "bandwidthGbps": {
-          "value": 672,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 显存：Bandwidth 672 GB/s"
-        },
-        "tdpW": {
-          "value": 145,
-          "confidence": "high",
-          "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 板卡设计：TDP 145 W"
         }
       }
     },

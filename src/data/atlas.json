@@ -280,6 +280,22 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 600,
+   "provenance": {
+    "tdpW": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "架构白皮书 Table 4：RTX PRO 6000 Blackwell Workstation / Max-Q，TGP 600W（工作站版同 GB202 96GB）"
+    },
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "同上，Memory Bandwidth 1792 GB/sec"
+    }
+   },
+   "bandwidthGbps": 1792,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -301,7 +317,7 @@
    "vramPerGpuGb": 96.0,
    "vramType": "GDDR7",
    "vramLabel": "96GB GDDR7",
-   "fp32": 110.0,
+   "fp32": 109.7,
    "date": "2025-03-01",
    "datePrecision": "month",
    "dateText": "2025年3月",
@@ -309,6 +325,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 300,
+   "provenance": {
+    "tdpW": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "Max-Q datasheet：Total board power 300 W"
+    },
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "Max-Q datasheet：Memory Bandwidth 1792 GB/s"
+    },
+    "fp32": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": true,
+     "quote": "架构白皮书 Table 4：Peak FP32 TFLOPS (non-Tensor) 109.7"
+    }
+   },
+   "bandwidthGbps": 1792,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -418,27 +456,27 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "bandwidthGbps": 1344,
    "provenance": {
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": true,
+     "quote": "RTX PRO 5000 Blackwell datasheet：Memory bandwidth 1344 GB/s"
+    },
+    "tdpW": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 5000 Blackwell datasheet：Total board power 300 W"
+    },
     "fp32": {
      "src": "techpowerup-gpu-db",
      "conf": "high",
      "override": false,
      "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 理论性能：FP32 66.94 TFLOPS"
-    },
-    "bandwidthGbps": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 显存：Bandwidth 1.34 TB/s"
-    },
-    "tdpW": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 板卡设计：TDP 300 W"
     }
    },
-   "bandwidthGbps": 1340.0,
    "tdpW": 300,
    "review": {
     "count": 0,
@@ -456,7 +494,7 @@
    "archTech": "FP4 · 双die · HBM3e",
    "tier": "workstation",
    "category": "专业工作站",
-   "cuda": null,
+   "cuda": 10496,
    "vramGb": 32.0,
    "vramPerGpuGb": 32.0,
    "vramType": "GDDR7",
@@ -470,23 +508,29 @@
    "brand": "NVIDIA",
    "source": "docx",
    "provenance": {
+    "cuda": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 4500 Blackwell datasheet：NVIDIA CUDA Cores 10,496"
+    },
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 4500 Blackwell datasheet：Memory bandwidth 896 GB/s"
+    },
+    "tdpW": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 4500 Blackwell datasheet：Total board power 200 W"
+    },
     "fp32": {
      "src": "techpowerup-gpu-db",
      "conf": "high",
      "override": false,
      "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 理论性能：FP32 50.53 TFLOPS"
-    },
-    "bandwidthGbps": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 显存：Bandwidth 896 GB/s"
-    },
-    "tdpW": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 板卡设计：TDP 200 W"
     }
    },
    "bandwidthGbps": 896,
@@ -507,7 +551,7 @@
    "archTech": "FP4 · 双die · HBM3e",
    "tier": "workstation",
    "category": "专业·单槽",
-   "cuda": null,
+   "cuda": 8960,
    "vramGb": 24.0,
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR7",
@@ -521,27 +565,33 @@
    "brand": "NVIDIA",
    "source": "docx",
    "provenance": {
+    "cuda": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 4000 Blackwell datasheet：NVIDIA CUDA Cores 8,960"
+    },
+    "tdpW": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": true,
+     "quote": "RTX PRO 4000 Blackwell datasheet：Total board power 140 W"
+    },
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 4000 Blackwell datasheet：memory bandwidth 672 GB/s"
+    },
     "fp32": {
      "src": "techpowerup-gpu-db",
      "conf": "high",
      "override": false,
      "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 理论性能：FP32 36.83 TFLOPS"
-    },
-    "bandwidthGbps": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 显存：Bandwidth 672 GB/s"
-    },
-    "tdpW": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 板卡设计：TDP 145 W"
     }
    },
+   "tdpW": 140,
    "bandwidthGbps": 672,
-   "tdpW": 145,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -558,7 +608,7 @@
    "archTech": "FP4 · 双die · HBM3e",
    "tier": "workstation",
    "category": "专业·小尺寸",
-   "cuda": null,
+   "cuda": 8960,
    "vramGb": 24.0,
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR7",
@@ -572,27 +622,33 @@
    "brand": "NVIDIA",
    "source": "docx",
    "provenance": {
+    "cuda": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 4000 Blackwell SFF datasheet：NVIDIA CUDA Cores 8,960"
+    },
+    "tdpW": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "SFF datasheet：Total board power 70 W"
+    },
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "SFF datasheet：Memory bandwidth 432 GB/s"
+    },
     "fp32": {
      "src": "techpowerup-gpu-db",
      "conf": "high",
      "override": false,
      "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 理论性能：FP32 24.05 TFLOPS"
-    },
-    "bandwidthGbps": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 显存：Bandwidth 432 GB/s"
-    },
-    "tdpW": {
-     "src": "techpowerup-gpu-db",
-     "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 板卡设计：TDP 70 W"
     }
    },
-   "bandwidthGbps": 432,
    "tdpW": 70,
+   "bandwidthGbps": 432,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -609,12 +665,12 @@
    "archTech": "FP4 · 双die · HBM3e",
    "tier": "workstation",
    "category": "专业·入门",
-   "cuda": null,
+   "cuda": 4352,
    "vramGb": 16.0,
    "vramPerGpuGb": 16.0,
    "vramType": "GDDR7",
    "vramLabel": "16GB GDDR7",
-   "fp32": 17.03,
+   "fp32": 17,
    "date": "2025-06-01",
    "datePrecision": "year",
    "dateText": "2025年下半年",
@@ -623,27 +679,33 @@
    "brand": "NVIDIA",
    "source": "docx",
    "provenance": {
-    "fp32": {
-     "src": "techpowerup-gpu-db",
+    "cuda": {
+     "src": "nvidia-official-rtx-pro",
      "conf": "high",
      "override": false,
-     "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 理论性能：FP32 17.03 TFLOPS"
+     "quote": "RTX PRO 2000 Blackwell datasheet：NVIDIA CUDA Cores 4,352"
     },
-    "bandwidthGbps": {
-     "src": "techpowerup-gpu-db",
+    "fp32": {
+     "src": "nvidia-official-rtx-pro",
      "conf": "high",
-     "override": false,
-     "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 显存：Bandwidth 288 GB/s"
+     "override": true,
+     "quote": "RTX PRO 2000 datasheet：Single-Precision Performance 17 TFLOPS"
     },
     "tdpW": {
-     "src": "techpowerup-gpu-db",
+     "src": "nvidia-official-rtx-pro",
      "conf": "high",
      "override": false,
-     "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 板卡设计：TDP 70 W"
+     "quote": "RTX PRO 2000 datasheet：Max power consumption 70 W"
+    },
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "RTX PRO 2000 datasheet：Memory Bandwidth 288 GB/s"
     }
    },
-   "bandwidthGbps": 288,
    "tdpW": 70,
+   "bandwidthGbps": 288,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2272,8 +2334,14 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
-   "tdpW": 300,
+   "bandwidthGbps": 768,
    "provenance": {
+    "bandwidthGbps": {
+     "src": "nvidia-official-rtx-pro",
+     "conf": "high",
+     "override": false,
+     "quote": "架构白皮书 Table 4：RTX A6000 Memory Bandwidth 768 GB/sec"
+    },
     "tdpW": {
      "src": "zhihu-2040766374843245011",
      "conf": "high",
@@ -2287,6 +2355,7 @@
      "quote": "发布/上市时间：2020年10月5日"
     }
    },
+   "tdpW": 300,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -12466,6 +12535,208 @@
  },
  "supplements": [
   {
+   "id": "nvidia-official-rtx-pro",
+   "title": "NVIDIA RTX PRO Blackwell 官方规格（产品 datasheet + 架构白皮书）",
+   "url": "https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/NVIDIA-RTX-Blackwell-PRO-GPU-Architecture-v1.0.pdf",
+   "author": "NVIDIA",
+   "publishedAt": "2026-06",
+   "retrievedAt": "2026-11-03",
+   "level": "primary",
+   "note": "厂商 datasheet 与架构白皮书 Table 4 的一手规格（CUDA 核心数、板卡功耗、显存带宽、单精度算力）。同级页面还有 nvidia.cn/studio/compare-gpus（桌面/笔记本全系显存对照），已用它核对 13 个在售 SKU 的显存，全部与本地一致。",
+   "applied": [
+    {
+     "id": "blk-rtxpro6000blackwell-2",
+     "name": "RTX PRO 6000 Blackwell（服务器版）",
+     "field": "tdpW",
+     "value": 600,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro6000blackwell-2",
+     "name": "RTX PRO 6000 Blackwell（服务器版）",
+     "field": "bandwidthGbps",
+     "value": 1792,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro6000blackwellmaxq",
+     "name": "RTX PRO 6000 Blackwell（Max-Q工作站版）",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro6000blackwellmaxq",
+     "name": "RTX PRO 6000 Blackwell（Max-Q工作站版）",
+     "field": "bandwidthGbps",
+     "value": 1792,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro6000blackwellmaxq",
+     "name": "RTX PRO 6000 Blackwell（Max-Q工作站版）",
+     "field": "fp32",
+     "value": 109.7,
+     "conf": "high",
+     "override": true,
+     "reason": "官方 Single-Precision Performance 109.7 TFLOPS，本地 110 是四舍五入"
+    },
+    {
+     "id": "blk-rtxpro5000blackwell",
+     "name": "RTX PRO 5000 Blackwell",
+     "field": "bandwidthGbps",
+     "value": 1344,
+     "conf": "high",
+     "override": true,
+     "reason": "官方 datasheet 写 1344 GB/s，本地 1340 来自 TPU 换算"
+    },
+    {
+     "id": "blk-rtxpro5000blackwell",
+     "name": "RTX PRO 5000 Blackwell",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4500blackwell",
+     "name": "RTX PRO 4500 Blackwell（工作站版）",
+     "field": "cuda",
+     "value": 10496,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4500blackwell",
+     "name": "RTX PRO 4500 Blackwell（工作站版）",
+     "field": "bandwidthGbps",
+     "value": 896,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4500blackwell",
+     "name": "RTX PRO 4500 Blackwell（工作站版）",
+     "field": "tdpW",
+     "value": 200,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwell",
+     "name": "RTX PRO 4000 Blackwell",
+     "field": "cuda",
+     "value": 8960,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwell",
+     "name": "RTX PRO 4000 Blackwell",
+     "field": "tdpW",
+     "value": 140,
+     "conf": "high",
+     "override": true,
+     "reason": "官方 datasheet 写 140 W，本地 145 来自 TPU"
+    },
+    {
+     "id": "blk-rtxpro4000blackwell",
+     "name": "RTX PRO 4000 Blackwell",
+     "field": "bandwidthGbps",
+     "value": 672,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwellsff",
+     "name": "RTX PRO 4000 Blackwell SFF",
+     "field": "cuda",
+     "value": 8960,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwellsff",
+     "name": "RTX PRO 4000 Blackwell SFF",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwellsff",
+     "name": "RTX PRO 4000 Blackwell SFF",
+     "field": "bandwidthGbps",
+     "value": 432,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "cuda",
+     "value": 4352,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "fp32",
+     "value": 17,
+     "conf": "high",
+     "override": true,
+     "reason": "官方 Single-Precision Performance 17 TFLOPS"
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "bandwidthGbps",
+     "value": 288,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa6000",
+     "name": "RTX A6000",
+     "field": "bandwidthGbps",
+     "value": 768,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    }
+   ],
+   "conflicts": []
+  },
+  {
    "id": "techpowerup-gpu-db",
    "title": "TechPowerUp GPU Database（逐卡规格页）",
    "url": "https://www.techpowerup.com/gpu-specs/",
@@ -12473,7 +12744,7 @@
    "publishedAt": "2026-11",
    "retrievedAt": "2026-11-03",
    "level": "secondary",
-   "note": "厂商规格表之外的社区维护数据库，FP32 取自页面「理论性能」区块（着色器数 × 频率 × 2）。多 GPU 整卡（K10/K80/M10/A16）只收 TDP，FP32 与带宽按单颗 GPU 计，口径和整卡不一致，不补。",
+   "note": "厂商规格表之外的社区维护数据库，FP32 取自页面「理论性能」区块（着色器数 × 频率 × 2）。多 GPU 整卡（K10/K80/M10/A16）只收 TDP，FP32 与带宽按单颗 GPU 计，口径和整卡不一致，不补。 RTX PRO Blackwell 系列的 CUDA 核心/功耗/带宽改由 NVIDIA 官方 datasheet 提供（nvidia-official-rtx-pro），这里只保留官方不公开的 FP32。",
    "applied": [
     {
      "id": "ada-l20",
@@ -12710,46 +12981,10 @@
      "reason": null
     },
     {
-     "id": "blk-rtxpro5000blackwell",
-     "name": "RTX PRO 5000 Blackwell",
-     "field": "bandwidthGbps",
-     "value": 1340.0,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro5000blackwell",
-     "name": "RTX PRO 5000 Blackwell",
-     "field": "tdpW",
-     "value": 300,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
      "id": "blk-rtxpro4500blackwell",
      "name": "RTX PRO 4500 Blackwell（工作站版）",
      "field": "fp32",
      "value": 50.53,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro4500blackwell",
-     "name": "RTX PRO 4500 Blackwell（工作站版）",
-     "field": "bandwidthGbps",
-     "value": 896,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro4500blackwell",
-     "name": "RTX PRO 4500 Blackwell（工作站版）",
-     "field": "tdpW",
-     "value": 200,
      "conf": "high",
      "override": false,
      "reason": null
@@ -12764,73 +12999,10 @@
      "reason": null
     },
     {
-     "id": "blk-rtxpro4000blackwellsff",
-     "name": "RTX PRO 4000 Blackwell SFF",
-     "field": "bandwidthGbps",
-     "value": 432,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro4000blackwellsff",
-     "name": "RTX PRO 4000 Blackwell SFF",
-     "field": "tdpW",
-     "value": 70,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro2000blackwell",
-     "name": "RTX PRO 2000 Blackwell",
-     "field": "fp32",
-     "value": 17.03,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro2000blackwell",
-     "name": "RTX PRO 2000 Blackwell",
-     "field": "bandwidthGbps",
-     "value": 288,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro2000blackwell",
-     "name": "RTX PRO 2000 Blackwell",
-     "field": "tdpW",
-     "value": 70,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
      "id": "blk-rtxpro4000blackwell",
      "name": "RTX PRO 4000 Blackwell",
      "field": "fp32",
      "value": 36.83,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro4000blackwell",
-     "name": "RTX PRO 4000 Blackwell",
-     "field": "bandwidthGbps",
-     "value": 672,
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "blk-rtxpro4000blackwell",
-     "name": "RTX PRO 4000 Blackwell",
-     "field": "tdpW",
-     "value": 145,
      "conf": "high",
      "override": false,
      "reason": null
@@ -14152,7 +14324,7 @@
   "china": 8,
   "matched": 21,
   "industry": 39,
-  "supplements": 177,
-  "supplementSources": 2
+  "supplements": 187,
+  "supplementSources": 3
  }
 }

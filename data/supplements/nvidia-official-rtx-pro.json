@@ -1,0 +1,172 @@
+{
+  "id": "nvidia-official-rtx-pro",
+  "priority": 5,
+  "title": "NVIDIA RTX PRO Blackwell 官方规格（产品 datasheet + 架构白皮书）",
+  "url": "https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/NVIDIA-RTX-Blackwell-PRO-GPU-Architecture-v1.0.pdf",
+  "author": "NVIDIA",
+  "publishedAt": "2026-06",
+  "retrievedAt": "2026-11-03",
+  "level": "primary",
+  "note": "厂商 datasheet 与架构白皮书 Table 4 的一手规格（CUDA 核心数、板卡功耗、显存带宽、单精度算力）。同级页面还有 nvidia.cn/studio/compare-gpus（桌面/笔记本全系显存对照），已用它核对 13 个在售 SKU 的显存，全部与本地一致。",
+  "items": [
+    {
+      "id": "blk-rtxpro6000blackwell-2",
+      "fields": {
+        "tdpW": {
+          "value": 600,
+          "confidence": "high",
+          "quote": "架构白皮书 Table 4：RTX PRO 6000 Blackwell Workstation / Max-Q，TGP 600W（工作站版同 GB202 96GB）"
+        },
+        "bandwidthGbps": {
+          "value": 1792,
+          "confidence": "high",
+          "quote": "同上，Memory Bandwidth 1792 GB/sec"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro6000blackwellmaxq",
+      "fields": {
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "Max-Q datasheet：Total board power 300 W"
+        },
+        "bandwidthGbps": {
+          "value": 1792,
+          "confidence": "high",
+          "quote": "Max-Q datasheet：Memory Bandwidth 1792 GB/s"
+        },
+        "fp32": {
+          "value": 109.7,
+          "confidence": "high",
+          "override": true,
+          "reason": "官方 Single-Precision Performance 109.7 TFLOPS，本地 110 是四舍五入",
+          "quote": "架构白皮书 Table 4：Peak FP32 TFLOPS (non-Tensor) 109.7"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro5000blackwell",
+      "fields": {
+        "bandwidthGbps": {
+          "value": 1344,
+          "confidence": "high",
+          "override": true,
+          "reason": "官方 datasheet 写 1344 GB/s，本地 1340 来自 TPU 换算",
+          "quote": "RTX PRO 5000 Blackwell datasheet：Memory bandwidth 1344 GB/s"
+        },
+        "cuda": {
+          "value": 14080,
+          "confidence": "high",
+          "quote": "RTX PRO 5000 Blackwell datasheet：NVIDIA CUDA Cores 14,080"
+        },
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "RTX PRO 5000 Blackwell datasheet：Total board power 300 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro4500blackwell",
+      "fields": {
+        "cuda": {
+          "value": 10496,
+          "confidence": "high",
+          "quote": "RTX PRO 4500 Blackwell datasheet：NVIDIA CUDA Cores 10,496"
+        },
+        "bandwidthGbps": {
+          "value": 896,
+          "confidence": "high",
+          "quote": "RTX PRO 4500 Blackwell datasheet：Memory bandwidth 896 GB/s"
+        },
+        "tdpW": {
+          "value": 200,
+          "confidence": "high",
+          "quote": "RTX PRO 4500 Blackwell datasheet：Total board power 200 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro4000blackwell",
+      "fields": {
+        "cuda": {
+          "value": 8960,
+          "confidence": "high",
+          "quote": "RTX PRO 4000 Blackwell datasheet：NVIDIA CUDA Cores 8,960"
+        },
+        "tdpW": {
+          "value": 140,
+          "confidence": "high",
+          "override": true,
+          "reason": "官方 datasheet 写 140 W，本地 145 来自 TPU",
+          "quote": "RTX PRO 4000 Blackwell datasheet：Total board power 140 W"
+        },
+        "bandwidthGbps": {
+          "value": 672,
+          "confidence": "high",
+          "quote": "RTX PRO 4000 Blackwell datasheet：memory bandwidth 672 GB/s"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro4000blackwellsff",
+      "fields": {
+        "cuda": {
+          "value": 8960,
+          "confidence": "high",
+          "quote": "RTX PRO 4000 Blackwell SFF datasheet：NVIDIA CUDA Cores 8,960"
+        },
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "SFF datasheet：Total board power 70 W"
+        },
+        "bandwidthGbps": {
+          "value": 432,
+          "confidence": "high",
+          "quote": "SFF datasheet：Memory bandwidth 432 GB/s"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro2000blackwell",
+      "fields": {
+        "cuda": {
+          "value": 4352,
+          "confidence": "high",
+          "quote": "RTX PRO 2000 Blackwell datasheet：NVIDIA CUDA Cores 4,352"
+        },
+        "fp32": {
+          "value": 17,
+          "confidence": "high",
+          "override": true,
+          "reason": "官方 Single-Precision Performance 17 TFLOPS",
+          "quote": "RTX PRO 2000 datasheet：Single-Precision Performance 17 TFLOPS"
+        },
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "RTX PRO 2000 datasheet：Max power consumption 70 W"
+        },
+        "bandwidthGbps": {
+          "value": 288,
+          "confidence": "high",
+          "quote": "RTX PRO 2000 datasheet：Memory Bandwidth 288 GB/s"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa6000",
+      "fields": {
+        "bandwidthGbps": {
+          "value": 768,
+          "confidence": "high",
+          "quote": "架构白皮书 Table 4：RTX A6000 Memory Bandwidth 768 GB/sec"
+        }
+      }
+    }
+  ],
+  "conflicts": []
+}
