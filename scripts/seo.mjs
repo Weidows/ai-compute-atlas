@@ -21,9 +21,19 @@ const atlas = JSON.parse(
   (await import('node:fs')).readFileSync(resolve(ROOT, 'src/data/atlas.json'), 'utf8'),
 )
 
-const SITE_URL_RAW = process.env.SITE_URL || 'https://ai-compute-atlas.weidows.tech'
+/**
+ * 站点路径由仓库身份推导，避免「自定义域名撤掉后 SEO 绝对地址还指着旧域名」：
+ *   <owner>.github.io  用户站点 → `/`
+ *   其他仓库           → `/<repo>/`
+ * `SITE_URL` / `SITE_BASE` 仍可显式覆盖。
+ */
+const [GH_OWNER = '', GH_REPO = ''] = (process.env.GITHUB_REPOSITORY ?? '').split('/')
+const AUTO_BASE =
+  GH_REPO && GH_REPO.toLowerCase() !== `${GH_OWNER.toLowerCase()}.github.io` ? `/${GH_REPO}/` : '/'
+
+const SITE_URL_RAW = process.env.SITE_URL || `https://${(GH_OWNER || 'weidows').toLowerCase()}.github.io`
 const SITE = SITE_URL_RAW.endsWith('/') ? SITE_URL_RAW.slice(0, -1) : SITE_URL_RAW
-const RAW_BASE = (process.env.SITE_BASE || '/').split('/').join('')
+const RAW_BASE = (process.env.SITE_BASE || AUTO_BASE).split('/').join('')
 const BASE = RAW_BASE ? '/' + RAW_BASE + '/' : '/'
 const SNAPSHOT = atlas.generatedAt
 

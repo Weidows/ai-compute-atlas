@@ -14,7 +14,16 @@ import { fileURLToPath } from 'node:url'
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = resolve(ROOT, 'dist')
 const INDEX = resolve(DIST, 'index.html')
-const SITE = (process.env.SITE_URL || 'https://ai-compute-atlas.weidows.tech').replace(/\/$/, '')
+/**
+ * 站点根 = origin + base。base 与 vite/seo 同源推导（项目站点是 `/<repo>/`），
+ * 不能再默认指向某个已删除的自定义域名。
+ */
+const [GH_OWNER = '', GH_REPO = ''] = (process.env.GITHUB_REPOSITORY ?? '').split('/')
+const AUTO_BASE =
+  GH_REPO && GH_REPO.toLowerCase() !== `${GH_OWNER.toLowerCase()}.github.io` ? `/${GH_REPO}/` : '/'
+const ORIGIN = (process.env.SITE_URL || `https://${(GH_OWNER || 'weidows').toLowerCase()}.github.io`).replace(/\/$/, '')
+const RAW_BASE = (process.env.SITE_BASE || AUTO_BASE).replace(/^\/+|\/+$/g, '')
+const SITE = ORIGIN + (RAW_BASE ? `/${RAW_BASE}` : '')
 
 const ROUTES = [
   {

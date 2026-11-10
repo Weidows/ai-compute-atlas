@@ -25,9 +25,23 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Build
-        env:
-          VITE_BASE: /
+        # base 与 SEO 绝对地址都由 GITHUB_REPOSITORY 推导（项目站点 = /<repo>/，用户站点 = /）。
+        # 将来若把自定义域名挂回域根，这套派生就不适用，加 env 覆盖：
+        #   env: { VITE_BASE: "/", SITE_BASE: "/", SITE_URL: "https://<domain>" }
         run: npm run build
+
+      - name: 资源路径自检（资源必须落在站点子路径下）
+        # 回归防线：base 一旦退化成 "/"，页面壳照样 200，但静态资源全 404 → 白屏。
+        run: |
+          set -eu
+          base="/${GITHUB_REPOSITORY#*/}/"
+          bad=$(grep -oE '(src|href)="/[^"]*"' dist/index.html | grep -v "=\"${base}" || true)
+          if [ -n "$bad" ]; then
+            echo "dist/index.html 里有指向域根的绝对路径（base 没生效）："
+            echo "$bad"
+            exit 1
+          fi
+          echo "asset paths OK: ${base}"
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

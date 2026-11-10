@@ -227,19 +227,20 @@ scripts/
 
 站长后台还需手动做一次（不在代码里）：
 
-1. Google Search Console / Bing Webmaster 添加 `blog.weidows.tech`，提交 `https://ai-compute-atlas.weidows.tech/sitemap.xml`；
-2. 根域 `robots.txt` 归博客仓（`Blog-private/source/robots.txt`），加一行 `Sitemap: https://ai-compute-atlas.weidows.tech/sitemap.xml`；
+1. Google Search Console / Bing Webmaster 里把 `https://weidows.github.io/ai-compute-atlas/` 当作独立站点添加，提交 `https://weidows.github.io/ai-compute-atlas/sitemap.xml`；
+2. 根域 `robots.txt` 归博客仓（`Blog-private/source/robots.txt`），加一行 `Sitemap: https://weidows.github.io/ai-compute-atlas/sitemap.xml`；
 3. 百度搜索资源平台对 GitHub Pages 的抓取不稳定，若重视百度，需要镜像到国内可访问的域名。
+4. 用户站点（`Weidows.github.io`）不得再挂自定义域名 —— 一旦挂上，账号下所有项目站点都会被改写到 `<域名>/<repo>/` 并 301。
 
 ## 部署
 
-线上地址：<https://ai-compute-atlas.weidows.tech/>（GitHub Pages 项目站 + 独立子域）
+线上地址：<https://weidows.github.io/ai-compute-atlas/>（GitHub Pages **项目站点**，伺服在账号域名下的仓库子路径）
 
-GitHub Pages：`.github/workflows/deploy.yml` 在 `main` 推送时以 `VITE_BASE=/` 构建（独立子域伺服在域名根），产物推到 `gh-pages` 之外的 Pages artifact。
+GitHub Pages：`.github/workflows/deploy.yml` 在 `main` 推送时构建。base 不写死 —— `vite.config.ts` / `scripts/seo.mjs` / `scripts/spa-routes.mjs` 都从 `GITHUB_REPOSITORY` 推导：用户站点（`<owner>.github.io`）是 `/`，其他仓库是 `/<repo>/`。构建后有一道自检，`dist/index.html` 里出现指向域根的绝对资源路径就 fail，防白屏回归。
 
 多页路由：`spa-routes.mjs` 为每个章节生成 `dist/<route>/index.html`，深链直接 200；`dist/404.html` 兜底未收录路径。新增章节时，路由表在 `src/lib/router.tsx`（`ROUTES`），静态入口在 `scripts/spa-routes.mjs`（`ROUTES`），两处同步加一行。
 
-自定义域：`ai-compute-atlas.weidows.tech`（Cloudflare CNAME → `weidows.github.io`，灰云不开代理）；换域时改 `index.html` 里的绝对 URL 与 `scripts/seo.mjs` 的 `SITE_URL` 默认值，再 `npm run build`。
+自定义域（当前不启用）：`ai-compute-atlas.weidows.tech` 已下线。若将来重新挂自定义域名（域根伺服），构建时加 `env: { VITE_BASE: /, SITE_BASE: /, SITE_URL: https://<domain> }` 覆盖推导结果即可，`index.html` 与脚本里的域名不用再手改。
 
 ## 口径与边界
 
