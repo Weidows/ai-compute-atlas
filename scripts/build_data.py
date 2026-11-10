@@ -532,13 +532,18 @@ def load_supplements() -> list[dict]:
     if not SUPPLEMENTS.exists():
         return []
     docs = []
-    for path in sorted(SUPPLEMENTS.glob("*.json")):
+    # priority 小的先合并（先到先得），同一优先级按文件名；来源之间互相冲突时，
+    # 后来者只会被记成冲突，不会覆盖已有值，所以顺序只是让结果可复现。
+    paths = sorted(SUPPLEMENTS.glob("*.json"), key=lambda p: p.name)
+    loaded = []
+    for path in paths:
         try:
             doc = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             raise SystemExit(f"补充来源 {path.name} 不是合法 JSON：{exc}") from exc
         doc.setdefault("id", path.stem)
-        docs.append(doc)
+        loaded.append((doc.get("priority", 50), path.name, doc))
+    docs = [d for _, _, d in sorted(loaded, key=lambda x: (x[0], x[1]))]
     return docs
 
 

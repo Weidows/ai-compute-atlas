@@ -359,7 +359,7 @@
    "vramPerGpuGb": 84.0,
    "vramType": "GDDR7",
    "vramLabel": "84GB GDDR7",
-   "fp32": null,
+   "fp32": 105.8,
    "date": "2026-06-01",
    "datePrecision": "year",
    "dateText": "2026年发布（待上市）",
@@ -367,6 +367,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "medium",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 5500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5500-blackwell-workstation.c4449） 理论性能：FP32 105.8 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 5500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5500-blackwell-workstation.c4449） 显存：Bandwidth 1.4 TB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 5500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5500-blackwell-workstation.c4449） 板卡设计：TDP 600 W"
+    }
+   },
+   "bandwidthGbps": 1400.0,
+   "tdpW": 600,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -388,7 +410,7 @@
    "vramPerGpuGb": 72.0,
    "vramType": "GDDR7",
    "vramLabel": "48GB GDDR7（另有72GB版）",
-   "fp32": null,
+   "fp32": 66.94,
    "date": "2025-03-01",
    "datePrecision": "month",
    "dateText": "2025年3月",
@@ -396,6 +418,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 理论性能：FP32 66.94 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 显存：Bandwidth 1.34 TB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 板卡设计：TDP 300 W"
+    }
+   },
+   "bandwidthGbps": 1340.0,
+   "tdpW": 300,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -417,7 +461,7 @@
    "vramPerGpuGb": 32.0,
    "vramType": "GDDR7",
    "vramLabel": "32GB GDDR7",
-   "fp32": null,
+   "fp32": 50.53,
    "date": "2025-03-01",
    "datePrecision": "month",
    "dateText": "2025年3月",
@@ -425,6 +469,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 理论性能：FP32 50.53 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 显存：Bandwidth 896 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 板卡设计：TDP 200 W"
+    }
+   },
+   "bandwidthGbps": 896,
+   "tdpW": 200,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -446,7 +512,7 @@
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR7",
    "vramLabel": "24GB GDDR7",
-   "fp32": null,
+   "fp32": 36.83,
    "date": "2025-07-01",
    "datePrecision": "month",
    "dateText": "2025年7月",
@@ -454,6 +520,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 理论性能：FP32 36.83 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 显存：Bandwidth 672 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 板卡设计：TDP 145 W"
+    }
+   },
+   "bandwidthGbps": 672,
+   "tdpW": 145,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -475,7 +563,7 @@
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR7",
    "vramLabel": "24GB GDDR7",
-   "fp32": null,
+   "fp32": 24.05,
    "date": "2025-06-01",
    "datePrecision": "year",
    "dateText": "2025年下半年",
@@ -483,6 +571,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 理论性能：FP32 24.05 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 显存：Bandwidth 432 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 板卡设计：TDP 70 W"
+    }
+   },
+   "bandwidthGbps": 432,
+   "tdpW": 70,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -504,7 +614,7 @@
    "vramPerGpuGb": 16.0,
    "vramType": "GDDR7",
    "vramLabel": "16GB GDDR7",
-   "fp32": null,
+   "fp32": 17.03,
    "date": "2025-06-01",
    "datePrecision": "year",
    "dateText": "2025年下半年",
@@ -512,6 +622,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 理论性能：FP32 17.03 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 显存：Bandwidth 288 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 板卡设计：TDP 70 W"
+    }
+   },
+   "bandwidthGbps": 288,
+   "tdpW": 70,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -959,7 +1091,7 @@
    "vramPerGpuGb": 80.0,
    "vramType": "HBM3",
    "vramLabel": "80GB HBM3",
-   "fp32": null,
+   "fp32": 51.22,
    "date": "2022-06-01",
    "datePrecision": "year",
    "dateText": "2022年",
@@ -967,13 +1099,18 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
-   "tdpW": 400,
    "provenance": {
-    "tdpW": {
-     "src": "zhihu-2040766374843245011",
+    "fp32": {
+     "src": "techpowerup-gpu-db",
      "conf": "high",
      "override": false,
-     "quote": "TDP（功耗）：700W（SXM）、400W（PCIe）"
+     "quote": "NVIDIA H100 PCIe 80 GB Specs（techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899） 理论性能：FP32 51.22 TFLOPS"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": true,
+     "quote": "NVIDIA H100 PCIe 80 GB Specs（techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899） 板卡设计：TDP 350 W"
     },
     "bandwidthGbps": {
      "src": "zhihu-2040766374843245011",
@@ -982,6 +1119,7 @@
      "quote": "内存带宽3.35TB/s（SXM版本）、2TB/s（PCIe版本）"
     }
    },
+   "tdpW": 350,
    "bandwidthGbps": 2000,
    "review": {
     "count": 0,
@@ -1033,7 +1171,7 @@
    "vramPerGpuGb": 96.0,
    "vramType": "HBM3",
    "vramLabel": "96GB HBM3",
-   "fp32": null,
+   "fp32": 39.54,
    "date": "2024-06-01",
    "datePrecision": "year",
    "dateText": "2024年",
@@ -1042,6 +1180,21 @@
    "brand": "NVIDIA",
    "source": "docx",
    "fp16Note": 148.0,
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "medium",
+     "override": false,
+     "quote": "NVIDIA H20 Specs（techpowerup.com/gpu-specs/h20.c4420） 理论性能：FP32 39.54 TFLOPS（另有口径按 44 TFLOPS 计；H20 有 SXM 400W / PCIe 500W 两个形态，功耗这里不补）"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA H20 Specs（techpowerup.com/gpu-specs/h20.c4420） 显存：Bandwidth 4.03 TB/s"
+    }
+   },
+   "bandwidthGbps": 4030.0,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1132,7 +1285,7 @@
    "vramPerGpuGb": 48.0,
    "vramType": "GDDR6",
    "vramLabel": "48GB GDDR6",
-   "fp32": null,
+   "fp32": 59.35,
    "date": "2023-06-01",
    "datePrecision": "year",
    "dateText": "2023年",
@@ -1140,6 +1293,28 @@
    "china": true,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA L20 Specs（techpowerup.com/gpu-specs/l20.c4206） 理论性能：FP32 59.35 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA L20 Specs（techpowerup.com/gpu-specs/l20.c4206） 显存：Bandwidth 864 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA L20 Specs（techpowerup.com/gpu-specs/l20.c4206） 板卡设计：TDP 275 W"
+    }
+   },
+   "bandwidthGbps": 864,
+   "tdpW": 275,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1386,7 +1561,7 @@
    "vramPerGpuGb": 16.0,
    "vramType": "GDDR6",
    "vramLabel": "16GB GDDR6",
-   "fp32": null,
+   "fp32": 12,
    "date": "2024-06-01",
    "datePrecision": "year",
    "dateText": "2024年",
@@ -1394,6 +1569,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX 2000 Ada Generation Specs（techpowerup.com/gpu-specs/rtx-2000-ada-generation.c4199） 理论性能：FP32 12 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX 2000 Ada Generation Specs（techpowerup.com/gpu-specs/rtx-2000-ada-generation.c4199） 显存：Bandwidth 224 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX 2000 Ada Generation Specs（techpowerup.com/gpu-specs/rtx-2000-ada-generation.c4199） 板卡设计：TDP 70 W"
+    }
+   },
+   "bandwidthGbps": 224,
+   "tdpW": 70,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1986,6 +2183,15 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 250,
+   "provenance": {
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA A16 PCIe Specs（techpowerup.com/gpu-specs/a16-pcie.c3794） 板卡设计：TDP 250 W"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2007,7 +2213,7 @@
    "vramPerGpuGb": 16.0,
    "vramType": "GDDR6",
    "vramLabel": "16GB GDDR6",
-   "fp32": null,
+   "fp32": 4.53,
    "date": "2021-06-01",
    "datePrecision": "year",
    "dateText": "2021年",
@@ -2015,6 +2221,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA A2 Specs（techpowerup.com/gpu-specs/a2.c3848） 理论性能：FP32 4.531 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA A2 Specs（techpowerup.com/gpu-specs/a2.c3848） 显存：Bandwidth 200.1 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA A2 Specs（techpowerup.com/gpu-specs/a2.c3848） 板卡设计：TDP 60 W"
+    }
+   },
+   "bandwidthGbps": 200.1,
+   "tdpW": 60,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2080,7 +2308,7 @@
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR6",
    "vramLabel": "24GB GDDR6",
-   "fp32": null,
+   "fp32": 34.1,
    "date": "2021-06-01",
    "datePrecision": "year",
    "dateText": "2021年",
@@ -2088,6 +2316,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A5500 Specs（techpowerup.com/gpu-specs/rtx-a5500.c3901） 理论性能：FP32 34.1 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A5500 Specs（techpowerup.com/gpu-specs/rtx-a5500.c3901） 显存：Bandwidth 768 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A5500 Specs（techpowerup.com/gpu-specs/rtx-a5500.c3901） 板卡设计：TDP 230 W"
+    }
+   },
+   "bandwidthGbps": 768,
+   "tdpW": 230,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2138,7 +2388,7 @@
    "vramPerGpuGb": 20.0,
    "vramType": "GDDR6",
    "vramLabel": "20GB GDDR6",
-   "fp32": null,
+   "fp32": 23.65,
    "date": "2021-06-01",
    "datePrecision": "year",
    "dateText": "2021年",
@@ -2146,6 +2396,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A4500 Specs（techpowerup.com/gpu-specs/rtx-a4500.c3849） 理论性能：FP32 23.65 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A4500 Specs（techpowerup.com/gpu-specs/rtx-a4500.c3849） 显存：Bandwidth 640 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A4500 Specs（techpowerup.com/gpu-specs/rtx-a4500.c3849） 板卡设计：TDP 200 W"
+    }
+   },
+   "bandwidthGbps": 640,
+   "tdpW": 200,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2196,7 +2468,7 @@
    "vramPerGpuGb": 12.0,
    "vramType": "GDDR6",
    "vramLabel": "12GB/6GB GDDR6",
-   "fp32": null,
+   "fp32": 7.99,
    "date": "2021-06-01",
    "datePrecision": "year",
    "dateText": "2021年",
@@ -2204,6 +2476,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "medium",
+     "override": false,
+     "quote": "NVIDIA RTX A2000 12 GB Specs（techpowerup.com/gpu-specs/rtx-a2000-12-gb.c3853） 理论性能：FP32 7.987 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A2000 12 GB Specs（techpowerup.com/gpu-specs/rtx-a2000-12-gb.c3853） 显存：Bandwidth 288 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A2000 12 GB Specs（techpowerup.com/gpu-specs/rtx-a2000-12-gb.c3853） 板卡设计：TDP 70 W"
+    }
+   },
+   "bandwidthGbps": 288,
+   "tdpW": 70,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2225,7 +2519,7 @@
    "vramPerGpuGb": 8.0,
    "vramType": "GDDR6",
    "vramLabel": "8GB GDDR6",
-   "fp32": null,
+   "fp32": 6.74,
    "date": "2022-06-01",
    "datePrecision": "year",
    "dateText": "2022年",
@@ -2233,6 +2527,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A1000 Specs（techpowerup.com/gpu-specs/rtx-a1000.c4211） 理论性能：FP32 6.737 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A1000 Specs（techpowerup.com/gpu-specs/rtx-a1000.c4211） 显存：Bandwidth 192 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A1000 Specs（techpowerup.com/gpu-specs/rtx-a1000.c4211） 板卡设计：TDP 50 W"
+    }
+   },
+   "bandwidthGbps": 192,
+   "tdpW": 50,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2254,7 +2570,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR6",
    "vramLabel": "4GB GDDR6",
-   "fp32": null,
+   "fp32": 2.71,
    "date": "2022-06-01",
    "datePrecision": "year",
    "dateText": "2022年",
@@ -2262,6 +2578,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A400 Specs（techpowerup.com/gpu-specs/rtx-a400.c4212） 理论性能：FP32 2.706 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A400 Specs（techpowerup.com/gpu-specs/rtx-a400.c4212） 显存：Bandwidth 96 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA RTX A400 Specs（techpowerup.com/gpu-specs/rtx-a400.c4212） 板卡设计：TDP 50 W"
+    }
+   },
+   "bandwidthGbps": 96,
+   "tdpW": 50,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3291,7 +3629,7 @@
    "vramPerGpuGb": 16.0,
    "vramType": "HBM2",
    "vramLabel": "16GB HBM2",
-   "fp32": null,
+   "fp32": 9.53,
    "date": "2016-06-01",
    "datePrecision": "year",
    "dateText": "2016年",
@@ -3299,6 +3637,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla P100 PCIe 16 GB Specs（techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888） 理论性能：FP32 9.526 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla P100 PCIe 16 GB Specs（techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888） 显存：Bandwidth 732.2 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla P100 PCIe 16 GB Specs（techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 732.2,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3755,7 +4115,7 @@
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR5",
    "vramLabel": "24GB GDDR5",
-   "fp32": null,
+   "fp32": 6.83,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3763,6 +4123,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M40 Specs（techpowerup.com/gpu-specs/tesla-m40.c2771） 理论性能：FP32 6.832 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M40 Specs（techpowerup.com/gpu-specs/tesla-m40.c2771） 显存：Bandwidth 288.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M40 Specs（techpowerup.com/gpu-specs/tesla-m40.c2771） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 288.4,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3784,7 +4166,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "4GB GDDR5",
-   "fp32": null,
+   "fp32": 2.19,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3792,6 +4174,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M4 Specs（techpowerup.com/gpu-specs/tesla-m4.c2770） 理论性能：FP32 2.195 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M4 Specs（techpowerup.com/gpu-specs/tesla-m4.c2770） 显存：Bandwidth 88 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M4 Specs（techpowerup.com/gpu-specs/tesla-m4.c2770） 板卡设计：TDP 50 W"
+    }
+   },
+   "bandwidthGbps": 88,
+   "tdpW": 50,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3821,6 +4225,15 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 225,
+   "provenance": {
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M10 Specs（techpowerup.com/gpu-specs/tesla-m10.c3035） 板卡设计：TDP 225 W"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3842,7 +4255,7 @@
    "vramPerGpuGb": 24.0,
    "vramType": "GDDR5",
    "vramLabel": "24GB GDDR5",
-   "fp32": null,
+   "fp32": 6.84,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3850,6 +4263,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M6000 Specs（techpowerup.com/gpu-specs/quadro-m6000.c2638） 理论性能：FP32 6.844 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M6000 Specs（techpowerup.com/gpu-specs/quadro-m6000.c2638） 显存：Bandwidth 317.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M6000 Specs（techpowerup.com/gpu-specs/quadro-m6000.c2638） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 317.4,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3871,7 +4306,7 @@
    "vramPerGpuGb": 8.0,
    "vramType": "GDDR5",
    "vramLabel": "8GB GDDR5",
-   "fp32": null,
+   "fp32": 4.25,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3879,6 +4314,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M5000 Specs（techpowerup.com/gpu-specs/quadro-m5000.c2756） 理论性能：FP32 4.252 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M5000 Specs（techpowerup.com/gpu-specs/quadro-m5000.c2756） 显存：Bandwidth 211.6 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M5000 Specs（techpowerup.com/gpu-specs/quadro-m5000.c2756） 板卡设计：TDP 150 W"
+    }
+   },
+   "bandwidthGbps": 211.6,
+   "tdpW": 150,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3900,7 +4357,7 @@
    "vramPerGpuGb": 8.0,
    "vramType": "GDDR5",
    "vramLabel": "8GB GDDR5",
-   "fp32": null,
+   "fp32": 2.57,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3908,6 +4365,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M4000 Specs（techpowerup.com/gpu-specs/quadro-m4000.c2757） 理论性能：FP32 2.573 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M4000 Specs（techpowerup.com/gpu-specs/quadro-m4000.c2757） 显存：Bandwidth 192.3 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro M4000 Specs（techpowerup.com/gpu-specs/quadro-m4000.c2757） 板卡设计：TDP 120 W"
+    }
+   },
+   "bandwidthGbps": 192.3,
+   "tdpW": 120,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3929,7 +4408,7 @@
    "vramPerGpuGb": 12.0,
    "vramType": "GDDR5",
    "vramLabel": "12GB GDDR5",
-   "fp32": null,
+   "fp32": 6.69,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3937,6 +4416,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX TITAN X Specs（techpowerup.com/gpu-specs/geforce-gtx-titan-x.c2632） 理论性能：FP32 6.691 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX TITAN X Specs（techpowerup.com/gpu-specs/geforce-gtx-titan-x.c2632） 显存：Bandwidth 336.6 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX TITAN X Specs（techpowerup.com/gpu-specs/geforce-gtx-titan-x.c2632） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 336.6,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3958,7 +4459,7 @@
    "vramPerGpuGb": 6.0,
    "vramType": "GDDR5",
    "vramLabel": "6GB GDDR5",
-   "fp32": null,
+   "fp32": 6.06,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -3966,6 +4467,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 980 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-980-ti.c2724） 理论性能：FP32 6.06 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 980 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-980-ti.c2724） 显存：Bandwidth 336.6 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 980 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-980-ti.c2724） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 336.6,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -3987,7 +4510,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "4GB GDDR5",
-   "fp32": null,
+   "fp32": 4.98,
    "date": "2014-06-01",
    "datePrecision": "year",
    "dateText": "2014",
@@ -3995,6 +4518,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 980 Specs（techpowerup.com/gpu-specs/geforce-gtx-980.c2621） 理论性能：FP32 4.981 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 980 Specs（techpowerup.com/gpu-specs/geforce-gtx-980.c2621） 显存：Bandwidth 224.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 980 Specs（techpowerup.com/gpu-specs/geforce-gtx-980.c2621） 板卡设计：TDP 165 W"
+    }
+   },
+   "bandwidthGbps": 224.4,
+   "tdpW": 165,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4016,7 +4561,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "4GB GDDR5",
-   "fp32": null,
+   "fp32": 3.92,
    "date": "2014-06-01",
    "datePrecision": "year",
    "dateText": "2014",
@@ -4024,6 +4569,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 970 Specs（techpowerup.com/gpu-specs/geforce-gtx-970.c2620） 理论性能：FP32 3.92 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 970 Specs（techpowerup.com/gpu-specs/geforce-gtx-970.c2620） 显存：Bandwidth 224.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 970 Specs（techpowerup.com/gpu-specs/geforce-gtx-970.c2620） 板卡设计：TDP 145 W"
+    }
+   },
+   "bandwidthGbps": 224.4,
+   "tdpW": 145,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4045,7 +4612,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB/4GB GDDR5",
-   "fp32": null,
+   "fp32": 2.41,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -4053,6 +4620,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 960 Specs（techpowerup.com/gpu-specs/geforce-gtx-960.c2637） 理论性能：FP32 2.413 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 960 Specs（techpowerup.com/gpu-specs/geforce-gtx-960.c2637） 显存：Bandwidth 112.2 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 960 Specs（techpowerup.com/gpu-specs/geforce-gtx-960.c2637） 板卡设计：TDP 120 W"
+    }
+   },
+   "bandwidthGbps": 112.2,
+   "tdpW": 120,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4074,7 +4663,7 @@
    "vramPerGpuGb": 2.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB GDDR5",
-   "fp32": null,
+   "fp32": 1.82,
    "date": "2015-06-01",
    "datePrecision": "year",
    "dateText": "2015",
@@ -4082,6 +4671,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 950 Specs（techpowerup.com/gpu-specs/geforce-gtx-950.c2747） 理论性能：FP32 1.825 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 950 Specs（techpowerup.com/gpu-specs/geforce-gtx-950.c2747） 显存：Bandwidth 105.8 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 950 Specs（techpowerup.com/gpu-specs/geforce-gtx-950.c2747） 板卡设计：TDP 90 W"
+    }
+   },
+   "bandwidthGbps": 105.8,
+   "tdpW": 90,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4103,7 +4714,7 @@
    "vramPerGpuGb": 2.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB GDDR5",
-   "fp32": null,
+   "fp32": 1.39,
    "date": "2014-06-01",
    "datePrecision": "year",
    "dateText": "2014",
@@ -4111,6 +4722,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 750 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-750-ti.c2548） 理论性能：FP32 1.389 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 750 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-750-ti.c2548） 显存：Bandwidth 86.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 750 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-750-ti.c2548） 板卡设计：TDP 60 W"
+    }
+   },
+   "bandwidthGbps": 86.4,
+   "tdpW": 60,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4140,6 +4773,15 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 300,
+   "provenance": {
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla K80 Specs（techpowerup.com/gpu-specs/tesla-k80.c2616） 板卡设计：TDP 300 W"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4161,7 +4803,7 @@
    "vramPerGpuGb": 12.0,
    "vramType": "GDDR5",
    "vramLabel": "12GB GDDR5",
-   "fp32": null,
+   "fp32": 5.05,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4169,6 +4811,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "medium",
+     "override": false,
+     "quote": "NVIDIA Tesla K40c Specs（techpowerup.com/gpu-specs/tesla-k40c.c2505） 理论性能：FP32 5.046 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla K40c Specs（techpowerup.com/gpu-specs/tesla-k40c.c2505） 显存：Bandwidth 288.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla K40c Specs（techpowerup.com/gpu-specs/tesla-k40c.c2505） 板卡设计：TDP 245 W"
+    }
+   },
+   "bandwidthGbps": 288.4,
+   "tdpW": 245,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4190,7 +4854,7 @@
    "vramPerGpuGb": 5.0,
    "vramType": "GDDR5",
    "vramLabel": "5GB GDDR5",
-   "fp32": null,
+   "fp32": 3.52,
    "date": "2012-06-01",
    "datePrecision": "year",
    "dateText": "2012",
@@ -4198,6 +4862,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "medium",
+     "override": false,
+     "quote": "NVIDIA Tesla K20c Specs（techpowerup.com/gpu-specs/tesla-k20c.c564） 理论性能：FP32 3.524 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla K20c Specs（techpowerup.com/gpu-specs/tesla-k20c.c564） 显存：Bandwidth 208 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla K20c Specs（techpowerup.com/gpu-specs/tesla-k20c.c564） 板卡设计：TDP 225 W"
+    }
+   },
+   "bandwidthGbps": 208,
+   "tdpW": 225,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4227,6 +4913,15 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 225,
+   "provenance": {
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla K10 Specs（techpowerup.com/gpu-specs/tesla-k10.c918） 板卡设计：TDP 225 W"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4248,7 +4943,7 @@
    "vramPerGpuGb": 12.0,
    "vramType": "GDDR5",
    "vramLabel": "12GB GDDR5",
-   "fp32": null,
+   "fp32": 5.2,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4256,6 +4951,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K6000 Specs（techpowerup.com/gpu-specs/quadro-k6000.c2426） 理论性能：FP32 5.196 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K6000 Specs（techpowerup.com/gpu-specs/quadro-k6000.c2426） 显存：Bandwidth 288.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K6000 Specs（techpowerup.com/gpu-specs/quadro-k6000.c2426） 板卡设计：TDP 225 W"
+    }
+   },
+   "bandwidthGbps": 288.4,
+   "tdpW": 225,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4277,7 +4994,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "4GB GDDR5",
-   "fp32": null,
+   "fp32": 2.17,
    "date": "2012-06-01",
    "datePrecision": "year",
    "dateText": "2012",
@@ -4285,6 +5002,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K5000 Specs（techpowerup.com/gpu-specs/quadro-k5000.c565） 理论性能：FP32 2.169 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K5000 Specs（techpowerup.com/gpu-specs/quadro-k5000.c565） 显存：Bandwidth 172.8 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K5000 Specs（techpowerup.com/gpu-specs/quadro-k5000.c565） 板卡设计：TDP 122 W"
+    }
+   },
+   "bandwidthGbps": 172.8,
+   "tdpW": 122,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4306,7 +5045,7 @@
    "vramPerGpuGb": 3.0,
    "vramType": "GDDR5",
    "vramLabel": "3GB GDDR5",
-   "fp32": null,
+   "fp32": 1.24,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4314,6 +5053,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K4000 Specs（techpowerup.com/gpu-specs/quadro-k4000.c1841） 理论性能：FP32 1.244 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K4000 Specs（techpowerup.com/gpu-specs/quadro-k4000.c1841） 显存：Bandwidth 134.8 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro K4000 Specs（techpowerup.com/gpu-specs/quadro-k4000.c1841） 板卡设计：TDP 80 W"
+    }
+   },
+   "bandwidthGbps": 134.8,
+   "tdpW": 80,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4335,7 +5096,7 @@
    "vramPerGpuGb": 6.0,
    "vramType": "GDDR5",
    "vramLabel": "6GB GDDR5",
-   "fp32": null,
+   "fp32": 4.71,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4343,6 +5104,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX TITAN Specs（techpowerup.com/gpu-specs/geforce-gtx-titan.c1996） 理论性能：FP32 4.709 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX TITAN Specs（techpowerup.com/gpu-specs/geforce-gtx-titan.c1996） 显存：Bandwidth 288.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX TITAN Specs（techpowerup.com/gpu-specs/geforce-gtx-titan.c1996） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 288.4,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4364,7 +5147,7 @@
    "vramPerGpuGb": 3.0,
    "vramType": "GDDR5",
    "vramLabel": "3GB GDDR5",
-   "fp32": null,
+   "fp32": 5.34,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4372,6 +5155,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 780 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-780-ti.c2512） 理论性能：FP32 5.345 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 780 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-780-ti.c2512） 显存：Bandwidth 336.6 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 780 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-780-ti.c2512） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 336.6,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4393,7 +5198,7 @@
    "vramPerGpuGb": 3.0,
    "vramType": "GDDR5",
    "vramLabel": "3GB GDDR5",
-   "fp32": null,
+   "fp32": 4.16,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4401,6 +5206,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 780 Specs（techpowerup.com/gpu-specs/geforce-gtx-780.c1701） 理论性能：FP32 4.156 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 780 Specs（techpowerup.com/gpu-specs/geforce-gtx-780.c1701） 显存：Bandwidth 288.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 780 Specs（techpowerup.com/gpu-specs/geforce-gtx-780.c1701） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 288.4,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4422,7 +5249,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB/4GB GDDR5",
-   "fp32": null,
+   "fp32": 3.33,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4430,6 +5257,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 770 Specs（techpowerup.com/gpu-specs/geforce-gtx-770.c1856） 理论性能：FP32 3.333 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 770 Specs（techpowerup.com/gpu-specs/geforce-gtx-770.c1856） 显存：Bandwidth 224.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 770 Specs（techpowerup.com/gpu-specs/geforce-gtx-770.c1856） 板卡设计：TDP 230 W"
+    }
+   },
+   "bandwidthGbps": 224.4,
+   "tdpW": 230,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4451,7 +5300,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB/4GB GDDR5",
-   "fp32": null,
+   "fp32": 2.38,
    "date": "2013-06-01",
    "datePrecision": "year",
    "dateText": "2013",
@@ -4459,6 +5308,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 760 Specs（techpowerup.com/gpu-specs/geforce-gtx-760.c1857） 理论性能：FP32 2.378 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 760 Specs（techpowerup.com/gpu-specs/geforce-gtx-760.c1857） 显存：Bandwidth 192.3 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 760 Specs（techpowerup.com/gpu-specs/geforce-gtx-760.c1857） 板卡设计：TDP 170 W"
+    }
+   },
+   "bandwidthGbps": 192.3,
+   "tdpW": 170,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4480,7 +5351,7 @@
    "vramPerGpuGb": 4.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB/4GB GDDR5",
-   "fp32": null,
+   "fp32": 3.25,
    "date": "2012-06-01",
    "datePrecision": "year",
    "dateText": "2012",
@@ -4488,6 +5359,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 680 Specs（techpowerup.com/gpu-specs/geforce-gtx-680.c342） 理论性能：FP32 3.25 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 680 Specs（techpowerup.com/gpu-specs/geforce-gtx-680.c342） 显存：Bandwidth 192.3 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 680 Specs（techpowerup.com/gpu-specs/geforce-gtx-680.c342） 板卡设计：TDP 195 W"
+    }
+   },
+   "bandwidthGbps": 192.3,
+   "tdpW": 195,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4509,7 +5402,7 @@
    "vramPerGpuGb": 2.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB GDDR5",
-   "fp32": null,
+   "fp32": 2.63,
    "date": "2012-06-01",
    "datePrecision": "year",
    "dateText": "2012",
@@ -4517,6 +5410,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 670 Specs（techpowerup.com/gpu-specs/geforce-gtx-670.c362） 理论性能：FP32 2.634 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 670 Specs（techpowerup.com/gpu-specs/geforce-gtx-670.c362） 显存：Bandwidth 192.3 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 670 Specs（techpowerup.com/gpu-specs/geforce-gtx-670.c362） 板卡设计：TDP 170 W"
+    }
+   },
+   "bandwidthGbps": 192.3,
+   "tdpW": 170,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4538,7 +5453,7 @@
    "vramPerGpuGb": 3.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB/3GB GDDR5",
-   "fp32": null,
+   "fp32": 2.63,
    "date": "2012-06-01",
    "datePrecision": "year",
    "dateText": "2012",
@@ -4546,6 +5461,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 660 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-660-ti.c364） 理论性能：FP32 2.634 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 660 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-660-ti.c364） 显存：Bandwidth 144.2 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 660 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-660-ti.c364） 板卡设计：TDP 150 W"
+    }
+   },
+   "bandwidthGbps": 144.2,
+   "tdpW": 150,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4567,7 +5504,7 @@
    "vramPerGpuGb": 6.0,
    "vramType": "GDDR5",
    "vramLabel": "6GB GDDR5",
-   "fp32": null,
+   "fp32": 1.33,
    "date": "2011-06-01",
    "datePrecision": "year",
    "dateText": "2011",
@@ -4575,6 +5512,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2090 Specs（techpowerup.com/gpu-specs/tesla-m2090.c1537） 理论性能：FP32 1.332 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2090 Specs（techpowerup.com/gpu-specs/tesla-m2090.c1537） 显存：Bandwidth 177.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2090 Specs（techpowerup.com/gpu-specs/tesla-m2090.c1537） 板卡设计：TDP 225 W"
+    }
+   },
+   "bandwidthGbps": 177.4,
+   "tdpW": 225,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4596,7 +5555,7 @@
    "vramPerGpuGb": 6.0,
    "vramType": "GDDR5",
    "vramLabel": "6GB GDDR5",
-   "fp32": null,
+   "fp32": 1.03,
    "date": "2011-06-01",
    "datePrecision": "year",
    "dateText": "2011",
@@ -4604,6 +5563,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2070 Specs（techpowerup.com/gpu-specs/tesla-m2070.c1535） 理论性能：FP32 1.03 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2070 Specs（techpowerup.com/gpu-specs/tesla-m2070.c1535） 显存：Bandwidth 150.3 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2070 Specs（techpowerup.com/gpu-specs/tesla-m2070.c1535） 板卡设计：TDP 225 W"
+    }
+   },
+   "bandwidthGbps": 150.3,
+   "tdpW": 225,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4625,7 +5606,7 @@
    "vramPerGpuGb": 3.0,
    "vramType": "GDDR5",
    "vramLabel": "3GB GDDR5",
-   "fp32": null,
+   "fp32": 1.03,
    "date": "2011-06-01",
    "datePrecision": "year",
    "dateText": "2011",
@@ -4633,6 +5614,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2050 Specs（techpowerup.com/gpu-specs/tesla-m2050.c1534） 理论性能：FP32 1.03 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2050 Specs（techpowerup.com/gpu-specs/tesla-m2050.c1534） 显存：Bandwidth 148.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Tesla M2050 Specs（techpowerup.com/gpu-specs/tesla-m2050.c1534） 板卡设计：TDP 225 W"
+    }
+   },
+   "bandwidthGbps": 148.4,
+   "tdpW": 225,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4654,7 +5657,7 @@
    "vramPerGpuGb": 6.0,
    "vramType": "GDDR5",
    "vramLabel": "6GB GDDR5",
-   "fp32": null,
+   "fp32": 1.03,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4662,6 +5665,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 6000 Specs（techpowerup.com/gpu-specs/quadro-6000.c896） 理论性能：FP32 1.028 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 6000 Specs（techpowerup.com/gpu-specs/quadro-6000.c896） 显存：Bandwidth 143.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 6000 Specs（techpowerup.com/gpu-specs/quadro-6000.c896） 板卡设计：TDP 204 W"
+    }
+   },
+   "bandwidthGbps": 143.4,
+   "tdpW": 204,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4683,7 +5708,7 @@
    "vramPerGpuGb": 2.5,
    "vramType": "GDDR5",
    "vramLabel": "2.5GB GDDR5",
-   "fp32": null,
+   "fp32": 0.722,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4691,6 +5716,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 5000 Specs（techpowerup.com/gpu-specs/quadro-5000.c897） 理论性能：FP32 722.3 GFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 5000 Specs（techpowerup.com/gpu-specs/quadro-5000.c897） 显存：Bandwidth 120 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 5000 Specs（techpowerup.com/gpu-specs/quadro-5000.c897） 板卡设计：TDP 152 W"
+    }
+   },
+   "bandwidthGbps": 120,
+   "tdpW": 152,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4712,7 +5759,7 @@
    "vramPerGpuGb": 2.0,
    "vramType": "GDDR5",
    "vramLabel": "2GB GDDR5",
-   "fp32": null,
+   "fp32": 0.486,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4720,6 +5767,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 4000 Specs（techpowerup.com/gpu-specs/quadro-4000.c898） 理论性能：FP32 486.4 GFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 4000 Specs（techpowerup.com/gpu-specs/quadro-4000.c898） 显存：Bandwidth 89.86 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA Quadro 4000 Specs（techpowerup.com/gpu-specs/quadro-4000.c898） 板卡设计：TDP 142 W"
+    }
+   },
+   "bandwidthGbps": 89.86,
+   "tdpW": 142,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4741,7 +5810,7 @@
    "vramPerGpuGb": 3.0,
    "vramType": "GDDR5",
    "vramLabel": "1.5GB/3GB GDDR5",
-   "fp32": null,
+   "fp32": 1.58,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4749,6 +5818,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 580 Specs（techpowerup.com/gpu-specs/geforce-gtx-580.c270） 理论性能：FP32 1.581 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 580 Specs（techpowerup.com/gpu-specs/geforce-gtx-580.c270） 显存：Bandwidth 192.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 580 Specs（techpowerup.com/gpu-specs/geforce-gtx-580.c270） 板卡设计：TDP 244 W"
+    }
+   },
+   "bandwidthGbps": 192.4,
+   "tdpW": 244,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4770,7 +5861,7 @@
    "vramPerGpuGb": 1.25,
    "vramType": "GDDR5",
    "vramLabel": "1.25GB GDDR5",
-   "fp32": null,
+   "fp32": 1.41,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4778,6 +5869,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 570 Specs（techpowerup.com/gpu-specs/geforce-gtx-570.c269） 理论性能：FP32 1.405 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 570 Specs（techpowerup.com/gpu-specs/geforce-gtx-570.c269） 显存：Bandwidth 152 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 570 Specs（techpowerup.com/gpu-specs/geforce-gtx-570.c269） 板卡设计：TDP 219 W"
+    }
+   },
+   "bandwidthGbps": 152,
+   "tdpW": 219,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4799,7 +5912,7 @@
    "vramPerGpuGb": 2.0,
    "vramType": "GDDR5",
    "vramLabel": "1GB/2GB GDDR5",
-   "fp32": null,
+   "fp32": 1.26,
    "date": "2011-06-01",
    "datePrecision": "year",
    "dateText": "2011",
@@ -4807,6 +5920,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 560 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-560-ti.c273） 理论性能：FP32 1.263 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 560 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-560-ti.c273） 显存：Bandwidth 128.3 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 560 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-560-ti.c273） 板卡设计：TDP 170 W"
+    }
+   },
+   "bandwidthGbps": 128.3,
+   "tdpW": 170,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4828,7 +5963,7 @@
    "vramPerGpuGb": 1.5,
    "vramType": "GDDR5",
    "vramLabel": "1.5GB GDDR5",
-   "fp32": null,
+   "fp32": 1.34,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4836,6 +5971,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 480 Specs（techpowerup.com/gpu-specs/geforce-gtx-480.c268） 理论性能：FP32 1.345 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 480 Specs（techpowerup.com/gpu-specs/geforce-gtx-480.c268） 显存：Bandwidth 177.4 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 480 Specs（techpowerup.com/gpu-specs/geforce-gtx-480.c268） 板卡设计：TDP 250 W"
+    }
+   },
+   "bandwidthGbps": 177.4,
+   "tdpW": 250,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4857,7 +6014,7 @@
    "vramPerGpuGb": 1.25,
    "vramType": "GDDR5",
    "vramLabel": "1.25GB GDDR5",
-   "fp32": null,
+   "fp32": 1.09,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4865,6 +6022,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 470 Specs（techpowerup.com/gpu-specs/geforce-gtx-470.c267） 理论性能：FP32 1.089 TFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 470 Specs（techpowerup.com/gpu-specs/geforce-gtx-470.c267） 显存：Bandwidth 133.9 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 470 Specs（techpowerup.com/gpu-specs/geforce-gtx-470.c267） 板卡设计：TDP 215 W"
+    }
+   },
+   "bandwidthGbps": 133.9,
+   "tdpW": 215,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -4886,7 +6065,7 @@
    "vramPerGpuGb": 1.0,
    "vramType": "GDDR5",
    "vramLabel": "1GB GDDR5",
-   "fp32": null,
+   "fp32": 0.907,
    "date": "2010-06-01",
    "datePrecision": "year",
    "dateText": "2010",
@@ -4894,6 +6073,28 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "provenance": {
+    "fp32": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 460 Specs（techpowerup.com/gpu-specs/geforce-gtx-460.c265） 理论性能：FP32 907.2 GFLOPS"
+    },
+    "bandwidthGbps": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 460 Specs（techpowerup.com/gpu-specs/geforce-gtx-460.c265） 显存：Bandwidth 115.2 GB/s"
+    },
+    "tdpW": {
+     "src": "techpowerup-gpu-db",
+     "conf": "high",
+     "override": false,
+     "quote": "NVIDIA GeForce GTX 460 Specs（techpowerup.com/gpu-specs/geforce-gtx-460.c265） 板卡设计：TDP 160 W"
+    }
+   },
+   "bandwidthGbps": 115.2,
+   "tdpW": 160,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -11265,6 +12466,1495 @@
  },
  "supplements": [
   {
+   "id": "techpowerup-gpu-db",
+   "title": "TechPowerUp GPU Database（逐卡规格页）",
+   "url": "https://www.techpowerup.com/gpu-specs/",
+   "author": "TechPowerUp",
+   "publishedAt": "2026-11",
+   "retrievedAt": "2026-11-03",
+   "level": "secondary",
+   "note": "厂商规格表之外的社区维护数据库，FP32 取自页面「理论性能」区块（着色器数 × 频率 × 2）。多 GPU 整卡（K10/K80/M10/A16）只收 TDP，FP32 与带宽按单颗 GPU 计，口径和整卡不一致，不补。",
+   "applied": [
+    {
+     "id": "ada-l20",
+     "name": "L20",
+     "field": "fp32",
+     "value": 59.35,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "ada-l20",
+     "name": "L20",
+     "field": "bandwidthGbps",
+     "value": 864,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "ada-l20",
+     "name": "L20",
+     "field": "tdpW",
+     "value": 275,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "ada-rtx2000ada",
+     "name": "RTX 2000 Ada",
+     "field": "fp32",
+     "value": 12,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "ada-rtx2000ada",
+     "name": "RTX 2000 Ada",
+     "field": "bandwidthGbps",
+     "value": 224,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "ada-rtx2000ada",
+     "name": "RTX 2000 Ada",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a16",
+     "name": "A16",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a2",
+     "name": "A2",
+     "field": "fp32",
+     "value": 4.53,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a2",
+     "name": "A2",
+     "field": "bandwidthGbps",
+     "value": 200.1,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a2",
+     "name": "A2",
+     "field": "tdpW",
+     "value": 60,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa5500",
+     "name": "RTX A5500",
+     "field": "fp32",
+     "value": 34.1,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa5500",
+     "name": "RTX A5500",
+     "field": "bandwidthGbps",
+     "value": 768,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa5500",
+     "name": "RTX A5500",
+     "field": "tdpW",
+     "value": 230,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa4500",
+     "name": "RTX A4500",
+     "field": "fp32",
+     "value": 23.65,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa4500",
+     "name": "RTX A4500",
+     "field": "bandwidthGbps",
+     "value": 640,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa4500",
+     "name": "RTX A4500",
+     "field": "tdpW",
+     "value": 200,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa200012gb6gb",
+     "name": "RTX A2000（12GB/6GB）",
+     "field": "fp32",
+     "value": 7.99,
+     "conf": "medium",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa200012gb6gb",
+     "name": "RTX A2000（12GB/6GB）",
+     "field": "bandwidthGbps",
+     "value": 288,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa200012gb6gb",
+     "name": "RTX A2000（12GB/6GB）",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa1000",
+     "name": "RTX A1000",
+     "field": "fp32",
+     "value": 6.74,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa1000",
+     "name": "RTX A1000",
+     "field": "bandwidthGbps",
+     "value": 192,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa1000",
+     "name": "RTX A1000",
+     "field": "tdpW",
+     "value": 50,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa400",
+     "name": "RTX A400",
+     "field": "fp32",
+     "value": 2.71,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa400",
+     "name": "RTX A400",
+     "field": "bandwidthGbps",
+     "value": 96,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa400",
+     "name": "RTX A400",
+     "field": "tdpW",
+     "value": 50,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro5000blackwell",
+     "name": "RTX PRO 5000 Blackwell",
+     "field": "fp32",
+     "value": 66.94,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro5000blackwell",
+     "name": "RTX PRO 5000 Blackwell",
+     "field": "bandwidthGbps",
+     "value": 1340.0,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro5000blackwell",
+     "name": "RTX PRO 5000 Blackwell",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4500blackwell",
+     "name": "RTX PRO 4500 Blackwell（工作站版）",
+     "field": "fp32",
+     "value": 50.53,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4500blackwell",
+     "name": "RTX PRO 4500 Blackwell（工作站版）",
+     "field": "bandwidthGbps",
+     "value": 896,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4500blackwell",
+     "name": "RTX PRO 4500 Blackwell（工作站版）",
+     "field": "tdpW",
+     "value": 200,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwellsff",
+     "name": "RTX PRO 4000 Blackwell SFF",
+     "field": "fp32",
+     "value": 24.05,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwellsff",
+     "name": "RTX PRO 4000 Blackwell SFF",
+     "field": "bandwidthGbps",
+     "value": 432,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwellsff",
+     "name": "RTX PRO 4000 Blackwell SFF",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "fp32",
+     "value": 17.03,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "bandwidthGbps",
+     "value": 288,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro2000blackwell",
+     "name": "RTX PRO 2000 Blackwell",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwell",
+     "name": "RTX PRO 4000 Blackwell",
+     "field": "fp32",
+     "value": 36.83,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwell",
+     "name": "RTX PRO 4000 Blackwell",
+     "field": "bandwidthGbps",
+     "value": 672,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro4000blackwell",
+     "name": "RTX PRO 4000 Blackwell",
+     "field": "tdpW",
+     "value": 145,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro5500blackwell",
+     "name": "RTX PRO 5500 Blackwell（工作站版）",
+     "field": "fp32",
+     "value": 105.8,
+     "conf": "medium",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro5500blackwell",
+     "name": "RTX PRO 5500 Blackwell（工作站版）",
+     "field": "bandwidthGbps",
+     "value": 1400.0,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-rtxpro5500blackwell",
+     "name": "RTX PRO 5500 Blackwell（工作站版）",
+     "field": "tdpW",
+     "value": 600,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro6000",
+     "name": "Quadro 6000",
+     "field": "fp32",
+     "value": 1.03,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro6000",
+     "name": "Quadro 6000",
+     "field": "bandwidthGbps",
+     "value": 143.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro6000",
+     "name": "Quadro 6000",
+     "field": "tdpW",
+     "value": 204,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro5000",
+     "name": "Quadro 5000",
+     "field": "fp32",
+     "value": 0.722,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro5000",
+     "name": "Quadro 5000",
+     "field": "bandwidthGbps",
+     "value": 120,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro5000",
+     "name": "Quadro 5000",
+     "field": "tdpW",
+     "value": 152,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro4000",
+     "name": "Quadro 4000",
+     "field": "fp32",
+     "value": 0.486,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro4000",
+     "name": "Quadro 4000",
+     "field": "bandwidthGbps",
+     "value": 89.86,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-quadro4000",
+     "name": "Quadro 4000",
+     "field": "tdpW",
+     "value": 142,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-geforcegtx580",
+     "name": "GeForce GTX 580",
+     "field": "fp32",
+     "value": 1.58,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-geforcegtx580",
+     "name": "GeForce GTX 580",
+     "field": "bandwidthGbps",
+     "value": 192.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-geforcegtx580",
+     "name": "GeForce GTX 580",
+     "field": "tdpW",
+     "value": 244,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx570",
+     "name": "GTX 570",
+     "field": "fp32",
+     "value": 1.41,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx570",
+     "name": "GTX 570",
+     "field": "bandwidthGbps",
+     "value": 152,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx570",
+     "name": "GTX 570",
+     "field": "tdpW",
+     "value": 219,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx480",
+     "name": "GTX 480",
+     "field": "fp32",
+     "value": 1.34,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx480",
+     "name": "GTX 480",
+     "field": "bandwidthGbps",
+     "value": 177.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx480",
+     "name": "GTX 480",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx470",
+     "name": "GTX 470",
+     "field": "fp32",
+     "value": 1.09,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx470",
+     "name": "GTX 470",
+     "field": "bandwidthGbps",
+     "value": 133.9,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx470",
+     "name": "GTX 470",
+     "field": "tdpW",
+     "value": 215,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx460",
+     "name": "GTX 460",
+     "field": "fp32",
+     "value": 0.907,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx460",
+     "name": "GTX 460",
+     "field": "bandwidthGbps",
+     "value": 115.2,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx460",
+     "name": "GTX 460",
+     "field": "tdpW",
+     "value": 160,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2090",
+     "name": "Tesla M2090",
+     "field": "fp32",
+     "value": 1.33,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2090",
+     "name": "Tesla M2090",
+     "field": "bandwidthGbps",
+     "value": 177.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2090",
+     "name": "Tesla M2090",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2070",
+     "name": "Tesla M2070",
+     "field": "fp32",
+     "value": 1.03,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2070",
+     "name": "Tesla M2070",
+     "field": "bandwidthGbps",
+     "value": 150.3,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2070",
+     "name": "Tesla M2070",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2050",
+     "name": "Tesla M2050",
+     "field": "fp32",
+     "value": 1.03,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2050",
+     "name": "Tesla M2050",
+     "field": "bandwidthGbps",
+     "value": 148.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-teslam2050",
+     "name": "Tesla M2050",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx560ti",
+     "name": "GTX 560 Ti",
+     "field": "fp32",
+     "value": 1.26,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx560ti",
+     "name": "GTX 560 Ti",
+     "field": "bandwidthGbps",
+     "value": 128.3,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "fer-gtx560ti",
+     "name": "GTX 560 Ti",
+     "field": "tdpW",
+     "value": 170,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "hop-h100pcie",
+     "name": "H100 PCIe",
+     "field": "fp32",
+     "value": 51.22,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "hop-h100pcie",
+     "name": "H100 PCIe",
+     "field": "tdpW",
+     "value": 350,
+     "conf": "high",
+     "override": true,
+     "reason": "H100 PCIe 官方 TDP 是 350W，本地 400W 来自知乎汇总文的笔误"
+    },
+    {
+     "id": "hop-h20",
+     "name": "H20",
+     "field": "fp32",
+     "value": 39.54,
+     "conf": "medium",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "hop-h20",
+     "name": "H20",
+     "field": "bandwidthGbps",
+     "value": 4030.0,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak20",
+     "name": "Tesla K20",
+     "field": "fp32",
+     "value": 3.52,
+     "conf": "medium",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak20",
+     "name": "Tesla K20",
+     "field": "bandwidthGbps",
+     "value": 208,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak20",
+     "name": "Tesla K20",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak10",
+     "name": "Tesla K10",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok5000",
+     "name": "Quadro K5000",
+     "field": "fp32",
+     "value": 2.17,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok5000",
+     "name": "Quadro K5000",
+     "field": "bandwidthGbps",
+     "value": 172.8,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok5000",
+     "name": "Quadro K5000",
+     "field": "tdpW",
+     "value": 122,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx680",
+     "name": "GTX 680",
+     "field": "fp32",
+     "value": 3.25,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx680",
+     "name": "GTX 680",
+     "field": "bandwidthGbps",
+     "value": 192.3,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx680",
+     "name": "GTX 680",
+     "field": "tdpW",
+     "value": 195,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx670",
+     "name": "GTX 670",
+     "field": "fp32",
+     "value": 2.63,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx670",
+     "name": "GTX 670",
+     "field": "bandwidthGbps",
+     "value": 192.3,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx670",
+     "name": "GTX 670",
+     "field": "tdpW",
+     "value": 170,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx660ti",
+     "name": "GTX 660 Ti",
+     "field": "fp32",
+     "value": 2.63,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx660ti",
+     "name": "GTX 660 Ti",
+     "field": "bandwidthGbps",
+     "value": 144.2,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx660ti",
+     "name": "GTX 660 Ti",
+     "field": "tdpW",
+     "value": 150,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak40",
+     "name": "Tesla K40",
+     "field": "fp32",
+     "value": 5.05,
+     "conf": "medium",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak40",
+     "name": "Tesla K40",
+     "field": "bandwidthGbps",
+     "value": 288.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak40",
+     "name": "Tesla K40",
+     "field": "tdpW",
+     "value": 245,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok6000",
+     "name": "Quadro K6000",
+     "field": "fp32",
+     "value": 5.2,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok6000",
+     "name": "Quadro K6000",
+     "field": "bandwidthGbps",
+     "value": 288.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok6000",
+     "name": "Quadro K6000",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok4000",
+     "name": "Quadro K4000",
+     "field": "fp32",
+     "value": 1.24,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok4000",
+     "name": "Quadro K4000",
+     "field": "bandwidthGbps",
+     "value": 134.8,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-quadrok4000",
+     "name": "Quadro K4000",
+     "field": "tdpW",
+     "value": 80,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-geforcegtxtitan",
+     "name": "GeForce GTX Titan",
+     "field": "fp32",
+     "value": 4.71,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-geforcegtxtitan",
+     "name": "GeForce GTX Titan",
+     "field": "bandwidthGbps",
+     "value": 288.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-geforcegtxtitan",
+     "name": "GeForce GTX Titan",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx780ti",
+     "name": "GTX 780 Ti",
+     "field": "fp32",
+     "value": 5.34,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx780ti",
+     "name": "GTX 780 Ti",
+     "field": "bandwidthGbps",
+     "value": 336.6,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx780ti",
+     "name": "GTX 780 Ti",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx780",
+     "name": "GTX 780",
+     "field": "fp32",
+     "value": 4.16,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx780",
+     "name": "GTX 780",
+     "field": "bandwidthGbps",
+     "value": 288.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx780",
+     "name": "GTX 780",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx770",
+     "name": "GTX 770",
+     "field": "fp32",
+     "value": 3.33,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx770",
+     "name": "GTX 770",
+     "field": "bandwidthGbps",
+     "value": 224.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx770",
+     "name": "GTX 770",
+     "field": "tdpW",
+     "value": 230,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx760",
+     "name": "GTX 760",
+     "field": "fp32",
+     "value": 2.38,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx760",
+     "name": "GTX 760",
+     "field": "bandwidthGbps",
+     "value": 192.3,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-gtx760",
+     "name": "GTX 760",
+     "field": "tdpW",
+     "value": 170,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "kep-teslak80",
+     "name": "Tesla K80",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx980",
+     "name": "GTX 980",
+     "field": "fp32",
+     "value": 4.98,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx980",
+     "name": "GTX 980",
+     "field": "bandwidthGbps",
+     "value": 224.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx980",
+     "name": "GTX 980",
+     "field": "tdpW",
+     "value": 165,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx970",
+     "name": "GTX 970",
+     "field": "fp32",
+     "value": 3.92,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx970",
+     "name": "GTX 970",
+     "field": "bandwidthGbps",
+     "value": 224.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx970",
+     "name": "GTX 970",
+     "field": "tdpW",
+     "value": 145,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx750ti",
+     "name": "GTX 750 Ti",
+     "field": "fp32",
+     "value": 1.39,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx750ti",
+     "name": "GTX 750 Ti",
+     "field": "bandwidthGbps",
+     "value": 86.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx750ti",
+     "name": "GTX 750 Ti",
+     "field": "tdpW",
+     "value": 60,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam40",
+     "name": "Tesla M40",
+     "field": "fp32",
+     "value": 6.83,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam40",
+     "name": "Tesla M40",
+     "field": "bandwidthGbps",
+     "value": 288.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam40",
+     "name": "Tesla M40",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam4",
+     "name": "Tesla M4",
+     "field": "fp32",
+     "value": 2.19,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam4",
+     "name": "Tesla M4",
+     "field": "bandwidthGbps",
+     "value": 88,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam4",
+     "name": "Tesla M4",
+     "field": "tdpW",
+     "value": 50,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-teslam10",
+     "name": "Tesla M10",
+     "field": "tdpW",
+     "value": 225,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom6000",
+     "name": "Quadro M6000",
+     "field": "fp32",
+     "value": 6.84,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom6000",
+     "name": "Quadro M6000",
+     "field": "bandwidthGbps",
+     "value": 317.4,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom6000",
+     "name": "Quadro M6000",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom5000",
+     "name": "Quadro M5000",
+     "field": "fp32",
+     "value": 4.25,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom5000",
+     "name": "Quadro M5000",
+     "field": "bandwidthGbps",
+     "value": 211.6,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom5000",
+     "name": "Quadro M5000",
+     "field": "tdpW",
+     "value": 150,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom4000",
+     "name": "Quadro M4000",
+     "field": "fp32",
+     "value": 2.57,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom4000",
+     "name": "Quadro M4000",
+     "field": "bandwidthGbps",
+     "value": 192.3,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-quadrom4000",
+     "name": "Quadro M4000",
+     "field": "tdpW",
+     "value": 120,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-geforcegtxtitanxmaxwell",
+     "name": "GeForce GTX Titan X（Maxwell）",
+     "field": "fp32",
+     "value": 6.69,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-geforcegtxtitanxmaxwell",
+     "name": "GeForce GTX Titan X（Maxwell）",
+     "field": "bandwidthGbps",
+     "value": 336.6,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-geforcegtxtitanxmaxwell",
+     "name": "GeForce GTX Titan X（Maxwell）",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx980ti",
+     "name": "GTX 980 Ti",
+     "field": "fp32",
+     "value": 6.06,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx980ti",
+     "name": "GTX 980 Ti",
+     "field": "bandwidthGbps",
+     "value": 336.6,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx980ti",
+     "name": "GTX 980 Ti",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx960",
+     "name": "GTX 960",
+     "field": "fp32",
+     "value": 2.41,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx960",
+     "name": "GTX 960",
+     "field": "bandwidthGbps",
+     "value": 112.2,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx960",
+     "name": "GTX 960",
+     "field": "tdpW",
+     "value": 120,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx950",
+     "name": "GTX 950",
+     "field": "fp32",
+     "value": 1.82,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx950",
+     "name": "GTX 950",
+     "field": "bandwidthGbps",
+     "value": 105.8,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "max-gtx950",
+     "name": "GTX 950",
+     "field": "tdpW",
+     "value": 90,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "pas-teslap100pcie16gb",
+     "name": "Tesla P100 PCIe（16GB）",
+     "field": "fp32",
+     "value": 9.53,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "pas-teslap100pcie16gb",
+     "name": "Tesla P100 PCIe（16GB）",
+     "field": "bandwidthGbps",
+     "value": 732.2,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "pas-teslap100pcie16gb",
+     "name": "Tesla P100 PCIe（16GB）",
+     "field": "tdpW",
+     "value": 250,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    }
+   ],
+   "conflicts": []
+  },
+  {
    "id": "zhihu-2040766374843245011",
    "title": "NVIDIA计算卡算力及详细参数综合报告（2026年5月版）",
    "url": "https://zhuanlan.zhihu.com/p/2040766374843245011",
@@ -11297,15 +13987,6 @@
      "name": "H100 SXM",
      "field": "date",
      "value": "2022-03-22",
-     "conf": "high",
-     "override": false,
-     "reason": null
-    },
-    {
-     "id": "hop-h100pcie",
-     "name": "H100 PCIe",
-     "field": "tdpW",
-     "value": 400,
      "conf": "high",
      "override": false,
      "reason": null
@@ -11403,6 +14084,15 @@
    ],
    "conflicts": [
     {
+     "id": "hop-h100pcie",
+     "name": "H100 PCIe",
+     "field": "tdpW",
+     "local": 350,
+     "article": 400,
+     "resolution": "keep-local",
+     "quote": "TDP（功耗）：700W（SXM）、400W（PCIe）"
+    },
+    {
      "id": "blk-b300blackwellultra",
      "field": "bandwidthGbps",
      "local": 8000,
@@ -11462,7 +14152,7 @@
   "china": 8,
   "matched": 21,
   "industry": 39,
-  "supplements": 14,
-  "supplementSources": 1
+  "supplements": 177,
+  "supplementSources": 2
  }
 }

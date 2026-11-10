@@ -1,0 +1,1138 @@
+{
+  "id": "techpowerup-gpu-db",
+  "priority": 10,
+  "title": "TechPowerUp GPU Database（逐卡规格页）",
+  "url": "https://www.techpowerup.com/gpu-specs/",
+  "author": "TechPowerUp",
+  "publishedAt": "2026-11",
+  "retrievedAt": "2026-11-03",
+  "level": "secondary",
+  "note": "厂商规格表之外的社区维护数据库，FP32 取自页面「理论性能」区块（着色器数 × 频率 × 2）。多 GPU 整卡（K10/K80/M10/A16）只收 TDP，FP32 与带宽按单颗 GPU 计，口径和整卡不一致，不补。",
+  "items": [
+    {
+      "id": "ada-l20",
+      "fields": {
+        "fp32": {
+          "value": 59.35,
+          "confidence": "high",
+          "quote": "NVIDIA L20 Specs（techpowerup.com/gpu-specs/l20.c4206） 理论性能：FP32 59.35 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 864,
+          "confidence": "high",
+          "quote": "NVIDIA L20 Specs（techpowerup.com/gpu-specs/l20.c4206） 显存：Bandwidth 864 GB/s"
+        },
+        "tdpW": {
+          "value": 275,
+          "confidence": "high",
+          "quote": "NVIDIA L20 Specs（techpowerup.com/gpu-specs/l20.c4206） 板卡设计：TDP 275 W"
+        }
+      }
+    },
+    {
+      "id": "ada-rtx2000ada",
+      "fields": {
+        "fp32": {
+          "value": 12,
+          "confidence": "high",
+          "quote": "NVIDIA RTX 2000 Ada Generation Specs（techpowerup.com/gpu-specs/rtx-2000-ada-generation.c4199） 理论性能：FP32 12 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 224,
+          "confidence": "high",
+          "quote": "NVIDIA RTX 2000 Ada Generation Specs（techpowerup.com/gpu-specs/rtx-2000-ada-generation.c4199） 显存：Bandwidth 224 GB/s"
+        },
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "NVIDIA RTX 2000 Ada Generation Specs（techpowerup.com/gpu-specs/rtx-2000-ada-generation.c4199） 板卡设计：TDP 70 W"
+        }
+      }
+    },
+    {
+      "id": "amp-a16",
+      "fields": {
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA A16 PCIe Specs（techpowerup.com/gpu-specs/a16-pcie.c3794） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "amp-a2",
+      "fields": {
+        "fp32": {
+          "value": 4.53,
+          "confidence": "high",
+          "quote": "NVIDIA A2 Specs（techpowerup.com/gpu-specs/a2.c3848） 理论性能：FP32 4.531 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 200.1,
+          "confidence": "high",
+          "quote": "NVIDIA A2 Specs（techpowerup.com/gpu-specs/a2.c3848） 显存：Bandwidth 200.1 GB/s"
+        },
+        "tdpW": {
+          "value": 60,
+          "confidence": "high",
+          "quote": "NVIDIA A2 Specs（techpowerup.com/gpu-specs/a2.c3848） 板卡设计：TDP 60 W"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa5500",
+      "fields": {
+        "fp32": {
+          "value": 34.1,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A5500 Specs（techpowerup.com/gpu-specs/rtx-a5500.c3901） 理论性能：FP32 34.1 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 768,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A5500 Specs（techpowerup.com/gpu-specs/rtx-a5500.c3901） 显存：Bandwidth 768 GB/s"
+        },
+        "tdpW": {
+          "value": 230,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A5500 Specs（techpowerup.com/gpu-specs/rtx-a5500.c3901） 板卡设计：TDP 230 W"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa4500",
+      "fields": {
+        "fp32": {
+          "value": 23.65,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A4500 Specs（techpowerup.com/gpu-specs/rtx-a4500.c3849） 理论性能：FP32 23.65 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 640,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A4500 Specs（techpowerup.com/gpu-specs/rtx-a4500.c3849） 显存：Bandwidth 640 GB/s"
+        },
+        "tdpW": {
+          "value": 200,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A4500 Specs（techpowerup.com/gpu-specs/rtx-a4500.c3849） 板卡设计：TDP 200 W"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa200012gb6gb",
+      "fields": {
+        "fp32": {
+          "value": 7.99,
+          "confidence": "medium",
+          "quote": "NVIDIA RTX A2000 12 GB Specs（techpowerup.com/gpu-specs/rtx-a2000-12-gb.c3853） 理论性能：FP32 7.987 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A2000 12 GB Specs（techpowerup.com/gpu-specs/rtx-a2000-12-gb.c3853） 显存：Bandwidth 288 GB/s"
+        },
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A2000 12 GB Specs（techpowerup.com/gpu-specs/rtx-a2000-12-gb.c3853） 板卡设计：TDP 70 W"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa1000",
+      "fields": {
+        "fp32": {
+          "value": 6.74,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A1000 Specs（techpowerup.com/gpu-specs/rtx-a1000.c4211） 理论性能：FP32 6.737 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 192,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A1000 Specs（techpowerup.com/gpu-specs/rtx-a1000.c4211） 显存：Bandwidth 192 GB/s"
+        },
+        "tdpW": {
+          "value": 50,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A1000 Specs（techpowerup.com/gpu-specs/rtx-a1000.c4211） 板卡设计：TDP 50 W"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa400",
+      "fields": {
+        "fp32": {
+          "value": 2.71,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A400 Specs（techpowerup.com/gpu-specs/rtx-a400.c4212） 理论性能：FP32 2.706 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 96,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A400 Specs（techpowerup.com/gpu-specs/rtx-a400.c4212） 显存：Bandwidth 96 GB/s"
+        },
+        "tdpW": {
+          "value": 50,
+          "confidence": "high",
+          "quote": "NVIDIA RTX A400 Specs（techpowerup.com/gpu-specs/rtx-a400.c4212） 板卡设计：TDP 50 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro5000blackwell",
+      "fields": {
+        "fp32": {
+          "value": 66.94,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 理论性能：FP32 66.94 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 1340.0,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 显存：Bandwidth 1.34 TB/s"
+        },
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 5000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5000-blackwell-workstation.c4276） 板卡设计：TDP 300 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro4500blackwell",
+      "fields": {
+        "fp32": {
+          "value": 50.53,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 理论性能：FP32 50.53 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 896,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 显存：Bandwidth 896 GB/s"
+        },
+        "tdpW": {
+          "value": 200,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-workstation.c4278） 板卡设计：TDP 200 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro4000blackwellsff",
+      "fields": {
+        "fp32": {
+          "value": 24.05,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 理论性能：FP32 24.05 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 432,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 显存：Bandwidth 432 GB/s"
+        },
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4000 Blackwell SFF Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-sff.c4329） 板卡设计：TDP 70 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro2000blackwell",
+      "fields": {
+        "fp32": {
+          "value": 17.03,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 理论性能：FP32 17.03 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 显存：Bandwidth 288 GB/s"
+        },
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 2000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-2000-blackwell-workstation.c4330） 板卡设计：TDP 70 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro4000blackwell",
+      "fields": {
+        "fp32": {
+          "value": 36.83,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 理论性能：FP32 36.83 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 672,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 显存：Bandwidth 672 GB/s"
+        },
+        "tdpW": {
+          "value": 145,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 4000 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-4000-blackwell-workstation.c4279） 板卡设计：TDP 145 W"
+        }
+      }
+    },
+    {
+      "id": "blk-rtxpro5500blackwell",
+      "fields": {
+        "fp32": {
+          "value": 105.8,
+          "confidence": "medium",
+          "quote": "NVIDIA RTX PRO 5500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5500-blackwell-workstation.c4449） 理论性能：FP32 105.8 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 1400.0,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 5500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5500-blackwell-workstation.c4449） 显存：Bandwidth 1.4 TB/s"
+        },
+        "tdpW": {
+          "value": 600,
+          "confidence": "high",
+          "quote": "NVIDIA RTX PRO 5500 Blackwell Workstation Specs（techpowerup.com/gpu-specs/rtx-pro-5500-blackwell-workstation.c4449） 板卡设计：TDP 600 W"
+        }
+      }
+    },
+    {
+      "id": "fer-quadro6000",
+      "fields": {
+        "fp32": {
+          "value": 1.03,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 6000 Specs（techpowerup.com/gpu-specs/quadro-6000.c896） 理论性能：FP32 1.028 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 143.4,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 6000 Specs（techpowerup.com/gpu-specs/quadro-6000.c896） 显存：Bandwidth 143.4 GB/s"
+        },
+        "tdpW": {
+          "value": 204,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 6000 Specs（techpowerup.com/gpu-specs/quadro-6000.c896） 板卡设计：TDP 204 W"
+        }
+      }
+    },
+    {
+      "id": "fer-quadro5000",
+      "fields": {
+        "fp32": {
+          "value": 0.722,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 5000 Specs（techpowerup.com/gpu-specs/quadro-5000.c897） 理论性能：FP32 722.3 GFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 120,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 5000 Specs（techpowerup.com/gpu-specs/quadro-5000.c897） 显存：Bandwidth 120 GB/s"
+        },
+        "tdpW": {
+          "value": 152,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 5000 Specs（techpowerup.com/gpu-specs/quadro-5000.c897） 板卡设计：TDP 152 W"
+        }
+      }
+    },
+    {
+      "id": "fer-quadro4000",
+      "fields": {
+        "fp32": {
+          "value": 0.486,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 4000 Specs（techpowerup.com/gpu-specs/quadro-4000.c898） 理论性能：FP32 486.4 GFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 89.86,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 4000 Specs（techpowerup.com/gpu-specs/quadro-4000.c898） 显存：Bandwidth 89.86 GB/s"
+        },
+        "tdpW": {
+          "value": 142,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro 4000 Specs（techpowerup.com/gpu-specs/quadro-4000.c898） 板卡设计：TDP 142 W"
+        }
+      }
+    },
+    {
+      "id": "fer-geforcegtx580",
+      "fields": {
+        "fp32": {
+          "value": 1.58,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 580 Specs（techpowerup.com/gpu-specs/geforce-gtx-580.c270） 理论性能：FP32 1.581 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 192.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 580 Specs（techpowerup.com/gpu-specs/geforce-gtx-580.c270） 显存：Bandwidth 192.4 GB/s"
+        },
+        "tdpW": {
+          "value": 244,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 580 Specs（techpowerup.com/gpu-specs/geforce-gtx-580.c270） 板卡设计：TDP 244 W"
+        }
+      }
+    },
+    {
+      "id": "fer-gtx570",
+      "fields": {
+        "fp32": {
+          "value": 1.41,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 570 Specs（techpowerup.com/gpu-specs/geforce-gtx-570.c269） 理论性能：FP32 1.405 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 152,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 570 Specs（techpowerup.com/gpu-specs/geforce-gtx-570.c269） 显存：Bandwidth 152 GB/s"
+        },
+        "tdpW": {
+          "value": 219,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 570 Specs（techpowerup.com/gpu-specs/geforce-gtx-570.c269） 板卡设计：TDP 219 W"
+        }
+      }
+    },
+    {
+      "id": "fer-gtx480",
+      "fields": {
+        "fp32": {
+          "value": 1.34,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 480 Specs（techpowerup.com/gpu-specs/geforce-gtx-480.c268） 理论性能：FP32 1.345 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 177.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 480 Specs（techpowerup.com/gpu-specs/geforce-gtx-480.c268） 显存：Bandwidth 177.4 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 480 Specs（techpowerup.com/gpu-specs/geforce-gtx-480.c268） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "fer-gtx470",
+      "fields": {
+        "fp32": {
+          "value": 1.09,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 470 Specs（techpowerup.com/gpu-specs/geforce-gtx-470.c267） 理论性能：FP32 1.089 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 133.9,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 470 Specs（techpowerup.com/gpu-specs/geforce-gtx-470.c267） 显存：Bandwidth 133.9 GB/s"
+        },
+        "tdpW": {
+          "value": 215,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 470 Specs（techpowerup.com/gpu-specs/geforce-gtx-470.c267） 板卡设计：TDP 215 W"
+        }
+      }
+    },
+    {
+      "id": "fer-gtx460",
+      "fields": {
+        "fp32": {
+          "value": 0.907,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 460 Specs（techpowerup.com/gpu-specs/geforce-gtx-460.c265） 理论性能：FP32 907.2 GFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 115.2,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 460 Specs（techpowerup.com/gpu-specs/geforce-gtx-460.c265） 显存：Bandwidth 115.2 GB/s"
+        },
+        "tdpW": {
+          "value": 160,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 460 Specs（techpowerup.com/gpu-specs/geforce-gtx-460.c265） 板卡设计：TDP 160 W"
+        }
+      }
+    },
+    {
+      "id": "fer-teslam2090",
+      "fields": {
+        "fp32": {
+          "value": 1.33,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2090 Specs（techpowerup.com/gpu-specs/tesla-m2090.c1537） 理论性能：FP32 1.332 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 177.4,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2090 Specs（techpowerup.com/gpu-specs/tesla-m2090.c1537） 显存：Bandwidth 177.4 GB/s"
+        },
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2090 Specs（techpowerup.com/gpu-specs/tesla-m2090.c1537） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "fer-teslam2070",
+      "fields": {
+        "fp32": {
+          "value": 1.03,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2070 Specs（techpowerup.com/gpu-specs/tesla-m2070.c1535） 理论性能：FP32 1.03 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 150.3,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2070 Specs（techpowerup.com/gpu-specs/tesla-m2070.c1535） 显存：Bandwidth 150.3 GB/s"
+        },
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2070 Specs（techpowerup.com/gpu-specs/tesla-m2070.c1535） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "fer-teslam2050",
+      "fields": {
+        "fp32": {
+          "value": 1.03,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2050 Specs（techpowerup.com/gpu-specs/tesla-m2050.c1534） 理论性能：FP32 1.03 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 148.4,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2050 Specs（techpowerup.com/gpu-specs/tesla-m2050.c1534） 显存：Bandwidth 148.4 GB/s"
+        },
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M2050 Specs（techpowerup.com/gpu-specs/tesla-m2050.c1534） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "fer-gtx560ti",
+      "fields": {
+        "fp32": {
+          "value": 1.26,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 560 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-560-ti.c273） 理论性能：FP32 1.263 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 128.3,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 560 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-560-ti.c273） 显存：Bandwidth 128.3 GB/s"
+        },
+        "tdpW": {
+          "value": 170,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 560 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-560-ti.c273） 板卡设计：TDP 170 W"
+        }
+      }
+    },
+    {
+      "id": "hop-h100pcie",
+      "fields": {
+        "fp32": {
+          "value": 51.22,
+          "confidence": "high",
+          "quote": "NVIDIA H100 PCIe 80 GB Specs（techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899） 理论性能：FP32 51.22 TFLOPS"
+        },
+        "tdpW": {
+          "value": 350,
+          "confidence": "high",
+          "override": true,
+          "reason": "H100 PCIe 官方 TDP 是 350W，本地 400W 来自知乎汇总文的笔误",
+          "quote": "NVIDIA H100 PCIe 80 GB Specs（techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899） 板卡设计：TDP 350 W"
+        }
+      }
+    },
+    {
+      "id": "hop-h20",
+      "fields": {
+        "fp32": {
+          "value": 39.54,
+          "confidence": "medium",
+          "quote": "NVIDIA H20 Specs（techpowerup.com/gpu-specs/h20.c4420） 理论性能：FP32 39.54 TFLOPS（另有口径按 44 TFLOPS 计；H20 有 SXM 400W / PCIe 500W 两个形态，功耗这里不补）"
+        },
+        "bandwidthGbps": {
+          "value": 4030.0,
+          "confidence": "high",
+          "quote": "NVIDIA H20 Specs（techpowerup.com/gpu-specs/h20.c4420） 显存：Bandwidth 4.03 TB/s"
+        }
+      }
+    },
+    {
+      "id": "kep-teslak20",
+      "fields": {
+        "fp32": {
+          "value": 3.52,
+          "confidence": "medium",
+          "quote": "NVIDIA Tesla K20c Specs（techpowerup.com/gpu-specs/tesla-k20c.c564） 理论性能：FP32 3.524 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 208,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla K20c Specs（techpowerup.com/gpu-specs/tesla-k20c.c564） 显存：Bandwidth 208 GB/s"
+        },
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla K20c Specs（techpowerup.com/gpu-specs/tesla-k20c.c564） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "kep-teslak10",
+      "fields": {
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla K10 Specs（techpowerup.com/gpu-specs/tesla-k10.c918） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "kep-quadrok5000",
+      "fields": {
+        "fp32": {
+          "value": 2.17,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K5000 Specs（techpowerup.com/gpu-specs/quadro-k5000.c565） 理论性能：FP32 2.169 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 172.8,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K5000 Specs（techpowerup.com/gpu-specs/quadro-k5000.c565） 显存：Bandwidth 172.8 GB/s"
+        },
+        "tdpW": {
+          "value": 122,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K5000 Specs（techpowerup.com/gpu-specs/quadro-k5000.c565） 板卡设计：TDP 122 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx680",
+      "fields": {
+        "fp32": {
+          "value": 3.25,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 680 Specs（techpowerup.com/gpu-specs/geforce-gtx-680.c342） 理论性能：FP32 3.25 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 192.3,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 680 Specs（techpowerup.com/gpu-specs/geforce-gtx-680.c342） 显存：Bandwidth 192.3 GB/s"
+        },
+        "tdpW": {
+          "value": 195,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 680 Specs（techpowerup.com/gpu-specs/geforce-gtx-680.c342） 板卡设计：TDP 195 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx670",
+      "fields": {
+        "fp32": {
+          "value": 2.63,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 670 Specs（techpowerup.com/gpu-specs/geforce-gtx-670.c362） 理论性能：FP32 2.634 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 192.3,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 670 Specs（techpowerup.com/gpu-specs/geforce-gtx-670.c362） 显存：Bandwidth 192.3 GB/s"
+        },
+        "tdpW": {
+          "value": 170,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 670 Specs（techpowerup.com/gpu-specs/geforce-gtx-670.c362） 板卡设计：TDP 170 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx660ti",
+      "fields": {
+        "fp32": {
+          "value": 2.63,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 660 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-660-ti.c364） 理论性能：FP32 2.634 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 144.2,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 660 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-660-ti.c364） 显存：Bandwidth 144.2 GB/s"
+        },
+        "tdpW": {
+          "value": 150,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 660 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-660-ti.c364） 板卡设计：TDP 150 W"
+        }
+      }
+    },
+    {
+      "id": "kep-teslak40",
+      "fields": {
+        "fp32": {
+          "value": 5.05,
+          "confidence": "medium",
+          "quote": "NVIDIA Tesla K40c Specs（techpowerup.com/gpu-specs/tesla-k40c.c2505） 理论性能：FP32 5.046 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288.4,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla K40c Specs（techpowerup.com/gpu-specs/tesla-k40c.c2505） 显存：Bandwidth 288.4 GB/s"
+        },
+        "tdpW": {
+          "value": 245,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla K40c Specs（techpowerup.com/gpu-specs/tesla-k40c.c2505） 板卡设计：TDP 245 W"
+        }
+      }
+    },
+    {
+      "id": "kep-quadrok6000",
+      "fields": {
+        "fp32": {
+          "value": 5.2,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K6000 Specs（techpowerup.com/gpu-specs/quadro-k6000.c2426） 理论性能：FP32 5.196 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288.4,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K6000 Specs（techpowerup.com/gpu-specs/quadro-k6000.c2426） 显存：Bandwidth 288.4 GB/s"
+        },
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K6000 Specs（techpowerup.com/gpu-specs/quadro-k6000.c2426） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "kep-quadrok4000",
+      "fields": {
+        "fp32": {
+          "value": 1.24,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K4000 Specs（techpowerup.com/gpu-specs/quadro-k4000.c1841） 理论性能：FP32 1.244 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 134.8,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K4000 Specs（techpowerup.com/gpu-specs/quadro-k4000.c1841） 显存：Bandwidth 134.8 GB/s"
+        },
+        "tdpW": {
+          "value": 80,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro K4000 Specs（techpowerup.com/gpu-specs/quadro-k4000.c1841） 板卡设计：TDP 80 W"
+        }
+      }
+    },
+    {
+      "id": "kep-geforcegtxtitan",
+      "fields": {
+        "fp32": {
+          "value": 4.71,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX TITAN Specs（techpowerup.com/gpu-specs/geforce-gtx-titan.c1996） 理论性能：FP32 4.709 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX TITAN Specs（techpowerup.com/gpu-specs/geforce-gtx-titan.c1996） 显存：Bandwidth 288.4 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX TITAN Specs（techpowerup.com/gpu-specs/geforce-gtx-titan.c1996） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx780ti",
+      "fields": {
+        "fp32": {
+          "value": 5.34,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 780 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-780-ti.c2512） 理论性能：FP32 5.345 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 336.6,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 780 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-780-ti.c2512） 显存：Bandwidth 336.6 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 780 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-780-ti.c2512） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx780",
+      "fields": {
+        "fp32": {
+          "value": 4.16,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 780 Specs（techpowerup.com/gpu-specs/geforce-gtx-780.c1701） 理论性能：FP32 4.156 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 780 Specs（techpowerup.com/gpu-specs/geforce-gtx-780.c1701） 显存：Bandwidth 288.4 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 780 Specs（techpowerup.com/gpu-specs/geforce-gtx-780.c1701） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx770",
+      "fields": {
+        "fp32": {
+          "value": 3.33,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 770 Specs（techpowerup.com/gpu-specs/geforce-gtx-770.c1856） 理论性能：FP32 3.333 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 224.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 770 Specs（techpowerup.com/gpu-specs/geforce-gtx-770.c1856） 显存：Bandwidth 224.4 GB/s"
+        },
+        "tdpW": {
+          "value": 230,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 770 Specs（techpowerup.com/gpu-specs/geforce-gtx-770.c1856） 板卡设计：TDP 230 W"
+        }
+      }
+    },
+    {
+      "id": "kep-gtx760",
+      "fields": {
+        "fp32": {
+          "value": 2.38,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 760 Specs（techpowerup.com/gpu-specs/geforce-gtx-760.c1857） 理论性能：FP32 2.378 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 192.3,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 760 Specs（techpowerup.com/gpu-specs/geforce-gtx-760.c1857） 显存：Bandwidth 192.3 GB/s"
+        },
+        "tdpW": {
+          "value": 170,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 760 Specs（techpowerup.com/gpu-specs/geforce-gtx-760.c1857） 板卡设计：TDP 170 W"
+        }
+      }
+    },
+    {
+      "id": "kep-teslak80",
+      "fields": {
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla K80 Specs（techpowerup.com/gpu-specs/tesla-k80.c2616） 板卡设计：TDP 300 W"
+        }
+      }
+    },
+    {
+      "id": "max-gtx980",
+      "fields": {
+        "fp32": {
+          "value": 4.98,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 980 Specs（techpowerup.com/gpu-specs/geforce-gtx-980.c2621） 理论性能：FP32 4.981 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 224.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 980 Specs（techpowerup.com/gpu-specs/geforce-gtx-980.c2621） 显存：Bandwidth 224.4 GB/s"
+        },
+        "tdpW": {
+          "value": 165,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 980 Specs（techpowerup.com/gpu-specs/geforce-gtx-980.c2621） 板卡设计：TDP 165 W"
+        }
+      }
+    },
+    {
+      "id": "max-gtx970",
+      "fields": {
+        "fp32": {
+          "value": 3.92,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 970 Specs（techpowerup.com/gpu-specs/geforce-gtx-970.c2620） 理论性能：FP32 3.92 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 224.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 970 Specs（techpowerup.com/gpu-specs/geforce-gtx-970.c2620） 显存：Bandwidth 224.4 GB/s"
+        },
+        "tdpW": {
+          "value": 145,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 970 Specs（techpowerup.com/gpu-specs/geforce-gtx-970.c2620） 板卡设计：TDP 145 W"
+        }
+      }
+    },
+    {
+      "id": "max-gtx750ti",
+      "fields": {
+        "fp32": {
+          "value": 1.39,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 750 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-750-ti.c2548） 理论性能：FP32 1.389 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 86.4,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 750 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-750-ti.c2548） 显存：Bandwidth 86.4 GB/s"
+        },
+        "tdpW": {
+          "value": 60,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 750 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-750-ti.c2548） 板卡设计：TDP 60 W"
+        }
+      }
+    },
+    {
+      "id": "max-teslam40",
+      "fields": {
+        "fp32": {
+          "value": 6.83,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M40 Specs（techpowerup.com/gpu-specs/tesla-m40.c2771） 理论性能：FP32 6.832 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 288.4,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M40 Specs（techpowerup.com/gpu-specs/tesla-m40.c2771） 显存：Bandwidth 288.4 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M40 Specs（techpowerup.com/gpu-specs/tesla-m40.c2771） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "max-teslam4",
+      "fields": {
+        "fp32": {
+          "value": 2.19,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M4 Specs（techpowerup.com/gpu-specs/tesla-m4.c2770） 理论性能：FP32 2.195 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 88,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M4 Specs（techpowerup.com/gpu-specs/tesla-m4.c2770） 显存：Bandwidth 88 GB/s"
+        },
+        "tdpW": {
+          "value": 50,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M4 Specs（techpowerup.com/gpu-specs/tesla-m4.c2770） 板卡设计：TDP 50 W"
+        }
+      }
+    },
+    {
+      "id": "max-teslam10",
+      "fields": {
+        "tdpW": {
+          "value": 225,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla M10 Specs（techpowerup.com/gpu-specs/tesla-m10.c3035） 板卡设计：TDP 225 W"
+        }
+      }
+    },
+    {
+      "id": "max-quadrom6000",
+      "fields": {
+        "fp32": {
+          "value": 6.84,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M6000 Specs（techpowerup.com/gpu-specs/quadro-m6000.c2638） 理论性能：FP32 6.844 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 317.4,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M6000 Specs（techpowerup.com/gpu-specs/quadro-m6000.c2638） 显存：Bandwidth 317.4 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M6000 Specs（techpowerup.com/gpu-specs/quadro-m6000.c2638） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "max-quadrom5000",
+      "fields": {
+        "fp32": {
+          "value": 4.25,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M5000 Specs（techpowerup.com/gpu-specs/quadro-m5000.c2756） 理论性能：FP32 4.252 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 211.6,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M5000 Specs（techpowerup.com/gpu-specs/quadro-m5000.c2756） 显存：Bandwidth 211.6 GB/s"
+        },
+        "tdpW": {
+          "value": 150,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M5000 Specs（techpowerup.com/gpu-specs/quadro-m5000.c2756） 板卡设计：TDP 150 W"
+        }
+      }
+    },
+    {
+      "id": "max-quadrom4000",
+      "fields": {
+        "fp32": {
+          "value": 2.57,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M4000 Specs（techpowerup.com/gpu-specs/quadro-m4000.c2757） 理论性能：FP32 2.573 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 192.3,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M4000 Specs（techpowerup.com/gpu-specs/quadro-m4000.c2757） 显存：Bandwidth 192.3 GB/s"
+        },
+        "tdpW": {
+          "value": 120,
+          "confidence": "high",
+          "quote": "NVIDIA Quadro M4000 Specs（techpowerup.com/gpu-specs/quadro-m4000.c2757） 板卡设计：TDP 120 W"
+        }
+      }
+    },
+    {
+      "id": "max-geforcegtxtitanxmaxwell",
+      "fields": {
+        "fp32": {
+          "value": 6.69,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX TITAN X Specs（techpowerup.com/gpu-specs/geforce-gtx-titan-x.c2632） 理论性能：FP32 6.691 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 336.6,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX TITAN X Specs（techpowerup.com/gpu-specs/geforce-gtx-titan-x.c2632） 显存：Bandwidth 336.6 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX TITAN X Specs（techpowerup.com/gpu-specs/geforce-gtx-titan-x.c2632） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "max-gtx980ti",
+      "fields": {
+        "fp32": {
+          "value": 6.06,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 980 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-980-ti.c2724） 理论性能：FP32 6.06 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 336.6,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 980 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-980-ti.c2724） 显存：Bandwidth 336.6 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 980 Ti Specs（techpowerup.com/gpu-specs/geforce-gtx-980-ti.c2724） 板卡设计：TDP 250 W"
+        }
+      }
+    },
+    {
+      "id": "max-gtx960",
+      "fields": {
+        "fp32": {
+          "value": 2.41,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 960 Specs（techpowerup.com/gpu-specs/geforce-gtx-960.c2637） 理论性能：FP32 2.413 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 112.2,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 960 Specs（techpowerup.com/gpu-specs/geforce-gtx-960.c2637） 显存：Bandwidth 112.2 GB/s"
+        },
+        "tdpW": {
+          "value": 120,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 960 Specs（techpowerup.com/gpu-specs/geforce-gtx-960.c2637） 板卡设计：TDP 120 W"
+        }
+      }
+    },
+    {
+      "id": "max-gtx950",
+      "fields": {
+        "fp32": {
+          "value": 1.82,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 950 Specs（techpowerup.com/gpu-specs/geforce-gtx-950.c2747） 理论性能：FP32 1.825 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 105.8,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 950 Specs（techpowerup.com/gpu-specs/geforce-gtx-950.c2747） 显存：Bandwidth 105.8 GB/s"
+        },
+        "tdpW": {
+          "value": 90,
+          "confidence": "high",
+          "quote": "NVIDIA GeForce GTX 950 Specs（techpowerup.com/gpu-specs/geforce-gtx-950.c2747） 板卡设计：TDP 90 W"
+        }
+      }
+    },
+    {
+      "id": "pas-teslap100pcie16gb",
+      "fields": {
+        "fp32": {
+          "value": 9.53,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla P100 PCIe 16 GB Specs（techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888） 理论性能：FP32 9.526 TFLOPS"
+        },
+        "bandwidthGbps": {
+          "value": 732.2,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla P100 PCIe 16 GB Specs（techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888） 显存：Bandwidth 732.2 GB/s"
+        },
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "NVIDIA Tesla P100 PCIe 16 GB Specs（techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888） 板卡设计：TDP 250 W"
+        }
+      }
+    }
+  ],
+  "conflicts": [],
+  "skipped": [
+    {
+      "id": "blk-b100",
+      "name": "B100",
+      "reason": "TPU 页面标注 Never Released，规格为推测值（10240 着色器 / 19.97 TFLOPS），不采用"
+    },
+    {
+      "id": "ada-l2",
+      "name": "L2",
+      "reason": "TPU 没有 L2 条目，NVIDIA 也没有公开 L2 的 FP32 规格页，留空"
+    }
+  ]
+}
