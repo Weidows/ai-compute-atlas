@@ -36,6 +36,7 @@ npm run build    # tsc --noEmit + vite build + 多页入口 → dist/
 | gpu-server-compare（已并入） | `vendor/gpu-server-compare/*.json` | 41 卡行情与性能索引、15 台整机、现货报价、来源台账 |
 | model-chronicle（已并入） | `vendor/model-chronicle/*.ts` | 84 个发布节点、68 项突破（HF 官方 API 快照） |
 | 产业链维度 | `data/industry.json` | HBM 代际、NVLink / InfiniBand / 以太网 / CPO、整柜功率、制程节点、集群规模；每条带 `source` 与取数时间 |
+| 二手补充 | `data/supplements/*.json` | 官方没公开或只到年份的零散字段（发布日、功耗、带宽等），一篇来源一个文件，字段级记来源与置信度 |
 
 前三份是「原件 / 快照」，第四份 `data/industry.json` 是人工整理的公开口径，逐条附来源链接，和芯片表不是同一份文档，页面标注为「外部口径」。
 
@@ -49,6 +50,50 @@ npm run build    # tsc --noEmit + vite build + 多页入口 → dist/
 - 多 GPU 板卡（`4×16GB 共 64GB`）同时记录「板卡总量」与「单卡容量」，时间轴与气泡用单卡容量。
 
 没有一条编造或补值：模型卡/文档没写的字段是 `null`，页面显示「未公开 / —」。
+
+## 二手补充来源
+
+很多字段官方从来没公布，或者只精确到年份（例如 PCIe 版的功耗、某张卡的具体发布日）。这类空白用行业汇总文章、拆解贴来补，但**补录和原始数据必须能分开追溯**，所以走独立目录：
+
+```
+data/supplements/<来源 id>.json     一篇来源一个文件，字段级记 value / confidence / quote
+```
+
+```jsonc
+{
+  "id": "zhihu-xxxxxxxx",
+  "title": "文章标题",
+  "url": "https://…",
+  "author": "作者",
+  "publishedAt": "2026-09-17",
+  "retrievedAt": "2026-11-03",
+  "level": "secondary",              // 二手：非官方规格
+  "items": [
+    { "id": "hop-h100pcie", "fields": {
+        "tdpW": { "value": 400, "confidence": "high", "quote": "TDP：700W（SXM）、400W（PCIe）" }
+    } }
+  ],
+  "conflicts": [                      // 文章与本地不一致的地方，人工判断后登记
+    { "id": "hop-h100sxm", "field": "fp32", "local": 67, "article": 124,
+      "resolution": "keep-local", "reason": "124 疑为稀疏口径" }
+  ]
+}
+```
+
+合并规则（`scripts/build_data.py`）：
+
+- **只填空**：本地是 `null` / 空字符串才补；
+- **日期只精细化**：`2022年` → `2022-03-22` 可以，换月换年不行（要换必须显式 `override: true` 并写 `reason`）；
+- **冲突不覆盖**：文章和本地不一致时保留本地值，冲突进 `conflicts`，页面上不显示文章值；
+- 每个补过的字段在 `atlas.json` 里留 `provenance[字段] = {src, conf, quote}`，档案卡里那个字段带紫色「补」角标，底部列出补录来源。
+
+```bash
+npm run supplement -- list        # 所有来源：生效字段数 / 冲突数
+npm run supplement -- check       # 校验结构 + 预演合并（缺 quote、字段名非法都会报）
+npm run data                      # 重新合并进快照
+```
+
+`check` 会拒绝：未知 id、不在白名单的字段、`confidence` 非 high/medium/low、以及**缺 `quote`** —— 没有原文出处的一律不收。
 
 ## 复核台账
 
@@ -109,10 +154,12 @@ src/
     Starfield.tsx
 data/
   reviews.json           人工复核台账（次数 / 最近复核时间 / 备注），由构建合入快照
+  supplements/           二手补充来源（一篇一个 JSON，字段级 quote + 置信度）
   industry.json          产业链五维度的公开口径（每条带来源），构建时合入 atlas.json
 scripts/
   build_data.py          数据构建（可重跑，合并复核台账）
   review.mjs             复核台账 CLI：stats / list / mark / undo / reset
+  supplement.mjs         补录来源校验 / 预演合并（list / check）
   seo.mjs                静态文本页 + sitemap/robots（prebuild 执行）
   spa-routes.mjs         多页入口 / 404 兜底（build 末尾执行）
   pages.mjs              六个章节的标题、h1、溢出、控制台错误 + 截图

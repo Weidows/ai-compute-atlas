@@ -15,7 +15,7 @@
    "short": "HOP",
    "years": "2022—2025",
    "tech": "Transformer Engine · HBM3",
-   "first": "2022-03-01",
+   "first": "2022-03-22",
    "last": "2024-06-01",
    "count": 5
   },
@@ -33,7 +33,7 @@
    "short": "AMP",
    "years": "2020—2022",
    "tech": "TF32 · MIG",
-   "first": "2020-05-01",
+   "first": "2020-06-01",
    "last": "2022-06-01",
    "count": 25
   },
@@ -108,9 +108,9 @@
    "vramType": "HBM3e",
    "vramLabel": "288GB HBM3e",
    "fp32": 75.0,
-   "date": "2025-03-01",
-   "datePrecision": "month",
-   "dateText": "2025年3月发布",
+   "date": "2025-03-18",
+   "datePrecision": "day",
+   "dateText": "2025年3月18日",
    "note": "双die封装；8TB/s；NVFP4（稀疏）约20 PFLOPS；对应GB300/GB200 NVL72超级芯片系统",
    "china": false,
    "brand": "NVIDIA",
@@ -126,6 +126,14 @@
    "tensorTflops": 15000,
    "nvlink": true,
    "multiMax": 8,
+   "provenance": {
+    "date": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "发布时间：2025年3月18日（GTC大会）"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -148,9 +156,9 @@
    "vramType": "HBM3e",
    "vramLabel": "192GB HBM3e",
    "fp32": 75.0,
-   "date": "2024-03-01",
-   "datePrecision": "month",
-   "dateText": "2024年3月发布",
+   "date": "2024-03-18",
+   "datePrecision": "day",
+   "dateText": "2024年3月18日",
    "note": "8TB/s；NVFP4（稀疏）约18—20 PFLOPS",
    "china": false,
    "brand": "NVIDIA",
@@ -166,6 +174,14 @@
    "tensorTflops": 9000,
    "nvlink": true,
    "multiMax": 8,
+   "provenance": {
+    "date": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "发布时间：2024年3月18日（GTC大会）"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -896,9 +912,9 @@
    "vramType": "HBM3",
    "vramLabel": "80GB HBM3",
    "fp32": 67.0,
-   "date": "2022-03-01",
-   "datePrecision": "month",
-   "dateText": "2022年3月",
+   "date": "2022-03-22",
+   "datePrecision": "day",
+   "dateText": "2022年3月22日",
    "note": "3.35TB/s；FP8张量3958（稀疏）；另有GH200超级芯片（Grace+H100）",
    "china": false,
    "brand": "NVIDIA",
@@ -914,6 +930,14 @@
    "tensorTflops": 3958,
    "nvlink": true,
    "multiMax": 8,
+   "provenance": {
+    "date": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "发布时间：2022年3月22日（GTC大会）"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -943,6 +967,22 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 400,
+   "provenance": {
+    "tdpW": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "TDP（功耗）：700W（SXM）、400W（PCIe）"
+    },
+    "bandwidthGbps": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "内存带宽3.35TB/s（SXM版本）、2TB/s（PCIe版本）"
+    }
+   },
+   "bandwidthGbps": 2000,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1721,9 +1761,9 @@
    "vramType": "HBM2e",
    "vramLabel": "80GB HBM2e",
    "fp32": 19.5,
-   "date": "2020-05-01",
-   "datePrecision": "month",
-   "dateText": "2020年5月",
+   "date": "2020-11-16",
+   "datePrecision": "day",
+   "dateText": "2020年11月16日",
    "note": "2039GB/s；FP16张量（稠密）312 TFLOPS",
    "china": false,
    "brand": "NVIDIA",
@@ -1739,6 +1779,14 @@
    "tensorTflops": 624,
    "nvlink": true,
    "multiMax": 8,
+   "provenance": {
+    "date": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "medium",
+     "override": true,
+     "quote": "发布时间：2020年11月16日（SC20大会）"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1768,6 +1816,22 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 300,
+   "provenance": {
+    "tdpW": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "TDP（功耗）：400W（SXM4，最高500W）、300W（PCIe）"
+    },
+    "bandwidthGbps": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "medium",
+     "override": false,
+     "quote": "40GB HBM2e，内存带宽1.6TB/s"
+    }
+   },
+   "bandwidthGbps": 1600,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1826,6 +1890,15 @@
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 300,
+   "provenance": {
+    "tdpW": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "TDP（功耗）：300W"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -1964,13 +2037,28 @@
    "vramType": "GDDR6",
    "vramLabel": "48GB GDDR6",
    "fp32": 38.7,
-   "date": "2020-06-01",
-   "datePrecision": "year",
-   "dateText": "2020年",
+   "date": "2020-10-05",
+   "datePrecision": "day",
+   "dateText": "2020年10月5日",
    "note": "",
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 300,
+   "provenance": {
+    "tdpW": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "TDP（功耗）：300W"
+    },
+    "date": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "发布/上市时间：2020年10月5日"
+    }
+   },
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -2457,13 +2545,35 @@
    "vramType": "GDDR6",
    "vramLabel": "16GB GDDR6",
    "fp32": 8.1,
-   "date": "2018-09-01",
-   "datePrecision": "month",
-   "dateText": "2018年9月",
+   "date": "2018-09-13",
+   "datePrecision": "day",
+   "dateText": "2018年9月13日",
    "note": "70W；FP16张量（稀疏）65 TFLOPS",
    "china": false,
    "brand": "NVIDIA",
    "source": "docx",
+   "tdpW": 70,
+   "provenance": {
+    "tdpW": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "TDP（功耗）：70W（无需额外供电，通过PCIe插槽供电）"
+    },
+    "bandwidthGbps": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "显存：16GB GDDR6，内存带宽320GB/s，内存接口256-bit"
+    },
+    "date": {
+     "src": "zhihu-2040766374843245011",
+     "conf": "high",
+     "override": false,
+     "quote": "发布时间：2018年9月13日"
+    }
+   },
+   "bandwidthGbps": 320,
    "review": {
     "count": 0,
     "lastReviewedAt": null,
@@ -11153,6 +11263,196 @@
    }
   ]
  },
+ "supplements": [
+  {
+   "id": "zhihu-2040766374843245011",
+   "title": "NVIDIA计算卡算力及详细参数综合报告（2026年5月版）",
+   "url": "https://zhuanlan.zhihu.com/p/2040766374843245011",
+   "author": "小小强",
+   "publishedAt": "2026-09-17",
+   "retrievedAt": "2026-11-03",
+   "level": "secondary",
+   "note": "知乎汇总文，非官方口径；只用来补官方文档里空着或只到年份的字段。文中与厂商规格冲突的地方不覆盖，统一记进 conflicts 供人工复核。",
+   "applied": [
+    {
+     "id": "blk-b300blackwellultra",
+     "name": "B300（Blackwell Ultra）",
+     "field": "date",
+     "value": "2025-03-18",
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "blk-b200",
+     "name": "B200",
+     "field": "date",
+     "value": "2024-03-18",
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "hop-h100sxm",
+     "name": "H100 SXM",
+     "field": "date",
+     "value": "2022-03-22",
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "hop-h100pcie",
+     "name": "H100 PCIe",
+     "field": "tdpW",
+     "value": 400,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "hop-h100pcie",
+     "name": "H100 PCIe",
+     "field": "bandwidthGbps",
+     "value": 2000,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a100sxm80gb",
+     "name": "A100 SXM（80GB）",
+     "field": "date",
+     "value": "2020-11-16",
+     "conf": "medium",
+     "override": true,
+     "reason": "80GB SXM4 是 SC20 单独发布的，本地沿用 40GB 版本的 2020-05；按 80GB 口径改到 2020-11-16"
+    },
+    {
+     "id": "amp-a100pcie80gb40gb",
+     "name": "A100 PCIe（80GB/40GB）",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a100pcie80gb40gb",
+     "name": "A100 PCIe（80GB/40GB）",
+     "field": "bandwidthGbps",
+     "value": 1600,
+     "conf": "medium",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-a40",
+     "name": "A40",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa6000",
+     "name": "RTX A6000",
+     "field": "tdpW",
+     "value": 300,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "amp-rtxa6000",
+     "name": "RTX A6000",
+     "field": "date",
+     "value": "2020-10-05",
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "tur-teslat4",
+     "name": "Tesla T4",
+     "field": "tdpW",
+     "value": 70,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "tur-teslat4",
+     "name": "Tesla T4",
+     "field": "bandwidthGbps",
+     "value": 320,
+     "conf": "high",
+     "override": false,
+     "reason": null
+    },
+    {
+     "id": "tur-teslat4",
+     "name": "Tesla T4",
+     "field": "date",
+     "value": "2018-09-13",
+     "conf": "high",
+     "override": false,
+     "reason": null
+    }
+   ],
+   "conflicts": [
+    {
+     "id": "blk-b300blackwellultra",
+     "field": "bandwidthGbps",
+     "local": 8000,
+     "article": 12000,
+     "resolution": "keep-local",
+     "reason": "文中写 12TB/s，NVIDIA 公开规格是 288GB HBM3e / 8TB/s；12TB/s 疑为 GB300 整机口径或笔误"
+    },
+    {
+     "id": "hop-h200sxm",
+     "field": "bandwidthGbps",
+     "local": 4800,
+     "article": 3350,
+     "resolution": "keep-local",
+     "reason": "3.35TB/s 是 H100 的带宽，H200 升级 HBM3e 后是 4.8TB/s，文中把两代写串了"
+    },
+    {
+     "id": "hop-h100sxm",
+     "field": "fp32",
+     "local": 67,
+     "article": 124,
+     "resolution": "keep-local",
+     "reason": "H100 SXM 的 FP32 是 67 TFLOPS；124 疑为稀疏或 FP32-Tensor 口径混用"
+    },
+    {
+     "id": "hop-h200sxm",
+     "field": "fp32",
+     "local": 67,
+     "article": 124,
+     "resolution": "keep-local",
+     "reason": "同上，H200 与 H100 同为 67 TFLOPS"
+    },
+    {
+     "id": "blk-rtx5090",
+     "field": "vramLabel",
+     "local": "32GB GDDR7",
+     "article": "48GB GDDR7",
+     "resolution": "keep-local",
+     "reason": "RTX 5090 是 32GB GDDR7；文中消费级段落整体可信度偏低（FP32 也写成 83）"
+    },
+    {
+     "id": "ada-rtx4070tisuper",
+     "field": "date",
+     "local": "2024-01-01",
+     "article": "2023-01",
+     "resolution": "keep-local",
+     "reason": "2023-01 是 RTX 4070 Ti 的发布时间，4070 Ti Super 是 2024-01"
+    }
+   ]
+  }
+ ],
  "counts": {
   "docxProducts": 154,
   "extraProducts": 20,
@@ -11161,6 +11461,8 @@
   "breakthroughs": 68,
   "china": 8,
   "matched": 21,
-  "industry": 39
+  "industry": 39,
+  "supplements": 14,
+  "supplementSources": 1
  }
 }

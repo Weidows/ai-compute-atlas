@@ -500,6 +500,130 @@ def load_industry() -> dict:
 INDUSTRY_KEYS = ("hbm", "interconnect", "power", "process", "clusters")
 
 
+# 外部补充来源：论坛汇总、拆解贴、行业文章等二手资料。官方规格里没有、
+# 或只精确到年份的字段才用它补；每条字段单独记来源与置信度，与本地冲突的
+# 不覆盖，统一进 conflicts 清单，页面按「补」标注出来。
+SUPPLEMENTS = Path(os.environ.get("ATLAS_SUPPLEMENTS", ROOT / "data" / "supplements"))
+
+
+def date_precision(value: str) -> str:
+    return {4: "year", 7: "month", 10: "day"}.get(len(value), "day")
+
+
+def date_prefix(value: str, precision: str) -> str:
+    if precision == "year":
+        return value[:4]
+    if precision == "month":
+        return value[:7]
+    return value[:10]
+
+
+def date_text(value: str) -> str:
+    """和 docx 里一致的写法：2018年9月13日 / 2018年9月 / 2018年。"""
+    parts = value.split("-")
+    if len(parts) == 3:
+        return f"{parts[0]}年{int(parts[1])}月{int(parts[2])}日"
+    if len(parts) == 2:
+        return f"{parts[0]}年{int(parts[1])}月"
+    return f"{parts[0]}年"
+
+
+def load_supplements() -> list[dict]:
+    if not SUPPLEMENTS.exists():
+        return []
+    docs = []
+    for path in sorted(SUPPLEMENTS.glob("*.json")):
+        try:
+            doc = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise SystemExit(f"补充来源 {path.name} 不是合法 JSON：{exc}") from exc
+        doc.setdefault("id", path.stem)
+        docs.append(doc)
+    return docs
+
+
+def apply_supplements(rows_by_id: dict[str, dict], docs: list[dict]) -> list[dict]:
+    """把二手来源补进空字段，返回按来源汇总的清单（生效字段 + 冲突）。"""
+    summary = []
+    for doc in docs:
+        src = doc.get("id")
+        applied = []
+        conflicts = []
+        for item in doc.get("items", []):
+            row = rows_by_id.get(item.get("id"))
+            if row is None:
+                print(f"⚠ 补充来源 {src} 的 {item.get('id')} 在本次快照里不存在，已跳过")
+                continue
+            for field, raw in (item.get("fields") or {}).items():
+                spec = raw if isinstance(raw, dict) else {"value": raw}
+                value = spec.get("value")
+                if value is None:
+                    continue
+                current = row.get(field)
+                override = bool(spec.get("override"))
+                take = False
+                if current in (None, ""):
+                    take = True
+                elif current == value:
+                    continue  # 和本地一致，不必记补录
+                elif field == "date" and isinstance(current, str):
+                    prec = row.get("datePrecision") or date_precision(current)
+                    same = date_prefix(str(value), prec) == date_prefix(current, prec)
+                    take = same and date_precision(str(value)) != prec
+                if not take and not override:
+                    conflicts.append(
+                        {
+                            "id": item["id"],
+                            "name": row.get("name"),
+                            "field": field,
+                            "local": current,
+                            "article": value,
+                            "resolution": "keep-local",
+                            "quote": spec.get("quote"),
+                        }
+                    )
+                    continue
+                row[field] = value
+                if field == "date":
+                    row["datePrecision"] = spec.get("precision") or date_precision(str(value))
+                    row["dateText"] = date_text(str(value))
+                row.setdefault("provenance", {})[field] = {
+                    "src": src,
+                    "conf": spec.get("confidence") or "medium",
+                    "override": override,
+                    "quote": spec.get("quote"),
+                }
+                applied.append(
+                    {
+                        "id": item["id"],
+                        "name": row.get("name"),
+                        "field": field,
+                        "value": value,
+                        "conf": spec.get("confidence") or "medium",
+                        "override": override,
+                        "reason": spec.get("reason"),
+                    }
+                )
+        declared = doc.get("conflicts") or []
+        summary.append(
+            {
+                "id": src,
+                "title": doc.get("title"),
+                "url": doc.get("url"),
+                "author": doc.get("author"),
+                "publishedAt": doc.get("publishedAt"),
+                "retrievedAt": doc.get("retrievedAt"),
+                "level": doc.get("level") or "secondary",
+                "note": doc.get("note"),
+                "applied": applied,
+                "conflicts": conflicts + [c for c in declared if c not in conflicts],
+            }
+        )
+        if applied:
+            print(f"  · 补充来源 {src}：生效 {len(applied)} 个字段，冲突 {len(summary[-1]['conflicts'])} 条")
+    return summary
+
+
 def main() -> None:
     gpus = load_gpus()
     market = json.loads((GSC / "market.json").read_text(encoding="utf-8"))
@@ -512,6 +636,11 @@ def main() -> None:
     products = [p for p in products if p["date"]]
     extras = [x for x in extras if x["date"]]
     servers = [s for s in servers if s["date"]]
+
+    # 二手来源补录：只填空字段 / 细化到日的日期，冲突项不覆盖
+    supplements = apply_supplements(
+        {r["id"]: r for r in products + extras + servers}, load_supplements()
+    )
 
     ledger, ledger_doc = load_reviews()
     groups = {
@@ -564,6 +693,7 @@ def main() -> None:
         },
         "reviews": reviews,
         "industry": industry,
+        "supplements": supplements,
         "counts": {
             "docxProducts": len(products),
             "extraProducts": len(extras),
@@ -573,6 +703,8 @@ def main() -> None:
             "china": sum(1 for p in products if p["china"]),
             "matched": sum(1 for p in products if p.get("marketId")),
             "industry": len(industry_rows),
+            "supplements": sum(len(s["applied"]) for s in supplements),
+            "supplementSources": len(supplements),
         },
     }
     dest = ROOT / "src" / "data" / "atlas.json"

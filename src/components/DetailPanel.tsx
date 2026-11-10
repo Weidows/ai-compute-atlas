@@ -12,7 +12,9 @@ import {
   ORG_COLOR,
   REVIEW_TONE,
   reviewCoverage,
+  provenanceOf,
   reviewOf,
+  supplantedBy,
   SYSTEM_COLOR,
   TIER_META,
   yearFraction,
@@ -24,10 +26,31 @@ import {
 import { cn } from '../lib/cn'
 import type { Selection } from './Atlas'
 
-function Row({ label, value }: { label: string; value: React.ReactNode }) {
+function Row({
+  label,
+  value,
+  filled,
+  title,
+}: {
+  label: string
+  value: React.ReactNode
+  /** 二手来源补录的字段：带一个「补」角标，hover 显示来源 */
+  filled?: boolean
+  title?: string
+}) {
   return (
     <div className="flex items-baseline justify-between gap-3 border-b border-edge/30 py-1.5 last:border-0">
-      <span className="shrink-0 font-mono text-[10px] tracking-wider text-fog/70">{label}</span>
+      <span className="shrink-0 font-mono text-[10px] tracking-wider text-fog/70">
+        {label}
+        {filled && (
+          <span
+            title={title}
+            className="ml-1 rounded-sm border border-violet/40 bg-violet/10 px-1 text-[8px] leading-[12px] text-violet/90"
+          >
+            补
+          </span>
+        )}
+      </span>
       <span className="num text-right text-[12px] text-snow/90">{value}</span>
     </div>
   )
@@ -99,11 +122,15 @@ export function DetailPanel({
   selection,
   onSelect,
   onClose,
+  zoom = 1,
 }: {
   selection: Selection
   onSelect: (s: Selection) => void
   onClose: () => void
+  zoom?: number
 }) {
+  // 面板跟着时间轴等比放大，但上限 1.35，避免在 2K 上占掉半屏
+  const kz = Math.min(zoom, 1.35)
   const reduce = useReducedMotion()
   const data = useMemo(() => {
     if (!selection) return null
@@ -145,6 +172,12 @@ export function DetailPanel({
           ? data.m
           : data.b
   const coverage = reviewCoverage()
+  /** 二手来源补录的字段（官方规格没写或只到年份，靠文章补的），带上来源元信息 */
+  const prov: Record<string, ReturnType<typeof provenanceOf>> =
+    data.kind === 'product'
+      ? Object.fromEntries(Object.keys(data.p.provenance ?? {}).map((f) => [f, provenanceOf(data.p, f)]))
+      : {}
+  const suppl = data.kind === 'product' ? supplantedBy(data.p) : []
 
   return (
     <motion.aside
@@ -152,6 +185,16 @@ export function DetailPanel({
       animate={{ x: 0, opacity: 1 }}
       exit={reduce ? undefined : { x: 24, opacity: 0 }}
       transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+      style={
+        kz === 1
+          ? undefined
+          : {
+              zoom: kz,
+              top: `${64 / kz}px`,
+              right: `${12 / kz}px`,
+              maxHeight: `calc((100dvh - 84px) / ${kz})`,
+            }
+      }
       className="hud-panel hud-corners fixed right-3 top-[64px] z-[70] flex max-h-[calc(100vh-84px)] w-[340px] flex-col overflow-hidden border-cyan/25 shadow-[0_20px_80px_rgba(0,0,0,0.55)] max-sm:inset-x-2 max-sm:top-auto max-sm:bottom-2 max-sm:w-auto"
       role="dialog"
       aria-label="节点档案"
@@ -184,15 +227,43 @@ export function DetailPanel({
               <Chip>{data.p.arch}</Chip>
               {data.p.brand !== 'NVIDIA' && <Chip tone="#8b9dbd">{data.p.brand}</Chip>}
             </div>
-            <p className="mt-2 font-mono text-[10px] text-fog">{data.p.dateText || fmtDate(data.p.date)} 首发</p>
+            <p className="mt-2 font-mono text-[10px] text-fog">
+              {data.p.dateText || fmtDate(data.p.date)} 首发
+              {prov.date && (
+                <span
+                  title={`补录自 ${prov.date.source?.title ?? prov.date.src}`}
+                  className="ml-1 rounded-sm border border-violet/40 bg-violet/10 px-1 text-[8px] leading-[12px] text-violet/90"
+                >
+                  补
+                </span>
+              )}
+            </p>
 
             <div className="mt-3">
               <Row label="CUDA 核心" value={data.p.cuda ? fmtNum(data.p.cuda) : '—'} />
               <Row label="显存" value={data.p.vramLabel ?? '—'} />
-              <Row label="FP32 算力" value={data.p.fp32 ? `${fmtNum(data.p.fp32, 1)} TFLOPS` : '未公开'} />
-              <Row label="带宽" value={data.p.bandwidthGbps ? `${fmtNum(data.p.bandwidthGbps)} GB/s` : '—'} />
-              <Row label="功耗" value={data.p.tdpW ? `${fmtNum(data.p.tdpW)} W` : '—'} />
-              <Row label="多卡" value={data.p.nvlink ? `NVLink ×${data.p.multiMax ?? '?'}` : data.p.multiMax && data.p.multiMax > 1 ? `×${data.p.multiMax}` : '单卡'} />
+              <Row
+                label="FP32 算力"
+                value={data.p.fp32 ? `${fmtNum(data.p.fp32, 1)} TFLOPS` : '未公开'}
+                filled={!!prov.fp32}
+                title={prov.fp32?.source?.title ?? undefined}
+              />
+              <Row
+                label="带宽"
+                value={data.p.bandwidthGbps ? `${fmtNum(data.p.bandwidthGbps)} GB/s` : '—'}
+                filled={!!prov.bandwidthGbps}
+                title={prov.bandwidthGbps?.source?.title ?? undefined}
+              />
+              <Row
+                label="功耗"
+                value={data.p.tdpW ? `${fmtNum(data.p.tdpW)} W` : '—'}
+                filled={!!prov.tdpW}
+                title={prov.tdpW?.source?.title ?? undefined}
+              />
+              <Row
+                label="多卡"
+                value={data.p.nvlink ? `NVLink ×${data.p.multiMax ?? '?'}` : data.p.multiMax && data.p.multiMax > 1 ? `×${data.p.multiMax}` : '单卡'}
+              />
             </div>
 
             {(data.p.priceCny || data.p.msrpUsd || data.quote) && (
@@ -216,6 +287,37 @@ export function DetailPanel({
                     中国区供货：{data.p.regionAvail === 'restricted' ? '受限' : data.p.regionAvail === 'limited' ? '紧张' : '正常'}
                   </div>
                 )}
+              </div>
+            )}
+
+            {suppl.length > 0 && (
+              <div className="mt-2.5 rounded-sm border border-violet/25 bg-violet/[0.06] px-2 py-1.5">
+                <div className="label-hud mb-1 text-violet/80">补录来源</div>
+                {suppl.map((s) => (
+                  <div key={s.id} className="font-mono text-[9px] leading-relaxed text-fog">
+                    {s.source?.url ? (
+                      <a
+                        href={s.source.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-violet/90 underline decoration-dotted hover:text-violet"
+                      >
+                        {s.source.title ?? s.source.id}
+                        <ArrowUpRight size={9} className="ml-0.5 inline" />
+                      </a>
+                    ) : (
+                      (s.source?.title ?? s.id)
+                    )}
+                    <span className="text-fog/60">
+                      {' '}
+                      · {s.fields.join('/')}
+                      {s.source?.publishedAt ? ` · ${s.source.publishedAt}` : ''}
+                    </span>
+                  </div>
+                ))}
+                <div className="mt-1 font-mono text-[8.5px] text-fog/50">
+                  二手资料补录，未经官方确认；与官方冲突处以本地口径为准
+                </div>
               </div>
             )}
 

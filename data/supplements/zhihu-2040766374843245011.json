@@ -1,0 +1,186 @@
+{
+  "id": "zhihu-2040766374843245011",
+  "title": "NVIDIA计算卡算力及详细参数综合报告（2026年5月版）",
+  "url": "https://zhuanlan.zhihu.com/p/2040766374843245011",
+  "author": "小小强",
+  "publishedAt": "2026-09-17",
+  "retrievedAt": "2026-11-03",
+  "level": "secondary",
+  "note": "知乎汇总文，非官方口径；只用来补官方文档里空着或只到年份的字段。文中与厂商规格冲突的地方不覆盖，统一记进 conflicts 供人工复核。",
+  "items": [
+    {
+      "id": "blk-b300blackwellultra",
+      "fields": {
+        "date": {
+          "value": "2025-03-18",
+          "precision": "day",
+          "confidence": "high",
+          "quote": "发布时间：2025年3月18日（GTC大会）"
+        }
+      }
+    },
+    {
+      "id": "blk-b200",
+      "fields": {
+        "date": {
+          "value": "2024-03-18",
+          "precision": "day",
+          "confidence": "high",
+          "quote": "发布时间：2024年3月18日（GTC大会）"
+        }
+      }
+    },
+    {
+      "id": "hop-h100sxm",
+      "fields": {
+        "date": {
+          "value": "2022-03-22",
+          "precision": "day",
+          "confidence": "high",
+          "quote": "发布时间：2022年3月22日（GTC大会）"
+        }
+      }
+    },
+    {
+      "id": "hop-h100pcie",
+      "fields": {
+        "tdpW": {
+          "value": 400,
+          "confidence": "high",
+          "quote": "TDP（功耗）：700W（SXM）、400W（PCIe）"
+        },
+        "bandwidthGbps": {
+          "value": 2000,
+          "confidence": "high",
+          "quote": "内存带宽3.35TB/s（SXM版本）、2TB/s（PCIe版本）"
+        }
+      }
+    },
+    {
+      "id": "amp-a100sxm80gb",
+      "fields": {
+        "date": {
+          "value": "2020-11-16",
+          "precision": "day",
+          "confidence": "medium",
+          "override": true,
+          "reason": "80GB SXM4 是 SC20 单独发布的，本地沿用 40GB 版本的 2020-05；按 80GB 口径改到 2020-11-16",
+          "quote": "发布时间：2020年11月16日（SC20大会）"
+        }
+      }
+    },
+    {
+      "id": "amp-a100pcie80gb40gb",
+      "fields": {
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "TDP（功耗）：400W（SXM4，最高500W）、300W（PCIe）"
+        },
+        "bandwidthGbps": {
+          "value": 1600,
+          "confidence": "medium",
+          "quote": "40GB HBM2e，内存带宽1.6TB/s",
+          "note": "该行同时覆盖 80GB/40GB 两个 PCIe 版本，80GB PCIe 的带宽是 1935GB/s"
+        }
+      }
+    },
+    {
+      "id": "amp-a40",
+      "fields": {
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "TDP（功耗）：300W"
+        }
+      }
+    },
+    {
+      "id": "amp-rtxa6000",
+      "fields": {
+        "tdpW": {
+          "value": 300,
+          "confidence": "high",
+          "quote": "TDP（功耗）：300W"
+        },
+        "date": {
+          "value": "2020-10-05",
+          "precision": "day",
+          "confidence": "high",
+          "quote": "发布/上市时间：2020年10月5日"
+        }
+      }
+    },
+    {
+      "id": "tur-teslat4",
+      "fields": {
+        "tdpW": {
+          "value": 70,
+          "confidence": "high",
+          "quote": "TDP（功耗）：70W（无需额外供电，通过PCIe插槽供电）"
+        },
+        "bandwidthGbps": {
+          "value": 320,
+          "confidence": "high",
+          "quote": "显存：16GB GDDR6，内存带宽320GB/s，内存接口256-bit"
+        },
+        "date": {
+          "value": "2018-09-13",
+          "precision": "day",
+          "confidence": "high",
+          "quote": "发布时间：2018年9月13日"
+        }
+      }
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "blk-b300blackwellultra",
+      "field": "bandwidthGbps",
+      "local": 8000,
+      "article": 12000,
+      "resolution": "keep-local",
+      "reason": "文中写 12TB/s，NVIDIA 公开规格是 288GB HBM3e / 8TB/s；12TB/s 疑为 GB300 整机口径或笔误"
+    },
+    {
+      "id": "hop-h200sxm",
+      "field": "bandwidthGbps",
+      "local": 4800,
+      "article": 3350,
+      "resolution": "keep-local",
+      "reason": "3.35TB/s 是 H100 的带宽，H200 升级 HBM3e 后是 4.8TB/s，文中把两代写串了"
+    },
+    {
+      "id": "hop-h100sxm",
+      "field": "fp32",
+      "local": 67,
+      "article": 124,
+      "resolution": "keep-local",
+      "reason": "H100 SXM 的 FP32 是 67 TFLOPS；124 疑为稀疏或 FP32-Tensor 口径混用"
+    },
+    {
+      "id": "hop-h200sxm",
+      "field": "fp32",
+      "local": 67,
+      "article": 124,
+      "resolution": "keep-local",
+      "reason": "同上，H200 与 H100 同为 67 TFLOPS"
+    },
+    {
+      "id": "blk-rtx5090",
+      "field": "vramLabel",
+      "local": "32GB GDDR7",
+      "article": "48GB GDDR7",
+      "resolution": "keep-local",
+      "reason": "RTX 5090 是 32GB GDDR7；文中消费级段落整体可信度偏低（FP32 也写成 83）"
+    },
+    {
+      "id": "ada-rtx4070tisuper",
+      "field": "date",
+      "local": "2024-01-01",
+      "article": "2023-01",
+      "resolution": "keep-local",
+      "reason": "2023-01 是 RTX 4070 Ti 的发布时间，4070 Ti Super 是 2024-01"
+    }
+  ]
+}

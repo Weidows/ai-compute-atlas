@@ -4,6 +4,8 @@ import { spawn } from 'node:child_process'
 import { setTimeout as sleep } from 'node:timers/promises'
 
 const BASE = (process.argv[2] ?? 'http://localhost:5191').replace(/\/$/, '')
+const W = Number(process.argv[3] ?? 1440)
+const Hh = Number(process.argv[4] ?? 900)
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 const PORT = 9355
 const OUT = 'C:/Users/weidows/.hermes/cache/scratch/atlas-pan'
@@ -15,7 +17,7 @@ const edge = spawn(
     '--disable-gpu',
     '--no-first-run',
     '--hide-scrollbars',
-    '--window-size=1440,900',
+    `--window-size=${W},${Hh}`,
     `--remote-debugging-port=${PORT}`,
     `--user-data-dir=${OUT}/profile`,
     'about:blank',
@@ -56,9 +58,14 @@ const ev = async (expression) =>
 
 await send('Page.enable')
 await send('Runtime.enable')
-await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false })
+await send('Emulation.setDeviceMetricsOverride', { width: W, height: Hh, deviceScaleFactor: 1, mobile: false })
 await send('Page.navigate', { url: BASE + '/atlas' })
-await sleep(1500)
+for (let i = 0; i < 40; i++) {
+  const ready = await ev(`!!document.querySelector('#atlas .no-bar')`)
+  if (ready) break
+  await sleep(250)
+}
+await sleep(600)
 
 const fit = await ev(`(() => {
   const el = document.querySelector('#atlas .no-bar')
@@ -117,15 +124,28 @@ const afterDrag = await ev(`({
 
 // 单击仍然要能开档案
 const clickTest = await ev(`(() => {
+  const view = document.querySelector('#atlas .no-bar').getBoundingClientRect()
   const btn = [...document.querySelectorAll('#atlas .no-bar button.rounded-full')].find((b) => {
     const r = b.getBoundingClientRect()
-    return r.width >= 8 && r.width <= 26 && r.left > 200 && r.right < window.innerWidth - 40 && r.top > 200
+    const cx = r.left + r.width / 2
+    const cy = r.top + r.height / 2
+    return (
+      r.width >= 8 &&
+      r.width <= 40 &&
+      r.left > view.left + 8 &&
+      r.right < view.right - 8 &&
+      r.top > view.top + 4 &&
+      r.bottom < view.bottom - 4 &&
+      document.elementFromPoint(cx, cy) === b
+    )
   })
   if (!btn) return { ok: false }
   const r = btn.getBoundingClientRect()
   return { ok: true, x: Math.round(r.left + r.width / 2), y: Math.round(r.top + r.height / 2), label: btn.getAttribute('aria-label') }
 })()`)
 if (clickTest.ok) {
+  await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: clickTest.x, y: clickTest.y })
+  await sleep(80)
   await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: clickTest.x, y: clickTest.y, button: 'left', clickCount: 1 })
   await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: clickTest.x, y: clickTest.y, button: 'left', clickCount: 1 })
   await sleep(600)
@@ -134,6 +154,13 @@ const afterClick = await ev(`({
   panelOpen: !!document.querySelector('.hud-panel.fixed'),
   h: document.documentElement.scrollHeight,
 })`)
+
+{
+  const shot = await send('Page.captureScreenshot', { format: 'png' })
+  const fs = await import('node:fs')
+  fs.mkdirSync(OUT, { recursive: true })
+  fs.writeFileSync(`${OUT}/after-click-${W}x${Hh}.png`, Buffer.from(shot.data, 'base64'))
+}
 
 console.log(
   JSON.stringify(

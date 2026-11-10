@@ -48,6 +48,41 @@ export interface Product {
   multiMax?: number | null
   fp16Note?: number
   review?: Review
+  provenance?: Record<string, Provenance>
+}
+
+/**
+ * 字段级补录记录。官方规格里没写、或只精确到年份的，才用二手资料补，
+ * 所以每个补过的字段都单独记「来自哪篇文章 / 把握多大」。
+ */
+export interface Provenance {
+  src: string
+  conf: string
+  override?: boolean
+  quote?: string | null
+}
+
+/** 一份二手来源：生效了哪些字段、和本地冲突了什么（冲突项一律以本地为准）。 */
+export interface SupplementSource {
+  id: string
+  title: string | null
+  url: string | null
+  author: string | null
+  publishedAt: string | null
+  retrievedAt: string | null
+  level: string
+  note: string | null
+  applied: { id: string; name: string | null; field: string; value: unknown; conf: string; override: boolean }[]
+  conflicts: {
+    id: string
+    name?: string | null
+    field: string
+    local: unknown
+    article: unknown
+    resolution: string
+    quote?: string | null
+    reason?: string
+  }[]
 }
 
 export interface Server {
@@ -215,10 +250,30 @@ export interface AtlasData {
   market: { updatedAt: string; quotes: Record<string, unknown>[] }
   reviews: AtlasReviews
   industry?: Industry
+  supplements?: SupplementSource[]
   counts: Record<string, number>
 }
 
 export const atlas = raw as unknown as AtlasData
+
+const SUPPLEMENT_BY_ID = new Map<string, SupplementSource>(
+  (atlas.supplements ?? []).map((s) => [s.id, s]),
+)
+
+/** 某个字段是不是二手来源补的；是的话返回来源，否则 null。 */
+export function provenanceOf(item: { provenance?: Record<string, Provenance> } | null | undefined, field: string) {
+  const p = item?.provenance?.[field]
+  if (!p) return null
+  return { ...p, source: SUPPLEMENT_BY_ID.get(p.src) ?? null }
+}
+
+/** 这条数据被哪个来源补过（去重，用于档案卡脚注）。 */
+export function supplantedBy(item: { provenance?: Record<string, Provenance> } | null | undefined) {
+  const map = item?.provenance
+  if (!map) return []
+  const ids = [...new Set(Object.values(map).map((p) => p.src))]
+  return ids.map((id) => ({ id, fields: Object.keys(map).filter((f) => map[f].src === id), source: SUPPLEMENT_BY_ID.get(id) ?? null }))
+}
 
 /** 复核状态：缺失即 0 次（历史快照或旧数据）。 */
 export function reviewOf(item: { review?: Review } | null | undefined): Review {

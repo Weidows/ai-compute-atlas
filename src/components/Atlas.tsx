@@ -35,19 +35,57 @@ export interface Filters {
   labels: boolean
 }
 
+/**
+ * 纵向分层：从下往上读是「算力 → 应用」。
+ * 底部是架构世代（硅），中间是芯片（数据中心 / 工作站 / 消费级合一，靠颜色区分），
+ * 再往上整机 · 超节点、技术突破，最上面是开源模型（应用侧）。
+ */
 const BAND = {
   era: { top: 0, h: 18 },
-  arch: { top: 22, h: 44 },
-  dc: { top: 68, h: 144 },
-  ws: { top: 216, h: 92 },
-  gc: { top: 312, h: 110 },
-  sys: { top: 426, h: 80 },
-  models: { top: 510, h: 100 },
-  bt: { top: 614, h: 30 },
+  models: { top: 22, h: 108 },
+  bt: { top: 134, h: 42 },
+  sys: { top: 180, h: 76 },
+  chips: { top: 260, h: 336 },
+  arch: { top: 600, h: 44 },
   ruler: { top: 648, h: 32 },
 }
 const H = 680
+
+/** 芯片带内部再分两块：上面按 FP32 排序，下面单独放 FP32 未公开的（不硬塞进排序）。 */
+const CHIP_ZONE = {
+  known: { top: 268, h: 228, rows: 7 },
+  unknown: { top: 504, h: 84 },
+}
 const MAXR = 15
+
+/**
+ * 分档：按「排名」而不是「等距对数」分——每档条数相同，拥挤程度才一致。
+ * 档位越高 = 排名越靠前（算力越大），档内最大值作为轴上刻度。
+ */
+function tierRanks(values: number[], rows: number) {
+  const asc = values.filter((v) => v > 0).sort((a, b) => a - b)
+  const n = asc.length
+  return {
+    n,
+    laneOf: (v: number) => {
+      let lo = 0
+      let hi = n
+      while (lo < hi) {
+        const mid = (lo + hi) >> 1
+        if (asc[mid] < v) lo = mid + 1
+        else hi = mid
+      }
+      const rank = Math.max(0, n - 1 - Math.min(lo, n - 1))
+      return Math.min(rows - 1, Math.floor((rank / Math.max(1, n)) * rows))
+    },
+    /** 档 0 是最上面那档（算力最大），所以从升序数组的尾部往下取。 */
+    labelOf: (lane: number) => {
+      const idx = Math.min(n - 1, Math.max(0, n - 1 - Math.floor((lane / rows) * n)))
+      const v = asc[idx] ?? 0
+      return String(Math.round(v * 10) / 10)
+    },
+  }
+}
 
 const ERAS = [
   { from: 2010, to: 2016.4, label: 'GPGPU 探索', color: '#8b9dbd' },
@@ -110,16 +148,137 @@ function layout<T extends { date: string }>(
 
 /* ------------------------------------------------------------------ */
 
+/**
+ * 芯片带专用布局：纵向是严格的分档（按 FP32 对数刻度，越大越靠上），
+ * 同一档里只做小幅上下抖动躲碰撞，绝不跨档——否则「越大越靠上」就名不副实。
+ * 没有 FP32 的条目不进这里，另有专门的「FP32 未公开」区。
+ */
+function placeChips(
+  list: Product[],
+  band: { top: number; h: number },
+  ppyear: number,
+  rOf: (p: Product) => number,
+  rows: number,
+  laneOf: (p: Product, index: number) => number,
+): Placed<Product>[] {
+  const padTop = 6
+  const rowH = (band.h - padTop * 2) / rows
+  const byLane: { x: number; y: number; r: number }[][] = Array.from({ length: rows }, () => [])
+  const placed: Placed<Product>[] = []
+
+  /**
+   * 候选位置：优先上下错开（不歪曲时间），挤不下就左右微移到几周以内。
+   * 大圆点先落位，小圆点填空；实在挤不下也保证中心点可 hover（不会被完全盖住）。
+   */
+  const OFFSETS = (() => {
+    const out: { dx: number; dy: number; cost: number }[] = []
+    for (const dy of [0, -8, 8, -16, 16]) {
+      for (const dx of [0, -9, 9, -18, 18, -27, 27, -36, 36]) {
+        out.push({ dx, dy, cost: Math.abs(dx) * 1.4 + Math.abs(dy) })
+      }
+    }
+    return out.sort((a, b) => a.cost - b.cost)
+  })()
+
+  const ordered = list.map((p, i) => ({ p, i })).sort((a, b) => rOf(b.p) - rOf(a.p) || a.p.date.localeCompare(b.p.date))
+  for (const { p, i } of ordered) {
+    const lane = clamp(laneOf(p, i), 0, rows - 1)
+    const x = (yearFraction(p.date) - DOMAIN[0]) * ppyear
+    const r = rOf(p)
+    const y0 = band.top + padTop + rowH * (lane + 0.5)
+    const occupied = byLane[lane]
+    /** 硬约束是完全分开；软约束是「中心没被压住」，用来保证还能 hover 到 */
+    const clash = (cx: number, cy: number) => {
+      let hard = 0
+      let soft = 0
+      for (const o of occupied) {
+        const d = Math.hypot(o.x - cx, o.y - cy)
+        if (d < o.r + r + 2) hard++
+        if (d < Math.max(o.r, r) + 4) soft++
+      }
+      return hard * 10 + soft
+    }
+
+    let best: { x: number; y: number; score: number } | null = null
+    for (const { dx, dy } of OFFSETS) {
+      const cx = x + dx
+      const cy = y0 + dy
+      const score = clash(cx, cy)
+      if (!best || score < best.score) best = { x: cx, y: cy, score }
+      if (score === 0) break
+    }
+    const spot = best ?? { x, y: y0 }
+    occupied.push({ x: spot.x, y: spot.y, r })
+    placed.push({ item: p, x: spot.x, y: spot.y, r, row: lane })
+  }
+
+  /**
+   * 收尾：还有哪两个点的中心互相压住（hover 不到），把小的那个挪开一点。
+   * 只做微调（≤16px），不改变档位与时间位置的整体含义。
+   */
+  for (let i = 0; i < placed.length; i++) {
+    for (let j = i + 1; j < placed.length; j++) {
+      const a = placed[i]
+      const b = placed[j]
+      const need = Math.max(a.r, b.r) + 3
+      if (Math.hypot(a.x - b.x, a.y - b.y) >= need) continue
+      const small = a.r <= b.r ? a : b
+      const others = placed.filter((o) => o !== small)
+      let fixed = false
+      for (const dy of [-6, 6, -10, 10, -14, 14]) {
+        for (const dx of [0, -7, 7, -12, 12]) {
+          const cx = small.x + dx
+          const cy = small.y + dy
+          if (others.every((o) => Math.hypot(o.x - cx, o.y - cy) >= Math.max(o.r, small.r) + 3)) {
+            small.x = cx
+            small.y = cy
+            fixed = true
+            break
+          }
+        }
+        if (fixed) break
+      }
+    }
+  }
+
+  return placed
+}
+
+/** 有 FP32 的芯片：按算力排名分档，越大越靠上。 */
+function layoutByCompute(
+  list: Product[],
+  band: { top: number; h: number },
+  ppyear: number,
+  rOf: (p: Product) => number,
+  rows: number,
+): Placed<Product>[] {
+  const ranks = tierRanks(list.map((p) => p.fp32 ?? 0), rows)
+  return placeChips(list, band, ppyear, rOf, rows, (p) => ranks.laneOf(p.fp32 ?? 0))
+}
+
+/** FP32 未公开的芯片：只按时间排，三行轮流放，避免同月一起发布时叠在一起。 */
+function layoutByDate(
+  list: Product[],
+  band: { top: number; h: number },
+  ppyear: number,
+  rOf: (p: Product) => number,
+  rows: number,
+): Placed<Product>[] {
+  return placeChips(list, band, ppyear, rOf, rows, (_p, i) => i % rows)
+}
+
 export function Atlas({
   selection,
   onSelect,
   filters,
   setFilters,
+  zoom = 1,
 }: {
   selection: Selection
   onSelect: (s: Selection) => void
   filters: Filters
   setFilters: (f: Filters) => void
+  zoom?: number
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const pending = useRef<{ start?: number; center?: number } | null>(null)
@@ -130,6 +289,9 @@ export function Atlas({
   const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null)
   const suppressClick = useRef(false)
   const [dragging, setDragging] = useState(false)
+  /** zoom 下 client 坐标是视觉 px，而 scrollLeft 是布局 px，位移要按缩放换算。 */
+  const zoomRef = useRef(zoom)
+  zoomRef.current = zoom
 
   const plotW = Math.round((DOMAIN[1] - DOMAIN[0]) * ppyear) + 40
 
@@ -167,6 +329,13 @@ export function Atlas({
     applyPreset('ai')
   }, [applyPreset])
 
+  /** 屏幕尺寸变化导致整体缩放变化时，按新的可视宽度重算 px/年，保持同一个时间窗口。 */
+  useEffect(() => {
+    if (preset === 'custom') return
+    applyPreset(preset)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [zoom])
+
   /**
    * 横向平移：Shift + 滚轮、触控板横划、以及页面本身不可竖滚时的普通滚轮。
    * 用非 passive 监听才能 preventDefault，避免同时触发页面滚动。
@@ -184,7 +353,7 @@ export function Atlas({
       const delta = horizontal ? e.deltaX : e.deltaY
       if (!delta) return
       e.preventDefault()
-      el.scrollLeft = clamp(el.scrollLeft + delta, 0, max)
+      el.scrollLeft = clamp(el.scrollLeft + delta / zoomRef.current, 0, max)
     }
     el.addEventListener('wheel', onWheel, { passive: false })
     return () => el.removeEventListener('wheel', onWheel)
@@ -204,7 +373,7 @@ export function Atlas({
       }
       if (!d.moved) return
       e.preventDefault()
-      el.scrollLeft = clamp(d.left - dx, 0, el.scrollWidth - el.clientWidth)
+      el.scrollLeft = clamp(d.left - dx / zoomRef.current, 0, el.scrollWidth - el.clientWidth)
     }
     const end = () => {
       if (drag.current?.moved) {
@@ -242,25 +411,30 @@ export function Atlas({
     syncWindow()
   }
 
-  const dc = useMemo(
-    () => layout(atlas.products.filter((p) => p.tier === 'datacenter'), BAND.dc, ppyear, radius),
-    [ppyear],
-  )
-  const ws = useMemo(
-    () => layout(atlas.products.filter((p) => p.tier === 'workstation'), BAND.ws, ppyear, radius),
-    [ppyear],
-  )
-  const gc = useMemo(
+  /** 三种芯片形态合并在同一带：颜色区分形态，上半按 FP32 算力从下往上排。 */
+  const chipAll = useMemo(() => [...atlas.products, ...atlas.extras], [])
+  const chips = useMemo(
     () =>
-      layout(
-        [...atlas.products, ...atlas.extras].filter(
-          (p) => p.tier === 'consumer' || p.tier === 'semi' || p.tier === 'other',
-        ),
-        BAND.gc,
+      layoutByCompute(
+        chipAll.filter((p) => (p.fp32 ?? 0) > 0),
+        CHIP_ZONE.known,
         ppyear,
         radius,
+        CHIP_ZONE.known.rows,
       ),
-    [ppyear],
+    [chipAll, ppyear],
+  )
+  /** FP32 未公开的单独一区，按时间排，不参与算力排序。 */
+  const chipsUnknown = useMemo(
+    () =>
+      layoutByDate(
+        chipAll.filter((p) => !p.fp32 || p.fp32 <= 0),
+        CHIP_ZONE.unknown,
+        ppyear,
+        radius,
+        3,
+      ),
+    [chipAll, ppyear],
   )
   const systems = useMemo(
     () =>
@@ -269,7 +443,7 @@ export function Atlas({
         BAND.sys,
         ppyear,
         (s: Server) => (s.kind === 'supernode' ? 8 : 5.5),
-        { maxRows: 4, gap: 8, padTop: 14 },
+        { maxRows: 3, gap: 6, padTop: 10 },
       ),
     [ppyear],
   )
@@ -295,6 +469,11 @@ export function Atlas({
       ),
     [ppyear],
   )
+
+  const chipTierLabels = useMemo(() => {
+    const ranks = tierRanks(chipAll.map((p) => p.fp32 ?? 0), CHIP_ZONE.known.rows)
+    return Array.from({ length: CHIP_ZONE.known.rows }, (_, i) => ranks.labelOf(i))
+  }, [chipAll])
 
   const selectedDate = useMemo(() => {
     if (!selection) return null
@@ -349,9 +528,14 @@ export function Atlas({
     return out
   }
 
-  const dcLabels = useMemo(() => labelFor(dc, () => true), [dc, filters.labels, filters.chinaOnly, filters.tiers])
-  const gcLabels = useMemo(() => labelFor(gc, isAnchor), [gc, filters.labels, filters.chinaOnly, filters.tiers])
-  const wsLabels = useMemo(() => labelFor(ws, () => true), [ws, filters.labels, filters.chinaOnly, filters.tiers])
+  const chipsLabels = useMemo(
+    () => labelFor(chips, (p) => p.tier === 'datacenter' || isAnchor(p)),
+    [chips, filters.labels, filters.chinaOnly, filters.tiers],
+  )
+  const chipUnknownLabels = useMemo(
+    () => labelFor(chipsUnknown, isAnchor),
+    [chipsUnknown, filters.labels, filters.chinaOnly, filters.tiers],
+  )
 
   /** Systems + models carry longer labels, so they are suppressed entirely at
    *  wide zoom and packed greedily when zoomed in. */
@@ -426,7 +610,11 @@ export function Atlas({
     selectedDate === null ? null : (yearFraction(selectedDate) - DOMAIN[0]) * ppyear
 
   return (
-    <section id="atlas" className="relative mx-auto w-full max-w-[1680px] px-4 pb-2 lg:px-8">
+    <section
+      id="atlas"
+      style={zoom === 1 ? undefined : { zoom }}
+      className="relative mx-auto w-full max-w-[1680px] px-4 pb-2 lg:px-8"
+    >
       <header className="mb-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
           <h1 className="font-display text-lg font-semibold tracking-wide text-snow lg:text-xl">
@@ -580,13 +768,12 @@ export function Atlas({
           <div className="relative" style={{ height: H }}>
             {[
               { ...BAND.era, id: '00', title: '时代', hint: '产业叙事' },
-              { ...BAND.arch, id: '01', title: '架构世代', hint: '10 代 · 154 款' },
-              { ...BAND.dc, id: '02', title: '数据中心', hint: '加速卡' },
-              { ...BAND.ws, id: '03', title: '专业工作站', hint: '创作 / 仿真' },
-              { ...BAND.gc, id: '04', title: '消费级', hint: 'GeForce / 其他' },
-              { ...BAND.sys, id: '05', title: '整机 · 超节点', hint: '15 台' },
-              { ...BAND.models, id: '06', title: '开源模型', hint: '3 家 · 84 节点' },
-              { ...BAND.bt, id: '07', title: '技术突破', hint: '68 项' },
+              { ...BAND.models, id: '01', title: '开源模型', hint: '3 家 · 84 节点' },
+              { ...BAND.bt, id: '02', title: '技术突破', hint: '68 项' },
+              { ...BAND.sys, id: '03', title: '整机 · 超节点', hint: '15 台' },
+              { ...BAND.chips, id: '04', title: '芯片', hint: '三形态 · ↑ FP32 越大越靠上' },
+              { ...CHIP_ZONE.unknown, id: '04b', title: '', hint: 'FP32 未公开' },
+              { ...BAND.arch, id: '05', title: '架构世代', hint: '10 代 · 174 款' },
             ].map((b) => (
               <div
                 key={b.id}
@@ -627,6 +814,30 @@ export function Atlas({
           onScroll={syncWindow}
         >
           <div className="relative" style={{ width: plotW, height: H }}>
+            {/* FP32 纵轴：贴在滚动区左侧，说明「越往上算力越大」 */}
+            <div className="pointer-events-none sticky left-0 top-0 z-10 h-0 w-0">
+              <div
+                className="absolute"
+                style={{ top: CHIP_ZONE.known.top - 2, left: 2, height: CHIP_ZONE.known.h + 4, width: 34 }}
+              >
+                <span className="absolute -top-3.5 left-0 font-mono text-[7.5px] tracking-[0.08em] text-cyan/45">
+                  FP32
+                </span>
+                {Array.from({ length: CHIP_ZONE.known.rows }, (_, i) => {
+                  const rowH = CHIP_ZONE.known.h / CHIP_ZONE.known.rows
+                  return (
+                    <span
+                      key={i}
+                      className="absolute left-0 font-mono text-[7.5px] leading-none text-fog/35"
+                      style={{ top: rowH * (i + 0.5) - 3 }}
+                    >
+                      {chipTierLabels[i] ?? ''}
+                    </span>
+                  )
+                })}
+              </div>
+            </div>
+
             {/* era strip + zone tint */}
             {ERAS.map((e) => (
               <div
@@ -659,7 +870,7 @@ export function Atlas({
             ))}
 
             {/* band separators */}
-            {[BAND.dc, BAND.ws, BAND.gc, BAND.sys, BAND.models, BAND.bt].map((b, i) => (
+            {[BAND.models, BAND.bt, BAND.sys, BAND.chips, BAND.arch].map((b, i) => (
               <div
                 key={i}
                 className="pointer-events-none absolute inset-x-0 h-px bg-edge/35"
@@ -721,72 +932,8 @@ export function Atlas({
                 )
               })}
 
-            {/* datacenter nodes */}
-            {dc.map((n) => (
-              <Dot
-                key={n.item.id}
-                n={n}
-                color={TIER_META.datacenter.color}
-                dim={dimProduct(n.item)}
-                active={selection?.kind === 'product' && selection.id === n.item.id}
-                hollow={!n.item.marketId}
-                china={n.item.china}
-                onClick={() => onSelect({ kind: 'product', id: n.item.id })}
-                onHover={(e) =>
-                  tooltip(
-                    e,
-                    n.item.name,
-                    `${fmtDate(n.item.date, n.item.datePrecision)} · ${n.item.vramLabel ?? '—'} · ${n.item.fp32 ? `${fmtNum(n.item.fp32, 1)} TFLOPS` : '算力未公开'}`,
-                    TIER_META.datacenter.color,
-                  )
-                }
-                onLeave={() => setHover(null)}
-              />
-            ))}
-            {dcLabels.map((l, i) => (
-              <span
-                key={`dc-${i}`}
-                className="pointer-events-none absolute whitespace-nowrap font-mono text-[10px]"
-                style={{ left: l.x, top: l.y, color: l.tone, opacity: l.opacity }}
-              >
-                {l.text}
-              </span>
-            ))}
-
-            {/* workstation nodes */}
-            {ws.map((n) => (
-              <Dot
-                key={n.item.id}
-                n={n}
-                color={TIER_META.workstation.color}
-                dim={dimProduct(n.item)}
-                active={selection?.kind === 'product' && selection.id === n.item.id}
-                hollow={!n.item.marketId}
-                china={n.item.china}
-                onClick={() => onSelect({ kind: 'product', id: n.item.id })}
-                onHover={(e) =>
-                  tooltip(
-                    e,
-                    n.item.name,
-                    `${fmtDate(n.item.date, n.item.datePrecision)} · ${n.item.vramLabel ?? '—'} · ${n.item.fp32 ? `${fmtNum(n.item.fp32, 1)} TFLOPS` : '算力未公开'}`,
-                    TIER_META.workstation.color,
-                  )
-                }
-                onLeave={() => setHover(null)}
-              />
-            ))}
-            {wsLabels.map((l, i) => (
-              <span
-                key={`ws-${i}`}
-                className="pointer-events-none absolute whitespace-nowrap font-mono text-[10px]"
-                style={{ left: l.x, top: l.y, color: l.tone, opacity: l.opacity }}
-              >
-                {l.text}
-              </span>
-            ))}
-
-            {/* consumer + other nodes */}
-            {gc.map((n) => (
+            {/* chips：数据中心 / 专业工作站 / 消费级合在一带，颜色区分形态 */}
+            {chips.map((n) => (
               <Dot
                 key={n.item.id}
                 n={n}
@@ -800,18 +947,54 @@ export function Atlas({
                   tooltip(
                     e,
                     n.item.name,
-                    `${fmtDate(n.item.date, n.item.datePrecision)} · ${n.item.vramLabel ?? '—'} · ${n.item.fp32 ? `${fmtNum(n.item.fp32, 1)} TFLOPS` : '算力未公开'}`,
+                    `${TIER_META[n.item.tier].label} · ${fmtDate(n.item.date, n.item.datePrecision)} · ${n.item.vramLabel ?? '—'} · ${n.item.fp32 ? `${fmtNum(n.item.fp32, 1)} TFLOPS` : '算力未公开'}`,
                     TIER_META[n.item.tier].color,
                   )
                 }
                 onLeave={() => setHover(null)}
               />
             ))}
-            {gcLabels.map((l, i) => (
+            {chipsLabels.map((l, i) => (
               <span
-                key={`gc-${i}`}
+                key={`chip-${i}`}
                 className="pointer-events-none absolute whitespace-nowrap font-mono text-[10px]"
                 style={{ left: l.x, top: l.y, color: l.tone, opacity: l.opacity }}
+              >
+                {l.text}
+              </span>
+            ))}
+
+            {/* FP32 未公开：单独一区，不混进算力排序 */}
+            <div
+              className="pointer-events-none absolute inset-x-0 border-t border-dashed border-edge/70"
+              style={{ top: CHIP_ZONE.unknown.top - 6 }}
+            />
+            {chipsUnknown.map((n) => (
+              <Dot
+                key={n.item.id}
+                n={n}
+                color={TIER_META[n.item.tier].color}
+                dim={dimProduct(n.item)}
+                active={selection?.kind === 'product' && selection.id === n.item.id}
+                hollow
+                china={n.item.china}
+                onClick={() => onSelect({ kind: 'product', id: n.item.id })}
+                onHover={(e) =>
+                  tooltip(
+                    e,
+                    n.item.name,
+                    `${TIER_META[n.item.tier].label} · ${fmtDate(n.item.date, n.item.datePrecision)} · ${n.item.vramLabel ?? '—'} · FP32 未公开`,
+                    TIER_META[n.item.tier].color,
+                  )
+                }
+                onLeave={() => setHover(null)}
+              />
+            ))}
+            {chipUnknownLabels.map((l, i) => (
+              <span
+                key={`chipx-${i}`}
+                className="pointer-events-none absolute whitespace-nowrap font-mono text-[9px]"
+                style={{ left: l.x, top: l.y, color: l.tone, opacity: l.opacity * 0.8 }}
               >
                 {l.text}
               </span>
@@ -1013,7 +1196,10 @@ export function Atlas({
       {hover && (
         <div
           className="pointer-events-none fixed z-[80] max-w-[300px] border border-cyan/30 bg-void/95 px-3 py-2 shadow-[0_0_30px_rgba(0,0,0,0.6)] backdrop-blur"
-          style={{ left: Math.min(hover.x + 14, window.innerWidth - 320), top: hover.y + 16 }}
+          style={{
+            left: Math.min(hover.x + 14, window.innerWidth - 320) / zoom,
+            top: (hover.y + 16) / zoom,
+          }}
         >
           <div className="text-[12px] font-medium text-snow">{hover.label}</div>
           <div className="mt-0.5 font-mono text-[10px]" style={{ color: hover.tone }}>

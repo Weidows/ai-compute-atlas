@@ -49,6 +49,8 @@ const TEXT_PAGES = [
 export function AboutPage() {
   const rev = reviewCoverage()
   const industryCount = atlas.counts.industry ?? 0
+  const supplements = atlas.supplements ?? []
+  const supplementFields = atlas.counts.supplements ?? 0
   return (
     <div className="mx-auto max-w-[1680px] px-4 pb-10 lg:px-8">
       <header className="pt-8">
@@ -95,6 +97,38 @@ export function AboutPage() {
           产业链章节（HBM、互联、供电散热、制程、集群）不在上面三份文档里：那 {industryCount} 条是人工整理的公开口径，
           逐条附来源链接，存于 data/industry.json，页面标注为「外部口径」。
         </p>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-display text-lg tracking-wide text-snow">
+          二手补充来源 <span className="ml-1 font-mono text-[10px] text-fog/50">{supplements.length} 篇 · {supplementFields} 个字段</span>
+        </h2>
+        <p className="mt-2 max-w-[76ch] text-[11.5px] leading-relaxed text-fog/70">
+          有些字段官方从没公开，或者只精确到年份（例如 PCIe 版的功耗、某张卡的发布日）。这类空白用行业汇总文章补，
+          每补一个字段都记下「来自哪篇、把握多大」，档案卡里带「补」角标。
+          <span className="text-fog/50">补录只填空，不覆盖；和文章冲突的地方一律保留本地口径，并把冲突记进来源文件。</span>
+        </p>
+        <div className="mt-4 grid gap-2">
+          {supplements.map((s, i) => (
+            <Reveal key={s.id} delay={i * 0.05}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border border-edge/40 bg-hull/25 px-3 py-2">
+                <a
+                  href={s.url ?? '#'}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[12.5px] text-snow/90 underline decoration-edge underline-offset-2 transition-colors hover:text-cyan"
+                >
+                  {s.title ?? s.id}
+                  <ArrowUpRight size={11} className="ml-0.5 inline" />
+                </a>
+                <span className="font-mono text-[9px] text-fog/55">
+                  {s.author ?? '佚名'} · {s.publishedAt ?? '—'} · 补 {s.applied.length} 字段
+                  {s.conflicts.length > 0 && <span className="text-amber/70"> · 冲突 {s.conflicts.length}</span>}
+                </span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
