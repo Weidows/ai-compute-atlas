@@ -1,0 +1,214 @@
+{
+  "id": "169e-gpu-ladder",
+  "priority": 15,
+  "title": "169e 显卡天梯图（2026 桌面卡功耗/显存对照）",
+  "url": "https://www.169e.com/gpu/index.html",
+  "author": "169e.com",
+  "publishedAt": "2026-11-04",
+  "retrievedAt": "2026-11-03",
+  "level": "secondary",
+  "note": "只取天梯图的「功耗」列补桌面卡 TGP（与 NVIDIA 官方 TGP 逐一吻合）。同站 /gpu/pro-specs.html 的专业卡表不可用：RTX PRO 6000 标成 48GB/450W、PRO 5000 标成 36GB/400W，与 NVIDIA datasheet（96GB/600W、48GB/300W）差得太远，专业卡一律以官方为准。价格列按约定不收。",
+  "items": [
+    {
+      "id": "ada-rtx4080",
+      "fields": {
+        "tdpW": {
+          "value": 320,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 4080 功耗 320W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "ada-rtx4070tisuper",
+      "fields": {
+        "tdpW": {
+          "value": 285,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 4070 Ti Super 功耗 285W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "ada-rtx4070ti",
+      "fields": {
+        "tdpW": {
+          "value": 285,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 4070 Ti 功耗 285W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "ada-rtx4070",
+      "fields": {
+        "tdpW": {
+          "value": 200,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 4070 功耗 200W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3090ti",
+      "fields": {
+        "tdpW": {
+          "value": 450,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3090 Ti 功耗 450W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3090",
+      "fields": {
+        "tdpW": {
+          "value": 350,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3090 功耗 350W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3080ti",
+      "fields": {
+        "tdpW": {
+          "value": 350,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3080 Ti 功耗 350W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3080",
+      "fields": {
+        "tdpW": {
+          "value": 320,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3080 功耗 320W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3070ti",
+      "fields": {
+        "tdpW": {
+          "value": 290,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3070 Ti 功耗 290W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3070",
+      "fields": {
+        "tdpW": {
+          "value": 220,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3070 功耗 220W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3060ti",
+      "fields": {
+        "tdpW": {
+          "value": 200,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3060 Ti 功耗 200W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3060",
+      "fields": {
+        "tdpW": {
+          "value": 170,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3060 功耗 170W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "amp-rtx3050",
+      "fields": {
+        "tdpW": {
+          "value": 130,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 3050 功耗 130W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-rtx2080ti",
+      "fields": {
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 2080 Ti 功耗 250W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-rtx2080super",
+      "fields": {
+        "tdpW": {
+          "value": 250,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 2080 Super 功耗 250W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-rtx2080",
+      "fields": {
+        "tdpW": {
+          "value": 215,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 2080 功耗 215W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-rtx2070super",
+      "fields": {
+        "tdpW": {
+          "value": 215,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：RTX 2070 Super 功耗 215W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-gtx1660ti",
+      "fields": {
+        "tdpW": {
+          "value": 120,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：GTX 1660 Ti 功耗 120W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-gtx1660super",
+      "fields": {
+        "tdpW": {
+          "value": 125,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：GTX 1660 Super 功耗 125W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    },
+    {
+      "id": "tur-gtx1660",
+      "fields": {
+        "tdpW": {
+          "value": 120,
+          "confidence": "high",
+          "quote": "169e 显卡天梯图：GTX 1660 功耗 120W（该表功耗列与 NVIDIA 官方 TGP 一致）"
+        }
+      }
+    }
+  ],
+  "conflicts": []
+}
