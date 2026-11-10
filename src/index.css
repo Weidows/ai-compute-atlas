@@ -44,6 +44,13 @@
       opacity: 0.8;
     }
   }
+  /* 悬停时从模型连到技术突破点的虚线，靠 dashoffset 流动表现「传导」 */
+  --animate-link: link-flow 1.6s linear infinite;
+  @keyframes link-flow {
+    to {
+      stroke-dashoffset: -12;
+    }
+  }
   @keyframes scanline {
     0% {
       transform: translateY(-10%);

@@ -7,7 +7,7 @@
 - 时间跨度：2010-2026
 - 芯片：NVIDIA 154 款（10 代架构，含附录 Maxwell / Kepler / Fermi）+ 其他厂商 20 款
 - 整机 / 超节点：15 台
-- 开源模型：DeepSeek / GLM / Kimi 共 84 个发布节点、68 项技术突破
+- 开源模型：DeepSeek / GLM / Kimi 共 84 个发布节点、78 项技术突破（68 项来自三家自己的档案 + 10 项来自「模型年鉴」的基础技术）
 - 中国特供：8 款，单独标注削减点
 
 ![首屏](docs/screenshots/hero.png)
@@ -35,6 +35,7 @@ npm run build    # tsc --noEmit + vite build + 多页入口 → dist/
 | NVIDIA 显卡历代产品全览 | `ATLAS_DOCX`（默认 `D:/Downloads/…docx`，**原件已不在本机**） | 10 张 Word 表 → 型号 / 类别 / CUDA / 显存 / FP32 / 首发时间 / 备注；解析结果快照在 `vendor/docx-products.json` |
 | gpu-server-compare（已并入） | `vendor/gpu-server-compare/*.json` | 41 卡行情与性能索引、15 台整机、现货报价、来源台账 |
 | model-chronicle（已并入） | `vendor/model-chronicle/*.ts` | 84 个发布节点、68 项突破（HF 官方 API 快照） |
+| llm-release-timeline | `vendor/llm-timeline/releases.json` | Transformer / MoE / RLHF / Chinchilla / Mamba 等 10 个基础技术节点的日期与一手链接；同时提供「模型→技术」连线的证据（`scripts/tech_links.py` 生成 `data/llm-tech.json`） |
 | 产业链维度 | `data/industry.json` | HBM 代际、NVLink / InfiniBand / 以太网 / CPO、整柜功率、制程节点、集群规模；每条带 `source` 与取数时间 |
 | 二手补充 | `data/supplements/*.json` | 官方没公开或只到年份的零散字段（发布日、功耗、带宽等），一篇来源一个文件，字段级记来源与置信度 |
 
@@ -50,6 +51,15 @@ npm run build    # tsc --noEmit + vite build + 多页入口 → dist/
 - 多 GPU 板卡（`4×16GB 共 64GB`）同时记录「板卡总量」与「单卡容量」，时间轴与气泡用单卡容量。
 
 没有一条编造或补值：模型卡/文档没写的字段是 `null`，页面显示「未公开 / —」。
+
+## 技术节点与连线
+
+`npm run tech`（= `python scripts/tech_links.py`）从 `vendor/llm-timeline/releases.json` 里挑出 10 个「首次公开一种方法」的记录，生成 `data/llm-tech.json`：
+
+- `techs`：技术节点（Transformer / Sparse MoE / Instruct / RETRO / RLHF / Chinchilla / VLM / RWKV / Mamba / Diffusion LM），日期、机构、来源链接全部取自年表记录，脚本找不到对应记录会直接报错退出；
+- `links`：模型 → 技术，外加一句证据（模型档案里提到该技术的原话），没有证据就不连；技术提出者本身由 `releaseId` 自动补一条。
+
+时间轴上悬停模型节点会画出它用到的技术（技术节点也能反向连回模型），档案卡里列出这几项技术并可点开。年表来源的节点用虚线边框区分。
 
 ## 二手补充来源
 
@@ -183,6 +193,8 @@ scripts/
 
 路由是手写的 pushState（`src/lib/router.tsx`），不引 router 依赖：`Link` 保留真实 href（新窗口 / 爬虫可用），左键单击走无刷新跳转；`build` 后每个路径都有实体 HTML，深链返回 200。转场由 `AnimatePresence` 统一进出场，只用 transform / opacity，且全部走 `useReducedMotion` 降级。
 
+时间轴页悬停模型节点时，会从它画虚线连到它用到的技术突破点（技术节点也会反向连回所有用到它的模型）；连线只在模型档案自己写了「用了它」时才画，档案卡里同时列出这几项技术。年表来源的 10 个基础技术节点用虚线边框区分。
+
 页脚只在封面出现，各章节以内容收尾。时间轴页按「工具」而非「文章」设计：条带高度压到 680px，整页刚好一屏；横向平移支持鼠标拖拽、Shift+滚轮、触控板横划，页面本身不需要竖滚时普通滚轮也直接横拉（拖拽超过 4px 会吞掉那次 click，避免误开档案）。
 
 ## 怎么读
@@ -204,7 +216,7 @@ scripts/
 | `/generations/<世代>/` | 10 个世代各一页（blackwell、hopper、ada-lovelace…） |
 | `/models/<实验室>/` | DeepSeek / GLM / Kimi 三页发布年表与突破 |
 | `/china/` | 8 款中国特供与被削规格 |
-| `/review/` | 复核台账：380 条逐条列复核次数、最近复核时间与备注，未复核的排最前 |
+| `/review/` | 复核台账：390 条逐条列复核次数、最近复核时间与备注，未复核的排最前 |
 | `/sitemap.xml` · `/robots.txt` | 23 条 URL + 抓取声明 |
 | `/data/atlas.json` | 机器可读快照（供引用、对拍、AI 检索） |
 | `/og.png` | 1200×630 社交分享卡 |

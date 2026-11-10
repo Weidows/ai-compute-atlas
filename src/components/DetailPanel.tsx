@@ -16,6 +16,7 @@ import {
   reviewOf,
   supplantedBy,
   SYSTEM_COLOR,
+  techsOfModel,
   TIER_META,
   yearFraction,
   type Model,
@@ -453,6 +454,29 @@ export function DetailPanel({
                 ))}
               </div>
             )}
+
+            {(() => {
+              const used = techsOfModel(atlas, data.m.id)
+              if (!used.length) return null
+              return (
+                <div className="mt-4">
+                  <div className="label-hud mb-1.5">使用的技术 · {used.length}</div>
+                  <div className="flex flex-wrap gap-1">
+                    {used.map(({ tech, evidence }) => (
+                      <button
+                        key={tech.id}
+                        title={evidence}
+                        onClick={() => onSelect({ kind: 'breakthrough', id: tech.id })}
+                        className="rounded-sm border border-amber/40 bg-amber/10 px-1.5 py-0.5 font-mono text-[9px] text-amber/90 transition-colors hover:bg-amber/25"
+                      >
+                        {tech.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="mt-1 font-mono text-[8.5px] text-fog/50">悬停时间轴上的模型节点，会画出它用到的技术</div>
+                </div>
+              )
+            })()}
 
             <div className="mt-4">
               <div className="label-hud mb-1.5">发布时可用算力</div>

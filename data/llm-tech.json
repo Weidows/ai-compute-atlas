@@ -1,0 +1,605 @@
+{
+  "asOf": "2026-11-03",
+  "source": {
+    "id": "llm-release-timeline",
+    "title": "模型年鉴 · 大语言模型发布年表",
+    "url": "https://github.com/RACErace/llm-release-timeline",
+    "author": "RACErace",
+    "retrievedAt": "2026-11-03",
+    "level": "secondary"
+  },
+  "techs": [
+    {
+      "id": "x-transformer",
+      "label": "Transformer",
+      "name": "以注意力机制取代循环结构，成为此后所有大模型的骨架",
+      "date": "2017-06-12",
+      "lane": "架构",
+      "org": "Google",
+      "orgName": "Google",
+      "impact": "以注意力机制取代循环结构，成为此后所有大模型的骨架",
+      "origin": "external",
+      "note": "《Attention Is All You Need》首次提交。作者提出以注意力机制为核心的序列转换架构。",
+      "source": {
+        "url": "https://arxiv.org/abs/1706.03762",
+        "name": "研究论文",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-moe-sparse",
+      "label": "Sparse MoE",
+      "name": "用稀疏专家把 Transformer 扩到六千亿参数，只激活其中一部分",
+      "date": "2020-06-30",
+      "lane": "架构",
+      "org": "Google",
+      "orgName": "Google",
+      "impact": "用稀疏专家把 Transformer 扩到六千亿参数，只激活其中一部分",
+      "origin": "external",
+      "note": "在多语言机器翻译中使用稀疏专家，将 Transformer 扩展至六千亿参数。",
+      "source": {
+        "url": "https://arxiv.org/abs/2006.16668",
+        "name": "原始论文 · arXiv",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-flan-instruct",
+      "label": "Instruct",
+      "name": "把任务写成自然语言指令再微调，零样本迁移到没见过的任务",
+      "date": "2021-09-03",
+      "lane": "后训练",
+      "org": "Google",
+      "orgName": "Google",
+      "impact": "把任务写成自然语言指令再微调，零样本迁移到没见过的任务",
+      "origin": "external",
+      "note": "把任务写成自然语言指令进行微调，研究模型在新任务上的零样本表现。",
+      "source": {
+        "url": "https://arxiv.org/abs/2109.01652",
+        "name": "原始论文 · arXiv",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-retro-rag",
+      "label": "RETRO",
+      "name": "生成时检索外部语料片段，把结果拼进上下文",
+      "date": "2021-12-08",
+      "lane": "推理",
+      "org": "Google",
+      "orgName": "Google",
+      "impact": "生成时检索外部语料片段，把结果拼进上下文",
+      "origin": "external",
+      "note": "生成时检索外部语料片段，将检索结果加入自回归模型的上下文。",
+      "source": {
+        "url": "https://arxiv.org/abs/2112.04426",
+        "name": "原始论文 · arXiv",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-instructgpt",
+      "label": "RLHF",
+      "name": "按人类反馈做强化学习，让模型真正「听指令」",
+      "date": "2022-01-27",
+      "lane": "后训练",
+      "org": "OpenAI",
+      "orgName": "OpenAI",
+      "impact": "按人类反馈做强化学习，让模型真正「听指令」",
+      "origin": "external",
+      "note": "采用人类反馈强化学习，改善指令遵循。此日为正式研究公告。",
+      "source": {
+        "url": "https://openai.com/index/instruction-following/",
+        "name": "官方原文",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-chinchilla",
+      "label": "Chinchilla",
+      "name": "训练预算固定时，参数少、数据多比参数堆大更划算",
+      "date": "2022-03-29",
+      "lane": "训练",
+      "org": "Google",
+      "orgName": "Google",
+      "impact": "训练预算固定时，参数少、数据多比参数堆大更划算",
+      "origin": "external",
+      "note": "在与 Gopher 相近的训练预算下，用更多数据训练较小的 700 亿参数模型。",
+      "source": {
+        "url": "https://arxiv.org/abs/2203.15556",
+        "name": "原始论文 · arXiv",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-flamingo",
+      "label": "VLM",
+      "name": "把视觉编码器接进语言模型，支持图文交错输入",
+      "date": "2022-04-29",
+      "lane": "多模态",
+      "org": "Google",
+      "orgName": "Google",
+      "impact": "把视觉编码器接进语言模型，支持图文交错输入",
+      "origin": "external",
+      "note": "DeepMind 将视觉编码器接入语言模型，支持图文交错提示和少样本视觉问答。",
+      "source": {
+        "url": "https://arxiv.org/abs/2204.14198",
+        "name": "原始论文 · arXiv",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-rwkv",
+      "label": "RWKV",
+      "name": "用固定大小的状态做线性复杂度序列建模",
+      "date": "2023-05-22",
+      "lane": "架构",
+      "org": "RWKV",
+      "orgName": "RWKV",
+      "impact": "用固定大小的状态做线性复杂度序列建模",
+      "origin": "external",
+      "note": "作者报告如何并行训练循环语言模型，并在逐词推理时维护大小固定的状态。",
+      "source": {
+        "url": "https://arxiv.org/abs/2305.13048",
+        "name": "研究论文",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-mamba",
+      "label": "Mamba",
+      "name": "选择性状态空间层，序列计算量随长度线性增长",
+      "date": "2023-12-01",
+      "lane": "架构",
+      "org": "Mamba 研究团队",
+      "orgName": "Mamba 研究团队",
+      "impact": "选择性状态空间层，序列计算量随长度线性增长",
+      "origin": "external",
+      "note": "作者使用选择性状态空间层构建语言模型，使序列计算量随长度线性增长。",
+      "source": {
+        "url": "https://arxiv.org/abs/2312.00752",
+        "name": "研究论文",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    },
+    {
+      "id": "x-llada",
+      "label": "Diffusion LM",
+      "name": "从零训练的扩散语言模型，先遮蔽再反向去噪生成",
+      "date": "2025-02-14",
+      "lane": "架构",
+      "org": "LLaDA 研究团队",
+      "orgName": "LLaDA 研究团队",
+      "impact": "从零训练的扩散语言模型，先遮蔽再反向去噪生成",
+      "origin": "external",
+      "note": "团队从零训练扩散语言模型，先遮蔽词元，再在反向生成过程中预测被遮蔽的内容。",
+      "source": {
+        "url": "https://arxiv.org/abs/2502.09992",
+        "name": "研究论文",
+        "title": "模型年鉴 · 大语言模型发布年表"
+      }
+    }
+  ],
+  "links": [
+    {
+      "model": "chatglm-6b",
+      "tech": "x-instructgpt",
+      "evidence": "…对话 · 监督微调 + 反馈自助 + 人类反馈强化学习(RLHF) · INT4 量化 6GB 显存消费级部署 · 约 1T 中英双…",
+      "src": "model-profile"
+    },
+    {
+      "model": "cogvideox-5b",
+      "tech": "fp8-training",
+      "evidence": "…F16 最低 5GB 显存推理 · 支持 INT8 / FP8 量化",
+      "src": "model-profile"
+    },
+    {
+      "model": "cogvideox1-5-5b",
+      "tech": "fp8-training",
+      "evidence": "…=10，默认 81） · BF16 精度 + INT8/FP8 量化",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-coder-7b-instruct-v1.5",
+      "tech": "x-flan-instruct",
+      "evidence": "…epSeek-LLM 7B 继续预训练成代码模型，再叠加指令微调。",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-math-7b-instruct",
+      "tech": "grpo",
+      "evidence": "GRPO 首次提出：用组内相对优势替代 critic 网络，省掉与策略同规模…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-moe-16b-base",
+      "tech": "deepseekmoe",
+      "evidence": "DeepSeekMoE 架构的首次开源落地：细粒度专家切分加共享专家隔离，用约 2.8B…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-moe-16b-base",
+      "tech": "x-moe-sparse",
+      "evidence": "DeepSeekMoE 架构的首次开源落地：细粒度专家切分加共享专家隔离，用约 2.8B…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-r1",
+      "tech": "pure-rl",
+      "evidence": "首个公开验证「纯强化学习即可激发推理能力」的模型系列：R1-Zero 跳过 SFT 直接大规…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v2",
+      "tech": "deepseekmoe",
+      "evidence": "MLA 与 DeepSeekMoE 同时上线，训练成本降低 42.5%，KV cache 减少 93.…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v2",
+      "tech": "mla",
+      "evidence": "MLA 与 DeepSeekMoE 同时上线，训练成本降低 42.5%，K…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v2",
+      "tech": "x-moe-sparse",
+      "evidence": "236B 总参数、21B 激活的 MoE 模型。",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v2-lite",
+      "tech": "mla",
+      "evidence": "把 MLA 与 MoE 缩到 16B 总参数 / 2.4B 激活、32K 上下…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v2-lite",
+      "tech": "x-moe-sparse",
+      "evidence": "把 MLA 与 MoE 缩到 16B 总参数 / 2.4B 激活、32K 上下文，单张 4…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3",
+      "tech": "aux-loss-free",
+      "evidence": "首次在超大规模验证 FP8 混合精度训练，引入无辅助损失的负载均衡与多 token 预测，14.8T token 只花 2.…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3",
+      "tech": "fp8-training",
+      "evidence": "首次在超大规模验证 FP8 混合精度训练，引入无辅助损失的负载均衡与多 token 预测，14…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3",
+      "tech": "mtp",
+      "evidence": "FP8 训练 + 无辅助损失负载均衡 + MTP：把「大模型必须用 BF16 且负载均衡要牺牲性能」这两条经验同时推…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3.1",
+      "tech": "fp8-training",
+      "evidence": "…工具调用与 agent 能力显著增强，并用 UE8M0 FP8 scale 格式训练权重与激活。",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3.1",
+      "tech": "hybrid-thinking",
+      "evidence": "混合推理版本：同一份权重靠切换 chat template 就能在 thin…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3.2",
+      "tech": "dsa",
+      "evidence": "DSA 稀疏注意力转正，配合可扩展 RL 框架与大规模 Agentic 任…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v3.2-exp",
+      "tech": "dsa",
+      "evidence": "…入 DeepSeek Sparse Attention（DSA）做细粒度稀疏注意力。",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "tech": "x-moe-sparse",
+      "evidence": "多模态 MoE：CED 因果编码器-解码器架构，prefill / decode…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-vl-7b-chat",
+      "tech": "x-flamingo",
+      "evidence": "…开源视觉语言模型：SigLIP-L 加 SAM-B 混合视觉编码器，吃 1024×1024 图像，约 400B 图文 token 训练…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-vl2",
+      "tech": "deepseekmoe",
+      "evidence": "基于 DeepSeekMoE-27B 的 MoE 视觉语言模型，Tiny / Small / V…",
+      "src": "model-profile"
+    },
+    {
+      "model": "deepseek-vl2",
+      "tech": "x-moe-sparse",
+      "evidence": "基于 DeepSeekMoE-27B 的 MoE 视觉语言模型，Tiny / Small / V…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5",
+      "tech": "fp8-training",
+      "evidence": "…MTP 层 + EAGLE 投机解码 · Base 与 FP8 版同步开源 12 项行业标准基准综合平均分 63.2",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5",
+      "tech": "hybrid-thinking",
+      "evidence": "355B-A32B MoE 架构 · 混合推理（thinking / non-thinking） · 统一推理、编…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5",
+      "tech": "mtp",
+      "evidence": "…king） · 统一推理、编码与 Agent 能力 · MTP 层 + EAGLE 投机解码 · Base 与 FP8 版同步开源…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5",
+      "tech": "x-moe-sparse",
+      "evidence": "面向智能体的 355B-A32B MoE 基础模型，统一推理、编码与智能体能力，支持思考/非思考双模式。",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5-air",
+      "tech": "fp8-training",
+      "evidence": "…MTP 层 + EAGLE 投机解码 · Base 与 FP8 版同步开源 12 项行业标准基准综合平均分 59.8",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5-air",
+      "tech": "hybrid-thinking",
+      "evidence": "106B-A12B 紧凑 MoE · 混合推理（thinking / non-thinking） · 高效轻量部署…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5-air",
+      "tech": "mtp",
+      "evidence": "…/ non-thinking） · 高效轻量部署 · MTP 层 + EAGLE 投机解码 · Base 与 FP8 版同步开源…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5-air",
+      "tech": "x-moe-sparse",
+      "evidence": "GLM-4.5 系列中更紧凑高效的 106B-A12B MoE 版本，兼顾性能与部署效率。",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-5v",
+      "tech": "x-moe-sparse",
+      "evidence": "基于 GLM-4.5-Air 的 MoE 视觉语言模型 · 42 项视觉语言基准同规模 SOTA · Thi…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-6v-flash",
+      "tech": "x-flamingo",
+      "evidence": "原生多模态 Function Calling · 图文交错内容生成 · 128k 多文档/长文档理解 · 前端截图还原 HTM…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-7-flash",
+      "tech": "mtp",
+      "evidence": "…卡自述） · Preserved Thinking · MTP 投机解码 · 轻量部署（vLLM / SGLang） AIME 2…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-4-7-flash",
+      "tech": "x-moe-sparse",
+      "evidence": "30B-A3B 的 MoE 轻量模型，主打 30B 级别性能与效率平衡。",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-5",
+      "tech": "dsa",
+      "evidence": "…DeepSeek Sparse Attention (DSA) · slime 异步 RL 基础设施 · 预训练数据 23T →…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-5",
+      "tech": "mtp",
+      "evidence": "…预训练数据 23T → 28.5T tokens · MTP 投机解码（num_speculative_tokens 3） HM…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-5",
+      "tech": "x-moe-sparse",
+      "evidence": "744B-A40B MoE · DeepSeek Sparse Attention (DSA)…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-5-2",
+      "tech": "dsa",
+      "evidence": "…定支撑长程任务的旗舰模型，并提出 IndexShare 稀疏注意力。",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-5-2",
+      "tech": "mtp",
+      "evidence": "…） · 每 token FLOPs 降低 2.9× · MTP 层改进，接受长度最高 +20% · 思考强度（effort）分级…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-asr-nano-2512",
+      "tech": "x-retro-rag",
+      "evidence": "…sformers / vLLM / SGLang Average error rate 4.1",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-image",
+      "tech": "grpo",
+      "evidence": "…Glyph Encoder 文本渲染模块 · 解耦式 GRPO 后训练",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-ocr",
+      "tech": "mtp",
+      "evidence": "Multi-Token Prediction (MTP) loss · 全任务稳定强化学习 · CogViT 视觉编码器…",
+      "src": "model-profile"
+    },
+    {
+      "model": "glm-ocr",
+      "tech": "x-flamingo",
+      "evidence": "…) loss · 全任务稳定强化学习 · CogViT 视觉编码器 · GLM-0.5B 语言解码器 + 轻量跨模态连接器 · PP-…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-5",
+      "tech": "hybrid-thinking",
+      "evidence": "…entic 模型，含 Instant/Thinking 双模式与 Agent Swarm。",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-5",
+      "tech": "x-flamingo",
+      "evidence": "…arm 自协调并行子代理 · MoonViT 400M 视觉编码器 · 原生 INT4 量化 · 256K 上下文 AIME 2025…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-7-code",
+      "tech": "x-flamingo",
+      "evidence": "…ing token 减少约 30% · MoonViT 视觉编码器 MCP Mark Verified 81.1",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-base",
+      "tech": "mla",
+      "evidence": "…ip 优化器 · MoE 1T 总参/32B 激活 · MLA 注意力 · 384 专家选 8 · 15.5T token 预训练…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-base",
+      "tech": "x-moe-sparse",
+      "evidence": "Kimi K2 的基座模型：1T 总参/32B 激活的 MoE，用 Muon 优化器在 15.5T token 上预训练且训练全程…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-instruct",
+      "tech": "fp8-training",
+      "evidence": "…注意力 · Agentic 工具调用 · block-fp8 权重 MATH-500 97.4",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-instruct",
+      "tech": "mla",
+      "evidence": "…ip 优化器 · MoE 1T 总参/32B 激活 · MLA 注意力 · Agentic 工具调用 · block-fp8 权重…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-instruct",
+      "tech": "x-moe-sparse",
+      "evidence": "…考的 reflex 级模型），1T 总参/32B 激活 MoE，专为工具使用与自主问题求解优化。",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-instruct-0905",
+      "tech": "mla",
+      "evidence": "…· 前端代码生成 · MoE 1T/32B 激活 · MLA SWE-Bench verified 69.2",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-instruct-0905",
+      "tech": "x-moe-sparse",
+      "evidence": "…gentic coding 增强 · 前端代码生成 · MoE 1T/32B 激活 · MLA SWE-Bench verifie…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-thinking",
+      "tech": "mla",
+      "evidence": "…0 步长程工具编排 · MoE 1T/32B 激活 · MLA AIME25 94.5",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k2-thinking",
+      "tech": "x-moe-sparse",
+      "evidence": "…维链+工具调用 · 200-300 步长程工具编排 · MoE 1T/32B 激活 · MLA AIME25 94.5",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k3",
+      "tech": "fp8-training",
+      "evidence": "…oE（896 专家激活 16） · MXFP4权重/MXFP8激活 QAT · 百万 token 上下文 GDPval-AA v2…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k3",
+      "tech": "kimi-kimi-k3",
+      "evidence": "…的 3T 级模型：2.8T 总参/104B 激活，基于 KDA + AttnRes + Stable LatentMoE，原生多模…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k3",
+      "tech": "kimi-kimi-linear-48b-a3b-instruct",
+      "evidence": "…的 3T 级模型：2.8T 总参/104B 激活，基于 KDA + AttnRes + Stable LatentMoE，原生多模…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-k3",
+      "tech": "x-moe-sparse",
+      "evidence": "…DA + AttnRes + Stable LatentMoE，原生多模态，1M token 上下文（模型卡写作 1048576）…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-linear-48b-a3b-instruct",
+      "tech": "kimi-kimi-k3",
+      "evidence": "混合线性注意力模型（KDA:MLA=3:1），5.7T token 训练，长上下文下相比全注意…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-linear-48b-a3b-instruct",
+      "tech": "kimi-kimi-linear-48b-a3b-instruct",
+      "evidence": "混合线性注意力模型（KDA:MLA=3:1），5.7T token 训练，长上下文下相比全注意…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-linear-48b-a3b-instruct",
+      "tech": "mla",
+      "evidence": "混合线性注意力模型（KDA:MLA=3:1），5.7T token 训练，长上下文下相比全注意力最多…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-vl-a3b-instruct",
+      "tech": "x-flamingo",
+      "evidence": "…o MoE 视觉语言模型 · MoonViT 原生分辨率视觉编码器 · MLP 投影器 · 128K 长上下文 · GUI/OS Ag…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-vl-a3b-instruct",
+      "tech": "x-moe-sparse",
+      "evidence": "激活仅 2.8B 参数的高效 MoE VLM（16B 总参/3B 激活），128K 上下文，具备长视频/…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-vl-a3b-thinking",
+      "tech": "x-moe-sparse",
+      "evidence": "…长思维链(CoT) SFT · 强化学习(RL) · MoE 视觉语言模型 · 2.8B 激活 LLM MathVista 71…",
+      "src": "model-profile"
+    },
+    {
+      "model": "kimi-vl-a3b-thinking-2506",
+      "tech": "x-moe-sparse",
+      "evidence": "…· 单图 3.2M 像素高分辨率 · 视频推理增强 · MoE 视觉语言模型 OCRBench 869.0",
+      "src": "model-profile"
+    },
+    {
+      "model": "moonlight-16b-a3b-instruct",
+      "tech": "x-moe-sparse",
+      "evidence": "用 Muon 优化器训练的 3B/16B MoE 模型，5.7T token 预训练，验证了 Muon 在大规模训练…",
+      "src": "model-profile"
+    },
+    {
+      "model": "moonvit-so-400m",
+      "tech": "x-flamingo",
+      "evidence": "…mi-VL-A3B-Instruct 中拆出的原生分辨率视觉编码器，初始化自 SigLIP-SO-400M；",
+      "src": "model-profile"
+    }
+  ]
+}

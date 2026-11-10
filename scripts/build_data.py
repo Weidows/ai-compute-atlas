@@ -423,6 +423,37 @@ def load_models() -> tuple[list[dict], list[dict], list[dict]]:
     return releases, breakthroughs, orgs
 
 
+def load_llm_tech() -> tuple[list[dict], list[dict], dict]:
+    """基础技术节点 + 模型→技术连线。
+
+    技术节点的日期与来源来自「模型年鉴」年表（vendor 快照），不是手写；
+    连线只保留有证据句的（模型档案自己写了用了它）。
+    """
+    if not LLM_TECH.exists():
+        return [], [], {}
+    doc = json.loads(LLM_TECH.read_text(encoding="utf-8"))
+    techs = []
+    for t in doc.get("techs", []):
+        techs.append(
+            {
+                "id": t["id"],
+                "label": t["label"],
+                "name": t["name"],
+                "date": t["date"],
+                "lane": t.get("lane") or "架构",
+                "org": t.get("org") or "—",
+                "orgName": t.get("orgName") or t.get("org") or "—",
+                "releaseId": None,
+                "impact": t.get("impact"),
+                "magnitude": None,
+                "mechanism": t.get("note"),
+                "origin": "external",
+                "source": t.get("source"),
+            }
+        )
+    return techs, doc.get("links", []), doc.get("source", {})
+
+
 def load_reviews() -> tuple[dict, dict]:
     """人工复核台账：id -> {count, lastReviewedAt, by, note}。
 
@@ -504,6 +535,8 @@ INDUSTRY_KEYS = ("hbm", "interconnect", "power", "process", "clusters")
 # 或只精确到年份的字段才用它补；每条字段单独记来源与置信度，与本地冲突的
 # 不覆盖，统一进 conflicts 清单，页面按「补」标注出来。
 SUPPLEMENTS = Path(os.environ.get("ATLAS_SUPPLEMENTS", ROOT / "data" / "supplements"))
+# 从「模型年鉴」抽出来的基础技术节点与「模型 → 技术」连线（scripts/tech_links.py 生成）
+LLM_TECH = Path(os.environ.get("ATLAS_LLM_TECH", ROOT / "data" / "llm-tech.json"))
 
 
 def date_precision(value: str) -> str:
@@ -657,6 +690,14 @@ def main() -> None:
     for rows in groups.values():
         attach_reviews(rows, ledger)
 
+    tech_rows, tech_links, tech_source = load_llm_tech()
+    if tech_rows:
+        # 技术节点也算「突破」，进同一个复核台账；放在后面，不影响原有节点 id
+        breakthroughs = breakthroughs + tech_rows
+        groups["breakthrough"] = breakthroughs
+        attach_reviews(tech_rows, ledger)
+        print(f"· 年表技术节点：{len(tech_rows)} 个，连线 {len(tech_links)} 条")
+
     industry = load_industry()
     industry_rows = [r for k in INDUSTRY_KEYS for r in industry.get(k, [])]
     if industry_rows:
@@ -699,6 +740,8 @@ def main() -> None:
         "reviews": reviews,
         "industry": industry,
         "supplements": supplements,
+        "techLinks": tech_links,
+        "techSource": tech_source,
         "counts": {
             "docxProducts": len(products),
             "extraProducts": len(extras),

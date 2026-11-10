@@ -141,7 +141,19 @@ export interface Breakthrough {
   impact: string | null
   magnitude: string | null
   mechanism: string | null
+  /** external = 来自「模型年鉴」的基础技术（Transformer / MoE / RLHF…），不是本地三家的独门突破 */
+  origin?: 'external'
+  /** external 节点的原始记录链接（论文 / 官方博客） */
+  source?: { url?: string | null; name?: string | null; title?: string | null }
   review?: Review
+}
+
+/** 模型 → 技术 的一条连线；evidence 是模型档案里那句「用了它」的原话 */
+export interface TechLink {
+  model: string
+  tech: string
+  evidence: string
+  src: 'model-profile' | 'introducer'
 }
 
 export interface Arch {
@@ -251,6 +263,8 @@ export interface AtlasData {
   reviews: AtlasReviews
   industry?: Industry
   supplements?: SupplementSource[]
+  techLinks?: TechLink[]
+  techSource?: { id?: string; title?: string; url?: string; author?: string; retrievedAt?: string }
   counts: Record<string, number>
 }
 
@@ -531,4 +545,22 @@ export function packRows<T extends { x: number; r: number }>(
     placed.push({ item, row })
   }
   return placed
+}
+
+/** 模型 → 它用到的技术（含证据句） */
+export function techsOfModel(data: AtlasData, modelId: string): { tech: Breakthrough; evidence: string }[] {
+  const byId = new Map(data.breakthroughs.map((b) => [b.id, b]))
+  return (data.techLinks ?? [])
+    .filter((l) => l.model === modelId)
+    .map((l) => ({ tech: byId.get(l.tech)!, evidence: l.evidence }))
+    .filter((x) => x.tech)
+}
+
+/** 技术 → 用到它的模型 */
+export function modelsUsingTech(data: AtlasData, techId: string): Model[] {
+  const byId = new Map(data.models.map((m) => [m.id, m]))
+  return (data.techLinks ?? [])
+    .filter((l) => l.tech === techId)
+    .map((l) => byId.get(l.model)!)
+    .filter(Boolean)
 }

@@ -285,6 +285,8 @@ export function Atlas({
   const [ppyear, setPpyear] = useState(92)
   const [preset, setPreset] = useState<string>('ai')
   const [hover, setHover] = useState<{ x: number; y: number; label: string; sub: string; tone: string } | null>(null)
+  /** 悬停到模型 / 技术节点时，把「用了哪些技术」的连线亮出来 */
+  const [focus, setFocus] = useState<{ kind: 'model' | 'breakthrough'; id: string } | null>(null)
   const [win, setWin] = useState({ left: 0, width: 1 })
   const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null)
   const suppressClick = useRef(false)
@@ -370,6 +372,7 @@ export function Atlas({
         d.moved = true
         setDragging(true)
         setHover(null)
+        setFocus(null)
       }
       if (!d.moved) return
       e.preventDefault()
@@ -469,6 +472,61 @@ export function Atlas({
       ),
     [ppyear],
   )
+
+  /** 模型 → 技术、技术 → 模型 的双向索引，连线两边都要用 */
+  const techLinks = atlas.techLinks ?? []
+  const linksByModel = useMemo(() => {
+    const m = new Map<string, { tech: string; evidence: string; src: string }[]>()
+    for (const l of techLinks) {
+      const arr = m.get(l.model) ?? []
+      arr.push({ tech: l.tech, evidence: l.evidence, src: l.src })
+      m.set(l.model, arr)
+    }
+    return m
+  }, [techLinks])
+  const modelsByTech = useMemo(() => {
+    const m = new Map<string, { model: string; evidence: string; src: string }[]>()
+    for (const l of techLinks) {
+      const arr = m.get(l.tech) ?? []
+      arr.push({ model: l.model, evidence: l.evidence, src: l.src })
+      m.set(l.tech, arr)
+    }
+    return m
+  }, [techLinks])
+
+  /** 节点坐标表：连线要从圆心画到圆心 */
+  const posOf = useMemo(() => {
+    const m = new Map<string, { x: number; y: number; r: number }>()
+    for (const n of models) m.set(`model:${n.item.id}`, { x: n.x, y: n.y, r: n.r })
+    for (const n of breakthroughs) m.set(`breakthrough:${n.item.id}`, { x: n.x, y: n.y, r: 3 })
+    return m
+  }, [models, breakthroughs])
+
+  /** 当前悬停节点要连出去的线（模型→技术，或技术→用到它的模型） */
+  const focusLines = useMemo(() => {
+    if (!focus) return [] as { from: { x: number; y: number }; to: { x: number; y: number }; key: string }[]
+    const out: { from: { x: number; y: number }; to: { x: number; y: number }; key: string }[] = []
+    const self = posOf.get(`${focus.kind}:${focus.id}`)
+    if (!self) return out
+    if (focus.kind === 'model') {
+      for (const l of linksByModel.get(focus.id) ?? []) {
+        const p = posOf.get(`breakthrough:${l.tech}`)
+        if (p) out.push({ from: self, to: p, key: l.tech })
+      }
+    } else {
+      for (const l of modelsByTech.get(focus.id) ?? []) {
+        const p = posOf.get(`model:${l.model}`)
+        if (p) out.push({ from: p, to: self, key: l.model })
+      }
+    }
+    return out
+  }, [focus, posOf, linksByModel, modelsByTech])
+
+  const lit = useMemo(() => {
+    const s = new Set<string>()
+    for (const l of focusLines) s.add(`${focus?.kind === 'model' ? 'breakthrough:' : 'model:'}${l.key}`)
+    return s
+  }, [focusLines, focus])
 
   const chipTierLabels = useMemo(() => {
     const ranks = tierRanks(chipAll.map((p) => p.fp32 ?? 0), CHIP_ZONE.known.rows)
@@ -769,7 +827,7 @@ export function Atlas({
             {[
               { ...BAND.era, id: '00', title: '时代', hint: '产业叙事' },
               { ...BAND.models, id: '01', title: '开源模型', hint: '3 家 · 84 节点' },
-              { ...BAND.bt, id: '02', title: '技术突破', hint: '68 项' },
+              { ...BAND.bt, id: '02', title: '技术突破', hint: `${atlas.breakthroughs.length} 项` },
               { ...BAND.sys, id: '03', title: '整机 · 超节点', hint: '15 台' },
               { ...BAND.chips, id: '04', title: '芯片', hint: '三形态 · ↑ FP32 越大越靠上' },
               { ...CHIP_ZONE.unknown, id: '04b', title: '', hint: 'FP32 未公开' },
@@ -1038,6 +1096,40 @@ export function Atlas({
               </span>
             ))}
 
+            {/* 技术连线：悬停模型 → 连到它用到的技术；悬停技术 → 连回用到它的模型 */}
+            {focusLines.length > 0 && (
+              <svg
+                data-techlinks="1"
+                className="pointer-events-none absolute inset-0 z-10 overflow-visible"
+                width={plotW}
+                height={H}
+                aria-hidden="true"
+              >
+                {focusLines.map((l) => {
+                  const mid = (l.from.y + l.to.y) / 2
+                  const d = `M ${l.from.x} ${l.from.y} C ${l.from.x} ${mid}, ${l.to.x} ${mid}, ${l.to.x} ${l.to.y}`
+                  return (
+                    <g key={l.key}>
+                      {/* 外层做一点辉光，细线在深色底上才看得见 */}
+                      <path d={d} fill="none" stroke="#ffb545" strokeWidth={5} strokeOpacity={0.1} strokeLinecap="round" />
+                      <path
+                        className="animate-link"
+                        d={d}
+                        fill="none"
+                        stroke="#ffcf7a"
+                        strokeWidth={1.4}
+                        strokeOpacity={0.85}
+                        strokeDasharray="5 7"
+                        strokeLinecap="round"
+                      />
+                      <circle cx={l.to.x} cy={l.to.y} r={6} fill="#ffb545" fillOpacity={0.16} />
+                      <circle cx={l.to.x} cy={l.to.y} r={3} fill="#ffcf7a" />
+                    </g>
+                  )
+                })}
+              </svg>
+            )}
+
             {/* models */}
             {models.map((n) => {
               const m = n.item
@@ -1046,15 +1138,20 @@ export function Atlas({
                 <button
                   key={m.id}
                   onClick={() => onSelect({ kind: 'model', id: m.id })}
-                  onMouseEnter={(e) =>
+                  onMouseEnter={(e) => {
+                    const used = linksByModel.get(m.id)?.length ?? 0
                     tooltip(
                       e,
                       `${m.name} · ${m.orgName}`,
-                      `${fmtDate(m.date)} · ${m.totalParams ?? '参数量未公开'}${m.headline ? ` · ${m.headline.metric} ${m.headline.score}` : ''}`,
+                      `${fmtDate(m.date)} · ${m.totalParams ?? '参数量未公开'}${m.headline ? ` · ${m.headline.metric} ${m.headline.score}` : ''}${used ? ` · 使用 ${used} 项技术` : ''}`,
                       ORG_COLOR[m.org],
                     )
-                  }
-                  onMouseLeave={() => setHover(null)}
+                    if (used) setFocus({ kind: 'model', id: m.id })
+                  }}
+                  onMouseLeave={() => {
+                    setHover(null)
+                    setFocus(null)
+                  }}
                   className="absolute z-20 rounded-full border transition-all"
                   style={{
                     left: n.x - size / 2,
@@ -1064,7 +1161,11 @@ export function Atlas({
                     borderColor: ORG_COLOR[m.org],
                     background: m.tier === 'flagship' ? ORG_COLOR[m.org] : `${ORG_COLOR[m.org]}33`,
                     opacity: (selection?.kind === 'model' && selection.id === m.id ? 1 : 0.95) * dimModel(m),
-                    boxShadow: m.tier === 'flagship' ? `0 0 12px ${ORG_COLOR[m.org]}66` : undefined,
+                    boxShadow: lit.has(`model:${m.id}`)
+                      ? `0 0 0 2px #ffb545aa, 0 0 14px #ffb54588`
+                      : m.tier === 'flagship'
+                        ? `0 0 12px ${ORG_COLOR[m.org]}66`
+                        : undefined,
                   }}
                   aria-label={`${m.name} ${m.orgName}`}
                 />
@@ -1088,10 +1189,33 @@ export function Atlas({
                 <button
                   key={b.id}
                   onClick={() => onSelect({ kind: 'breakthrough', id: b.id })}
-                  onMouseEnter={(e) => tooltip(e, `${b.label} · ${b.name}`, `${fmtDate(b.date)} · ${b.magnitude ?? b.lane}`, '#ffb545')}
-                  onMouseLeave={() => setHover(null)}
-                  className="absolute z-20 rotate-45 border border-amber/80 bg-amber/40 transition-colors hover:bg-amber"
-                  style={{ left: n.x - size / 2, top: n.y - size / 2, width: size, height: size }}
+                  onMouseEnter={(e) => {
+                    const users = modelsByTech.get(b.id)?.length ?? 0
+                    tooltip(
+                      e,
+                      `${b.label} · ${b.name}`,
+                      `${fmtDate(b.date)} · ${b.magnitude ?? b.lane}${users ? ` · ${users} 个模型在用` : ''}`,
+                      '#ffb545',
+                    )
+                    if (users) setFocus({ kind: 'breakthrough', id: b.id })
+                  }}
+                  onMouseLeave={() => {
+                    setHover(null)
+                    setFocus(null)
+                  }}
+                  className="absolute z-20 rotate-45 border transition-all"
+                  style={{
+                    left: n.x - size / 2,
+                    top: n.y - size / 2,
+                    width: size,
+                    height: size,
+                    borderColor: lit.has(`breakthrough:${b.id}`) ? '#ffcf7a' : undefined,
+                    borderStyle: b.origin === 'external' ? 'dashed' : undefined,
+                    opacity: b.origin === 'external' ? 0.9 : 1,
+                    background: lit.has(`breakthrough:${b.id}`) ? '#ffcf7a' : undefined,
+                    transform: lit.has(`breakthrough:${b.id}`) ? 'rotate(45deg) scale(1.7)' : 'rotate(45deg)',
+                    boxShadow: lit.has(`breakthrough:${b.id}`) ? '0 0 0 1.5px #ffcf7a, 0 0 14px #ffb545aa' : undefined,
+                  }}
                   aria-label={`${b.label} ${b.name}`}
                 />
               )
